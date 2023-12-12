@@ -44,22 +44,6 @@ public class WorkCalendarMember extends AbstractAuditEntity {
 	@Override
 	public String toString() {
 		return "WorkCalendarMember [workCalendar=" + workCalendar.id + ", user=" + this.getId().getUserId() + "]";
-	}
-	
-	public void setWorkGroup(WorkCalendar workCalendar) {
-		// 기존에 존재했던 참조 삭제
-		if (this.workCalendar != null) {
-			this.workCalendar.getMemberList().remove(this);
-		}
-		
-		this.workCalendar = workCalendar;
-		
-		// 참조 추가
-		if (workCalendar != null && !workCalendar.getMemberList().contains(this)) {
-			this.workCalendar.getMemberList().add(this);
-		}
-		
-	}
-	
+	}		
 	
 }

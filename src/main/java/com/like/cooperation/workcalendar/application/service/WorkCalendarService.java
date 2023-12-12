@@ -39,39 +39,7 @@ public class WorkCalendarService {
 	 */
 	public WorkCalendar getWorkGroup(Long id) {
 		return repository.findById(id).orElse(null);
-	}			
-	
-	public void saveWorkGroup(WorkCalendarSaveDTO dto) {
-		WorkCalendar entity = null;
-		
-		if (dto.workCalendarId() != null) {
-			entity = repository.findById(dto.workCalendarId()).orElse(null);
-		}
-		
-		if (entity == null) {
-			entity = dto.newWorkGroup();
-		} else {
-			dto.modifyWorkGroup(entity);
-		}
-		
-		//List<SystemUserId> dtoMemberList = dto.memberList();
-		List<SystemUserId> dtoMemberList = dto.memberList().stream()
-														   .map(r -> new SystemUserId(dto.organizationCode(), r))
-														   .toList();
-		entity.clearWorkGroupMember();
-		
-		if (dtoMemberList != null) {			
-			List<SystemUser> userList = userRepository.findAllById(dtoMemberList);
-			
-			for ( SystemUser user: userList ) {
-				WorkCalendarMember member = new WorkCalendarMember(entity, user);				
-				entity.addWorkGroupMember(member);
-			}
-			//workGroupService.saveWorkGroupMember(entity, user);
-		}	
-				
-		repository.save(entity);
-	}
+	}				
 	
 	public void deleteWorkGroup(Long id) {
 		repository.deleteById(id);
@@ -79,18 +47,6 @@ public class WorkCalendarService {
 	
 	public WorkCalendarMember getWorkGroupMember(WorkCalendarMemberId id) {
 		return workGroupMemberRepository.findById(id).orElse(null);
-	}
-	
-	public void saveWorkGroupMember(WorkCalendar workGroup, SystemUser user) {
-		workGroup.addWorkGroupMember(new WorkCalendarMember(workGroup, user));
-	}
-	
-	public void saveWorkGroupMember(WorkCalendar workGroup, List<SystemUser> userList) {		
-		for (SystemUser user: userList) {
-			workGroup.addWorkGroupMember(new WorkCalendarMember(workGroup, user));
-		}
-		
-		repository.save(workGroup);
 	}
 
 	public void deleteWorkGroupMember(WorkCalendarMember workGroupMember) {

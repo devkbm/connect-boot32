@@ -9,7 +9,6 @@ import com.like.cooperation.workcalendar.application.port.dto.WorkCalendarSaveDT
 import com.like.cooperation.workcalendar.application.port.in.WorkCalendarSaveUseCase;
 import com.like.cooperation.workcalendar.application.port.out.WorkCalendarCommandDbPort;
 import com.like.cooperation.workcalendar.domain.WorkCalendar;
-import com.like.cooperation.workcalendar.domain.WorkCalendarMember;
 import com.like.system.user.application.port.in.share.SystemUserCommonSelectUseCase;
 import com.like.system.user.domain.SystemUser;
 import com.like.system.user.domain.SystemUserId;
@@ -41,7 +40,7 @@ public class WorkCalendarSaveService implements WorkCalendarSaveUseCase {
 			dto.modifyWorkGroup(entity);
 		}
 		
-		entity.clearWorkGroupMember();
+		//entity.clearWorkGroupMember();		
 		
 		List<SystemUserId> dtoMemberList = dto.memberList().stream()
 														   .map(r -> new SystemUserId(dto.organizationCode(), r))
@@ -50,8 +49,10 @@ public class WorkCalendarSaveService implements WorkCalendarSaveUseCase {
 			List<SystemUser> userList = userSelectUseCase.findUsers(dtoMemberList);
 			
 			for ( SystemUser user: userList ) {
-				WorkCalendarMember member = new WorkCalendarMember(entity, user);				
-				entity.addWorkGroupMember(member);
+				entity.addWorkGroupMember(user);
+				
+				//WorkCalendarMember member = new WorkCalendarMember(entity, user);				
+				//entity.addWorkGroupMember(member);
 			}			
 		}	
 				

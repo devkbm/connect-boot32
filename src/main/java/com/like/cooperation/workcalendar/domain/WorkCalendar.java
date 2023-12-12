@@ -49,8 +49,8 @@ public class WorkCalendar extends AbstractAuditEntity {
 	List<WorkCalendarEvent> eventList;
 	
 	@OrderBy("USER_ID asc")
-	@OneToMany(mappedBy = "workCalendar", fetch=FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval=true)
-	Set<WorkCalendarMember> memberList = new LinkedHashSet<>();
+	@OneToMany(mappedBy = "workCalendar", fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval=true)
+	Set<WorkCalendarMember> memberList;
 	
 	public WorkCalendar(String name, String color) {		
 		this.name = name;
@@ -64,6 +64,19 @@ public class WorkCalendar extends AbstractAuditEntity {
 		this.color = color;
 	}
 	
+	public void addWorkGroupMember(SystemUser user) {
+		if (this.memberList == null) { 
+			this.memberList = new LinkedHashSet<>();
+		}
+		
+		WorkCalendarMember member = new WorkCalendarMember(this, user);
+		
+		if (!this.memberList.contains(member)) {			
+			this.memberList.add(member);			
+		}
+	}
+	
+	/*
 	public void addWorkGroupMember(WorkCalendarMember member) {
 		if (this.memberList == null) { 
 			this.memberList = new LinkedHashSet<>();
@@ -71,12 +84,12 @@ public class WorkCalendar extends AbstractAuditEntity {
 		
 		// 중복 방지
 		if (!this.memberList.contains(member)) {
+			member.setWorkGroup(this);
 			this.memberList.add(member);
-		}
-		
-		// 참조 추가
-		member.setWorkGroup(this);		
+		}		
+				
 	}
+	*/
 	
 	public void deleteWorkGroupMember(SystemUser user) {		
 		this.memberList.remove(new WorkCalendarMember(this, user));		
