@@ -12,7 +12,7 @@ import com.like.system.dept.domain.Dept;
 import com.like.system.user.application.port.dto.SystemUserSaveDTO;
 import com.like.system.user.application.port.in.SystemUserSaveUseCase;
 import com.like.system.user.application.port.out.SystemUserCommandDbPort;
-import com.like.system.user.application.port.out.SystemUserRoleSaveDbPort;
+import com.like.system.user.application.port.out.SystemUserRoleCommandDbPort;
 import com.like.system.user.domain.SystemUser;
 import com.like.system.user.domain.SystemUserRole;
 import com.like.system.user.domain.vo.UserPassword;
@@ -23,12 +23,12 @@ public class SystemUserSaveService implements SystemUserSaveUseCase {
 
 	SystemUserCommandDbPort dbPort;	
 	DeptSelectPort deptDbPort;
-	SystemUserRoleSaveDbPort userRoleDbPort;
+	SystemUserRoleCommandDbPort userRoleDbPort;
 	PasswordEncoder passwordEncoder;
 	
 	SystemUserSaveService(SystemUserCommandDbPort dbPort,
 						  DeptSelectPort deptDbPort,
-						  SystemUserRoleSaveDbPort userRoleDbPort,
+						  SystemUserRoleCommandDbPort userRoleDbPort,
 						  PasswordEncoder passwordEncoder
 						  ) {
 		this.dbPort = dbPort;
@@ -51,9 +51,9 @@ public class SystemUserSaveService implements SystemUserSaveUseCase {
 				
 		this.dbPort.save(user);
 		
-		List<SystemUserRole> roles = this.toSystemUserRole(dto, user);
-		
-		this.userRoleDbPort.save(roles);
+		this.userRoleDbPort.delete(user.getRoleList().stream().toList());
+						
+		this.userRoleDbPort.save(this.toSystemUserRole(dto, user));
 	}
 	
 	private List<SystemUserRole> toSystemUserRole(SystemUserSaveDTO dto, SystemUser user) {

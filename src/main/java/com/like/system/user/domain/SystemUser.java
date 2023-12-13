@@ -153,15 +153,15 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 		//return accountSpec.getIsEnabled();
 	}			
 	
+	public boolean isVaild(String password) {
+		return this.password.matchPassword(password);
+	}	
+
 	public Set<SystemUserRole> getRoleList() {
 		return this.roles;		
 	}
 	
-	public boolean isVaild(String password) {
-		return this.password.matchPassword(password);
-	}		
-		
-	public void addAuthoritiy(JpaRole authority) {
+	public void addRole(JpaRole authority) {
 		if (this.roles == null) {
 			this.roles = new LinkedHashSet<>();
 		}
@@ -188,5 +188,7 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 		
 		return this.image.changeImage(profilePictureRepository, sourceFile);
 	}
+	
+
 	
 }
