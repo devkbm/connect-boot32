@@ -17,6 +17,7 @@ public class WorkCalendarMemberId implements Serializable {
 		
 	private static final long serialVersionUID = -9015996959356053573L;
 
+	@Column(name="ID")
 	Long workCalendar;
 			
 	@Column(name="USER_ID")
