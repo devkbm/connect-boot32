@@ -7,7 +7,9 @@ import com.like.cooperation.workcalendar.domain.WorkCalendar;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Builder
 public record WorkCalendarSaveDTO(
 		LocalDateTime createdDt,
@@ -36,12 +38,15 @@ public record WorkCalendarSaveDTO(
 	}
 	
 	public static WorkCalendarSaveDTO toDTO(WorkCalendar entity) {
+		
+		log.info(entity.toString());
+		
 		WorkCalendarSaveDTO dto = WorkCalendarSaveDTO.builder()
 									   .workCalendarId(entity.getId())
 									   .workCalendarName(entity.getName())
 									   .color(entity.getColor())
 									   .memberList(entity.getMemberList().stream()
-										  	 						     .map(r -> r.getId().getUserId())
+										  	 						     .map(r -> r.getUserId())
 	 										 						     .toList())
 									   .build();
 
