@@ -8,9 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.like.cooperation.workcalendar.application.port.dto.WorkCalendarSaveDTO;
 import com.like.cooperation.workcalendar.application.port.in.WorkCalendarSaveUseCase;
 import com.like.cooperation.workcalendar.application.port.out.WorkCalendarCommandDbPort;
+import com.like.cooperation.workcalendar.application.port.out.WorkCalendarMemberCommandDbPort;
 import com.like.cooperation.workcalendar.domain.WorkCalendar;
+import com.like.cooperation.workcalendar.domain.WorkCalendarMember;
 import com.like.system.user.application.port.in.share.SystemUserCommonSelectUseCase;
-import com.like.system.user.domain.SystemUser;
 import com.like.system.user.domain.SystemUserId;
 
 @Transactional
@@ -18,11 +19,14 @@ import com.like.system.user.domain.SystemUserId;
 public class WorkCalendarSaveService implements WorkCalendarSaveUseCase {
 
 	WorkCalendarCommandDbPort dbPort;
+	WorkCalendarMemberCommandDbPort memberDbPort;
 	SystemUserCommonSelectUseCase userSelectUseCase;
 	
 	WorkCalendarSaveService(WorkCalendarCommandDbPort dbPort,
+							WorkCalendarMemberCommandDbPort memberDbPort,
 							SystemUserCommonSelectUseCase userSelectUseCase) {
 		this.dbPort = dbPort;
+		this.memberDbPort = memberDbPort;
 		this.userSelectUseCase = userSelectUseCase;
 	}
 	
@@ -40,23 +44,26 @@ public class WorkCalendarSaveService implements WorkCalendarSaveUseCase {
 			dto.modifyWorkGroup(entity);
 		}
 		
-		//entity.clearWorkGroupMember();		
+		dbPort.save(entity);
 		
-		List<SystemUserId> dtoMemberList = dto.memberList().stream()
-														   .map(r -> new SystemUserId(dto.organizationCode(), r))
-														   .toList();						
-		if (dtoMemberList != null) {						
-			List<SystemUser> userList = userSelectUseCase.findUsers(dtoMemberList);
+		memberDbPort.delete(entity.getMemberList().stream().toList());
+										
+		if (dto.memberList() != null) {
+			WorkCalendar workCalendar = entity;
+			List<SystemUserId> dtoMemberList = dto.memberList()
+												  .stream()
+												  .map(r -> new SystemUserId(dto.organizationCode(), r))
+												  .toList();
 			
-			for ( SystemUser user: userList ) {
-				entity.addWorkGroupMember(user);
-				
-				//WorkCalendarMember member = new WorkCalendarMember(entity, user);				
-				//entity.addWorkGroupMember(member);
-			}			
+			List<WorkCalendarMember> memberList = userSelectUseCase.findUsers(dtoMemberList)
+																   .stream()
+																   .map(e -> new WorkCalendarMember(workCalendar, e))
+																   .toList();
+			
+			memberDbPort.save(memberList);									
 		}	
 				
-		dbPort.save(entity);
+		
 	}
 
 }

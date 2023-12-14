@@ -9,6 +9,7 @@ import com.like.cooperation.workcalendar.application.port.dto.WorkCalendarQueryD
 import com.like.cooperation.workcalendar.application.port.out.WorkCalendarQueryDbPort;
 import com.like.cooperation.workcalendar.domain.QWorkCalendar;
 import com.like.cooperation.workcalendar.domain.QWorkCalendarMember;
+import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 @Repository
@@ -33,10 +34,21 @@ public class WorkCalendarQueryDbAdapter implements WorkCalendarQueryDbPort {
 	public List<WorkCalendar> getWorkGroupList(String userId) {
 
 		return queryFactory
+				.selectFrom(qWorkCalendar)				
+				.where(qWorkCalendar.id.in(
+						   JPAExpressions
+                           .select(qWorkCalendarMember.id.workCalendar)
+                           .from(qWorkCalendarMember)
+                           .where(qWorkCalendarMember.id.userId.eq(userId)))
+						)
+				.fetch();
+		/*
+		return queryFactory
 				.selectFrom(qWorkCalendar)
 				.join(qWorkCalendar.memberList, qWorkCalendarMember)
 				.where(qWorkCalendarMember.id.userId.eq(userId))
 				.fetch();
+		*/
 	}
 	
 	

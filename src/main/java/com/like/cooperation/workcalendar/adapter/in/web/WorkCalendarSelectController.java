@@ -11,6 +11,9 @@ import com.like.cooperation.workcalendar.application.port.dto.WorkCalendarSaveDT
 import com.like.cooperation.workcalendar.application.port.in.WorkCalendarSelectUseCase;
 import com.like.system.core.message.MessageUtil;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 public class WorkCalendarSelectController {
 
@@ -24,6 +27,8 @@ public class WorkCalendarSelectController {
 	public ResponseEntity<?> getWorkGroup(@PathVariable Long id) {																
 		
 		WorkCalendarSaveDTO dto = useCase.select(id);
+		
+		log.info(dto.toString());
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));													
 	}

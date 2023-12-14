@@ -15,7 +15,9 @@ import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+@ToString(exclude = {"workCalendar"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @EqualsAndHashCode(callSuper = false)
@@ -40,10 +42,5 @@ public class WorkCalendarMember extends AbstractAuditEntity {
 	public String getUserId() {
 		return this.getId().getUserId();
 	}
-
-	@Override
-	public String toString() {
-		return "WorkCalendarMember [workCalendar=" + workCalendar.id + ", user=" + this.getId().getUserId() + "]";
-	}		
 	
 }

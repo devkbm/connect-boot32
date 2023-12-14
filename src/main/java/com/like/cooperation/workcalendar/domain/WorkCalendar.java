@@ -1,14 +1,13 @@
 package com.like.cooperation.workcalendar.domain;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,7 +18,6 @@ import jakarta.persistence.Table;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.like.system.core.jpa.domain.AbstractAuditEntity;
-import com.like.system.user.domain.SystemUser;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -27,7 +25,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@ToString(exclude = {"eventList", "memberList"})
+@ToString
 @Getter
 @Entity
 @Table(name = "GRWWORKCALENDAR")
@@ -49,58 +47,19 @@ public class WorkCalendar extends AbstractAuditEntity {
 	List<WorkCalendarEvent> eventList;
 	
 	@OrderBy("USER_ID asc")
-	@OneToMany(mappedBy = "workCalendar", fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval=true)
+	@OneToMany(mappedBy = "workCalendar")
 	Set<WorkCalendarMember> memberList;
 	
 	public WorkCalendar(String name, String color) {		
 		this.name = name;
 		this.color = color;
-		this.eventList = null;
-		this.memberList = null;
+		this.eventList = new ArrayList<>();
+		this.memberList = new LinkedHashSet<>();
 	}
 	
 	public void modifyEntity(String name, String color) {
 		this.name = name;
 		this.color = color;
 	}
-	
-	public void addWorkGroupMember(SystemUser user) {
-		if (this.memberList == null) { 
-			this.memberList = new LinkedHashSet<>();
-		}
-		
-		WorkCalendarMember member = new WorkCalendarMember(this, user);
-		
-		if (!this.memberList.contains(member)) {			
-			this.memberList.add(member);			
-		}
-	}
-	
-	/*
-	public void addWorkGroupMember(WorkCalendarMember member) {
-		if (this.memberList == null) { 
-			this.memberList = new LinkedHashSet<>();
-		}		
-		
-		// 중복 방지
-		if (!this.memberList.contains(member)) {
-			member.setWorkGroup(this);
-			this.memberList.add(member);
-		}		
-				
-	}
-	*/
-	
-	public void deleteWorkGroupMember(SystemUser user) {		
-		this.memberList.remove(new WorkCalendarMember(this, user));		
-	}
-	
-	public void clearWorkGroupMember() {
-		if (this.memberList == null) {
-			this.memberList = new LinkedHashSet<>();			
-		} else if (!this.memberList.isEmpty()) {
-			this.memberList.clear();
-		}
-	}
-	
+			
 }
