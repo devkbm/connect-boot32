@@ -17,7 +17,7 @@ import lombok.ToString;
 
 @ToString(onlyExplicitlyIncluded = true)
 @Getter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(of = {"organizationCode","staffNo","seq"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Embeddable
 public class StaffFamilyId implements Serializable {

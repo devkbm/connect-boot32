@@ -8,7 +8,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.EqualsAndHashCode;
 
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(of = {"organizationCode", "menuGroupCode", "menuCode", "roleCode"})
 @Embeddable
 public class MenuRoleMappingId implements Serializable {
 	

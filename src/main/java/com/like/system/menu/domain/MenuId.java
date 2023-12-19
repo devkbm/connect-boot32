@@ -1,14 +1,14 @@
 package com.like.system.menu.domain;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 import org.hibernate.annotations.Comment;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.EqualsAndHashCode;
 
-//@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(of = {"menuGroupId", "menuCode"})
 @Embeddable
 public class MenuId implements Serializable {
 
@@ -39,7 +39,7 @@ public class MenuId implements Serializable {
 	public String getMenuCode() {
 		return menuCode;
 	}
-
+	/*
 	@Override
 	public int hashCode() {
 		return Objects.hash(menuCode, menuGroupId.organizationCode, menuGroupId.menuGroupCode);
@@ -58,6 +58,6 @@ public class MenuId implements Serializable {
 			&& Objects.equals(menuGroupId.organizationCode, other.menuGroupId.organizationCode)
 			&& Objects.equals(menuGroupId.menuGroupCode, other.menuGroupId.menuGroupCode);
 	}
-	
+	*/
 	
 }

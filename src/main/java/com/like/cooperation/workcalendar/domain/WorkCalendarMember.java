@@ -12,7 +12,6 @@ import com.like.system.core.jpa.domain.AbstractAuditEntity;
 import com.like.system.user.domain.SystemUser;
 
 import lombok.AccessLevel;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -20,7 +19,6 @@ import lombok.ToString;
 @ToString(exclude = {"workCalendar"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "GRWWORKCALENDARUSER")
 public class WorkCalendarMember extends AbstractAuditEntity {

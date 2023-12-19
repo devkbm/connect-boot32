@@ -11,7 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(of = {"typeId", "code"})
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Embeddable
 public class HrmCodeId implements Serializable {	

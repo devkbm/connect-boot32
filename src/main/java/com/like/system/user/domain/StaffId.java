@@ -6,7 +6,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.EqualsAndHashCode;
 
-@EqualsAndHashCode
+@EqualsAndHashCode(of = {"organizationCode", "staffNo"})
 @Embeddable
 public class StaffId implements Serializable {
 	

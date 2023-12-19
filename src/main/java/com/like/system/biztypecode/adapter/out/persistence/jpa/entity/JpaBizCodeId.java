@@ -11,7 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(of = {"bizCodeTypeId", "code"})
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Embeddable
 public class JpaBizCodeId implements Serializable {

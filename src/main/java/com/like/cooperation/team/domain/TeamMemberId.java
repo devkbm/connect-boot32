@@ -10,7 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(of = {"team", "userId"})
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Embeddable
 public class TeamMemberId implements Serializable {		
