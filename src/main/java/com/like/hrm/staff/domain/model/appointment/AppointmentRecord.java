@@ -50,6 +50,10 @@ public class AppointmentRecord extends AbstractAuditEntity implements Serializab
 	@EmbeddedId
 	AppointmentRecordId id;
 		
+	@Comment("발령분류코드")
+	@Column(name="APPOINTMENT_TYPE_CODE")
+	String appointmentTypeCode;
+	
 	@Comment("발령일자")
 	@Column(name="APPOINTMENT_DT")
 	LocalDate appointmentDate;
@@ -75,6 +79,7 @@ public class AppointmentRecord extends AbstractAuditEntity implements Serializab
 	
 	@Builder
 	public AppointmentRecord(Staff staff
+							,String appointmentTypeCode
 							,LocalDate appointmentDate
 							,LocalDate appointmentEndDate
 							,String recordName
@@ -82,6 +87,7 @@ public class AppointmentRecord extends AbstractAuditEntity implements Serializab
 							,AppointmentInformation info) {
 		this.staff = staff;
 		this.id = new AppointmentRecordId(staff, staff.getAppointmentRecordList().getNextSequence());
+		this.appointmentTypeCode = appointmentTypeCode;
 		this.appointmentDate = appointmentDate;
 		this.appointmentEndDate = appointmentEndDate;
 		this.recordName = recordName;

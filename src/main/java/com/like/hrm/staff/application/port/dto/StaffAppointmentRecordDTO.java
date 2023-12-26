@@ -39,7 +39,7 @@ public record StaffAppointmentRecordDTO(
 	public AppointmentRecord newEntity(Staff staff) {		
 		AppointmentInformation info = newAppointmentInformation();
 		
-		return new AppointmentRecord(staff,appointmentDate, appointmentEndDate, recordName, comment, info);				
+		return new AppointmentRecord(staff, appointmentTypeCode, appointmentDate, appointmentEndDate, recordName, comment, info);				
 	}
 	
 	public void modifyEntity(AppointmentRecord entity) {
@@ -62,6 +62,7 @@ public record StaffAppointmentRecordDTO(
 										 .staffNo(entity.getStaff().getId().getStaffNo())
 										 .staffName(entity.getStaff().getName().getName())
 										 .seq(entity.getId().getSeq())
+										 //.appointmentTypeCode(entity.getapp)
 										 .appointmentDate(entity.getAppointmentDate())
 										 .appointmentEndDate(entity.getAppointmentEndDate())
 										 .recordName(entity.getRecordName())
