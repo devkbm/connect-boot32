@@ -62,7 +62,7 @@ public record StaffAppointmentRecordDTO(
 										 .staffNo(entity.getStaff().getId().getStaffNo())
 										 .staffName(entity.getStaff().getName().getName())
 										 .seq(entity.getId().getSeq())
-										 //.appointmentTypeCode(entity.getapp)
+										 .appointmentTypeCode(entity.getAppointmentTypeCode())
 										 .appointmentDate(entity.getAppointmentDate())
 										 .appointmentEndDate(entity.getAppointmentEndDate())
 										 .recordName(entity.getRecordName())
