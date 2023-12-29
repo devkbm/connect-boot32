@@ -24,12 +24,7 @@ public class P6spyPrettySqlFormatter implements MessageFormattingStrategy {
 	
     @Override
     public String formatMessage(int connectionId, String now, long elapsed, String category, String prepared, String sql, String url) {
-    	    	
-    	// 로컬 테스트용
-    	if (sql.startsWith("DELETE FROM SPRING_SESSION")) {
-        	return "SPRING_SESSION 안보이게 처리";
-        }    	
-    	
+    	    	    	
     	sql = formatSql(category, sql);
     	Date currentDate = new Date();
 
