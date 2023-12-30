@@ -25,6 +25,18 @@ public class SessionTestController {
 		log.info("creationTime={}", new Date(session.getCreationTime()));
 		log.info("lastAccessTjme={}",new Date(session.getLastAccessedTime()));
 		log.info("isNew={}", session.isNew());
-		return "세션 출력";
+		
+		String rtn = """
+				sessionId=%s 
+				maxInactiveInterval=%d
+				creationTime=%s
+				lastAccessTjme=%s
+				isNew=%s
+				""".formatted(session.getId()
+							 ,session.getMaxInactiveInterval()
+							 ,new Date(session.getCreationTime())
+							 ,new Date(session.getLastAccessedTime())
+							 ,session.isNew()); 
+		return rtn;
 	}
 }
