@@ -8,6 +8,7 @@ import com.like.system.dept.application.port.dto.DeptQueryDTO;
 import com.like.system.dept.application.port.dto.DeptSaveDTO;
 import com.like.system.dept.application.port.in.DeptSelectUseCase;
 import com.like.system.dept.application.port.out.DeptSelectPort;
+import com.like.system.dept.domain.Dept;
 
 @Service
 public class DeptSelectService implements DeptSelectUseCase {
@@ -21,7 +22,9 @@ public class DeptSelectService implements DeptSelectUseCase {
 	@Override
 	public DeptSaveDTO select(String organizationCode, String deptCode) {
 		
-		return DeptSaveDTO.toDTO(this.port.select(organizationCode, deptCode));
+		Dept entity = this.port.select(organizationCode, deptCode).orElse(null);
+		
+		return DeptSaveDTO.toDTO(entity);
 	}
 
 	@Override

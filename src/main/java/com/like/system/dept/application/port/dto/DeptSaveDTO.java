@@ -77,7 +77,7 @@ public record DeptSaveDTO(
 						   .seq(this.seq)
 						   .comment(this.comment)
 						   .parentDept(parentDept)
-						   .parentDeptCode(parentDept.getId().getDeptCode())
+						   .parentDeptCode(parentDept == null ? null : parentDept.getId().getDeptCode())
 						   .build();
 		entity.setAppUrl(clientAppUrl);
 		

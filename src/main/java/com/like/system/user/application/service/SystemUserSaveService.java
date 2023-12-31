@@ -39,7 +39,7 @@ public class SystemUserSaveService implements SystemUserSaveUseCase {
 	
 	@Override
 	public void save(SystemUserSaveDTO dto) {
-		Dept dept = StringUtils.hasText(dto.deptCode()) ? deptDbPort.select(dto.organizationCode(), dto.deptCode()) : null;
+		Dept dept = StringUtils.hasText(dto.deptCode()) ? deptDbPort.select(dto.organizationCode(), dto.deptCode()).orElse(null) : null;
 		SystemUser user = this.dbPort.select(dto.organizationCode(), dto.userId());
 		
 		if (user == null) {

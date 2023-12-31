@@ -1,6 +1,7 @@
 package com.like.system.dept.adapter.out.persistence;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,8 +25,8 @@ public class DeptDbAdapter implements DeptSelectPort, DeptSavePort, DeptDeletePo
 	}
 
 	@Override
-	public Dept select(String organizationCode, String deptCode) {		
-		return this.repository.findById(new DeptId(organizationCode, deptCode)).orElse(null);
+	public Optional<Dept> select(String organizationCode, String deptCode) {		
+		return this.repository.findById(new DeptId(organizationCode, deptCode));
 	}
 
 	@Override
