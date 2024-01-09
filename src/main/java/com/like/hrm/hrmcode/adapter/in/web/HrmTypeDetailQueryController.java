@@ -8,29 +8,28 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.hrm.hrmcode.application.port.dto.HrmCodeTypeSaveDTO;
-import com.like.hrm.hrmcode.application.port.dto.HrmCodeTypeQueryDTO;
+import com.like.hrm.hrmcode.application.port.dto.HrmCodeSaveDTO;
+import com.like.hrm.hrmcode.application.port.dto.HrmCodeQueryDTO;
 import com.like.hrm.hrmcode.application.service.HrmTypeQueryService;
 import com.like.system.core.message.MessageUtil;
 
 @RestController
-public class HrmTypeQueryContoller {
+public class HrmTypeDetailQueryController {
 
 	private HrmTypeQueryService service;
 	
-	public HrmTypeQueryContoller(HrmTypeQueryService service) {
+	HrmTypeDetailQueryController(HrmTypeQueryService service) {
 		this.service = service;
-	}	
+	}
 	
-	@GetMapping("/api/hrm/hrmtype")
-	public ResponseEntity<?> getHrmTypeList(HrmCodeTypeQueryDTO dto) {														
+	@GetMapping("/api/hrm/hrmtype/code")
+	public ResponseEntity<?> getHrmTypeDetailCodeList(HrmCodeQueryDTO dto) {														
 		
-		List<HrmCodeTypeSaveDTO> list = service.getHrmTypeList(dto)
-										    .stream()
-										    .map(e -> HrmCodeTypeSaveDTO.convert(e))
-										    .toList();							
+		List<HrmCodeSaveDTO> list = service.getTypeDetailCodeList(dto)
+													  .stream()
+													  .map(e -> HrmCodeSaveDTO.convert(e))
+													  .toList();																	   
 		
 		return toList(list, MessageUtil.getQueryMessage(list.size()));
 	}
-	
 }

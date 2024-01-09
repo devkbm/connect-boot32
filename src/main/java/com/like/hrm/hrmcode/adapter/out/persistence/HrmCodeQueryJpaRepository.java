@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 import com.like.hrm.hrmcode.domain.HrmCodeType;
 import com.like.hrm.hrmcode.domain.QHrmCode;
 import com.like.hrm.hrmcode.domain.QHrmCodeType;
-import com.like.hrm.hrmcode.application.port.dto.HrmCodeDTO;
-import com.like.hrm.hrmcode.application.port.dto.HrmCodeTypeDTO;
+import com.like.hrm.hrmcode.application.port.dto.HrmCodeQueryDTO;
+import com.like.hrm.hrmcode.application.port.dto.HrmCodeTypeQueryDTO;
 import com.like.hrm.hrmcode.domain.HrmCode;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
@@ -24,7 +24,7 @@ public class HrmCodeQueryJpaRepository implements HrmCodeQueryRepository {
 	}
 	
 	@Override
-	public List<HrmCodeType> getHrmCodeTypeList(HrmCodeTypeDTO.Search condition) {
+	public List<HrmCodeType> getHrmCodeTypeList(HrmCodeTypeQueryDTO condition) {
 		return queryFactory
 				.selectFrom(qHrmCodeType)
 				.where(condition.getBooleanBuilder())
@@ -32,7 +32,7 @@ public class HrmCodeQueryJpaRepository implements HrmCodeQueryRepository {
 	}
 
 	@Override
-	public List<HrmCode> getHrmCodeList(HrmCodeDTO.Search condition) {
+	public List<HrmCode> getHrmCodeList(HrmCodeQueryDTO condition) {
 		return queryFactory
 				.selectFrom(qHrmCode)
 				.where(condition.getBooleanBuilder())

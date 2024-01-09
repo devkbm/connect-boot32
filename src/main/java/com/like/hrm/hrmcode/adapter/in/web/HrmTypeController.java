@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.hrm.hrmcode.application.port.dto.HrmCodeDTO;
-import com.like.hrm.hrmcode.application.port.dto.HrmCodeTypeDTO;
+import com.like.hrm.hrmcode.application.port.dto.HrmCodeTypeSaveDTO;
+import com.like.hrm.hrmcode.application.port.dto.HrmCodeSaveDTO;
 import com.like.hrm.hrmcode.application.service.HrmTypeService;
 import com.like.hrm.hrmcode.domain.HrmCodeId;
 import com.like.system.core.message.MessageUtil;
@@ -29,13 +29,13 @@ public class HrmTypeController {
 	@GetMapping("/api/hrm/hrmtype/{id}")
 	public ResponseEntity<?> getHrmType(@PathVariable String id) {
 		
-		HrmCodeTypeDTO.Form hrmType = service.getHrmTypeDTO(id);
+		HrmCodeTypeSaveDTO hrmType = service.getHrmTypeDTO(id);
 					
 		return toOne(hrmType, MessageUtil.getQueryMessage(hrmType == null ? 0 : 1));
 	}
 		
 	@PostMapping("/api/hrm/hrmtype")
-	public ResponseEntity<?> saveHrmType(@RequestBody HrmCodeTypeDTO.Form dto) {						
+	public ResponseEntity<?> saveHrmType(@RequestBody HrmCodeTypeSaveDTO dto) {						
 																	
 		service.saveHrmType(dto);						
 								 					
@@ -55,13 +55,13 @@ public class HrmTypeController {
 	@GetMapping("/api/hrm/hrmtype/{type}/code/{code}")
 	public ResponseEntity<?> getTypeDetailCode(@PathVariable String type, @PathVariable String code) {
 		
-		HrmCodeDTO.Form dto = service.getTypeDetailCodeDTO(new HrmCodeId(type, code));
+		HrmCodeSaveDTO dto = service.getTypeDetailCodeDTO(new HrmCodeId(type, code));
 					
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}
 		
 	@PostMapping("/api/hrm/hrmtype/{type}/code")
-	public ResponseEntity<?> saveTypeDetailCode(@RequestBody HrmCodeDTO.Form dto) {				
+	public ResponseEntity<?> saveTypeDetailCode(@RequestBody HrmCodeSaveDTO dto) {				
 																			
 		service.saveTypeDetailCode(dto);						
 								 					
