@@ -1,6 +1,7 @@
 package com.like.system.core.web.util;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 
 import com.like.system.core.web.response.ResponseObject;
 import com.like.system.core.web.response.ResponseObjectList;
+import com.like.system.core.web.response.ResponseObjectMap;
 
 public abstract class ResponseEntityUtil {		
 			
@@ -68,6 +70,25 @@ public abstract class ResponseEntityUtil {
 		ResponseObject<T> obj = new ResponseObject<T>(data, data == null ? 0 : 1, message);
 		
 		return new ResponseEntity<ResponseObject<T>>(obj, getResponseHeaders(), HttpStatus.OK);
+	}
+	
+	public static <K, V> ResponseEntity<ResponseObjectMap<K, V>> toMap(Map<K, V> data, int size, String message, HttpStatus httpStatus) {
+		
+		ResponseObjectMap<K, V> obj = new ResponseObjectMap<K, V>(data, size, message);		
+					    	    
+	    return new ResponseEntity<ResponseObjectMap<K, V>>(obj, getResponseHeaders(), httpStatus);	    	    	    	    	
+	}
+		
+	public static<K, V> ResponseEntity<ResponseObjectMap<K, V>> toMap(Map<K, V> data, String message, HttpStatus httpStatus) {
+		ResponseObjectMap<K, V> obj = new ResponseObjectMap<K, V>(data, data == null ? 0 : 1, message);
+		
+		return new ResponseEntity<ResponseObjectMap<K, V>>(obj, getResponseHeaders(), httpStatus);
+	}
+	
+	public static<K, V> ResponseEntity<ResponseObjectMap<K, V>> toMap(Map<K, V> data, String message) {
+		ResponseObjectMap<K, V> obj = new ResponseObjectMap<K, V>(data, data == null ? 0 : 1, message);
+		
+		return new ResponseEntity<ResponseObjectMap<K, V>>(obj, getResponseHeaders(), HttpStatus.OK);
 	}
 	
 	private static HttpHeaders getResponseHeaders() {

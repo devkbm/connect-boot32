@@ -18,11 +18,11 @@ import com.like.hrm.hrmcode.domain.HrmCodeId;
 import com.like.system.core.message.MessageUtil;
 
 @RestController
-public class HrmTypeController {
+public class HrmCodeTypeController {
 
 	private HrmTypeService service;			
 
-	public HrmTypeController(HrmTypeService service) {
+	public HrmCodeTypeController(HrmTypeService service) {
 		this.service = service;		
 	}							
 	
