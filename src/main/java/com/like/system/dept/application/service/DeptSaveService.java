@@ -4,24 +4,21 @@ import org.springframework.stereotype.Service;
 
 import com.like.system.dept.application.port.dto.DeptSaveDTO;
 import com.like.system.dept.application.port.in.DeptSaveUseCase;
-import com.like.system.dept.application.port.out.DeptSavePort;
-import com.like.system.dept.application.port.out.DeptSelectPort;
+import com.like.system.dept.application.port.out.DeptCommandDbPort;
 import com.like.system.dept.domain.Dept;
 
 @Service
 public class DeptSaveService implements DeptSaveUseCase {
 	
-	DeptSavePort port;
-	DeptSelectPort selectPort;
+	DeptCommandDbPort port;
 	
-	public DeptSaveService(DeptSavePort port, DeptSelectPort selectPort) {
-		this.port = port;
-		this.selectPort = selectPort;
+	public DeptSaveService(DeptCommandDbPort port) {
+		this.port = port;		
 	}
 	
 	@Override
 	public void save(DeptSaveDTO dto) {
-		Dept parent = selectPort.select(dto.organizationCode(), dto.parentDeptCode()).orElse(null);
+		Dept parent = port.select(dto.organizationCode(), dto.parentDeptCode()).orElse(null);
 		
 		this.port.save(dto.toEntity(parent));
 	}

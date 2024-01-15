@@ -1,21 +1,18 @@
 package com.like.system.dept.application.service;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
-import com.like.system.dept.application.port.dto.DeptQueryDTO;
 import com.like.system.dept.application.port.dto.DeptSaveDTO;
 import com.like.system.dept.application.port.in.DeptSelectUseCase;
-import com.like.system.dept.application.port.out.DeptSelectPort;
+import com.like.system.dept.application.port.out.DeptCommandDbPort;
 import com.like.system.dept.domain.Dept;
 
 @Service
 public class DeptSelectService implements DeptSelectUseCase {
 
-	DeptSelectPort port;
+	DeptCommandDbPort port;
 	
-	public DeptSelectService(DeptSelectPort port) {
+	public DeptSelectService(DeptCommandDbPort port) {
 		this.port = port;
 	}
 	
@@ -25,14 +22,6 @@ public class DeptSelectService implements DeptSelectUseCase {
 		Dept entity = this.port.select(organizationCode, deptCode).orElse(null);
 		
 		return DeptSaveDTO.toDTO(entity);
-	}
-
-	@Override
-	public List<DeptSaveDTO> select(DeptQueryDTO dto) {
-		return this.port.select(dto)
-						.stream()
-						.map(e -> DeptSaveDTO.toDTO(e))
-						.toList();
 	}
 	
 }

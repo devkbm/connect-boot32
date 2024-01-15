@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import com.like.system.dept.application.port.out.DeptSelectPort;
+import com.like.system.dept.application.port.out.DeptCommandDbPort;
 import com.like.system.dept.domain.Dept;
 import com.like.system.user.application.port.dto.SystemUserSaveDTO;
 import com.like.system.user.application.port.in.SystemUserSaveUseCase;
@@ -22,12 +22,12 @@ import com.like.system.user.domain.vo.UserPassword;
 public class SystemUserSaveService implements SystemUserSaveUseCase {
 
 	SystemUserCommandDbPort dbPort;	
-	DeptSelectPort deptDbPort;
+	DeptCommandDbPort deptDbPort;
 	SystemUserRoleCommandDbPort userRoleDbPort;
 	PasswordEncoder passwordEncoder;
 	
 	SystemUserSaveService(SystemUserCommandDbPort dbPort,
-						  DeptSelectPort deptDbPort,
+						  DeptCommandDbPort deptDbPort,
 						  SystemUserRoleCommandDbPort userRoleDbPort,
 						  PasswordEncoder passwordEncoder
 						  ) {
