@@ -1,4 +1,4 @@
-package com.like.hrm.hrmcode.adapter.in.web;
+package com.like.hrm.hrmcode.adapter.in.web.hrmcodetype;
 
 import static com.like.system.core.web.util.ResponseEntityUtil.toList;
 

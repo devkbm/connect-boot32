@@ -1,9 +1,9 @@
-package com.like.hrm.hrmcode.application.service;
+package com.like.hrm.hrmcode.application.service.hrmcodetype;
 
 import org.springframework.stereotype.Service;
 
 import com.like.hrm.hrmcode.application.port.dto.HrmCodeTypeSaveDTO;
-import com.like.hrm.hrmcode.application.port.in.HrmCodeTypeSelectUseCase;
+import com.like.hrm.hrmcode.application.port.in.hrmcodetype.HrmCodeTypeSelectUseCase;
 import com.like.hrm.hrmcode.application.port.out.HrmCodeTypeCommandDbPort;
 
 @Service
