@@ -8,23 +8,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.hrm.hrmcode.application.port.dto.HrmCodeSaveDTO;
-import com.like.hrm.hrmcode.application.service.HrmTypeService;
-import com.like.hrm.hrmcode.domain.HrmCodeId;
+import com.like.hrm.hrmcode.application.port.in.hrmcode.HrmCodeSelectUseCase;
 import com.like.system.core.message.MessageUtil;
 
 @RestController
 public class HrmCodeSelectController {
 
-	HrmTypeService service;
+	HrmCodeSelectUseCase useCase;
 	
-	HrmCodeSelectController(HrmTypeService service) {
-		this.service = service;
+	HrmCodeSelectController(HrmCodeSelectUseCase useCase) {
+		this.useCase = useCase;
 	}
 	
 	@GetMapping("/api/hrm/hrmtype/{type}/code/{code}")
 	public ResponseEntity<?> getTypeDetailCode(@PathVariable String type, @PathVariable String code) {
 		
-		HrmCodeSaveDTO dto = service.getTypeDetailCodeDTO(new HrmCodeId(type, code));
+		HrmCodeSaveDTO dto = useCase.select(type, code);
 					
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}

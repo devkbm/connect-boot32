@@ -8,22 +8,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.hrm.hrmcode.application.port.dto.HrmCodeSaveDTO;
-import com.like.hrm.hrmcode.application.service.HrmTypeService;
+import com.like.hrm.hrmcode.application.port.in.hrmcode.HrmCodeSaveUseCase;
 import com.like.system.core.message.MessageUtil;
 
 @RestController
 public class HrmCodeSaveController {
 
-	HrmTypeService service;
+	HrmCodeSaveUseCase useCase;
 	
-	HrmCodeSaveController(HrmTypeService service) {
-		this.service = service;
+	HrmCodeSaveController(HrmCodeSaveUseCase useCase) {
+		this.useCase = useCase;
 	}
 	
 	@PostMapping("/api/hrm/hrmtype/{type}/code")
 	public ResponseEntity<?> saveTypeDetailCode(@RequestBody HrmCodeSaveDTO dto) {				
 																			
-		service.saveTypeDetailCode(dto);						
+		useCase.save(dto);						
 								 					
 		return toList(null, MessageUtil.getSaveMessage(1));
 	}

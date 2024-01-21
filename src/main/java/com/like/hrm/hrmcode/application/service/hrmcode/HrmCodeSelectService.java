@@ -18,7 +18,7 @@ public class HrmCodeSelectService implements HrmCodeSelectUseCase {
 		
 	@Override
 	public HrmCodeSaveDTO select(String type, String code) {	
-		return HrmCodeSaveDTO.convert(this.dbPort.select(new HrmCodeId(type, code)).orElse(null));
+		return HrmCodeSaveDTO.toDTO(this.dbPort.select(new HrmCodeId(type, code)).orElse(null));
 	}
 
 }

@@ -12,26 +12,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.hrm.hrmcode.application.port.dto.HrmCodeTypeSaveDTO;
+import com.like.hrm.hrmcode.application.port.in.hrmcodetype.HrmCodeTypeQueryUseCase;
 import com.like.hrm.hrmcode.application.port.dto.HrmCodeTypeQueryDTO;
-import com.like.hrm.hrmcode.application.service.HrmTypeQueryService;
 import com.like.system.core.message.MessageUtil;
 
 @RestController
 public class HrmCodeTypeQueryContoller {
 
-	private HrmTypeQueryService service;
+	HrmCodeTypeQueryUseCase useCase;
 	
-	public HrmCodeTypeQueryContoller(HrmTypeQueryService service) {
-		this.service = service;
+	public HrmCodeTypeQueryContoller(HrmCodeTypeQueryUseCase useCase) {
+		this.useCase = useCase;
 	}	
 	
 	@GetMapping("/api/hrm/hrmtype")
 	public ResponseEntity<?> getHrmTypeList(HrmCodeTypeQueryDTO dto) {														
 		
-		List<HrmCodeTypeSaveDTO> list = service.getHrmTypeList(dto)
-										    .stream()
-										    .map(e -> HrmCodeTypeSaveDTO.convert(e))
-										    .toList();							
+		List<HrmCodeTypeSaveDTO> list = useCase.select(dto);							
 		
 		return toList(list, MessageUtil.getQueryMessage(list.size()));
 	}

@@ -22,7 +22,7 @@ public class HrmCodeTypeQueryService implements HrmCodeTypeQueryUseCase {
 	public List<HrmCodeTypeSaveDTO> select(HrmCodeTypeQueryDTO dto) {
 		return this.dbPort.select(dto)
 						  .stream()
-						  .map(e -> HrmCodeTypeSaveDTO.convert(e))
+						  .map(e -> HrmCodeTypeSaveDTO.toDTO(e))
 						  .toList();
 	}
 

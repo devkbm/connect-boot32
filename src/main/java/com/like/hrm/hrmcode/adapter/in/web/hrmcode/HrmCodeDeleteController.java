@@ -7,28 +7,24 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.hrm.hrmcode.application.service.HrmTypeService;
-import com.like.hrm.hrmcode.domain.HrmCodeId;
+import com.like.hrm.hrmcode.application.port.in.hrmcode.HrmCodeDeleteUseCase;
 import com.like.system.core.message.MessageUtil;
 
 @RestController
 public class HrmCodeDeleteController {
 
-	private HrmTypeService service;			
+	HrmCodeDeleteUseCase useCase;			
 
-	public HrmCodeDeleteController(HrmTypeService service) {
-		this.service = service;		
+	public HrmCodeDeleteController(HrmCodeDeleteUseCase useCase) {
+		this.useCase = useCase;		
 	}																	
 	
 	@DeleteMapping("/api/hrm/hrmtype/{type}/code/{code}")
 	public ResponseEntity<?> deleteTypeDetailCode(@PathVariable String type, @PathVariable String code) {				
 																		
-		service.deleteTypeDetailCode(new HrmCodeId(type, code));						
+		useCase.delete(type, code);						
 								 					
 		return toList(null, MessageUtil.getDeleteMessage(1));
-	}
-	
-
-	
+	}	
 	
 }

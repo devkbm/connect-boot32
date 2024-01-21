@@ -15,7 +15,12 @@ public record HrmCodeSaveDTO(
 		String codeName,
 		boolean useYn,
 		Integer sequence,
-		String comment
+		String comment,
+		String the1AddInfo,
+		String the2AddInfo,
+		String the3AddInfo,
+		String the4AddInfo,
+		String the5AddInfo		
 		) {
 	
 	public HrmCode newEntity() {
@@ -34,7 +39,7 @@ public record HrmCodeSaveDTO(
 		return entity;
 	}
 
-	public static HrmCodeSaveDTO convert(HrmCode entity) {
+	public static HrmCodeSaveDTO toDTO(HrmCode entity) {
 		if (entity == null) return null;
 		
 		return HrmCodeSaveDTO.builder()

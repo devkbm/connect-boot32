@@ -407,6 +407,11 @@ CREATE TABLE HRMCODE (
 	USE_YN			      	BOOLEAN			  	NOT NULL	,
 	PRT_SEQ			      	INT		       		NULL		,
 	CMT					        TEXT		 	      NULL 		,
+  THE_1_ADD_INFO      TEXT		 	      NULL 		,
+  THE_2_ADD_INFO      TEXT		 	      NULL 		,
+  THE_3_ADD_INFO      TEXT		 	      NULL 		,
+  THE_4_ADD_INFO      TEXT		 	      NULL 		,
+  THE_5_ADD_INFO      TEXT		 	      NULL 		,
 	constraint pk_hrmcode primary key(TYPE_ID, CODE),
  	constraint fk_hrmcode1 	foreign key(TYPE_ID) references HRMCODETYPE(TYPE_ID)
 );

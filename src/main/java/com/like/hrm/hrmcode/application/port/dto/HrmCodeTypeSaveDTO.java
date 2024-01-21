@@ -29,7 +29,7 @@ public record HrmCodeTypeSaveDTO(
 		return entity;
 	}
 	
-	public static HrmCodeTypeSaveDTO convert(HrmCodeType entity) {
+	public static HrmCodeTypeSaveDTO toDTO(HrmCodeType entity) {
 				
 		return HrmCodeTypeSaveDTO.builder()
 				   .typeId(entity.getId())

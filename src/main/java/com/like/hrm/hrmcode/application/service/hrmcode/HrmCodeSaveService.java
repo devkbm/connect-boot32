@@ -22,19 +22,19 @@ public class HrmCodeSaveService implements HrmCodeSaveUseCase {
 	
 	@Override
 	public void save(HrmCodeSaveDTO dto) {
-		HrmCode typeDetailCode = null;
+		HrmCode entity = null;
 		
 		if (hasText(dto.typeId()) && hasText(dto.code())) {
-			typeDetailCode = this.dbPort.select(new HrmCodeId(dto.typeId(), dto.code())).orElse(null);
+			entity = this.dbPort.select(new HrmCodeId(dto.typeId(), dto.code())).orElse(null);
 		}
 			
-		if (typeDetailCode == null) {
-			typeDetailCode = dto.newEntity();
+		if (entity == null) {
+			entity = dto.newEntity();
 		} else {
-			typeDetailCode = dto.modify(typeDetailCode);
+			entity = dto.modify(entity);
 		}
 		
-		dbPort.save(typeDetailCode);		
+		dbPort.save(entity);		
 	}
  
 }

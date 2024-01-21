@@ -1,4 +1,4 @@
-package com.like.hrm.hrmcode.adapter.out.persistence;
+package com.like.hrm.hrmcode.adapter.out.persistence.springdata;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

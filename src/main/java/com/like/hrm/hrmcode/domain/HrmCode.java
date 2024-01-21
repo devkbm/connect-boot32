@@ -33,6 +33,21 @@ public class HrmCode extends AbstractAuditEntity {
 	@Column(name="CMT")
 	String comment;			
 	
+	@Column(name="THE_1_ADD_INFO")
+	String the1AddInfo;
+	
+	@Column(name="THE_2_ADD_INFO")
+	String the2AddInfo;
+	
+	@Column(name="THE_3_ADD_INFO")
+	String the3AddInfo;
+	
+	@Column(name="THE_4_ADD_INFO")
+	String the4AddInfo;
+	
+	@Column(name="THE_5_ADD_INFO")
+	String the5AddInfo;
+		
 	@Transient
 	String relCode;
 		
