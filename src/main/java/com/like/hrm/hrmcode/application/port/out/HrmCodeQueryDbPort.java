@@ -7,4 +7,6 @@ import com.like.hrm.hrmcode.domain.HrmCode;
 
 public interface HrmCodeQueryDbPort {
 	List<HrmCode> select(HrmCodeQueryDTO dto);
+	
+	List<HrmCode> selectList(List<String> typeIds);
 }

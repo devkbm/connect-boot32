@@ -1,6 +1,8 @@
 package com.like.hrm.hrmcode.application.service.hrmcode;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,17 @@ public class HrmCodeQueryService implements HrmCodeQueryUseCase {
 					 .stream()
 					 .map(e -> HrmCodeSaveDTO.toDTO(e))
 					 .toList();
+	}
+
+	@Override
+	public Map<String, List<HrmCodeSaveDTO>> selectCodeList(List<String> typeIds) {
+		List<HrmCodeSaveDTO> list = this.dbPort.selectList(typeIds)
+											   .stream()
+											   .map(e -> HrmCodeSaveDTO.toDTO(e))
+											   .toList();
+											   
+		return list.stream()
+				   .collect(Collectors.groupingBy(HrmCodeSaveDTO::typeId));	
 	}
 
 }

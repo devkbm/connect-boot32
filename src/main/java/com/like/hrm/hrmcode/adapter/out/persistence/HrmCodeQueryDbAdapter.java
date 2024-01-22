@@ -28,4 +28,12 @@ public class HrmCodeQueryDbAdapter implements HrmCodeQueryDbPort {
 				.fetch();
 	}
 
+	@Override
+	public List<HrmCode> selectList(List<String> typeIds) {
+		return queryFactory
+				.selectFrom(qHrmCode)
+				.where(qHrmCode.id.typeId.in(typeIds))
+				.fetch();
+	}
+
 }
