@@ -1,4 +1,4 @@
-package com.like.hrm.hrmcode.application.service;
+package com.like.hrm.hrmcode.application.service.hrmdependcode;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,4 +1,4 @@
-package com.like.hrm.hrmcode.adapter.in.web;
+package com.like.hrm.hrmcode.adapter.in.web.hrmdependcode;
 
 import static com.like.system.core.web.util.ResponseEntityUtil.toList;
 import static com.like.system.core.web.util.ResponseEntityUtil.toOne;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.hrm.hrmcode.application.port.dto.SaveHrmRelationCode;
-import com.like.hrm.hrmcode.application.service.HrmRelationCodeService;
+import com.like.hrm.hrmcode.application.service.hrmdependcode.HrmRelationCodeService;
 import com.like.hrm.hrmcode.domain.HrmRelationCode;
 import com.like.system.core.message.MessageUtil;
 
