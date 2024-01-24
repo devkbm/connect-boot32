@@ -1,4 +1,4 @@
-package com.like.cooperation.board.adapter.in.web;
+package com.like.cooperation.board.adapter.in.web.article;
 
 import static com.like.system.core.web.util.ResponseEntityUtil.toOne;
 
@@ -7,8 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
-import com.like.cooperation.board.application.port.in.ArticleUserHitCountUseCase;
+import com.like.cooperation.board.application.port.in.article.ArticleUserHitCountUseCase;
 
 
 @Controller

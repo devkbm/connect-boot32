@@ -1,8 +1,8 @@
-package com.like.cooperation.board.application.service;
+package com.like.cooperation.board.application.service.article;
 
 import org.springframework.stereotype.Service;
 
-import com.like.cooperation.board.application.port.in.ArticleDeleteUseCase;
+import com.like.cooperation.board.application.port.in.article.ArticleDeleteUseCase;
 import com.like.cooperation.board.application.port.out.ArticleCommandDbPort;
 
 @Service

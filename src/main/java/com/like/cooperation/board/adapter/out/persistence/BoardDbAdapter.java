@@ -1,5 +1,7 @@
 package com.like.cooperation.board.adapter.out.persistence;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Repository;
 
 import com.like.cooperation.board.adapter.out.persistence.jpa.repository.BoardJpaRepository;
@@ -16,8 +18,8 @@ public class BoardDbAdapter implements BoardCommandDbPort {
 	}
 
 	@Override
-	public Board select(Long id) {
-		return this.repository.findById(id).orElse(null);
+	public Optional<Board> select(Long id) {
+		return this.repository.findById(id);
 	}
 
 	@Override

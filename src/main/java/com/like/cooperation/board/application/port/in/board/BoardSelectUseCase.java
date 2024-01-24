@@ -1,4 +1,4 @@
-package com.like.cooperation.board.application.port.in;
+package com.like.cooperation.board.application.port.in.board;
 
 import com.like.cooperation.board.application.port.dto.BoardSaveDTO;
 

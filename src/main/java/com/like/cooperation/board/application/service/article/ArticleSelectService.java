@@ -1,9 +1,9 @@
-package com.like.cooperation.board.application.service;
+package com.like.cooperation.board.application.service.article;
 
 import org.springframework.stereotype.Service;
 
 import com.like.cooperation.board.application.port.dto.ArticleResponseDTO;
-import com.like.cooperation.board.application.port.in.ArticleSelectUseCase;
+import com.like.cooperation.board.application.port.in.article.ArticleSelectUseCase;
 import com.like.cooperation.board.application.port.out.ArticleCommandDbPort;
 
 @Service
@@ -17,7 +17,7 @@ public class ArticleSelectService implements ArticleSelectUseCase {
 	
 	@Override
 	public ArticleResponseDTO select(Long id) {
-		return ArticleResponseDTO.toDTO(this.dbPort.select(id));
+		return ArticleResponseDTO.toDTO(this.dbPort.select(id).orElse(null));
 	}
 
 }

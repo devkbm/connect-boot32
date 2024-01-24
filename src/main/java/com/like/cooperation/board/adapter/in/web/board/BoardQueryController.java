@@ -1,4 +1,4 @@
-package com.like.cooperation.board.adapter.in.web;
+package com.like.cooperation.board.adapter.in.web.board;
 
 import static com.like.system.core.web.util.ResponseEntityUtil.toList;
 
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.like.cooperation.board.application.port.dto.BoardQueryDTO;
 import com.like.cooperation.board.application.port.dto.BoardSaveDTO;
 import com.like.cooperation.board.application.port.dto.BoardTypeDTO;
-import com.like.cooperation.board.application.port.in.BoardQueryUseCase;
+import com.like.cooperation.board.application.port.in.board.BoardQueryUseCase;
 import com.like.system.core.dto.HtmlSelectOptionRecord;
 import com.like.system.core.dto.HtmlSelectOptionable;
 import com.like.system.core.message.MessageUtil;

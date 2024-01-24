@@ -1,4 +1,4 @@
-package com.like.cooperation.board.adapter.in.web;
+package com.like.cooperation.board.adapter.in.web.board;
 
 import static com.like.system.core.web.util.ResponseEntityUtil.toOne;
 
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.cooperation.board.application.port.dto.BoardSaveDTO;
-import com.like.cooperation.board.application.port.in.BoardSelectUseCase;
+import com.like.cooperation.board.application.port.in.board.BoardSelectUseCase;
 import com.like.system.core.message.MessageUtil;
 
 @RestController

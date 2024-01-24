@@ -1,4 +1,4 @@
-package com.like.cooperation.board.application.service;
+package com.like.cooperation.board.application.service.article;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.like.cooperation.board.application.port.dto.ArticleQueryDTO;
 import com.like.cooperation.board.application.port.dto.ArticleResponseDTO;
-import com.like.cooperation.board.application.port.in.ArticleQueryUseCase;
+import com.like.cooperation.board.application.port.in.article.ArticleQueryUseCase;
 import com.like.cooperation.board.application.port.out.ArticleQueryDbPort;
 
 @Transactional(readOnly = true)

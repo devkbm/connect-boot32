@@ -1,4 +1,4 @@
-package com.like.cooperation.board.application.service;
+package com.like.cooperation.board.application.service.article;
 
 import java.util.Collections;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.like.cooperation.board.application.port.dto.ArticleSaveDTO;
 import com.like.cooperation.board.application.port.dto.ArticleSaveMultipartDTO;
-import com.like.cooperation.board.application.port.in.ArticleSaveUseCase;
+import com.like.cooperation.board.application.port.in.article.ArticleSaveUseCase;
 import com.like.cooperation.board.application.port.out.ArticleCommandDbPort;
 import com.like.cooperation.board.application.port.out.BoardCommandDbPort;
 import com.like.cooperation.board.domain.Article;
@@ -41,8 +41,8 @@ public class ArticleSaveService implements ArticleSaveUseCase {
 	
 	@Override
 	public void save(ArticleSaveDTO dto) {
-		Board board = boardDbPort.select(dto.boardId());
-		if (board == null) throw new IllegalArgumentException("존재 하지 않은 게시판입니다.");
+		Board board = boardDbPort.select(dto.boardId())
+								 .orElseThrow(() -> new IllegalArgumentException("존재 하지 않은 게시판입니다."));		
 		
 		List<FileInfo> fileInfoList = Collections.emptyList();
 		List<ArticleAttachedFile> attachedFileList = Collections.emptyList();
@@ -63,8 +63,8 @@ public class ArticleSaveService implements ArticleSaveUseCase {
 
 	@Override
 	public void save(ArticleSaveMultipartDTO dto) {
-		Board board = boardDbPort.select(dto.boardId());
-		if (board == null) throw new IllegalArgumentException("존재 하지 않은 게시판입니다.");
+		Board board = boardDbPort.select(dto.boardId())
+								 .orElseThrow(() -> new IllegalArgumentException("존재 하지 않은 게시판입니다."));
 		
 		List<FileInfo> fileInfoList = null;
 		List<ArticleAttachedFile> attachedFileList = null;					

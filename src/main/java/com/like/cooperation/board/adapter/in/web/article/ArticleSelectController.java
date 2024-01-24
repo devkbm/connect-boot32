@@ -1,4 +1,4 @@
-package com.like.cooperation.board.adapter.in.web;
+package com.like.cooperation.board.adapter.in.web.article;
 
 import static com.like.system.core.web.util.ResponseEntityUtil.toOne;
 
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.like.cooperation.board.application.port.dto.ArticleResponseDTO;
-import com.like.cooperation.board.application.port.in.ArticleSelectUseCase;
+import com.like.cooperation.board.application.port.in.article.ArticleSelectUseCase;
 import com.like.system.core.message.MessageUtil;
 
 @Controller
