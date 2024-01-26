@@ -71,7 +71,7 @@ public class CodeDTO {
 			LocalDateTime modifiedDt,
 			String modifiedBy,
 			String clientAppUrl,			
-			String organizationCode,
+			String companyCode,
 			String systemTypeCode,
 			String codeId,
 			String parentId,			

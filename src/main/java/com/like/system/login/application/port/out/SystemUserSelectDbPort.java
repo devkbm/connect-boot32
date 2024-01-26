@@ -4,5 +4,5 @@ import com.like.system.user.domain.SystemUser;
 
 public interface SystemUserSelectDbPort {
 
-	SystemUser select(String organizationCode, String userId);
+	SystemUser select(String companyCode, String userId);
 }

@@ -22,11 +22,11 @@ public class StaffFamilyDeleteController {
 	}
 	
 	@DeleteMapping("/api/hrm/staff/{staffId}/family/{seq}")
-	public ResponseEntity<?> deleteFamily(@RequestParam String organizationCode
+	public ResponseEntity<?> deleteFamily(@RequestParam String companyCode
 										 ,@PathVariable String staffId
 									     ,@PathVariable Long seq) {
 						
-		useCase.delete(organizationCode, staffId, seq);  									
+		useCase.delete(companyCode, staffId, seq);  									
 		
 		return toOne(null, MessageUtil.getDeleteMessage(1));									
 	}

@@ -26,7 +26,7 @@ public class SystemUserPasswordService implements SystemUserPasswordChangeUseCas
 	
 	@Override
 	public void changePassword(PasswordChangeRequestDTO dto) {
-		SystemUser user = dbPort.select(dto.organizationCode(), dto.userId());			
+		SystemUser user = dbPort.select(dto.companyCode(), dto.userId());			
 		
 		if ( user.isVaild(dto.beforePassword()) ) {
 			user.changePassword(passwordEncoder.encode(dto.afterPassword()));
@@ -34,8 +34,8 @@ public class SystemUserPasswordService implements SystemUserPasswordChangeUseCas
 	}
 
 	@Override
-	public void initPassword(String organizationCode, String userId) {
-		SystemUser user = dbPort.select(organizationCode, userId);
+	public void initPassword(String companyCode, String userId) {
+		SystemUser user = dbPort.select(companyCode, userId);
 		
 		user.changePassword(UserPassword.getInitPassword());		
 	}

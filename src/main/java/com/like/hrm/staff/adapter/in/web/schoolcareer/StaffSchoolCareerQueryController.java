@@ -24,8 +24,8 @@ public class StaffSchoolCareerQueryController {
 	}
 	
 	@GetMapping("/api/hrm/staff/{staffId}/schoolcareer")
-	public ResponseEntity<?> getSchoolCareer(@RequestParam String organizationCode, @PathVariable String staffId) {			
-		List<StaffSchoolCareerSaveDTO> list = useCase.select(organizationCode, staffId);
+	public ResponseEntity<?> getSchoolCareer(@RequestParam String companyCode, @PathVariable String staffId) {			
+		List<StaffSchoolCareerSaveDTO> list = useCase.select(companyCode, staffId);
 		
 		return toList(list, MessageUtil.getQueryMessage(list.size()));
 	}

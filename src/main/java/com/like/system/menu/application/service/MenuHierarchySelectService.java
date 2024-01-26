@@ -17,8 +17,8 @@ public class MenuHierarchySelectService implements MenuHierarchySelectUseCase {
 		this.port = port;
 	}
 	@Override
-	public List<MenuHierarchyResponseDTO> select(String organizationCode, String menuGroupCode) {
-		return this.port.select(organizationCode, menuGroupCode);
+	public List<MenuHierarchyResponseDTO> select(String companyCode, String menuGroupCode) {
+		return this.port.select(companyCode, menuGroupCode);
 	}
 	
 	

@@ -25,9 +25,9 @@ public class SystemUserProfileController {
 	}
 
 	@GetMapping("/api/system/user/my-profile")
-	public ResponseEntity<?> getUserProfile(@RequestParam String organizationCode) throws FileNotFoundException, IOException {																		
+	public ResponseEntity<?> getUserProfile(@RequestParam String companyCode) throws FileNotFoundException, IOException {																		
 		
-		SystemUserSaveDTO dto = useCase.selectDTO(organizationCode, SessionUtil.getUserId());					
+		SystemUserSaveDTO dto = useCase.selectDTO(companyCode, SessionUtil.getUserId());					
 		
 		return toOne(dto, MessageUtil.getQueryMessage(1));
 	}			

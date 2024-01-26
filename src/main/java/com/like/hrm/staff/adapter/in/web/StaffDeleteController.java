@@ -20,9 +20,9 @@ public class StaffDeleteController {
 	}			
 	
 	@DeleteMapping("/api/hrm/staff/{id}")
-	public ResponseEntity<?> deleteStaff(@RequestParam String organizationCode, @PathVariable String id) {
+	public ResponseEntity<?> deleteStaff(@RequestParam String companyCode, @PathVariable String id) {
 								
-		useCase.delete(organizationCode, id); 
+		useCase.delete(companyCode, id); 
 		
 		return toOne(null,"직원번호 : %s , 삭제되었습니다.".formatted(id));
 	}

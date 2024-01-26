@@ -21,8 +21,8 @@ public class MenuFormValidController {
 	}
 
 	@GetMapping("/api/system/menugroup/{menuGroupId}/menu/{menuId}/check")
-	public ResponseEntity<?> getMenuValid(@RequestParam String organizationCode, @PathVariable String menuGroupId, @PathVariable String menuId) {						
-		MenuSaveDTO menu = useCase.select(organizationCode, menuGroupId, menuId); 		
+	public ResponseEntity<?> getMenuValid(@RequestParam String companyCode, @PathVariable String menuGroupId, @PathVariable String menuId) {						
+		MenuSaveDTO menu = useCase.select(companyCode, menuGroupId, menuId); 		
 		Boolean isValid = menu == null ? true : false;			
 		
 		return toOne(isValid, String.format("%d 건 조회되었습니다.", menu != null ? 1 : 0));

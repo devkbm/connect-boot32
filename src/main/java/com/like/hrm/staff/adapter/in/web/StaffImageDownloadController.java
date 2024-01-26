@@ -19,10 +19,10 @@ public class StaffImageDownloadController {
 	
 	@GetMapping("/api/hrm/staff/downloadimage")
 	public HttpServletResponse downloadStaffImage(HttpServletResponse response
-												 ,@RequestParam String organizationCode
+												 ,@RequestParam String companyCode
 												 ,@RequestParam String staffId) throws Exception {
 		
-		this.useCase.downloadImageFile(organizationCode, staffId, response);
+		this.useCase.downloadImageFile(companyCode, staffId, response);
 				
 		return response;
 	}

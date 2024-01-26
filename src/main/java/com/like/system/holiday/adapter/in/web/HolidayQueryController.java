@@ -25,11 +25,11 @@ public class HolidayQueryController {
 	}
 		
 	@GetMapping("/api/system/holiday")
-	public ResponseEntity<?> getHolidayList(@RequestParam String organizationCode
+	public ResponseEntity<?> getHolidayList(@RequestParam String companyCode
 			                               ,@RequestParam @DateTimeFormat(pattern="yyyyMMdd") LocalDate fromDate
 										   ,@RequestParam @DateTimeFormat(pattern="yyyyMMdd") LocalDate toDate) {
 		
-		List<DateInfo> list = useCase.select(organizationCode, fromDate, toDate).getDates();			
+		List<DateInfo> list = useCase.select(companyCode, fromDate, toDate).getDates();			
 					
 		return toList(list, MessageUtil.getQueryMessage(list.size()));
 	}

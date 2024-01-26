@@ -19,7 +19,7 @@ public class StaffDutyResponsibilitySaveService implements StaffDutyResponsibili
 	
 	@Override
 	public void save(StaffDutyResponsibilityDTO dto) {
-		Staff staff = this.dbPort.select(dto.organizationCode(), dto.staffNo());		
+		Staff staff = this.dbPort.select(dto.companyCode(), dto.staffNo());		
 		StaffDuty entity = staff.getStaffDutyResponsibilityList().get(staff, dto.seq());
 		
 		if (entity == null) {

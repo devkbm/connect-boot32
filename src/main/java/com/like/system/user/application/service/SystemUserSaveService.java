@@ -39,8 +39,8 @@ public class SystemUserSaveService implements SystemUserSaveUseCase {
 	
 	@Override
 	public void save(SystemUserSaveDTO dto) {
-		Dept dept = StringUtils.hasText(dto.deptCode()) ? deptDbPort.select(dto.organizationCode(), dto.deptCode()).orElse(null) : null;
-		SystemUser user = this.dbPort.select(dto.organizationCode(), dto.userId());
+		Dept dept = StringUtils.hasText(dto.deptCode()) ? deptDbPort.select(dto.companyCode(), dto.deptCode()).orElse(null) : null;
+		SystemUser user = this.dbPort.select(dto.companyCode(), dto.userId());
 		
 		if (user == null) {
 			user = dto.newUser(dept);
@@ -57,7 +57,7 @@ public class SystemUserSaveService implements SystemUserSaveUseCase {
 	}
 	
 	private List<SystemUserRole> toSystemUserRole(SystemUserSaveDTO dto, SystemUser user) {
-		return this.userRoleDbPort.select(dto.organizationCode(), dto.roleList())
+		return this.userRoleDbPort.select(dto.companyCode(), dto.roleList())
 								  .stream()
 								  .map(e -> new SystemUserRole(user, e))
 								  .toList();

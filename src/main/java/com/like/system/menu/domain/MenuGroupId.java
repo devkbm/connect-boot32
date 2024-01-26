@@ -12,20 +12,20 @@ public class MenuGroupId implements Serializable {
 	private static final long serialVersionUID = 9113349756522741742L;
 
 	@Column(name="ORG_CD")
-	String organizationCode;
+	String companyCode;
 		
 	@Column(name="MENU_GROUP_CD")
 	String menuGroupCode;
 	
 	protected MenuGroupId() {}
 
-	public MenuGroupId(String organizationCode, String menuGroupCode) {		
-		this.organizationCode = organizationCode;
+	public MenuGroupId(String companyCode, String menuGroupCode) {		
+		this.companyCode = companyCode;
 		this.menuGroupCode = menuGroupCode;
 	}
 
-	public String getOrganizationCode() {
-		return organizationCode;
+	public String getCompanyCode() {
+		return companyCode;
 	}
 
 	public String getMenuGroupCode() {
@@ -34,7 +34,7 @@ public class MenuGroupId implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(organizationCode, menuGroupCode);
+		return Objects.hash(companyCode, menuGroupCode);
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class MenuGroupId implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		MenuGroupId other = (MenuGroupId) obj;
-		return Objects.equals(organizationCode, other.organizationCode)
+		return Objects.equals(companyCode, other.companyCode)
 			&& Objects.equals(menuGroupCode, other.menuGroupCode);
 	}
 	

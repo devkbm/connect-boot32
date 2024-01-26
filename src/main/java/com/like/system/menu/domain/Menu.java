@@ -88,7 +88,7 @@ public class Menu extends AbstractAuditEntity implements Serializable {
 	@Builder
 	public Menu(@NonNull MenuGroup menuGroup,
 				Menu parent,
-				String organizationCode,
+				String companyCode,
 				String menuCode, 
 				String menuName, 				 			
 				MenuType menuType,
@@ -97,9 +97,9 @@ public class Menu extends AbstractAuditEntity implements Serializable {
 				long level) {
 		
 		//this.id = menuGroup.getId() + menuCode;
-		//this.organizationCode = organizationCode;
+		//this.companyCode = companyCode;
 		//this.code = menuCode;
-		this.id = new MenuId(organizationCode, menuGroup.getId().getMenuGroupCode(), menuCode);
+		this.id = new MenuId(companyCode, menuGroup.getId().getMenuGroupCode(), menuCode);
 		this.parent = parent;
 		this.parentMenuCode = parent.getId().getMenuCode();
 		

@@ -21,7 +21,7 @@ public class MenuRoleMappingSaveService implements MenuRoleMappingSaveUseCase {
 	
 	@Override
 	public void save(List<MenuRoleMappingSaveDTO> dtoList) {
-		this.dbPort.clear(dtoList.get(0).organizationCode(), dtoList.get(0).menuGroupCode(), dtoList.get(0).roleCode());
+		this.dbPort.clear(dtoList.get(0).companyCode(), dtoList.get(0).menuGroupCode(), dtoList.get(0).roleCode());
 		
 		this.dbPort.save(dtoList.stream().map(e -> e.toEntity()).toList());		
 	}

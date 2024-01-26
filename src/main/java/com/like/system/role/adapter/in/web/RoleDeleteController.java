@@ -21,9 +21,9 @@ public class RoleDeleteController {
 	}
 	
 	@DeleteMapping("/api/system/role/{roleId}")
-	public ResponseEntity<?> deleteAuthority(@RequestParam String organizationCode, @PathVariable String roleId) {
+	public ResponseEntity<?> deleteAuthority(@RequestParam String companyCode, @PathVariable String roleId) {
 		
-		useCase.delete(organizationCode, roleId);					
+		useCase.delete(companyCode, roleId);					
 			
 		return toList(null, MessageUtil.getDeleteMessage(1));
 	}

@@ -16,7 +16,7 @@ public class AuthenticationToken implements Serializable {
 		
 	private static final long serialVersionUID = 7987811233360490990L;
 	
-	private String organizationCode;
+	private String companyCode;
 	private String userId;
 	private String userName;	
 	private String staffNo;
@@ -30,7 +30,7 @@ public class AuthenticationToken implements Serializable {
     
        
     @Builder
-    public AuthenticationToken(String organizationCode
+    public AuthenticationToken(String companyCode
     						  ,String userId
     						  ,String userName    						  
     						  ,String staffNo 
@@ -42,7 +42,7 @@ public class AuthenticationToken implements Serializable {
     						  ,List<String> roleList
     						  ,List<MenuGroupSaveDTO> menuGroupList) {
     	
-    	this.organizationCode = organizationCode;
+    	this.companyCode = companyCode;
     	this.userId = userId;
     	this.userName = userName;    	
     	this.staffNo = staffNo;        
@@ -59,7 +59,7 @@ public class AuthenticationToken implements Serializable {
     	    	
     	return AuthenticationToken
 				.builder()
-				.organizationCode(user.getStaffId().getOrganizationCode())
+				.companyCode(user.getStaffId().getCompanyCode())
 				.userId(user.getUsername())
 				.userName(user.getName())				
 				.staffNo(user.getStaffId().getStaffNo())

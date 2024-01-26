@@ -26,14 +26,14 @@ public class AnualLeaveService {
 		this.staffRepository = staffRepository;
 	}
 	
-	public AnualLeave getAnualLeave(String organizationCode, String staffNo, Integer yyyy) {
-		Staff staff = findStaff(organizationCode, staffNo);
+	public AnualLeave getAnualLeave(String companyCode, String staffNo, Integer yyyy) {
+		Staff staff = findStaff(companyCode, staffNo);
 		return this.repository.findById(new AnualLeaveId(staff, yyyy)).orElse(null);		
 	}
 	
 	public void saveAnualLeave(AnualLeaveDTO.SaveAnualLeave dto) {
-		Staff staff = findStaff(dto.organizationCode(), dto.staffNo());
-		AnualLeave entity = this.getAnualLeave(dto.organizationCode(), dto.staffNo(), dto.yyyy());
+		Staff staff = findStaff(dto.companyCode(), dto.staffNo());
+		AnualLeave entity = this.getAnualLeave(dto.companyCode(), dto.staffNo(), dto.yyyy());
 		
 		if (entity == null) {
 			entity = dto.newAnualLeave(staff);
@@ -44,15 +44,15 @@ public class AnualLeaveService {
 		this.repository.save(entity);
 	}
 	
-	public void deleteAnualLeave(String organizationCode, String staffId, Integer yyyy) {
-		AnualLeave entity = this.getAnualLeave(organizationCode, staffId, yyyy);
+	public void deleteAnualLeave(String companyCode, String staffId, Integer yyyy) {
+		AnualLeave entity = this.getAnualLeave(companyCode, staffId, yyyy);
 		
 		this.repository.delete(entity);
 	}
 	
 	
-	private Staff findStaff(String organizationCode, String staffNo) {
-		return staffRepository.findById(new StaffId(organizationCode, staffNo))
+	private Staff findStaff(String companyCode, String staffNo) {
+		return staffRepository.findById(new StaffId(companyCode, staffNo))
 				 .orElseThrow(() -> new EntityNotFoundException(staffNo + " 직원번호가 존재하지 않습니다."));
 	}
 	

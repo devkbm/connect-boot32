@@ -17,8 +17,8 @@ public class StaffFamilySelectService implements StaffFamilySelectUseCase {
 	}
 
 	@Override
-	public StaffFamilySaveDTO select(String organizationCode, String staffNo, Long seq) {
-		Staff staff = dbPort.select(organizationCode, staffNo);
+	public StaffFamilySaveDTO select(String companyCode, String staffNo, Long seq) {
+		Staff staff = dbPort.select(companyCode, staffNo);
 		return StaffFamilySaveDTO.toDTO(staff.getFamilyList().get(staff, seq));
 	}
 }

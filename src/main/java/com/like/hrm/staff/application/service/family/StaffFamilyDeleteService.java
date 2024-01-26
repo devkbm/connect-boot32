@@ -16,8 +16,8 @@ public class StaffFamilyDeleteService implements StaffFamilyDeleteUseCase {
 	}
 	
 	@Override
-	public void delete(String organizationCode, String staffNo, Long seq) {
-		Staff staff = this.dbPort.select(organizationCode, staffNo);
+	public void delete(String companyCode, String staffNo, Long seq) {
+		Staff staff = this.dbPort.select(companyCode, staffNo);
 		
 		staff.getFamilyList().remove(staff, seq);
 		

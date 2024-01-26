@@ -18,7 +18,7 @@ public class StaffSaveService implements StaffSaveUseCase {
 	
 	@Override
 	public void save(StaffSaveDTO dto) {
-		Staff staff = this.dbPort.select(dto.organizationCode(), dto.staffNo());
+		Staff staff = this.dbPort.select(dto.companyCode(), dto.staffNo());
 		
 		dto.modifyEntity(staff);
 		

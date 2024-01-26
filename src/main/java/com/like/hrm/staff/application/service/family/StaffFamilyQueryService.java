@@ -21,8 +21,8 @@ public class StaffFamilyQueryService implements StaffFamilyQueryUseCase {
 	}
 
 	@Override
-	public List<StaffFamilySaveDTO> select(String organizationCode, String staffNo) {
-		Staff staff = dbPort.select(organizationCode, staffNo);
+	public List<StaffFamilySaveDTO> select(String companyCode, String staffNo) {
+		Staff staff = dbPort.select(companyCode, staffNo);
 		
 		return staff.getFamilyList()
 					.getStream()

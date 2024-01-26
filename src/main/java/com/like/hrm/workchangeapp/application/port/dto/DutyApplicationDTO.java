@@ -46,7 +46,7 @@ public class DutyApplicationDTO {
 	@Builder(access = AccessLevel.PRIVATE)
 	public static record Form(
 			String clientAppUrl,
-			String organizationCode,
+			String companyCode,
 			Long dutyId,
 			String staffId,
 			String dutyCode,

@@ -22,9 +22,9 @@ public class RoleSelectController {
 	}		
 	
 	@GetMapping("/api/system/role/{roleId}")
-	public ResponseEntity<?> getAuthority(@RequestParam String organizationCode, @PathVariable String roleId) {			
+	public ResponseEntity<?> getAuthority(@RequestParam String companyCode, @PathVariable String roleId) {			
 		
-		Role authority = useCase.select(organizationCode, roleId);										
+		Role authority = useCase.select(companyCode, roleId);										
 		
 		return toOne(authority, MessageUtil.getQueryMessage(authority == null ? 0 : 1));
 	}

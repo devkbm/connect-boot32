@@ -17,8 +17,8 @@ public class SystemUserDeleteService implements SystemUserDeleteUseCase {
 	}
 	
 	@Override
-	public void delete(String organizationCode, String userId) {
-		this.port.delete(organizationCode, userId);		
+	public void delete(String companyCode, String userId) {
+		this.port.delete(companyCode, userId);		
 	}
 
 }

@@ -4,5 +4,5 @@ import com.like.hrm.staff.application.port.dto.StaffDutyResponsibilityDTO;
 
 public interface StaffDutyResponsibilitySelectUseCase {
 	
-	StaffDutyResponsibilityDTO select(String organizationCode, String staffNo, Long seq);
+	StaffDutyResponsibilityDTO select(String companyCode, String staffNo, Long seq);
 }

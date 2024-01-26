@@ -21,9 +21,9 @@ public class AuthenticationTokenController {
 	}
 	
 	@GetMapping("/api/system/user/auth")
-	public AuthenticationToken get(HttpServletRequest request, @RequestParam String organizationCode) {
+	public AuthenticationToken get(HttpServletRequest request, @RequestParam String companyCode) {
 		
-		return useCase.select(organizationCode, 
+		return useCase.select(companyCode, 
 							  SessionUtil.getUserId(), 
 							  request.getSession().getId(), 
 							  WebRequestUtil.getIpAddress(request));

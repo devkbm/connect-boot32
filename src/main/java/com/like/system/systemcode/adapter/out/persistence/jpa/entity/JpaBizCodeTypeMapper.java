@@ -10,7 +10,7 @@ public class JpaBizCodeTypeMapper {
 		if (jpaEntity == null) return null;
 		
 		return BizCodeTypeSaveDTO.builder()
-								 .organizationCode(jpaEntity.getId().getOrganizationCode())
+								 .companyCode(jpaEntity.getId().getCompanyCode())
 								 .typeId(jpaEntity.getId().getTypeId())
 								 .typeName(jpaEntity.getName())
 								 .sequence(jpaEntity.getSequence())
@@ -23,7 +23,7 @@ public class JpaBizCodeTypeMapper {
 		if (jpaEntity == null) return null;
 							
 		return BizCodeType.builder()
-						  .organizationCode(jpaEntity.getId().getOrganizationCode())
+						  .companyCode(jpaEntity.getId().getCompanyCode())
 						  .typeId(jpaEntity.getId().getTypeId())
 						  .name(jpaEntity.getName())
 						  .bizTypeEnum(BizTypeEnum.valueOf(jpaEntity.getBizType().toString()))
@@ -35,7 +35,7 @@ public class JpaBizCodeTypeMapper {
 		if (entity == null) return null;
 		
 		return JpaBizCodeType.builder()
-							 .organizationCode(entity.getId().getOrganizationCode())
+							 .companyCode(entity.getId().getCompanyCode())
 							 .typeId(entity.getId().getTypeId())
 							 .name(entity.getName())
 							 .bizType(JpaBizTypeEnum.valueOf(entity.getBizType().toString()))

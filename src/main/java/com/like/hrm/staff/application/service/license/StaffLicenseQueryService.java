@@ -21,8 +21,8 @@ public class StaffLicenseQueryService implements StaffLicenseQueryUseCase {
 	}
 	
 	@Override
-	public List<StaffLicenseSaveDTO> select(String organizationCode, String staffNo) {
-		Staff staff = this.dbPort.select(organizationCode, staffNo);
+	public List<StaffLicenseSaveDTO> select(String companyCode, String staffNo) {
+		Staff staff = this.dbPort.select(companyCode, staffNo);
 		
 		return staff.getLicenseList()
 				 	.getStream()

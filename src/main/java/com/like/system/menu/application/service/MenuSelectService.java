@@ -19,8 +19,8 @@ public class MenuSelectService implements MenuSelectUseCase {
 	}
 	
 	@Override
-	public MenuSaveDTO select(String organizationCode, String menuGroupCode, String menuCode) {
-		return MenuSaveDTO.toDTO(this.port.select(organizationCode, menuGroupCode, menuCode));
+	public MenuSaveDTO select(String companyCode, String menuGroupCode, String menuCode) {
+		return MenuSaveDTO.toDTO(this.port.select(companyCode, menuGroupCode, menuCode));
 	}
 
 	@Override

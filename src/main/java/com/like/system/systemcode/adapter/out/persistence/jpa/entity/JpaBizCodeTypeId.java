@@ -12,7 +12,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@EqualsAndHashCode(of = {"organizationCode", "typeId"})
+@EqualsAndHashCode(of = {"companyCode", "typeId"})
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Embeddable
@@ -21,7 +21,7 @@ public class JpaBizCodeTypeId implements Serializable {
 	private static final long serialVersionUID = 6644923358649112843L;
 
 	@Column(name="ORG_CD")
-	String organizationCode;
+	String companyCode;
 		
 	@Column(name="TYPE_ID")
 	String typeId;

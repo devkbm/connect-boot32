@@ -16,8 +16,8 @@ public class StaffSChoolCareerDeleteService implements StaffSchoolCareerDeleteUs
 	}
 	
 	@Override
-	public void delete(String organizationCode, String staffNo, Long seq) {
-		Staff staff = dbPort.select(organizationCode, staffNo);
+	public void delete(String companyCode, String staffNo, Long seq) {
+		Staff staff = dbPort.select(companyCode, staffNo);
 		staff.getSchoolCareerList().remove(staff, seq);
 		
 		this.dbPort.save(staff);

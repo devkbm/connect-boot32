@@ -15,8 +15,8 @@ public class StaffDeleteService implements StaffDeleteUseCase {
 	}
 	
 	@Override
-	public void delete(String organizationCode, String id) {
-		this.dbPort.delete(organizationCode, id);		
+	public void delete(String companyCode, String id) {
+		this.dbPort.delete(companyCode, id);		
 	}
 
 }

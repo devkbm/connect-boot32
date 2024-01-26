@@ -18,8 +18,8 @@ public class BizCodeTypeSelectAllService implements BizCodeTypeSelectAllUseCase 
 	}
 
 	@Override
-	public List<BizCodeTypeSaveDTO> select(String organizationCode) {
-		return this.port.select(organizationCode);
+	public List<BizCodeTypeSaveDTO> select(String companyCode) {
+		return this.port.select(companyCode);
 	}
 	
 }

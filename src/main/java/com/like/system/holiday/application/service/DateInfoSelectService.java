@@ -23,10 +23,10 @@ public class DateInfoSelectService implements DateInfoSelectUseCase {
 	}
 	
 	@Override
-	public DateInfoCollection select(String organizationCode, LocalDate fromDate, LocalDate toDate) {
+	public DateInfoCollection select(String companyCode, LocalDate fromDate, LocalDate toDate) {
 		List<DateInfo> days = this.createDateInfoList(fromDate, toDate);
 		
-		List<Holiday> holidays = this.getHolidayList(organizationCode, fromDate, toDate);
+		List<Holiday> holidays = this.getHolidayList(companyCode, fromDate, toDate);
 		
 		return new DateInfoCollection(days, holidays);
 	}
@@ -46,8 +46,8 @@ public class DateInfoSelectService implements DateInfoSelectUseCase {
 		return list;
 	}
 	
-	private List<Holiday> getHolidayList(String organizationCode, LocalDate fromDate, LocalDate toDate) {
-		return port.selectList(organizationCode, fromDate, toDate);
+	private List<Holiday> getHolidayList(String companyCode, LocalDate fromDate, LocalDate toDate) {
+		return port.selectList(companyCode, fromDate, toDate);
 	}
 
 }

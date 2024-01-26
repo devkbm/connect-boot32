@@ -22,9 +22,9 @@ public class StaffContactSelectController {
 	}
 	
 	@GetMapping("/api/hrm/staff/{staffId}/contact")
-	public ResponseEntity<?> getAppointmentRecordList(@RequestParam String organizationCode, @PathVariable String staffId) {
+	public ResponseEntity<?> getAppointmentRecordList(@RequestParam String companyCode, @PathVariable String staffId) {
 										
-		StaffContactSaveDTO dto = useCase.select(organizationCode, staffId);										  									
+		StaffContactSaveDTO dto = useCase.select(companyCode, staffId);										  									
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}

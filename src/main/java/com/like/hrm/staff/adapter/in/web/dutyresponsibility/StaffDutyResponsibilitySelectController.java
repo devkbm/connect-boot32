@@ -21,11 +21,11 @@ public class StaffDutyResponsibilitySelectController {
 	}	
 	
 	@GetMapping("/api/hrm/staff/{staffId}/dutyresponsibility/{seq}")
-	public ResponseEntity<?> get(@RequestParam String organizationCode
+	public ResponseEntity<?> get(@RequestParam String companyCode
 								,@PathVariable String staffId
 								,@PathVariable Long seq) {						
 				
-		var dto = useCase.select(organizationCode, staffId, seq);
+		var dto = useCase.select(companyCode, staffId, seq);
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}

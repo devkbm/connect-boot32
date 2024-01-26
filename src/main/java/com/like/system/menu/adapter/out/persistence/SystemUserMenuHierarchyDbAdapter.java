@@ -24,24 +24,24 @@ public class SystemUserMenuHierarchyDbAdapter implements SystemUserMenuHierarchy
 	}
 	
 	@Override
-	public List<MenuHierarchyResponseDTO> select(String organizationCode, String menuGroupCode, List<String> roleCodes) {
-		List<MenuHierarchyResponseDTO> rootList = this.getMenuRootList(organizationCode, menuGroupCode, roleCodes);
+	public List<MenuHierarchyResponseDTO> select(String companyCode, String menuGroupCode, List<String> roleCodes) {
+		List<MenuHierarchyResponseDTO> rootList = this.getMenuRootList(companyCode, menuGroupCode, roleCodes);
 		
-		return this.getMenuHierarchyDTO(organizationCode, roleCodes, rootList);
+		return this.getMenuHierarchyDTO(companyCode, roleCodes, rootList);
 	}
 	
-	private List<MenuHierarchyResponseDTO> getMenuRootList(String organizationCode, String menuGroupCode, List<String> roleCodes) {			
+	private List<MenuHierarchyResponseDTO> getMenuRootList(String companyCode, String menuGroupCode, List<String> roleCodes) {			
 		
 		JPAQuery<MenuHierarchyResponseDTO> query = queryFactory
 				.select(projections(qMenu))
 				.from(qMenu)
 				.innerJoin(qMenuRoleMapping)
-					.on(qMenu.id.menuGroupId.organizationCode.eq(qMenuRoleMapping.id.organizationCode)
+					.on(qMenu.id.menuGroupId.companyCode.eq(qMenuRoleMapping.id.companyCode)
 					.and(qMenu.id.menuGroupId.menuGroupCode.eq(qMenuRoleMapping.id.menuGroupCode))
 					.and(qMenu.id.menuCode.eq(qMenuRoleMapping.id.menuCode))	
 					.and(qMenuRoleMapping.id.roleCode.in(roleCodes))
 					)
-				.where(qMenu.id.menuGroupId.organizationCode.eq(organizationCode)
+				.where(qMenu.id.menuGroupId.companyCode.eq(companyCode)
 					  ,qMenu.id.menuGroupId.menuGroupCode.eq(menuGroupCode)
 					  ,qMenu.parentMenuCode.isNull()
 					  );													
@@ -50,12 +50,12 @@ public class SystemUserMenuHierarchyDbAdapter implements SystemUserMenuHierarchy
 	}
 	
 	// TODO 계층 쿼리 테스트해보아야함 1 루트 노드 검색 : getMenuChildrenList 2. 하위노드 검색 : getMenuHierarchyDTO
-	private List<MenuHierarchyResponseDTO> getMenuHierarchyDTO(String organizationCode, List<String> roleCodes, List<MenuHierarchyResponseDTO> list) {
+	private List<MenuHierarchyResponseDTO> getMenuHierarchyDTO(String companyCode, List<String> roleCodes, List<MenuHierarchyResponseDTO> list) {
 		List<MenuHierarchyResponseDTO> children = null;
 		
 		for ( MenuHierarchyResponseDTO dto : list ) {			
 			
-			children = getMenuChildrenList(organizationCode, dto.getMenuGroupCode(), roleCodes, dto.getKey());
+			children = getMenuChildrenList(companyCode, dto.getMenuGroupCode(), roleCodes, dto.getKey());
 			
 			if (children.isEmpty()) {
 				dto.setIsLeaf(true);
@@ -65,7 +65,7 @@ public class SystemUserMenuHierarchyDbAdapter implements SystemUserMenuHierarchy
 				dto.setIsLeaf(false);
 				
 				// 재귀호출
-				getMenuHierarchyDTO(organizationCode, roleCodes, children);
+				getMenuHierarchyDTO(companyCode, roleCodes, children);
 			}
 						
 		}
@@ -73,18 +73,18 @@ public class SystemUserMenuHierarchyDbAdapter implements SystemUserMenuHierarchy
 		return list;
 	}
 	
-	private List<MenuHierarchyResponseDTO> getMenuChildrenList(String organizationCode, String menuGroupCode, List<String> roleCodes, String parentMenuCode) {					
+	private List<MenuHierarchyResponseDTO> getMenuChildrenList(String companyCode, String menuGroupCode, List<String> roleCodes, String parentMenuCode) {					
 		
 		JPAQuery<MenuHierarchyResponseDTO> query = queryFactory			
 				.select(projections(qMenu)).distinct()
 				.from(qMenu)
 				.innerJoin(qMenuRoleMapping)
-					.on(qMenu.id.menuGroupId.organizationCode.eq(qMenuRoleMapping.id.organizationCode)
+					.on(qMenu.id.menuGroupId.companyCode.eq(qMenuRoleMapping.id.companyCode)
 					.and(qMenu.id.menuGroupId.menuGroupCode.eq(qMenuRoleMapping.id.menuGroupCode))
 					.and(qMenu.id.menuCode.eq(qMenuRoleMapping.id.menuCode))						
 					.and(qMenuRoleMapping.id.roleCode.in(roleCodes))
 					)									
-				.where(qMenu.id.menuGroupId.organizationCode.eq(organizationCode)
+				.where(qMenu.id.menuGroupId.companyCode.eq(companyCode)
 					  ,qMenu.id.menuGroupId.menuGroupCode.eq(menuGroupCode)
 				      ,qMenu.parentMenuCode.eq(parentMenuCode)
 				      );

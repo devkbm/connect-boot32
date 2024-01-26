@@ -20,9 +20,9 @@ public class SystemUserFormValidController {
 	}
 
 	@GetMapping("/api/system/user/{userId}/check")
-	public ResponseEntity<?> checkId(@RequestParam String organizationCode, @PathVariable String userId) {
+	public ResponseEntity<?> checkId(@RequestParam String companyCode, @PathVariable String userId) {
 						
-		boolean isDuplicated = useCase.selectDTO(organizationCode, userId) == null ? false : true;					
+		boolean isDuplicated = useCase.selectDTO(companyCode, userId) == null ? false : true;					
 				
 		return toOne(isDuplicated ? false : true, isDuplicated ? "기존 아이디가 존재합니다." : "신규 등록 가능합니다."); 
 	}	

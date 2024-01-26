@@ -22,9 +22,9 @@ public class StaffAppointmentQueryController {
 	}
 	
 	@GetMapping("/api/hrm/staff/{staffId}/appointmentrecord")
-	public ResponseEntity<?> getAppointmentRecordList(@RequestParam String organizationCode, @PathVariable String staffId) {
+	public ResponseEntity<?> getAppointmentRecordList(@RequestParam String companyCode, @PathVariable String staffId) {
 										
-		List<StaffAppointmentRecordDTO> list = useCase.select(organizationCode, staffId); 		
+		List<StaffAppointmentRecordDTO> list = useCase.select(companyCode, staffId); 		
 		
 		return toList(list, MessageUtil.getQueryMessage(list.size()));
 	}

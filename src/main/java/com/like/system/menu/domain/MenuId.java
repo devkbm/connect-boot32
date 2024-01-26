@@ -27,8 +27,8 @@ public class MenuId implements Serializable {
 		this.menuCode = menuCode;
 	}
 	
-	public MenuId(String organizationCode, String menuGroupCode, String menuCode) {	
-		this.menuGroupId = new MenuGroupId(organizationCode, menuGroupCode);
+	public MenuId(String companyCode, String menuGroupCode, String menuCode) {	
+		this.menuGroupId = new MenuGroupId(companyCode, menuGroupCode);
 		this.menuCode = menuCode;
 	}
 
@@ -42,7 +42,7 @@ public class MenuId implements Serializable {
 	/*
 	@Override
 	public int hashCode() {
-		return Objects.hash(menuCode, menuGroupId.organizationCode, menuGroupId.menuGroupCode);
+		return Objects.hash(menuCode, menuGroupId.companyCode, menuGroupId.menuGroupCode);
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class MenuId implements Serializable {
 			return false;
 		MenuId other = (MenuId) obj;
 		return Objects.equals(menuCode, other.menuCode) 
-			&& Objects.equals(menuGroupId.organizationCode, other.menuGroupId.organizationCode)
+			&& Objects.equals(menuGroupId.companyCode, other.menuGroupId.companyCode)
 			&& Objects.equals(menuGroupId.menuGroupCode, other.menuGroupId.menuGroupCode);
 	}
 	*/

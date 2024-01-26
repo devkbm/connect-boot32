@@ -6,27 +6,27 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.EqualsAndHashCode;
 
-@EqualsAndHashCode(of = {"organizationCode", "roleCode"})
+@EqualsAndHashCode(of = {"companyCode", "roleCode"})
 @Embeddable
 public class JpaRoleId implements Serializable {
 		
 	private static final long serialVersionUID = 6334573408608466739L;
 
 	@Column(name="ORG_CD")
-	String organizationCode;
+	String companyCode;
 	
 	@Column(name="ROLE_CD")
 	String roleCode;
 
 	protected JpaRoleId() {}
 	
-	public JpaRoleId(String organizationCode, String roleCode) {
-		this.organizationCode = organizationCode;
+	public JpaRoleId(String companyCode, String roleCode) {
+		this.companyCode = companyCode;
 		this.roleCode = roleCode;
 	}
 
-	public String getOrganizationCode() {
-		return organizationCode;
+	public String getCompanyCode() {
+		return companyCode;
 	}
 
 	public String getRoleCode() {

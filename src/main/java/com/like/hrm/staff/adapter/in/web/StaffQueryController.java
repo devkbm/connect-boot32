@@ -38,17 +38,17 @@ public class StaffQueryController {
 	}
 	
 	@GetMapping("/api/hrm/staff/{id}/record")
-	public ResponseEntity<?> getStaffAppointmentRecordList(@RequestParam String organizationCode, @PathVariable String id) {
+	public ResponseEntity<?> getStaffAppointmentRecordList(@RequestParam String companyCode, @PathVariable String id) {
 		
-		List<?> list = service.getStaffAppointmentRecordList(organizationCode, id);								
+		List<?> list = service.getStaffAppointmentRecordList(companyCode, id);								
 		
 		return toList(list, MessageUtil.getQueryMessage(list.size()));
 	}
 	
 	@GetMapping("/api/hrm/staff/{id}/currentappointment")
-	public ResponseEntity<?> getStaffCurrentAppointment(@RequestParam String organizationCode, @PathVariable String id) {
+	public ResponseEntity<?> getStaffCurrentAppointment(@RequestParam String companyCode, @PathVariable String id) {
 		
-		ResponseStaffCurrentAppointment dto = service.getStaffCurrentAppointment(organizationCode, id);								
+		ResponseStaffCurrentAppointment dto = service.getStaffCurrentAppointment(companyCode, id);								
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}

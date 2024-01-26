@@ -21,14 +21,14 @@ public class StaffContactService {
 		this.repository = repository;
 	}
 	
-	public StaffContactSaveDTO get(String organizationCode, String staffNo) {
-		Staff staff = repository.findById(new StaffId(organizationCode,staffNo)).orElse(null);
+	public StaffContactSaveDTO get(String companyCode, String staffNo) {
+		Staff staff = repository.findById(new StaffId(companyCode,staffNo)).orElse(null);
 		
 		return StaffContactSaveDTO.toDTO(staff);
 	}
 	
 	public void save(StaffContactSaveDTO dto) {
-		Staff staff = repository.findById(new StaffId(dto.organizationCode(), dto.staffNo())).orElseThrow(() -> new IllegalArgumentException("직원정보가 존재하지 않습니다."));
+		Staff staff = repository.findById(new StaffId(dto.companyCode(), dto.staffNo())).orElseThrow(() -> new IllegalArgumentException("직원정보가 존재하지 않습니다."));
 						
 		staff.changeContact(new StaffContact(new Address(dto.homeAddressType(), dto.homePostNumber(), dto.homeMainAddress(), dto.homeSubAddress())
 						   ,new PhoneNumber(dto.extensionNumber())

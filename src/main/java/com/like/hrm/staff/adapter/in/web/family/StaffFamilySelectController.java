@@ -23,11 +23,11 @@ public class StaffFamilySelectController {
 	}	
 	
 	@GetMapping("/api/hrm/staff/{staffId}/family/{seq}")
-	public ResponseEntity<?> getFamily(@RequestParam String organizationCode
+	public ResponseEntity<?> getFamily(@RequestParam String companyCode
 									  ,@PathVariable String staffId
 									  ,@PathVariable Long seq) {				
 				
-		StaffFamilySaveDTO dto =  useCase.select(organizationCode, staffId, seq);
+		StaffFamilySaveDTO dto =  useCase.select(companyCode, staffId, seq);
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));							
 	}

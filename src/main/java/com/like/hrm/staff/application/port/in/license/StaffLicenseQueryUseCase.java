@@ -5,5 +5,5 @@ import java.util.List;
 import com.like.hrm.staff.application.port.dto.StaffLicenseSaveDTO;
 
 public interface StaffLicenseQueryUseCase {
-	List<StaffLicenseSaveDTO> select(String organizationCode, String staffNo);
+	List<StaffLicenseSaveDTO> select(String companyCode, String staffNo);
 }

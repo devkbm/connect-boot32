@@ -4,7 +4,7 @@ import com.like.cooperation.todo.domain.TodoGroup;
 
 public record TodoGroupSaveDTO(			
 		String clientAppUrl,
-		String organizationCode,
+		String companyCode,
 		Long pkTodoGroup,
 		String todoGroupName
 		) {

@@ -16,8 +16,8 @@ public class RoleSelectService implements RoleSelectUseCase {
 	}
 	
 	@Override
-	public Role select(String organizationCode, String roleCode) { 
-		return port.find(organizationCode, roleCode);
+	public Role select(String companyCode, String roleCode) { 
+		return port.find(companyCode, roleCode);
 	}
 
 }

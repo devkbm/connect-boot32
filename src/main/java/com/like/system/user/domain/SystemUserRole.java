@@ -38,7 +38,7 @@ public class SystemUserRole extends AbstractAuditEntity implements GrantedAuthor
 		
 	public SystemUserRole(SystemUser systemUser, JpaRole authority) {
 		
-		this.id = new SystemUserRoleId(systemUser.getId().getOrganizationCode()
+		this.id = new SystemUserRoleId(systemUser.getId().getCompanyCode()
 										   ,systemUser.getId().getUserId()
 										   ,authority.getRoleCode());
 		this.systemUser = systemUser;
@@ -50,8 +50,8 @@ public class SystemUserRole extends AbstractAuditEntity implements GrantedAuthor
 		return this.id.getRoleCode();
 	}
 
-	public String getOrganizationCode() {
-		return this.id.getUserId().getOrganizationCode();
+	public String getCompanyCode() {
+		return this.id.getUserId().getCompanyCode();
 	}
 
 	public String getUserId() {

@@ -5,14 +5,14 @@ import com.like.system.role.domain.Role;
 public record RoleSaveDTO(
 		String clientAppUrl,			
 		String id,
-		String organizationCode,
+		String companyCode,
 		String roleCode,
 		String roleName,
 		String description
 		) {
 	
 	public Role newEntity() {
-		Role entity = new Role(this.organizationCode, this.roleCode, this.roleName, this.description);
+		Role entity = new Role(this.companyCode, this.roleCode, this.roleName, this.description);
 		
 		//entity.setAppUrl(clientAppUrl);			
 		

@@ -22,7 +22,7 @@ public class BizCodeQueryJpaRepository implements BizCodeQueryRepository {
 	public List<JpaBizCode> getBizCodeList(String organizactionCode, String typeId) {	
 		return queryFactory
 				.selectFrom(qBizCode)
-				.where(qBizCode.id.bizCodeTypeId.organizationCode.eq(organizactionCode)
+				.where(qBizCode.id.bizCodeTypeId.companyCode.eq(organizactionCode)
 				  .and(qBizCode.id.bizCodeTypeId.typeId.eq(typeId)))
 				.fetch();
 	}

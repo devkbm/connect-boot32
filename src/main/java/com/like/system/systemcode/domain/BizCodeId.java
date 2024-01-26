@@ -11,10 +11,10 @@ public class BizCodeId {
 	
 	String code;
 
-	public BizCodeId(String organizationCode, String typeId, String code) {		
+	public BizCodeId(String companyCode, String typeId, String code) {		
 		if (!StringUtils.hasText(code)) throw new IllegalArgumentException("code는 필수 입력 값입니다.");
 		
-		this.bizCodeTypeId = new BizCodeTypeId(organizationCode, typeId);		
+		this.bizCodeTypeId = new BizCodeTypeId(companyCode, typeId);		
 		this.code = code;
 	}
 	

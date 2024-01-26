@@ -21,11 +21,11 @@ public class MenuDeleteController {
 	}					
 	
 	@DeleteMapping("/api/system/menugroup/{menuGroupCode}menu/{menuCode}")
-	public ResponseEntity<?> delMenu(@RequestParam String organizationCode
+	public ResponseEntity<?> delMenu(@RequestParam String companyCode
 									,@PathVariable String menuGroupCode
 									,@PathVariable String menuCode) {				
 												
-		useCase.delete(organizationCode, menuGroupCode, menuCode);							
+		useCase.delete(companyCode, menuGroupCode, menuCode);							
 		
 		return toList(null, MessageUtil.getDeleteMessage(1));
 	}	

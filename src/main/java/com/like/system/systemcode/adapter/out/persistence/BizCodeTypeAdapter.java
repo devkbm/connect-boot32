@@ -27,21 +27,21 @@ public class BizCodeTypeAdapter implements BizCodeTypeSelectPort, BizCodeTypeSav
 	}
 	
 	@Override
-	public BizCodeType select(String organizationCode, String typeId) {
-		JpaBizCodeType jpaEntity = this.repository.findById(new JpaBizCodeTypeId(organizationCode, typeId)).orElse(null);
+	public BizCodeType select(String companyCode, String typeId) {
+		JpaBizCodeType jpaEntity = this.repository.findById(new JpaBizCodeTypeId(companyCode, typeId)).orElse(null);
 		
 		return JpaBizCodeTypeMapper.toDomainEntity(jpaEntity);
 	}
 	
 	@Override
-	public List<BizCodeTypeSaveDTO> select(String organizationCode) {
+	public List<BizCodeTypeSaveDTO> select(String companyCode) {
 		List<JpaBizCodeType> list = this.repository.findAll();
 		return list.stream().map(e -> JpaBizCodeTypeMapper.toDTO(e)).toList();
 	}
 	
 	@Override
-	public BizCodeTypeSaveDTO selectDTO(String organizationCode, String typeId) {
-		JpaBizCodeType jpaEntity = this.repository.findById(new JpaBizCodeTypeId(organizationCode, typeId)).orElse(null);
+	public BizCodeTypeSaveDTO selectDTO(String companyCode, String typeId) {
+		JpaBizCodeType jpaEntity = this.repository.findById(new JpaBizCodeTypeId(companyCode, typeId)).orElse(null);
 		return JpaBizCodeTypeMapper.toDTO(jpaEntity);
 	}
 	
@@ -51,8 +51,8 @@ public class BizCodeTypeAdapter implements BizCodeTypeSelectPort, BizCodeTypeSav
 	}
 	
 	@Override
-	public void delete(String organizationCode, String typeId) {
-		this.repository.deleteById(new JpaBizCodeTypeId(organizationCode, typeId));		
+	public void delete(String companyCode, String typeId) {
+		this.repository.deleteById(new JpaBizCodeTypeId(companyCode, typeId));		
 	}
 	
 }

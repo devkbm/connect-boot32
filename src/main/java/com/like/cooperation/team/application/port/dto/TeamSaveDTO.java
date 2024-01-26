@@ -16,7 +16,7 @@ public record TeamSaveDTO(
 		LocalDateTime modifiedDt,
 		String modifiedBy,
 		String clientAppUrl,
-		String organizationCode,
+		String companyCode,
 		Long teamId,
 		String teamName,
 		List<String> memberList
@@ -28,7 +28,7 @@ public record TeamSaveDTO(
 		if (memberList == null || memberList.isEmpty()) {
 			entity = new Team(teamName);
 		} else {
-			List<SystemUserId> list = this.memberList.stream().map(r -> new SystemUserId(organizationCode, r)).toList();
+			List<SystemUserId> list = this.memberList.stream().map(r -> new SystemUserId(companyCode, r)).toList();
 			entity = new Team(teamName, service.findUsers(list));
 		}										
 		
@@ -40,7 +40,7 @@ public record TeamSaveDTO(
 	public Team modify(Team entity, SystemUserCommonSelectUseCase service) {
 		entity.modify(teamName);
 							
-		List<SystemUserId> list = this.memberList.stream().map(r -> new SystemUserId(organizationCode, r)).toList();
+		List<SystemUserId> list = this.memberList.stream().map(r -> new SystemUserId(companyCode, r)).toList();
 		entity.updateMembers(service.findUsers(list));
 		
 		entity.setAppUrl(clientAppUrl);

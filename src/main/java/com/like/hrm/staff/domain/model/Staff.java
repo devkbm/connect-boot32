@@ -49,7 +49,7 @@ public class Staff extends AbstractAuditEntity implements Serializable {
 	String id;
 	
 	@Column(name="ORG_CD")
-	String organizationCode;
+	String companyCode;
 	
 	@Column(name="STAFF_NO")
 	String staffNo;
@@ -101,10 +101,10 @@ public class Staff extends AbstractAuditEntity implements Serializable {
 	@Embedded
 	StaffLicenseList licenseList;			
 			
-	public Staff(String organizationCode, StaffNoCreateStrategy strategy, StaffName name, String residentRegistrationNumber) {
-		this.id 						= new StaffId(organizationCode, strategy.create());
-		//this.id 						= organizationCode + "_" + strategy.create();
-		//this.organizationCode 			= organizationCode;
+	public Staff(String companyCode, StaffNoCreateStrategy strategy, StaffName name, String residentRegistrationNumber) {
+		this.id 						= new StaffId(companyCode, strategy.create());
+		//this.id 						= companyCode + "_" + strategy.create();
+		//this.companyCode 			= companyCode;
 		//this.staffNo					= strategy.create();
 		this.name 						= name; 
 		this.residentRegistrationNumber = ResidentRegistrationNumber.of(residentRegistrationNumber);

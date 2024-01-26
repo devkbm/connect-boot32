@@ -39,21 +39,21 @@ public class LoginService implements LoginUseCase {
 	
 	@Override
 	public AuthenticationToken login(LoginRequestDTO dto, HttpServletRequest request) {
-		String organizationCode = dto.organizationCode();
+		String companyCode = dto.companyCode();
 		String staffNo = dto.staffNo();
 		String password = dto.password();
 		
 		// 로그인 요청정보 SpringSecurityUserService에서 사용하기 위해 THREAD_LOCAL에 저장
-		LoginRequestContext.set(new LoginRequestDTO(organizationCode, staffNo, password));
+		LoginRequestContext.set(new LoginRequestDTO(companyCode, staffNo, password));
 		
-		SystemUser systemUser = userPort.select(organizationCode, staffNo);
-		List<MenuGroupSaveDTO> menuGroupList = menuGroupSelectUseCase.select(organizationCode, staffNo);
+		SystemUser systemUser = userPort.select(companyCode, staffNo);
+		List<MenuGroupSaveDTO> menuGroupList = menuGroupSelectUseCase.select(companyCode, staffNo);
 		AuthenticationToken token = tokenPort.SaveAuthenticationToken(dto, systemUser, menuGroupList, request);
 					
 		// 로그인 요청정보 THREAD_LOCAL에서 제거
 		LoginRequestContext.remove();
 
-		this.publisher.publishEvent(new LoginSuccessEvent(organizationCode, staffNo, LocalDate.now(), "login"));
+		this.publisher.publishEvent(new LoginSuccessEvent(companyCode, staffNo, LocalDate.now(), "login"));
 		
 		return token;
 	}

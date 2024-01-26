@@ -19,7 +19,7 @@ public record WorkCalendarEventSaveDTO(
 		LocalDateTime modifiedDt,
 		String modifiedBy,
 		String clientAppUrl,		
-		String organizationCode,			
+		String companyCode,			
 		Long id,					
 		@NotEmpty
 		String text,						

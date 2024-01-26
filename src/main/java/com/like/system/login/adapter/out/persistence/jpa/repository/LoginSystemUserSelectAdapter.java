@@ -17,8 +17,8 @@ public class LoginSystemUserSelectAdapter implements SystemUserSelectDbPort {
 	}
 	
 	@Override
-	public SystemUser select(String organizationCode, String userId) {		
-		return this.repository.findById(new SystemUserId(organizationCode, userId)).orElse(null);
+	public SystemUser select(String companyCode, String userId) {		
+		return this.repository.findById(new SystemUserId(companyCode, userId)).orElse(null);
 	}
 
 }

@@ -8,7 +8,7 @@ import lombok.Builder;
 @Builder
 public record BizCodeSaveDTO(
 		String clientAppUrl,
-		String organizationCode,
+		String companyCode,
 		String typeId,
 		String code,
 		String codeName,

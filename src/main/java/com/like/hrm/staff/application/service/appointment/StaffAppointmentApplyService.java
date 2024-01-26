@@ -17,8 +17,8 @@ public class StaffAppointmentApplyService implements StaffAppointmentApplyUseCas
 	}
 	
 	@Override
-	public void apply(String organizationCode, String staffNo, Long seq) {
-		Staff staff = dbPort.select(organizationCode, staffNo);
+	public void apply(String companyCode, String staffNo, Long seq) {
+		Staff staff = dbPort.select(companyCode, staffNo);
 		AppointmentRecord entity = staff.getAppointmentRecordList().get(staff, seq);
 		
 		staff.applyAppointmentRecord(entity);

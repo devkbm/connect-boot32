@@ -22,10 +22,10 @@ public class BizCodeTypeSelectController {
 	}	
 	
 	@GetMapping("/api/system/bizcodetype/{typeId}")
-	public ResponseEntity<?> getBizCodeType(@RequestParam String organizationCode
+	public ResponseEntity<?> getBizCodeType(@RequestParam String companyCode
 										   ,@PathVariable String typeId) {
 		
-		BizCodeTypeSaveDTO dto = useCase.select(organizationCode, typeId);
+		BizCodeTypeSaveDTO dto = useCase.select(companyCode, typeId);
 					
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}			

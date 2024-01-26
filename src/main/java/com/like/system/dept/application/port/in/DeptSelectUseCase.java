@@ -4,5 +4,5 @@ import com.like.system.dept.application.port.dto.DeptSaveDTO;
 
 public interface DeptSelectUseCase {
 
-	DeptSaveDTO select(String organizationCode, String deptCode);	
+	DeptSaveDTO select(String companyCode, String deptCode);	
 }

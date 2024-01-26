@@ -22,9 +22,9 @@ public class MenuGroupDbAdapter implements MenuGroupSelectDbPort, MenuGroupSaveD
 	}
 
 	@Override
-	public MenuGroup select(String organizationCode, String menuGroupCode) {		
+	public MenuGroup select(String companyCode, String menuGroupCode) {		
 		
-		return this.repository.findById(new MenuGroupId(organizationCode, menuGroupCode)).orElse(null); 
+		return this.repository.findById(new MenuGroupId(companyCode, menuGroupCode)).orElse(null); 
 	}
 
 	@Override
@@ -38,8 +38,8 @@ public class MenuGroupDbAdapter implements MenuGroupSelectDbPort, MenuGroupSaveD
 	}
 
 	@Override
-	public void delete(String organizationCode, String menuGroupCode) {
-		this.repository.deleteById(new MenuGroupId(organizationCode, menuGroupCode));		
+	public void delete(String companyCode, String menuGroupCode) {
+		this.repository.deleteById(new MenuGroupId(companyCode, menuGroupCode));		
 	}
 	
 }

@@ -24,10 +24,10 @@ public class BizCodeQueryController {
 	}
 
 	@GetMapping("/api/system/bizcodetype/{typeId}/bizcode")
-	public ResponseEntity<?> getBizCodeList(@RequestParam String organizationCode
+	public ResponseEntity<?> getBizCodeList(@RequestParam String companyCode
 			   							   ,@PathVariable String typeId) {
 		
-		List<BizCodeDTO.Form> list = service.getBizCodeAllList(organizationCode, typeId)
+		List<BizCodeDTO.Form> list = service.getBizCodeAllList(companyCode, typeId)
 											.stream()
 											.map(e -> BizCodeDTO.Form.convert(e))
 											.toList();											   

@@ -17,7 +17,7 @@ public record WorkCalendarSaveDTO(
 		LocalDateTime modifiedDt,
 		String modifiedBy,
 		String clientAppUrl,
-		String organizationCode,
+		String companyCode,
 		Long workCalendarId,
 		@NotEmpty
 		String workCalendarName,

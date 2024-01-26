@@ -30,31 +30,31 @@ public class BizCodeDbAdapter implements BizCodeSelectPort, BizCodeSavePort, Biz
 	}
 	
 	@Override
-	public BizCode select(String organizationCode, String typeId, String code) {
-		JpaBizCodeType jpaBizCodeType = bizCodeTypeJpaRepository.findById(new JpaBizCodeTypeId(organizationCode, typeId)).orElse(null);
-		JpaBizCode jpaEntity = this.repository.findById(new JpaBizCodeId(organizationCode, typeId, code)).orElse(null);
+	public BizCode select(String companyCode, String typeId, String code) {
+		JpaBizCodeType jpaBizCodeType = bizCodeTypeJpaRepository.findById(new JpaBizCodeTypeId(companyCode, typeId)).orElse(null);
+		JpaBizCode jpaEntity = this.repository.findById(new JpaBizCodeId(companyCode, typeId, code)).orElse(null);
 		
 		return JpaBizCodeMapper.toDomainEntity(jpaEntity, JpaBizCodeTypeMapper.toDomainEntity(jpaBizCodeType));
 	}
 
 	@Override
-	public BizCodeSaveDTO selectDTO(String organizationCode, String typeId, String code) {
-		JpaBizCode jpaEntity = this.repository.findById(new JpaBizCodeId(organizationCode, typeId, code)).orElse(null);
+	public BizCodeSaveDTO selectDTO(String companyCode, String typeId, String code) {
+		JpaBizCode jpaEntity = this.repository.findById(new JpaBizCodeId(companyCode, typeId, code)).orElse(null);
 				
 		return JpaBizCodeMapper.toDTO(jpaEntity);
 	}
 	
 	@Override
 	public void save(BizCode entity) {
-		JpaBizCodeType jpaBizCodeType = bizCodeTypeJpaRepository.findById(new JpaBizCodeTypeId(entity.getId().getBizCodeTypeId().getOrganizationCode()
+		JpaBizCodeType jpaBizCodeType = bizCodeTypeJpaRepository.findById(new JpaBizCodeTypeId(entity.getId().getBizCodeTypeId().getCompanyCode()
 																							  ,entity.getId().getBizCodeTypeId().getTypeId())).orElse(null);
 		
 		this.repository.save(JpaBizCodeMapper.toJPAEntity(entity, jpaBizCodeType));		
 	}
 	
 	@Override
-	public void delete(String organizationCode, String typeId, String code) {
-		this.repository.deleteById(new JpaBizCodeId(organizationCode, typeId, code));		
+	public void delete(String companyCode, String typeId, String code) {
+		this.repository.deleteById(new JpaBizCodeId(companyCode, typeId, code));		
 	}
 
 }

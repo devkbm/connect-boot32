@@ -24,8 +24,8 @@ public class HolidayAdapter implements HolidaySelectPort, HolidaySavePort, Holid
 	}
 	
 	@Override
-	public Holiday select(String organizationCode, LocalDate date) {		
-		return this.repository.findById(new HolidayId(organizationCode, date)).orElse(null);
+	public Holiday select(String companyCode, LocalDate date) {		
+		return this.repository.findById(new HolidayId(companyCode, date)).orElse(null);
 	}
 
 	@Override
@@ -35,14 +35,14 @@ public class HolidayAdapter implements HolidaySelectPort, HolidaySavePort, Holid
 	}
 
 	@Override
-	public void delete(String organizationCode, LocalDate date) {
-		this.repository.deleteById(new HolidayId(organizationCode, date));		
+	public void delete(String companyCode, LocalDate date) {
+		this.repository.deleteById(new HolidayId(companyCode, date));		
 	}
 
 	@Override
-	public List<Holiday> selectList(String organizationCode, LocalDate fromDate, LocalDate toDate) {
+	public List<Holiday> selectList(String companyCode, LocalDate fromDate, LocalDate toDate) {
 		QHoliday qHoliday = QHoliday.holiday;
-		Predicate predicate = qHoliday.id.organizationCode.eq(organizationCode)
+		Predicate predicate = qHoliday.id.companyCode.eq(companyCode)
 						 .and(qHoliday.id.date.goe(fromDate).and(qHoliday.id.date.loe(toDate)));
 				
 		return this.repository.findAll(predicate);

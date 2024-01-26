@@ -21,8 +21,8 @@ public class RoleDbAdapter implements RoleCommandDbPort {
 	}
 
 	@Override
-	public Role find(String organizationCode, String roleCode) {
-		JpaRole entity = this.jpaRepository.findById(new JpaRoleId(organizationCode, roleCode)).orElse(null);
+	public Role find(String companyCode, String roleCode) {
+		JpaRole entity = this.jpaRepository.findById(new JpaRoleId(companyCode, roleCode)).orElse(null);
 		
 		return RoleMapper.toEntity(entity);
 	}
@@ -33,7 +33,7 @@ public class RoleDbAdapter implements RoleCommandDbPort {
 	}
 	
 	@Override
-	public void delete(String organizationCode, String roleCode) {
-		this.jpaRepository.deleteById(new JpaRoleId(organizationCode, roleCode));		
+	public void delete(String companyCode, String roleCode) {
+		this.jpaRepository.deleteById(new JpaRoleId(companyCode, roleCode));		
 	}
 }

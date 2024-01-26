@@ -19,8 +19,8 @@ public class DeptDbAdapter implements DeptCommandDbPort {
 	}
 
 	@Override
-	public Optional<Dept> select(String organizationCode, String deptCode) {		
-		return this.repository.findById(new DeptId(organizationCode, deptCode));
+	public Optional<Dept> select(String companyCode, String deptCode) {		
+		return this.repository.findById(new DeptId(companyCode, deptCode));
 	}
 	
 	@Override
@@ -29,8 +29,8 @@ public class DeptDbAdapter implements DeptCommandDbPort {
 	}
 
 	@Override
-	public void delete(String organizationCode, String deptCode) {
-		this.repository.deleteById(new DeptId(organizationCode, deptCode));		
+	public void delete(String companyCode, String deptCode) {
+		this.repository.deleteById(new DeptId(companyCode, deptCode));		
 	}
 
 	

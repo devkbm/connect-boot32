@@ -14,7 +14,7 @@ import lombok.Builder;
 @Builder(access = AccessLevel.PRIVATE)
 public record StaffAppointmentRecordDTO(
 		String clientAppUrl,
-		String organizationCode,
+		String companyCode,
 		@NotEmpty			
 		String staffNo,
 		String staffName,			

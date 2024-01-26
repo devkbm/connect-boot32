@@ -23,8 +23,8 @@ public class JpaBizCodeId implements Serializable {
 	@Column(name="CODE")
 	String code;	
 	
-	public JpaBizCodeId(String organizationCode, String typeId, String code) {
-		this.bizCodeTypeId = new JpaBizCodeTypeId(organizationCode, typeId);		
+	public JpaBizCodeId(String companyCode, String typeId, String code) {
+		this.bizCodeTypeId = new JpaBizCodeTypeId(companyCode, typeId);		
 		this.code = code;
 	}
 }

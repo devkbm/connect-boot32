@@ -27,9 +27,9 @@ public class SystemUserSelectController {
 	
 	
 	@GetMapping("/api/system/user/{userId}")
-	public ResponseEntity<?> getUser(@RequestParam String organizationCode, @PathVariable String userId) throws FileNotFoundException, IOException {
+	public ResponseEntity<?> getUser(@RequestParam String companyCode, @PathVariable String userId) throws FileNotFoundException, IOException {
 												
-		SystemUserSaveDTO dto = useCase.selectDTO(organizationCode, userId);					
+		SystemUserSaveDTO dto = useCase.selectDTO(companyCode, userId);					
 		
 		return toOne(dto, MessageUtil.getQueryMessage(1));
 	}			

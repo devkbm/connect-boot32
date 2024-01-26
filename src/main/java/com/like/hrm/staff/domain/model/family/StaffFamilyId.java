@@ -17,7 +17,7 @@ import lombok.ToString;
 
 @ToString(onlyExplicitlyIncluded = true)
 @Getter
-@EqualsAndHashCode(of = {"organizationCode","staffNo","seq"})
+@EqualsAndHashCode(of = {"companyCode","staffNo","seq"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Embeddable
 public class StaffFamilyId implements Serializable {
@@ -25,7 +25,7 @@ public class StaffFamilyId implements Serializable {
 	private static final long serialVersionUID = -8748836639137047169L;
 	
 	@Column(name="ORG_CD")
-	String organizationCode;
+	String companyCode;
 		
 	@Column(name="STAFF_NO")
 	String staffNo;
@@ -35,7 +35,7 @@ public class StaffFamilyId implements Serializable {
 	Long seq;		
 	
 	public StaffFamilyId(Staff staff, Long seq) {
-		this.organizationCode = staff.getId().getOrganizationCode();
+		this.companyCode = staff.getId().getCompanyCode();
 		this.staffNo = staff.getId().getStaffNo();
 		this.seq = seq;
 	}	

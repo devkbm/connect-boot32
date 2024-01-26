@@ -22,7 +22,7 @@ public record DeptSaveDTO(
 		String modifiedBy,
 		String clientAppUrl,
 		String parentDeptCode,					
-		String organizationCode,
+		String companyCode,
 		@NotEmpty(message="부서코드는 필수 입력 사항입니다.")
 		String deptCode,
 		@NotEmpty(message="부서명(한글)은 필수 입력 사항입니다.")
@@ -49,7 +49,7 @@ public record DeptSaveDTO(
 							   .createdBy(entity.getCreatedBy().getLoggedUser())
 							   .modifiedDt(entity.getModifiedDt())
 							   .modifiedBy(entity.getModifiedBy().getLoggedUser())								  
-							   .organizationCode(entity.getId().getOrganizationCode())
+							   .companyCode(entity.getId().getCompanyCode())
 							   .deptCode(entity.getId().getDeptCode())
 							   .parentDeptCode(parent.map(r -> r.getId().getDeptCode()).orElse(null))
 							   .deptNameKorean(entity.getDeptNameKorean())
@@ -65,10 +65,10 @@ public record DeptSaveDTO(
 	}	
 	
 	public Dept toEntity(@Nullable Dept parentDept) {
-		if (this.organizationCode == null) new IllegalArgumentException("조직코드가 없습니다.");
+		if (this.companyCode == null) new IllegalArgumentException("조직코드가 없습니다.");
 		if (this.deptCode == null) new IllegalArgumentException("부서코드가 없습니다.");
 		
-		Dept entity = Dept.builder(this.organizationCode,this.deptCode)									   					  
+		Dept entity = Dept.builder(this.companyCode,this.deptCode)									   					  
 						   .deptNameKorean(this.deptNameKorean)
 						   .deptAbbreviationKorean(this.deptAbbreviationKorean)
 						   .deptNameEnglish(this.deptNameEnglish)

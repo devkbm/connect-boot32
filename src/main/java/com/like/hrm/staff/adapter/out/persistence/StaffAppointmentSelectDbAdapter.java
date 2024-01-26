@@ -20,8 +20,8 @@ public class StaffAppointmentSelectDbAdapter implements StaffAppointmentSelectDb
 	}
 	
 	@Override
-	public AppointmentRecord select(String organizationCode, String staffNo, Long seq) {
-		Staff staff = repository.findById(new StaffId(organizationCode, staffNo))
+	public AppointmentRecord select(String companyCode, String staffNo, Long seq) {
+		Staff staff = repository.findById(new StaffId(companyCode, staffNo))
 				 				.orElseThrow(() -> new EntityNotFoundException(staffNo + " 직원번호가 존재하지 않습니다."));
 				
 		return staff.getAppointmentRecordList().get(staff, seq);			

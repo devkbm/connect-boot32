@@ -14,7 +14,7 @@ import lombok.Builder;
 @Builder(access = AccessLevel.PRIVATE)
 public record StaffContactSaveDTO(
 		String clientAppUrl,
-		String organizationCode,						
+		String companyCode,						
 		@NotEmpty String staffNo,
 		String staffName,
 		String homeAddressType,
@@ -35,7 +35,7 @@ public record StaffContactSaveDTO(
 		Optional<StaffContact> contact = Optional.ofNullable(entity.getContact());
 							
 		return StaffContactSaveDTO.builder()
-						  .organizationCode(entity.getId().getOrganizationCode())	
+						  .companyCode(entity.getId().getCompanyCode())	
 				 		  .staffNo(entity.getId().getStaffNo())
 				 		  .homeAddressType(contact.map(StaffContact::getHome).map(Address::getAddress_type).orElse(null))
 				 		  .homePostNumber(contact.map(StaffContact::getHome).map(Address::getPost_number).orElse(null))

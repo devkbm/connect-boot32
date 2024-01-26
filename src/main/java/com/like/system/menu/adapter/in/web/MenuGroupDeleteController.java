@@ -21,9 +21,9 @@ public class MenuGroupDeleteController {
 	}			
 		
 	@DeleteMapping("/api/system/menugroup/{menuGroupCode}")
-	public ResponseEntity<?> delCodeGroup(@RequestParam String organizationCode, @PathVariable String menuGroupCode) {				
+	public ResponseEntity<?> delCodeGroup(@RequestParam String companyCode, @PathVariable String menuGroupCode) {				
 												
-		useCase.delete(organizationCode, menuGroupCode);							
+		useCase.delete(companyCode, menuGroupCode);							
 		
 		return toList(null, MessageUtil.getDeleteMessage(1));
 	}	

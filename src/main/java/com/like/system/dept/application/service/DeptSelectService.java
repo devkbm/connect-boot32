@@ -17,9 +17,9 @@ public class DeptSelectService implements DeptSelectUseCase {
 	}
 	
 	@Override
-	public DeptSaveDTO select(String organizationCode, String deptCode) {
+	public DeptSaveDTO select(String companyCode, String deptCode) {
 		
-		Dept entity = this.port.select(organizationCode, deptCode).orElse(null);
+		Dept entity = this.port.select(companyCode, deptCode).orElse(null);
 		
 		return DeptSaveDTO.toDTO(entity);
 	}

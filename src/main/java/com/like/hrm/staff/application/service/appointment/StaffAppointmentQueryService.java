@@ -20,8 +20,8 @@ public class StaffAppointmentQueryService implements StaffAppointmentQueryUseCas
 	}
 	
 	@Override
-	public List<StaffAppointmentRecordDTO> select(String organizationCode, String staffNo) {
-		return this.dbPort.select(organizationCode, staffNo)
+	public List<StaffAppointmentRecordDTO> select(String companyCode, String staffNo) {
+		return this.dbPort.select(companyCode, staffNo)
 						  .stream()
 						  .map(e -> StaffAppointmentRecordDTO.convert(e))
 						  .toList();

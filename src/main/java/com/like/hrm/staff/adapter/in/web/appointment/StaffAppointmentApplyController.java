@@ -21,11 +21,11 @@ public class StaffAppointmentApplyController {
 	
 	@GetMapping("/api/hrm/staff/{staffId}/appointmentrecord/{id}/apply")
 	//@RequestMapping(value={"/hrm/staff/{staffId}/appointmentrecord/{id}/apply"}, method={RequestMethod.POST})	
-	public ResponseEntity<?> applyAppointmentRecord(@RequestParam String organizationCode
+	public ResponseEntity<?> applyAppointmentRecord(@RequestParam String companyCode
 												   ,@PathVariable String staffId
  			 									   ,@PathVariable Long id) {									
 						
-		useCase.apply(organizationCode, staffId, id);
+		useCase.apply(companyCode, staffId, id);
 											 				
 		return toList(null, "발령처리되었습니다.");
 	}

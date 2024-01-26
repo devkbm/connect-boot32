@@ -22,12 +22,12 @@ public class StaffAppointmentQueryDbAdapter implements StaffAppointmentQueryDbPo
 	}
 	
 	@Override
-	public List<AppointmentRecord> select(String organizationCode, String staffNo) {
-		return findStaff(organizationCode, staffNo).getAppointmentRecordList().getStream().toList();	
+	public List<AppointmentRecord> select(String companyCode, String staffNo) {
+		return findStaff(companyCode, staffNo).getAppointmentRecordList().getStream().toList();	
 	}
 	
-	private Staff findStaff(String organizationCode, String staffNo) {
-		return repository.findById(new StaffId(organizationCode, staffNo))
+	private Staff findStaff(String companyCode, String staffNo) {
+		return repository.findById(new StaffId(companyCode, staffNo))
 						 .orElseThrow(() -> new EntityNotFoundException(staffNo + " 직원번호가 존재하지 않습니다."));
 	}
 

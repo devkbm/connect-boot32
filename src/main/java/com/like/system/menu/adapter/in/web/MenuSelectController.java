@@ -31,11 +31,11 @@ public class MenuSelectController {
 	}				
 	
 	@GetMapping("/api/system/menugroup/{menuGroupCode}/menu/{menuCode}")
-	public ResponseEntity<?> getMenu(@RequestParam String organizationCode
+	public ResponseEntity<?> getMenu(@RequestParam String companyCode
 									,@PathVariable String menuGroupCode
 									,@PathVariable String menuCode) {				
 		
-		MenuSaveDTO dto = useCase.select(organizationCode, menuGroupCode, menuCode);					
+		MenuSaveDTO dto = useCase.select(companyCode, menuGroupCode, menuCode);					
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}

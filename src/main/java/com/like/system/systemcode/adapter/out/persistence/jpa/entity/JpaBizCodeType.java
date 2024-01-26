@@ -43,11 +43,11 @@ public class JpaBizCodeType extends AbstractAuditEntity {
 	String comment;	
 		
 	@Builder
-	public JpaBizCodeType(String organizationCode, String typeId, String name, JpaBizTypeEnum bizType, String comment) {
-		if (!StringUtils.hasText(organizationCode)) throw new IllegalArgumentException("ID는 필수 입력 값입니다.");
+	public JpaBizCodeType(String companyCode, String typeId, String name, JpaBizTypeEnum bizType, String comment) {
+		if (!StringUtils.hasText(companyCode)) throw new IllegalArgumentException("ID는 필수 입력 값입니다.");
 		if (!StringUtils.hasText(typeId)) throw new IllegalArgumentException("ID는 필수 입력 값입니다."); 
 		
-		this.id = new JpaBizCodeTypeId(organizationCode, typeId);
+		this.id = new JpaBizCodeTypeId(companyCode, typeId);
 		this.name = name;		
 		this.sequence = 0;
 		this.bizType = bizType;

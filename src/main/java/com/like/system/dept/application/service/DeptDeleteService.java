@@ -15,8 +15,8 @@ public class DeptDeleteService implements DeptDeleteUseCase {
 	}
 	
 	@Override
-	public void delete(String organizationCode, String deptCode) {
-		this.port.delete(organizationCode, deptCode);
+	public void delete(String companyCode, String deptCode) {
+		this.port.delete(companyCode, deptCode);
 	}
 
 }

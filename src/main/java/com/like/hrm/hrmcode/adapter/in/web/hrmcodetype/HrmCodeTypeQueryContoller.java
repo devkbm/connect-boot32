@@ -36,7 +36,7 @@ public class HrmCodeTypeQueryContoller {
 	@GetMapping("/api/hrm/hrmtype/test")
 	public ResponseEntity<?> getHrmTypeList() {														
 		/*
-		 String organizationCode,
+		 String companyCode,
 		String clientAppUrl,
 		String typeId,
 		String typeName,			

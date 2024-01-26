@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotEmpty;
 
 public record StaffCreateDTO(
 		String clientAppUrl,
-		String organizationCode,			
+		String companyCode,			
 		@NotEmpty(message = "직원번호는 필수 입력 값입니다.")
 		String staffNo,
 		@NotEmpty(message = "이름은 필수 입력 값입니다.")
@@ -16,7 +16,7 @@ public record StaffCreateDTO(
 		) {	
 	
 	public String getStaffId() {
-		return this.organizationCode + "_" + this.staffNo;
+		return this.companyCode + "_" + this.staffNo;
 	}
 	
 }

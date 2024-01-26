@@ -10,7 +10,7 @@ import jakarta.validation.constraints.NotEmpty;
 
 public record DeptQueryDTO(
 		@NotEmpty(message="조직코드는 필수 입력 사항입니다.")
-		String organizationCode,
+		String companyCode,
 		String deptCode,
 		String deptName,
 		Boolean isEnabled
@@ -21,15 +21,15 @@ public record DeptQueryDTO(
 		BooleanBuilder builder = new BooleanBuilder();
 		
 		builder
-			.and(eqOrganizationCode(this.organizationCode))
+			.and(eqOrganizationCode(this.companyCode))
 			.and(likeDeptCode(this.deptCode))
 			.and(likeDeptName(this.deptName));
 													
 		return builder;
 	}
 	
-	private BooleanExpression eqOrganizationCode(String organizationCode) {
-		return hasText(organizationCode) ? qType.id.organizationCode.eq(organizationCode) : null;										
+	private BooleanExpression eqOrganizationCode(String companyCode) {
+		return hasText(companyCode) ? qType.id.companyCode.eq(companyCode) : null;										
 	}
 			
 	private BooleanExpression likeDeptCode(String deptCode) {

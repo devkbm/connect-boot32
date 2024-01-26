@@ -21,7 +21,7 @@ public class DeptHierarchyResponse {
 	
 	String parentDeptCode;
 	
-	String organizationCode;
+	String companyCode;
 	
 	//String deptId;
 	
@@ -57,11 +57,11 @@ public class DeptHierarchyResponse {
 	boolean isLeaf;
 
 	@QueryProjection
-	public DeptHierarchyResponse(String parentDeptCode, String organizationCode, String deptCode, String deptNameKorean, String deptAbbreviationKorean,
+	public DeptHierarchyResponse(String parentDeptCode, String companyCode, String deptCode, String deptNameKorean, String deptAbbreviationKorean,
 			String deptNameEnglish, String deptAbbreviationEnglish, LocalDatePeriod period,
 			Integer seq, String comment) {				
 		this.parentDeptCode = parentDeptCode;
-		this.organizationCode = organizationCode;		
+		this.companyCode = companyCode;		
 		this.deptCode = deptCode;
 		this.deptNameKorean = deptNameKorean;
 		this.deptAbbreviationKorean = deptAbbreviationKorean;

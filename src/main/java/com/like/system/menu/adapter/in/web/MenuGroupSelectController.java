@@ -26,9 +26,9 @@ public class MenuGroupSelectController {
 	}
 			
 	@GetMapping("/api/system/menugroup/{menuGroupCode}")
-	public ResponseEntity<?> getMenuGroup(@RequestParam String organizationCode, @PathVariable String menuGroupCode) {				
+	public ResponseEntity<?> getMenuGroup(@RequestParam String companyCode, @PathVariable String menuGroupCode) {				
 		
-		MenuGroupSaveDTO dto = useCase.select(organizationCode, menuGroupCode);				
+		MenuGroupSaveDTO dto = useCase.select(companyCode, menuGroupCode);				
 								
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}				

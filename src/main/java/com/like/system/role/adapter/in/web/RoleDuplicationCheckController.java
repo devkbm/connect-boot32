@@ -21,9 +21,9 @@ public class RoleDuplicationCheckController {
 	}
 	
 	@GetMapping("/api/system/role/{roleName}/check")
-	public ResponseEntity<?> getAuthorityDupCheck(@RequestParam String organizationCode,@PathVariable String roleName) {			
+	public ResponseEntity<?> getAuthorityDupCheck(@RequestParam String companyCode,@PathVariable String roleName) {			
 					
-		Role authority = useCase.select(organizationCode, roleName);										
+		Role authority = useCase.select(companyCode, roleName);										
 		
 		boolean rtn = authority == null ? true : false;
 						

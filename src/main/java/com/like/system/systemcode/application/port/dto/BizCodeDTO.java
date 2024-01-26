@@ -11,7 +11,7 @@ public class BizCodeDTO {
 	@Builder(access = AccessLevel.PRIVATE)
 	public static record Form(
 			String clientAppUrl,
-			String organizationCode,
+			String companyCode,
 			String typeId,
 			String code,
 			String codeName,

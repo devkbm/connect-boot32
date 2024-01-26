@@ -22,20 +22,20 @@ public class MenuHierarchyDbAdapter implements MenuHierarchySelectDbPort {
 	}
 	
 	@Override
-	public List<MenuHierarchyResponseDTO> select(String organizationCode, String menuGroupCode) {
+	public List<MenuHierarchyResponseDTO> select(String companyCode, String menuGroupCode) {
 				
-		List<MenuHierarchyResponseDTO> rootList = this.getMenuRootList(organizationCode, menuGroupCode);
+		List<MenuHierarchyResponseDTO> rootList = this.getMenuRootList(companyCode, menuGroupCode);
 		
-		return this.getMenuHierarchyDTO(organizationCode, rootList);
+		return this.getMenuHierarchyDTO(companyCode, rootList);
 	}
 	
-	private List<MenuHierarchyResponseDTO> getMenuRootList(String organizationCode, String menuGroupCode) {			
+	private List<MenuHierarchyResponseDTO> getMenuRootList(String companyCode, String menuGroupCode) {			
 		
-		// menuGroupCode, organizationCode 반대로 동작 확인 필요
+		// menuGroupCode, companyCode 반대로 동작 확인 필요
 		JPAQuery<MenuHierarchyResponseDTO> query = queryFactory
 				.select(projections(qMenu))
 				.from(qMenu)								
-				.where(qMenu.id.menuGroupId.organizationCode.eq(organizationCode)
+				.where(qMenu.id.menuGroupId.companyCode.eq(companyCode)
 					  ,qMenu.id.menuGroupId.menuGroupCode.eq(menuGroupCode)
 					  ,qMenu.parentMenuCode.isNull()
 					  );													
@@ -44,12 +44,12 @@ public class MenuHierarchyDbAdapter implements MenuHierarchySelectDbPort {
 	}
 	
 	// TODO 계층 쿼리 테스트해보아야함 1 루트 노드 검색 : getMenuChildrenList 2. 하위노드 검색 : getMenuHierarchyDTO
-	private List<MenuHierarchyResponseDTO> getMenuHierarchyDTO(String organizationCode, List<MenuHierarchyResponseDTO> list) {
+	private List<MenuHierarchyResponseDTO> getMenuHierarchyDTO(String companyCode, List<MenuHierarchyResponseDTO> list) {
 		List<MenuHierarchyResponseDTO> children = null;
 		
 		for ( MenuHierarchyResponseDTO dto : list ) {			
 			
-			children = getMenuChildrenList(organizationCode, dto.getMenuGroupCode(), dto.getKey());
+			children = getMenuChildrenList(companyCode, dto.getMenuGroupCode(), dto.getKey());
 			
 			if (children.isEmpty()) {
 				dto.setIsLeaf(true);
@@ -59,7 +59,7 @@ public class MenuHierarchyDbAdapter implements MenuHierarchySelectDbPort {
 				dto.setIsLeaf(false);
 				
 				// 재귀호출
-				getMenuHierarchyDTO(organizationCode, children);
+				getMenuHierarchyDTO(companyCode, children);
 			}
 						
 		}
@@ -67,17 +67,17 @@ public class MenuHierarchyDbAdapter implements MenuHierarchySelectDbPort {
 		return list;
 	}
 	
-	private List<MenuHierarchyResponseDTO> getMenuChildrenList(String organizationCode, String menuGroupCode, String parentMenuCode) {					
+	private List<MenuHierarchyResponseDTO> getMenuChildrenList(String companyCode, String menuGroupCode, String parentMenuCode) {					
 		/*
 		Expression<Boolean> isLeaf = new CaseBuilder()										
 											.when(qMenu.parent.menuCode.isNotNull()).then(true)
 											.otherwise(false).as("isLeaf");
 		*/
-		// menuGroupCode, organizationCode 반대로 동작 확인 필요
+		// menuGroupCode, companyCode 반대로 동작 확인 필요
 		JPAQuery<MenuHierarchyResponseDTO> query = queryFactory			
 				.select(projections(qMenu))
 				.from(qMenu)									
-				.where(qMenu.id.menuGroupId.organizationCode.eq(organizationCode)
+				.where(qMenu.id.menuGroupId.companyCode.eq(companyCode)
 					  ,qMenu.id.menuGroupId.menuGroupCode.eq(menuGroupCode)
 				      ,qMenu.parentMenuCode.eq(parentMenuCode)
 				      );

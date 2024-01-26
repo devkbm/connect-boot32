@@ -17,8 +17,8 @@ public class StaffCommandDbAdapter implements StaffCommandDbPort {
 	}
 	
 	@Override
-	public Staff select(String organizationCode, String staffNo) {
-		return this.repository.findById(new StaffId(organizationCode, staffNo)).orElse(null);
+	public Staff select(String companyCode, String staffNo) {
+		return this.repository.findById(new StaffId(companyCode, staffNo)).orElse(null);
 	}
 
 	@Override
@@ -27,8 +27,8 @@ public class StaffCommandDbAdapter implements StaffCommandDbPort {
 	}
 
 	@Override
-	public void delete(String organizationCode, String staffNo) {
-		this.repository.deleteById(new StaffId(organizationCode, staffNo));	
+	public void delete(String companyCode, String staffNo) {
+		this.repository.deleteById(new StaffId(companyCode, staffNo));	
 	}
 
 }

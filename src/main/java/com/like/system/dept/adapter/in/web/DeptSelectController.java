@@ -22,9 +22,9 @@ public class DeptSelectController {
 	}
 		
 	@GetMapping("/api/system/dept/{deptCode}")
-	public ResponseEntity<?> getDept(@RequestParam String organizationCode, @PathVariable String deptCode) {									 
+	public ResponseEntity<?> getDept(@RequestParam String companyCode, @PathVariable String deptCode) {									 
 		
-		DeptSaveDTO dto = useCase.select(organizationCode, deptCode);
+		DeptSaveDTO dto = useCase.select(companyCode, deptCode);
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}		

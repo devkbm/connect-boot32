@@ -74,11 +74,11 @@ public class Dept extends AbstractAuditEntity implements Serializable {
 	})	
 	Dept parentDept;
 	
-	public static DeptBuilder builder(String organizationCode, String deptCode) {
-		Assert.hasText(organizationCode, "organizationCode must not be empty!");
+	public static DeptBuilder builder(String companyCode, String deptCode) {
+		Assert.hasText(companyCode, "companyCode must not be empty!");
 		Assert.hasText(deptCode, "deptCode must not be empty!");
 						
-		return internalBuilder().id(new DeptId(organizationCode, deptCode));
+		return internalBuilder().id(new DeptId(companyCode, deptCode));
 	}
 		
 	public Dept getParentDept() {

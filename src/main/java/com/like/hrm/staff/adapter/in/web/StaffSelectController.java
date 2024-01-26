@@ -22,9 +22,9 @@ public class StaffSelectController {
 	}		
 	
 	@GetMapping("/api/hrm/staff/{id}")
-	public ResponseEntity<?> getStaff(@RequestParam String organizationCode, @PathVariable String id) {
+	public ResponseEntity<?> getStaff(@RequestParam String companyCode, @PathVariable String id) {
 								
-		ResponseStaff dto = useCase.select(organizationCode, id); 
+		ResponseStaff dto = useCase.select(companyCode, id); 
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}		

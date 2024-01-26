@@ -20,7 +20,7 @@ public class RoleSaveService implements RoleSaveUseCase {
 
 	@Override
 	public void save(RoleSaveDTO dto) {
-		Role authority = dbPort.find(dto.organizationCode(), dto.roleCode());			
+		Role authority = dbPort.find(dto.companyCode(), dto.roleCode());			
 		
 		if (authority == null) {
 			authority = dto.newEntity();

@@ -21,11 +21,11 @@ public class BizCodeDeleteController {
 	}		
 		
 	@DeleteMapping("/api/system/bizcodetype/{typeId}/bizcode/{code}")
-	public ResponseEntity<?> deleteBizCode(@RequestParam String organizationCode
+	public ResponseEntity<?> deleteBizCode(@RequestParam String companyCode
 										  ,@PathVariable String typeId
 			 							  ,@PathVariable String code) {				
 																		
-		service.delete(organizationCode, typeId, code);						
+		service.delete(companyCode, typeId, code);						
 								 					
 		return toList(null, MessageUtil.getDeleteMessage(1));
 	}

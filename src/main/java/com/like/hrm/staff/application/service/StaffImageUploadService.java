@@ -21,9 +21,9 @@ public class StaffImageUploadService implements StaffImageUploadUseCase {
 	}
 	
 	@Override
-	public String upload(String organizationCode, String staffNo, MultipartFile file) {
+	public String upload(String companyCode, String staffNo, MultipartFile file) {
 		
-		Staff entity = this.dbPort.select(organizationCode, staffNo);
+		Staff entity = this.dbPort.select(companyCode, staffNo);
 		
 		if (entity == null) return null;
 		

@@ -22,11 +22,11 @@ public class SystemUserMenuGroupDbAdapter implements SystemUserMenuGroupSelectDb
 	}
 	
 	@Override
-	public List<MenuGroup> select(String organizationCode, List<String> roleCodes) {		
+	public List<MenuGroup> select(String companyCode, List<String> roleCodes) {		
 		return this.queryFactory.select(qMenuGroup).distinct()
 				                .from(qMenuGroup)
 				                .innerJoin(qMenuRoleMapping)
-				                .on(qMenuGroup.id.organizationCode.eq(qMenuRoleMapping.id.organizationCode),
+				                .on(qMenuGroup.id.companyCode.eq(qMenuRoleMapping.id.companyCode),
 				                	qMenuGroup.id.menuGroupCode.eq(qMenuRoleMapping.id.menuGroupCode))
 				                .where(qMenuRoleMapping.id.roleCode.in(roleCodes))
 				                .fetch();				               

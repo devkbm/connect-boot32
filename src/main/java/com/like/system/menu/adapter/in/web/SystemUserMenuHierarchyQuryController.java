@@ -27,11 +27,11 @@ public class SystemUserMenuHierarchyQuryController {
 	}
 	
 	@GetMapping("/api/system/menuhierarchy/{userId}/{menuGroupCode}")
-	public ResponseEntity<?> getMenuGroupHierachy(@RequestParam String organizationCode, @PathVariable String userId, @PathVariable String menuGroupCode) {				
+	public ResponseEntity<?> getMenuGroupHierachy(@RequestParam String companyCode, @PathVariable String userId, @PathVariable String menuGroupCode) {				
 		
-		log.info("organizationCode : "+ organizationCode);
+		log.info("companyCode : "+ companyCode);
 		log.info("menuGroupCode : "+ menuGroupCode);
-		List<MenuHierarchyResponseDTO> menuGroup = useCase.select(organizationCode, userId, menuGroupCode); 										
+		List<MenuHierarchyResponseDTO> menuGroup = useCase.select(companyCode, userId, menuGroupCode); 										
 		
 		return toList(menuGroup, MessageUtil.getQueryMessage(menuGroup.size()));
 	}

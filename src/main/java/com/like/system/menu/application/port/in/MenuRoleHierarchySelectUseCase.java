@@ -6,5 +6,5 @@ import com.like.system.menu.application.port.dto.MenuRoleMappingHierarchyRespons
 
 public interface MenuRoleHierarchySelectUseCase {
 
-	List<MenuRoleMappingHierarchyResponseDTO> select(String organizationCode, String menuGroupCode, String roleCode);
+	List<MenuRoleMappingHierarchyResponseDTO> select(String companyCode, String menuGroupCode, String roleCode);
 }

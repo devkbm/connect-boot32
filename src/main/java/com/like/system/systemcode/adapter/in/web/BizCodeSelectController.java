@@ -22,11 +22,11 @@ public class BizCodeSelectController {
 	}
 		
 	@GetMapping("/api/system/bizcodetype/{typeId}/bizcode/{code}")
-	public ResponseEntity<?> getBizCode(@RequestParam String organizationCode
+	public ResponseEntity<?> getBizCode(@RequestParam String companyCode
 									   ,@PathVariable String typeId
 									   ,@PathVariable String code) {
 		
-		BizCodeSaveDTO dto = service.select(organizationCode, typeId, code);
+		BizCodeSaveDTO dto = service.select(companyCode, typeId, code);
 					
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}			

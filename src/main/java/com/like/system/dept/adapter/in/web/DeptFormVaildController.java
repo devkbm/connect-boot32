@@ -20,9 +20,9 @@ public class DeptFormVaildController {
 	}
 	
 	@GetMapping("/api/system/dept/{id}/valid")
-	public ResponseEntity<?> getValidateDeptDuplication(@RequestParam String organizationCode, @PathVariable String id) {
+	public ResponseEntity<?> getValidateDeptDuplication(@RequestParam String companyCode, @PathVariable String id) {
 							
-		Boolean exist = useCase.select(organizationCode, id) == null ? false : true;  	
+		Boolean exist = useCase.select(companyCode, id) == null ? false : true;  	
 						
 		return toOne(exist, exist ? "중복된 부서 코드가 있습니다." : "사용가능한 부서 코드입니다.");
 	}

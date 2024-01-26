@@ -5,7 +5,7 @@ import lombok.Builder;
 @Builder
 public record BizCodeTypeSaveDTO(
 		String clientAppUrl,
-		String organizationCode,
+		String companyCode,
 		String typeId,			
 		String typeName,			
 		Integer sequence,

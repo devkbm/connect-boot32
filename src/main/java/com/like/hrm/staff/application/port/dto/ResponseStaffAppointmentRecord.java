@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ResponseStaffAppointmentRecord {
 
-	private String organizationCode;
+	private String companyCode;
 	
 	private String staffNo;
 		
@@ -65,13 +65,13 @@ public class ResponseStaffAppointmentRecord {
 	private String dutyResponsibilityName;	
 	
 	@QueryProjection
-	public ResponseStaffAppointmentRecord(String organizationCode, String staffNo, Long seq, LocalDate appointmentDate, LocalDate appointmentEndDate,
+	public ResponseStaffAppointmentRecord(String companyCode, String staffNo, Long seq, LocalDate appointmentDate, LocalDate appointmentEndDate,
 			String recordName, String comment, Boolean isCompleted, String blngDeptCode, String blngDeptName,
 			String workDeptCode, String workDeptName, String jobGroupCode, String jobGroupName, String jobPositionCode,
 			String jobPositionName, String occupationCode, String occupationName, String jobGradeCode,
 			String jobGradeName, String payStepCode, String payStepName, String jobCode, String jobName,
 			String dutyResponsibilityCode, String dutyResponsibilityName) {
-		this.organizationCode = organizationCode;
+		this.companyCode = companyCode;
 		this.staffNo = staffNo;
 		this.seq = seq;
 		this.appointmentDate = appointmentDate;

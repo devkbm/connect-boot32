@@ -19,7 +19,7 @@ public class StaffSchoolCareerSaveService implements StaffSchoolCareerSaveUseCas
 	
 	@Override
 	public void save(StaffSchoolCareerSaveDTO dto) {
-		Staff staff = dbPort.select(dto.organizationCode(), dto.staffNo());	
+		Staff staff = dbPort.select(dto.companyCode(), dto.staffNo());	
 		StaffSchoolCareer education = staff.getSchoolCareerList().get(staff, dto.seq());
 		
 		if (education == null) {

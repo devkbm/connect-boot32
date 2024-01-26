@@ -9,7 +9,7 @@ public class JpaBizCodeMapper {
 	public static BizCodeSaveDTO toDTO(JpaBizCode jpaEntity) {		
 		
 		return BizCodeSaveDTO.builder()
-							 .organizationCode(jpaEntity.getId().getBizCodeTypeId().getOrganizationCode())
+							 .companyCode(jpaEntity.getId().getBizCodeTypeId().getCompanyCode())
 							 .typeId(jpaEntity.getId().getBizCodeTypeId().getTypeId())
 							 .code(jpaEntity.getId().getCode())
 							 .codeName(jpaEntity.getCodeName())

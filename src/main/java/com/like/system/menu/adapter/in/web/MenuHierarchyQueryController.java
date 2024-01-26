@@ -28,11 +28,11 @@ public class MenuHierarchyQueryController {
 	}
 	
 	@GetMapping("/api/system/menuhierarchy/{menuGroupCode}")
-	public ResponseEntity<?> getMenuGroupHierachy(@RequestParam String organizationCode, @PathVariable String menuGroupCode) {				
+	public ResponseEntity<?> getMenuGroupHierachy(@RequestParam String companyCode, @PathVariable String menuGroupCode) {				
 		
-		log.info("organizationCode : "+ organizationCode);
+		log.info("companyCode : "+ companyCode);
 		log.info("menuGroupCode : "+ menuGroupCode);
-		List<MenuHierarchyResponseDTO> menuGroup = useCase.select(organizationCode, menuGroupCode); 										
+		List<MenuHierarchyResponseDTO> menuGroup = useCase.select(companyCode, menuGroupCode); 										
 		
 		return toList(menuGroup, MessageUtil.getQueryMessage(menuGroup.size()));
 	}

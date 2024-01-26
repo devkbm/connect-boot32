@@ -10,7 +10,7 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import jakarta.validation.constraints.NotEmpty;
 
 public record MenuQueryDTO(
-		String organizationCode,
+		String companyCode,
 		@NotEmpty(message = "필수 입력 값입니다.")
 		String menuGroupCode,
 		String menuCode,
@@ -20,14 +20,14 @@ public record MenuQueryDTO(
 	
 	public BooleanBuilder getBooleanBuilder() {																
 		return new BooleanBuilder()
-				.and(equalOrganizationCode(this.organizationCode))
+				.and(equalOrganizationCode(this.companyCode))
 				.and(equalMenuGroupCode(this.menuGroupCode))
 	//			.and(likeMenuId(this.menuId))
 				.and(likeMenuName(this.menuName));
 	}
 
-	private BooleanExpression equalOrganizationCode(String organizationCode) {					
-		return QMenuGroup.menuGroup.id.organizationCode.eq(organizationCode);
+	private BooleanExpression equalOrganizationCode(String companyCode) {					
+		return QMenuGroup.menuGroup.id.companyCode.eq(companyCode);
 	}
 	
 	private BooleanExpression equalMenuGroupCode(String menuGroupCode) {					

@@ -16,8 +16,8 @@ public class StaffAppointmentSelectService implements StaffAppointmentSelectUseC
 	}
 	
 	@Override
-	public StaffAppointmentRecordDTO select(String organizationCode, String staffNo, Long seq) {
-		return StaffAppointmentRecordDTO.convert(this.dbPort.select(organizationCode, staffNo, seq));
+	public StaffAppointmentRecordDTO select(String companyCode, String staffNo, Long seq) {
+		return StaffAppointmentRecordDTO.convert(this.dbPort.select(companyCode, staffNo, seq));
 	}
 
 	

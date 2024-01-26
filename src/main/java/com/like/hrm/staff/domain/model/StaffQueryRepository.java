@@ -12,10 +12,10 @@ public interface StaffQueryRepository {
 	
 	List<Staff> getStaffList(StaffQueryConditionDTO dto);
 	
-	ResponseStaffCurrentAppointment getStaffCurrentAppointment(String organizationCode, String staffNo);
+	ResponseStaffCurrentAppointment getStaffCurrentAppointment(String companyCode, String staffNo);
 		
-	List<ResponseStaffAppointmentRecord> getStaffAppointmentRecordList(String organizationCode, String staffNo);
+	List<ResponseStaffAppointmentRecord> getStaffAppointmentRecordList(String companyCode, String staffNo);
 	
-	List<ResponseStaffDutyResponsibility> getStaffDutyResponsibility(String organizationCode, String staffNo);
+	List<ResponseStaffDutyResponsibility> getStaffDutyResponsibility(String companyCode, String staffNo);
 	
 }

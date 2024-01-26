@@ -25,14 +25,14 @@ public class HolidaySelectController {
 	}		
 	
 	@GetMapping("/api/system/holiday/{date}")
-	public ResponseEntity<?> getHoliday(@RequestParam String organizationCode,
+	public ResponseEntity<?> getHoliday(@RequestParam String companyCode,
 			                            @PathVariable @DateTimeFormat(pattern="yyyyMMdd") LocalDate date) {
 		
 		/*
-		HolidayDTO.Form dto = HolidayDTO.Form.convert(holidayService.getHoliyday(organizationCode,date)
-																	.orElse(new Holiday(new HolidayId(organizationCode, date), "", "")));
+		HolidayDTO.Form dto = HolidayDTO.Form.convert(holidayService.getHoliyday(companyCode,date)
+																	.orElse(new Holiday(new HolidayId(companyCode, date), "", "")));
 		*/
-		HolidaySaveDTO dto = this.useCase.select(organizationCode, date);
+		HolidaySaveDTO dto = this.useCase.select(companyCode, date);
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}		

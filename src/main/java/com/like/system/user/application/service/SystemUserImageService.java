@@ -30,8 +30,8 @@ public class SystemUserImageService implements SystemUserImageFileUseCase, Syste
 	}
 	
 	@Override
-	public HttpServletResponse downloadImageFile(String organizationCode, String userId, HttpServletResponse response) throws Exception {
-		SystemUser user = this.port.select(organizationCode, userId);
+	public HttpServletResponse downloadImageFile(String companyCode, String userId, HttpServletResponse response) throws Exception {
+		SystemUser user = this.port.select(companyCode, userId);
 				
 		fileDownLoadUseCase.download(user.getImage(), response);
 		
@@ -39,8 +39,8 @@ public class SystemUserImageService implements SystemUserImageFileUseCase, Syste
 	}
 
 	@Override
-	public String changeImage(String organizationCode, String userId, MultipartFile file) {
-		SystemUser user = this.port.select(organizationCode, userId);
+	public String changeImage(String companyCode, String userId, MultipartFile file) {
+		SystemUser user = this.port.select(companyCode, userId);
 		
 		if (user == null) return null;
 		

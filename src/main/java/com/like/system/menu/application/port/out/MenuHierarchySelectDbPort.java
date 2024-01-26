@@ -5,5 +5,5 @@ import java.util.List;
 import com.like.system.menu.application.port.dto.MenuHierarchyResponseDTO;
 
 public interface MenuHierarchySelectDbPort {
-	List<MenuHierarchyResponseDTO> select(String organizationCode, String menuGroupCode);
+	List<MenuHierarchyResponseDTO> select(String companyCode, String menuGroupCode);
 }

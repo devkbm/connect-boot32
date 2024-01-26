@@ -15,8 +15,8 @@ public class RoleDeleteService implements RoleDeleteUseCase {
 	}
 	
 	@Override
-	public void delete(String organizationCode, String roleCode) {
-		this.port.delete(organizationCode, roleCode);		
+	public void delete(String companyCode, String roleCode) {
+		this.port.delete(companyCode, roleCode);		
 	}
 	
 }

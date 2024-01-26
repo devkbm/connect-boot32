@@ -12,7 +12,7 @@ import lombok.Builder;
 
 @Builder
 public record TermSaveDTO(
-		String organizationCode,
+		String companyCode,
 		String clientAppUrl,
 		String termId,
 		String system,

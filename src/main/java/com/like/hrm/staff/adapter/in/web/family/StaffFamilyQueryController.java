@@ -24,9 +24,9 @@ public class StaffFamilyQueryController {
 	}
 	
 	@GetMapping("/api/hrm/staff/{staffId}/family")
-	public ResponseEntity<?> getFamilyList(@RequestParam String organizationCode, @PathVariable String staffId) {
+	public ResponseEntity<?> getFamilyList(@RequestParam String companyCode, @PathVariable String staffId) {
 													
-		List<StaffFamilySaveDTO> list = useCase.select(organizationCode,staffId);
+		List<StaffFamilySaveDTO> list = useCase.select(companyCode,staffId);
 		
 		return toList(list, MessageUtil.getQueryMessage(list.size()));						
 	}

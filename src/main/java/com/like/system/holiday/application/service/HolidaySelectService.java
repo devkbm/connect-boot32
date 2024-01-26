@@ -18,8 +18,8 @@ public class HolidaySelectService implements HolidaySelectUseCase {
 	}
 	
 	@Override
-	public HolidaySaveDTO select(String organizationCode, LocalDate date) {		
-		return HolidaySaveDTO.toDTO(this.port.select(organizationCode, date));
+	public HolidaySaveDTO select(String companyCode, LocalDate date) {		
+		return HolidaySaveDTO.toDTO(this.port.select(companyCode, date));
 	}
 	
 }

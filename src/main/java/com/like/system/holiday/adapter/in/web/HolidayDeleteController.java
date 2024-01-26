@@ -24,10 +24,10 @@ public class HolidayDeleteController {
 	}			
 	
 	@DeleteMapping("/api/system/holiday/{id}")
-	public ResponseEntity<?> delHoliday(@RequestParam String organizationCode,
+	public ResponseEntity<?> delHoliday(@RequestParam String companyCode,
 			                            @PathVariable @DateTimeFormat(pattern="yyyyMMdd") LocalDate id) {						
 												
-		useCase.delete(organizationCode, id);		
+		useCase.delete(companyCode, id);		
 								 						
 		return toList(null, MessageUtil.getDeleteMessage(1));
 	}

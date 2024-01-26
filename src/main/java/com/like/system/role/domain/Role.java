@@ -8,8 +8,8 @@ public class Role {
 		
 	String description;		
 	
-	public Role(String organizationCode, String roleCode, String roleName, String description) {		
-		this.id = new RoleId(organizationCode, roleCode);		
+	public Role(String companyCode, String roleCode, String roleName, String description) {		
+		this.id = new RoleId(companyCode, roleCode);		
 		this.roleName = roleName;
 		this.description = description;		
 	}	
@@ -18,8 +18,8 @@ public class Role {
 		this.description = description;
 	}	
 		
-	public String getOrganizationCode() {
-		return this.id.getOrganizationCode();
+	public String getCompanyCode() {
+		return this.id.getCompanyCode();
 	}
 
 	public String getRoleCode() {

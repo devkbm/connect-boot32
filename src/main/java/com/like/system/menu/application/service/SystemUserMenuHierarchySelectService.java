@@ -23,10 +23,10 @@ public class SystemUserMenuHierarchySelectService implements SystemUserMenuHiera
 	}
 		
 	@Override
-	public List<MenuHierarchyResponseDTO> select(String organizationCode, String userId, String menuGroupCode) {
-		SystemUserSaveDTO userDTO = userSelectUseCase.selectDTO(organizationCode, userId);
+	public List<MenuHierarchyResponseDTO> select(String companyCode, String userId, String menuGroupCode) {
+		SystemUserSaveDTO userDTO = userSelectUseCase.selectDTO(companyCode, userId);
 					
-		return this.dbPort.select(organizationCode, menuGroupCode, userDTO.roleList());
+		return this.dbPort.select(companyCode, menuGroupCode, userDTO.roleList());
 	}
 
 }

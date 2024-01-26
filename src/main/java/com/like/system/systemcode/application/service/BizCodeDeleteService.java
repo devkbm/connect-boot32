@@ -15,8 +15,8 @@ public class BizCodeDeleteService implements BizCodeDeleteUseCase {
 	}
 	
 	@Override
-	public void delete(String organizationCode, String typeId, String code) {
-		this.port.delete(organizationCode, typeId, code);		
+	public void delete(String companyCode, String typeId, String code) {
+		this.port.delete(companyCode, typeId, code);		
 	}
 
 	

@@ -4,17 +4,17 @@ import java.util.Objects;
 
 public class RoleId {
 
-	String organizationCode;
+	String companyCode;
 	
 	String roleCode;
 	
-	public RoleId(String organizationCode, String roleCode) {
-		this.organizationCode = organizationCode;
+	public RoleId(String companyCode, String roleCode) {
+		this.companyCode = companyCode;
 		this.roleCode = roleCode;
 	}
 
-	public String getOrganizationCode() {
-		return organizationCode;
+	public String getCompanyCode() {
+		return companyCode;
 	}
 
 	public String getRoleCode() {
@@ -23,7 +23,7 @@ public class RoleId {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(roleCode, organizationCode);
+		return Objects.hash(roleCode, companyCode);
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class RoleId {
 			return false;
 		RoleId other = (RoleId) obj;
 		return Objects.equals(roleCode, other.roleCode)
-				&& Objects.equals(organizationCode, other.organizationCode);
+				&& Objects.equals(companyCode, other.companyCode);
 	}
 	
 	

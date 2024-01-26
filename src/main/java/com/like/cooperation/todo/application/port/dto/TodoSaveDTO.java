@@ -10,7 +10,7 @@ import lombok.Builder;
 @Builder
 public record TodoSaveDTO(
 		String clientAppUrl,
-		String organizationCode,
+		String companyCode,
 		Long pkTodoGroup,
 		Long pkTodo,
 		String todo,

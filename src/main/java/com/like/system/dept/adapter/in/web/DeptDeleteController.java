@@ -21,9 +21,9 @@ public class DeptDeleteController {
 	}		
 	
 	@DeleteMapping("/api/system/dept/{deptCode}")
-	public ResponseEntity<?> deleteDept(@RequestParam String organizationCode, @PathVariable String deptCode) {				
+	public ResponseEntity<?> deleteDept(@RequestParam String companyCode, @PathVariable String deptCode) {				
 												
-		useCase.delete(organizationCode, deptCode);							
+		useCase.delete(companyCode, deptCode);							
 		
 		return toList(null, MessageUtil.getDeleteMessage(1));
 	}

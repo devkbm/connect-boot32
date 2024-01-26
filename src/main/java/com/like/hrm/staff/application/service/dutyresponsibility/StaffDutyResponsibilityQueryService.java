@@ -20,7 +20,7 @@ public class StaffDutyResponsibilityQueryService implements StaffDutyResponsibil
 	}
 
 	@Override
-	public List<ResponseStaffDutyResponsibility> select(String organizationCode, String staffNo) {
-		return this.dbPort.getStaffDutyResponsibility(organizationCode, staffNo);
+	public List<ResponseStaffDutyResponsibility> select(String companyCode, String staffNo) {
+		return this.dbPort.getStaffDutyResponsibility(companyCode, staffNo);
 	}
 }

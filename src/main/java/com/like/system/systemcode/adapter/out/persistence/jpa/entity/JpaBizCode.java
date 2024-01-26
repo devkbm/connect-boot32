@@ -58,7 +58,7 @@ public class JpaBizCode extends AbstractAuditEntity {
 		if (!StringUtils.hasText(code)) throw new IllegalArgumentException("CODE는 필수 입력 값입니다.");
 		
 		this.bizCodeType = bizType;
-		this.id = new JpaBizCodeId(bizType.getId().getOrganizationCode(), bizType.getId().getTypeId(), code);
+		this.id = new JpaBizCodeId(bizType.getId().getCompanyCode(), bizType.getId().getTypeId(), code);
 		this.codeName = name;
 		this.useYn = true;
 		this.sequence = 0;
@@ -77,7 +77,7 @@ public class JpaBizCode extends AbstractAuditEntity {
 		if (!StringUtils.hasText(code)) throw new IllegalArgumentException("CODE는 필수 입력 값입니다.");
 		
 		this.bizCodeType = bizType;
-		this.id = new JpaBizCodeId(bizType.getId().getOrganizationCode(), bizType.getId().getTypeId(), code);
+		this.id = new JpaBizCodeId(bizType.getId().getCompanyCode(), bizType.getId().getTypeId(), code);
 		this.codeName = name;
 		this.useYn = useYn;
 		this.sequence = sequence;

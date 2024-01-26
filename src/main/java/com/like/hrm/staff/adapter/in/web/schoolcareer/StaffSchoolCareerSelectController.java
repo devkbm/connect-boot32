@@ -22,10 +22,10 @@ public class StaffSchoolCareerSelectController {
 	}	
 	
 	@GetMapping("/api/hrm/staff/{staffId}/schoolcareer/{seq}")
-	public ResponseEntity<?> getSchoolCareer(@RequestParam String organizationCode
+	public ResponseEntity<?> getSchoolCareer(@RequestParam String companyCode
 											,@PathVariable String staffId
 											,@PathVariable Long seq) {			
-		StaffSchoolCareerSaveDTO dto = useCase.select(organizationCode, staffId, seq);
+		StaffSchoolCareerSaveDTO dto = useCase.select(companyCode, staffId, seq);
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}

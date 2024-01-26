@@ -22,7 +22,7 @@ public class BizCodeSaveService implements BizCodeSaveUseCase {
 	
 	@Override
 	public void save(BizCodeSaveDTO dto) {
-		BizCodeType bizCodeType = bizCodeTypeSelectPort.select(dto.organizationCode(), dto.typeId());
+		BizCodeType bizCodeType = bizCodeTypeSelectPort.select(dto.companyCode(), dto.typeId());
 		this.port.save(BizCodeMapper.toEntity(dto, bizCodeType));
 	}
 	

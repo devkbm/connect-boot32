@@ -23,9 +23,9 @@ public class TeamJoinService implements TeamJoinUseCase {
 	}
 	
 	@Override
-	public void join(Long teamId, String organizationCode, String userId) {
+	public void join(Long teamId, String companyCode, String userId) {
 		Team team = dbPort.select(teamId);
-		SystemUser member = userSelectUseCase.findUser(organizationCode, userId);			
+		SystemUser member = userSelectUseCase.findUser(companyCode, userId);			
 		
 		team.addMember(member);	
 		

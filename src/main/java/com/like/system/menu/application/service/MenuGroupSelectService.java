@@ -19,8 +19,8 @@ public class MenuGroupSelectService implements MenuGroupSelectUseCase {
 	}
 	
 	@Override
-	public MenuGroupSaveDTO select(String organizationCode, String menuGroupCode) {
-		return MenuGroupSaveDTO.toDTO(this.port.select(organizationCode, menuGroupCode));
+	public MenuGroupSaveDTO select(String companyCode, String menuGroupCode) {
+		return MenuGroupSaveDTO.toDTO(this.port.select(companyCode, menuGroupCode));
 	}
 
 	@Override

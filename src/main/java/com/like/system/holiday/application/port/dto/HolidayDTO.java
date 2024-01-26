@@ -12,7 +12,7 @@ public class HolidayDTO {
 
 	@Builder(access = AccessLevel.PRIVATE)
 	public static record Form(
-			String organizationCode,
+			String companyCode,
 			String clientAppUrl,
 			LocalDate date,
 			String holidayName,			
@@ -20,7 +20,7 @@ public class HolidayDTO {
 			) {
 		public Holiday newEntity() {	
 			
-			Holiday entity = new Holiday(new HolidayId(organizationCode, date), holidayName, comment);
+			Holiday entity = new Holiday(new HolidayId(companyCode, date), holidayName, comment);
 			
 			entity.setAppUrl(clientAppUrl);
 			
@@ -33,7 +33,7 @@ public class HolidayDTO {
 		
 		public static Form convert(Holiday entity) {
 			return Form.builder()
-					   .organizationCode(entity.getId().getOrganizationCode())
+					   .companyCode(entity.getId().getCompanyCode())
 					   .date(entity.getId().getDate())
 					   .holidayName(entity.getHolidayName())
 					   .comment(entity.getComment())

@@ -21,10 +21,10 @@ public class StaffSchoolCareerDeleteController {
 	}
 	
 	@DeleteMapping("/api/hrm/staff/{staffId}/schoolcareer/{seq}")
-	public ResponseEntity<?> deleteSchoolCareer(@RequestParam String organizationCode
+	public ResponseEntity<?> deleteSchoolCareer(@RequestParam String companyCode
 											   ,@PathVariable String staffId
 											   ,@PathVariable Long seq) {
-		useCase.delete(organizationCode, staffId, seq);
+		useCase.delete(companyCode, staffId, seq);
 											 				
 		return toOne(null, MessageUtil.getDeleteMessage(1));
 	}

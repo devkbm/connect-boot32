@@ -10,7 +10,7 @@ import jakarta.validation.constraints.NotBlank;
 
 public record MenuGroupQueryDTO(
 		@NotBlank(message="조직 코드를 선택해주세요.")
-		String organizationCode,
+		String companyCode,
 		String menuGroupId,
 		String menuGroupName
 		) {
@@ -20,15 +20,15 @@ public record MenuGroupQueryDTO(
 		BooleanBuilder builder = new BooleanBuilder();
 		
 		builder
-			.and(eqOrganizationCode(this.organizationCode))
+			.and(eqOrganizationCode(this.companyCode))
 			.and(likeMenGroupId(this.menuGroupId))
 			.and(likeMenGroupName(this.menuGroupName));
 										
 		return builder;		
 	}
 	
-	private BooleanExpression eqOrganizationCode(String organizationCode) {
-		return qType.id.organizationCode.eq(organizationCode);
+	private BooleanExpression eqOrganizationCode(String companyCode) {
+		return qType.id.companyCode.eq(companyCode);
 	}
 	
 	private BooleanExpression likeMenGroupId(String menuGroupId) {

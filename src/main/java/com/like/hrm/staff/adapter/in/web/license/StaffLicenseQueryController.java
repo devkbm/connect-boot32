@@ -24,9 +24,9 @@ public class StaffLicenseQueryController {
 	}
 	
 	@GetMapping("/api/hrm/staff/{staffId}/license")
-	public ResponseEntity<?> getLicense(@RequestParam String organizationCode, @PathVariable String staffId) {
+	public ResponseEntity<?> getLicense(@RequestParam String companyCode, @PathVariable String staffId) {
 						
-		List<StaffLicenseSaveDTO> list = useCase.select(organizationCode, staffId);
+		List<StaffLicenseSaveDTO> list = useCase.select(companyCode, staffId);
 		
 		return toList(list, MessageUtil.getQueryMessage(list.size()));
 	}

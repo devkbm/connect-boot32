@@ -18,8 +18,8 @@ public class SystemUserCommandDbAdapter implements SystemUserCommandDbPort {
 	}
 	
 	@Override
-	public SystemUser select(String organizationCode, String userId) { 
-		return this.repository.findById(new SystemUserId(organizationCode, userId)).orElse(null);
+	public SystemUser select(String companyCode, String userId) { 
+		return this.repository.findById(new SystemUserId(companyCode, userId)).orElse(null);
 	}
 	
 	@Override
@@ -28,8 +28,8 @@ public class SystemUserCommandDbAdapter implements SystemUserCommandDbPort {
 	}
 	
 	@Override
-	public void delete(String organizationCode, String userId) {
-		this.repository.deleteById(new SystemUserId(organizationCode, userId));		
+	public void delete(String companyCode, String userId) {
+		this.repository.deleteById(new SystemUserId(companyCode, userId));		
 	}
 				
 }

@@ -15,7 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@EqualsAndHashCode(of = {"organizationCode","staffNo","seq"})
+@EqualsAndHashCode(of = {"companyCode","staffNo","seq"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Embeddable
 public class StaffSchoolCareerId implements Serializable {
@@ -23,7 +23,7 @@ public class StaffSchoolCareerId implements Serializable {
 	private static final long serialVersionUID = -752236787842572663L;
 
 	@Column(name="ORG_CD")
-	String organizationCode;
+	String companyCode;
 		
 	@Column(name="STAFF_NO")
 	String staffNo;
@@ -33,7 +33,7 @@ public class StaffSchoolCareerId implements Serializable {
 	Long seq;
 	
 	public StaffSchoolCareerId(Staff staff, Long seq) {
-		this.organizationCode = staff.getId().getOrganizationCode();
+		this.companyCode = staff.getId().getCompanyCode();
 		this.staffNo = staff.getId().getStaffNo();
 		this.seq = seq;
 	}

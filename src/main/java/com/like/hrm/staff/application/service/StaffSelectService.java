@@ -16,8 +16,8 @@ public class StaffSelectService implements StaffSelectUseCase {
 	}
 	
 	@Override
-	public ResponseStaff select(String organizationCode, String staffNo) {
-		return ResponseStaff.toDTO(this.dbPort.select(organizationCode, staffNo));
+	public ResponseStaff select(String companyCode, String staffNo) {
+		return ResponseStaff.toDTO(this.dbPort.select(companyCode, staffNo));
 	}
 	
 }

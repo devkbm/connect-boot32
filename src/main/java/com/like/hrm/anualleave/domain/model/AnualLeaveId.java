@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@EqualsAndHashCode(of = {"organizationCode","staffNo","yyyy"})
+@EqualsAndHashCode(of = {"companyCode","staffNo","yyyy"})
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Embeddable
@@ -23,7 +23,7 @@ public class AnualLeaveId implements Serializable {
 	private static final long serialVersionUID = 7192154823642621593L;
 
 	@Column(name="ORG_CD")
-	String organizationCode;
+	String companyCode;
 	
 	@Comment("직원번호")
 	@Column(name="STAFF_NO")
@@ -34,7 +34,7 @@ public class AnualLeaveId implements Serializable {
 	Integer yyyy;			
 	
 	public AnualLeaveId(Staff staff, Integer yyyy) {
-		this.organizationCode = staff.getId().getOrganizationCode();
+		this.companyCode = staff.getId().getCompanyCode();
 		this.staffNo = staff.getId().getStaffNo();
 		this.yyyy = yyyy;
 	}

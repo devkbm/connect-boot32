@@ -24,14 +24,14 @@ public class BizCodeService {
 		this.bizTypeRepository = bizTypeRepository;
 	}		
 	
-	public JpaBizCode getBizCode(String organizationCode, String typeId, String code) {				
-		return repository.findById(new JpaBizCodeId(organizationCode, typeId, code)).orElse(null);
+	public JpaBizCode getBizCode(String companyCode, String typeId, String code) {				
+		return repository.findById(new JpaBizCodeId(companyCode, typeId, code)).orElse(null);
 	}
 	
 	public void saveBizCode(BizCodeDTO.Form dto) {	
-		JpaBizCodeType bizType = this.bizTypeRepository.findById(new JpaBizCodeTypeId(dto.organizationCode(), dto.typeId()))
+		JpaBizCodeType bizType = this.bizTypeRepository.findById(new JpaBizCodeTypeId(dto.companyCode(), dto.typeId()))
 													.orElseThrow(() -> new IllegalArgumentException("업무코드분류는 필수 값입니다."));
-		JpaBizCode entity = this.getBizCode(dto.organizationCode(), dto.typeId(), dto.code());
+		JpaBizCode entity = this.getBizCode(dto.companyCode(), dto.typeId(), dto.code());
 					
 		if (entity == null) {			
 			entity = dto.newEntity(bizType);			
@@ -42,8 +42,8 @@ public class BizCodeService {
 		repository.save(entity);
 	}
 	
-	public void deleteBizCode(String organizationCode, String typeId, String code) {
-		repository.deleteById(new JpaBizCodeId(organizationCode, typeId, code));		
+	public void deleteBizCode(String companyCode, String typeId, String code) {
+		repository.deleteById(new JpaBizCodeId(companyCode, typeId, code));		
 	}
 	
 }

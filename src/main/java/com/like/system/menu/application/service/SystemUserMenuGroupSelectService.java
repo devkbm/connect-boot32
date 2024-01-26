@@ -23,10 +23,10 @@ public class SystemUserMenuGroupSelectService implements SystemUserMenuGroupSele
 	}
 	
 	@Override
-	public List<MenuGroupSaveDTO> select(String organizationCode, String userId) {
-		SystemUserSaveDTO userDTO = userSelectUseCase.selectDTO(organizationCode, userId);
+	public List<MenuGroupSaveDTO> select(String companyCode, String userId) {
+		SystemUserSaveDTO userDTO = userSelectUseCase.selectDTO(companyCode, userId);
 		
-		return this.dbPort.select(organizationCode, userDTO.roleList())
+		return this.dbPort.select(companyCode, userDTO.roleList())
 						  .stream()
 						  .map(e -> MenuGroupSaveDTO.toDTO(e))
 						  .toList();

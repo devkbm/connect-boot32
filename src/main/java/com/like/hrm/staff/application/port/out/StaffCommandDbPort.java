@@ -4,9 +4,9 @@ import com.like.hrm.staff.domain.model.Staff;
 
 public interface StaffCommandDbPort {
 
-	Staff select(String organizationCode, String staffNo);
+	Staff select(String companyCode, String staffNo);
 	
 	void save(Staff entity);
 	
-	void delete(String organizationCode, String staffNo);
+	void delete(String companyCode, String staffNo);
 }

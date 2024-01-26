@@ -31,7 +31,7 @@ public class MenuRoleMappingDbAdapter implements MenuRoleMappingSaveDbPort {
 	@Override
 	public void clear(String orgnizationCode, String menuGroupCode, String roleCode) {
 		this.queryFactory.delete(qMenuRoleMapping)						 						 
-						 .where(qMenuRoleMapping.id.organizationCode.eq(orgnizationCode)
+						 .where(qMenuRoleMapping.id.companyCode.eq(orgnizationCode)
 							   ,qMenuRoleMapping.id.menuGroupCode.eq(menuGroupCode) 
 							   ,qMenuRoleMapping.id.roleCode.eq(roleCode))												
 						 .execute();

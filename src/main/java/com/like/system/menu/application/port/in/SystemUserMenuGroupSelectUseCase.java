@@ -6,5 +6,5 @@ import com.like.system.menu.application.port.dto.MenuGroupSaveDTO;
 
 public interface SystemUserMenuGroupSelectUseCase {
 
-	List<MenuGroupSaveDTO> select(String organizationCode, String userId);
+	List<MenuGroupSaveDTO> select(String companyCode, String userId);
 }

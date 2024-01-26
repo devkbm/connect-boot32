@@ -14,7 +14,7 @@ public record WebResourceSaveDTO(
 		LocalDateTime modifiedDt,
 		String modifiedBy,
 		String clientAppUrl,
-		String organizationCode,
+		String companyCode,
 		@NotEmpty
 		String resourceId,
 		@NotEmpty

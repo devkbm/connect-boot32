@@ -18,7 +18,7 @@ public class BizCodeQueryService {
 		this.repository = repository;
 	}
 	
-	public List<JpaBizCode> getBizCodeAllList(String organizationCode, String typeId) {
-		return this.repository.getBizCodeList(organizationCode, typeId);
+	public List<JpaBizCode> getBizCodeAllList(String companyCode, String typeId) {
+		return this.repository.getBizCodeList(companyCode, typeId);
 	}
 }

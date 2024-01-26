@@ -17,8 +17,8 @@ public class HolidayDeleteService implements HolidayDeleteUseCase {
 	}
 	
 	@Override
-	public void delete(String organizationCode, LocalDate date) {
-		this.port.delete(organizationCode, date);		
+	public void delete(String companyCode, LocalDate date) {
+		this.port.delete(companyCode, date);		
 	}
 
 }

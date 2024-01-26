@@ -50,7 +50,7 @@ public class BoardDTO {
 			LocalDateTime modifiedDt,
 			String modifiedBy,
 			String clientAppUrl,
-			String organizationCode,
+			String companyCode,
 			Long boardId,
 			Long boardParentId,
 			String boardType,

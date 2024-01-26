@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import com.like.hrm.staff.domain.model.Staff;
 
 public record ResponseStaff(			
-		String organizationCode,
+		String companyCode,
 		String staffNo,
 		String name,
 		String nameEng,
@@ -22,7 +22,7 @@ public record ResponseStaff(
 		
 		var name = entity.getName();
 		
-		return new ResponseStaff(entity.getId().getOrganizationCode()
+		return new ResponseStaff(entity.getId().getCompanyCode()
 								,entity.getId().getStaffNo()
 							   	,name.getName()
 							   	,name.getNameEng()

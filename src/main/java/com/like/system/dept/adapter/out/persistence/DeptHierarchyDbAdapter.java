@@ -20,6 +20,6 @@ public class DeptHierarchyDbAdapter implements DeptHierarchySelectPort {
 
 	@Override
 	public List<DeptHierarchyResponse> select(DeptQueryDTO dto) {
-		return this.repository.getDeptHierarchy(dto.organizationCode());
+		return this.repository.getDeptHierarchy(dto.companyCode());
 	}
 }

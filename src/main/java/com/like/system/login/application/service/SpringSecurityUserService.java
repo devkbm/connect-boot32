@@ -24,7 +24,7 @@ public class SpringSecurityUserService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		LoginRequestDTO dto = LoginRequestContext.get();
 		
-		return repository.findById(new SystemUserId(dto.organizationCode(), username))
+		return repository.findById(new SystemUserId(dto.companyCode(), username))
 						 .orElseThrow(() -> new UsernameNotFoundException(username + " is Not Found"));		
 	}
 

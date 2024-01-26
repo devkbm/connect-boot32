@@ -7,7 +7,7 @@ import lombok.Builder;
 
 @Builder(access = AccessLevel.PRIVATE)
 public record HrmCodeTypeSaveDTO(
-		String organizationCode,
+		String companyCode,
 		String clientAppUrl,
 		String typeId,
 		String typeName,			

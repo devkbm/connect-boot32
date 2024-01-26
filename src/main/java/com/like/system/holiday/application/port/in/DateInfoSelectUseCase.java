@@ -6,5 +6,5 @@ import com.like.system.holiday.domain.DateInfoCollection;
 
 public interface DateInfoSelectUseCase {
 
-	DateInfoCollection select(String organizationCode, LocalDate fromDate, LocalDate toDate);
+	DateInfoCollection select(String companyCode, LocalDate fromDate, LocalDate toDate);
 }

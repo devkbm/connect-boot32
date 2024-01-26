@@ -27,8 +27,8 @@ public class MenuSaveService implements MenuSaveUseCase {
 	
 	@Override
 	public void save(MenuSaveDTO dto) {
-		MenuGroup menuGroup = this.menuGroupDbPort.select(dto.organizationCode(), dto.menuGroupCode());
-		Menu parent =  this.menuSelectDbPort.select(dto.organizationCode(), dto.menuGroupCode(), dto.parentMenuCode());
+		MenuGroup menuGroup = this.menuGroupDbPort.select(dto.companyCode(), dto.menuGroupCode());
+		Menu parent =  this.menuSelectDbPort.select(dto.companyCode(), dto.menuGroupCode(), dto.parentMenuCode());
 		
 		this.dbPort.save(dto.newMenu(menuGroup, parent));		
 	}

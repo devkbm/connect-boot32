@@ -11,7 +11,7 @@ import lombok.Builder;
 @Builder(access = AccessLevel.PRIVATE)
 public record StaffDutyResponsibilityDTO(
 		String clientAppUrl,
-		String organizationCode,			
+		String companyCode,			
 		String staffNo,
 		String staffName,
 		Long seq,
@@ -54,7 +54,7 @@ public record StaffDutyResponsibilityDTO(
 		if (entity == null) return null;
 		
 		return StaffDutyResponsibilityDTO.builder()
-				   .organizationCode(entity.getStaff().getId().getOrganizationCode())
+				   .companyCode(entity.getStaff().getId().getCompanyCode())
 				   .staffNo(entity.getStaff().getId().getStaffNo())
 				   .staffName(entity.getStaff().getName().getName())
 				   .seq(entity.getId().getSeq())

@@ -25,10 +25,10 @@ public class StaffImageUploadController {
 
 	@PostMapping("/api/hrm/staff/changeimage")
 	public ResponseEntity<?> changeStaffImage(@RequestPart MultipartFile file
-											 ,String organizationCode
+											 ,String companyCode
 											 ,String staffNo) throws Exception {				
 		
-		String fileName = useCase.upload(organizationCode, staffNo, file);
+		String fileName = useCase.upload(companyCode, staffNo, file);
 							
 		return new ResponseEntity<Map<String,Object>>(setUploadResponseBody(fileName), setUploadResponseHeader(), HttpStatus.OK);
 	}

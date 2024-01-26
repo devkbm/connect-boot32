@@ -22,8 +22,8 @@ public class StaffImageDownloadService implements StaffImageDownloadUseCase {
 	}
 	
 	@Override
-	public HttpServletResponse downloadImageFile(String organizationCode, String staffNo, HttpServletResponse response) throws Exception {
-		Staff entity = this.dbPort.select(organizationCode, staffNo);
+	public HttpServletResponse downloadImageFile(String companyCode, String staffNo, HttpServletResponse response) throws Exception {
+		Staff entity = this.dbPort.select(companyCode, staffNo);
 				
 		downloadUseCase.download(entity.getImagePath(), response);
 		

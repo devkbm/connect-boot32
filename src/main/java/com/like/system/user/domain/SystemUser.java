@@ -80,7 +80,7 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 	Set<SystemUserRole> roles = new LinkedHashSet<>();				
 		
 	@Builder
-	public SystemUser(String organizationCode
+	public SystemUser(String companyCode
 					 ,String staffNo					 
 					 ,String name					 
 					 ,UserPassword password
@@ -88,8 +88,8 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 					 ,String mobileNum
 					 ,String email
 					 ,AccountSpec accountSpec) {		
-		this.id = new SystemUserId(organizationCode, staffNo);
-		this.staffId = new StaffId(organizationCode, staffNo);		
+		this.id = new SystemUserId(companyCode, staffNo);
+		this.staffId = new StaffId(companyCode, staffNo);		
 		this.name = name;
 		this.password = password;
 		this.dept = dept;
@@ -100,13 +100,13 @@ public class SystemUser extends AbstractAuditEntity implements UserDetails {
 	}	
 	
 	@Builder(builderMethodName = "modifyBuilder", buildMethodName = "modify")
-	public void modifyEntity(String organizationCode
+	public void modifyEntity(String companyCode
 							,String staffNo
 			 				,String name					 				
 							,String mobileNum
 							,String email							 
 							,Dept dept					) {
-		this.staffId = new StaffId(organizationCode, staffNo);
+		this.staffId = new StaffId(companyCode, staffNo);
 		this.name = name;						
 		this.mobileNum = mobileNum;
 		this.email = email;		

@@ -12,7 +12,7 @@ import lombok.Builder;
 @Builder(access = AccessLevel.PRIVATE)
 public record StaffSchoolCareerSaveDTO(
 		String clientAppUrl,
-		String organizationCode,			
+		String companyCode,			
 		@NotEmpty String staffNo,
 		String staffName,
 		Long seq,
@@ -63,7 +63,7 @@ public record StaffSchoolCareerSaveDTO(
 		if (entity == null) return null;			
 								
 		return StaffSchoolCareerSaveDTO.builder()
-				   .organizationCode(entity.getStaff().getId().getOrganizationCode())
+				   .companyCode(entity.getStaff().getId().getCompanyCode())
 				   .staffNo(entity.getStaff().getId().getStaffNo())
 				   .staffName(entity.getStaff().getName().getName())
 				   .seq(entity.getId().getSeq())

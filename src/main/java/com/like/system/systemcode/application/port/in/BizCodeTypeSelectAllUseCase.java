@@ -6,5 +6,5 @@ import com.like.system.systemcode.application.port.dto.BizCodeTypeSaveDTO;
 
 public interface BizCodeTypeSelectAllUseCase {
 
-	List<BizCodeTypeSaveDTO> select(String organizationCode);
+	List<BizCodeTypeSaveDTO> select(String companyCode);
 }

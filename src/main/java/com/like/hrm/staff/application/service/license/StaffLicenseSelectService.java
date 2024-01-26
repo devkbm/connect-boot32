@@ -17,8 +17,8 @@ public class StaffLicenseSelectService implements StaffLicenseSelectUseCase {
 	}	
 
 	@Override
-	public StaffLicenseSaveDTO select(String organizationCode, String staffNo, Long seq) {
-		Staff staff = this.dbPort.select(organizationCode, staffNo);
+	public StaffLicenseSaveDTO select(String companyCode, String staffNo, Long seq) {
+		Staff staff = this.dbPort.select(companyCode, staffNo);
 		return StaffLicenseSaveDTO.toDTO(staff.getLicenseList().get(staff, seq));
 	}
 

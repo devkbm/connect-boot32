@@ -60,12 +60,12 @@ public class DutyApplicationController {
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}
 	
-	@GetMapping("/api/hrm/dutyapplication/period/{from}/{to}/{organizationCode}")
+	@GetMapping("/api/hrm/dutyapplication/period/{from}/{to}/{companyCode}")
 	public ResponseEntity<?> getDutyApplicationPeriod(@PathVariable @DateTimeFormat(pattern="yyyyMMdd")LocalDate from
 													 ,@PathVariable @DateTimeFormat(pattern="yyyyMMdd")LocalDate to
-													 ,@PathVariable String organizationCode ) {
+													 ,@PathVariable String companyCode ) {
 						
-		List<DutyApplicationDTO.DutyDate> list = DutyApplicationDTO.DutyDate.convertInitDutyDateList(holidayUtilService.select(organizationCode, from, to));			
+		List<DutyApplicationDTO.DutyDate> list = DutyApplicationDTO.DutyDate.convertInitDutyDateList(holidayUtilService.select(companyCode, from, to));			
 		
 		return toList(list, MessageUtil.getQueryMessage(list.size()));
 	}

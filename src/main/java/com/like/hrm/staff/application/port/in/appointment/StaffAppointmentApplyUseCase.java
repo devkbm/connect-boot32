@@ -1,5 +1,5 @@
 package com.like.hrm.staff.application.port.in.appointment;
 
 public interface StaffAppointmentApplyUseCase {
-	void apply(String organizationCode, String staffNo, Long seq);
+	void apply(String companyCode, String staffNo, Long seq);
 }

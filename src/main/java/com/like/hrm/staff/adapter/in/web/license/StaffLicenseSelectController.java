@@ -22,11 +22,11 @@ public class StaffLicenseSelectController {
 	}	
 	
 	@GetMapping("/api/hrm/staff/{staffId}/license/{id}")
-	public ResponseEntity<?> getLicense(@RequestParam String organizationCode
+	public ResponseEntity<?> getLicense(@RequestParam String companyCode
 									   ,@PathVariable String staffId
 									   ,@PathVariable Long id) {
 		
-		StaffLicenseSaveDTO dto = useCase.select(organizationCode, staffId, id); 
+		StaffLicenseSaveDTO dto = useCase.select(companyCode, staffId, id); 
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}

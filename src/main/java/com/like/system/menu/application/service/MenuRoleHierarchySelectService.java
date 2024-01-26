@@ -19,11 +19,11 @@ public class MenuRoleHierarchySelectService implements MenuRoleHierarchySelectUs
 	
 	@Override
 	public List<MenuRoleMappingHierarchyResponseDTO> select(
-			String organizationCode, 
+			String companyCode, 
 			String menuGroupCode,
 			String roleCode) {
 		
-		return this.dbPort.select(organizationCode, menuGroupCode, roleCode);
+		return this.dbPort.select(companyCode, menuGroupCode, roleCode);
 	}
 
 }

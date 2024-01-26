@@ -24,9 +24,9 @@ public class SystemUserRoleCommandAdapter implements SystemUserRoleCommandDbPort
 	}
 	
 	@Override
-	public List<JpaRole> select(String organizationCode, List<String> roles) {
+	public List<JpaRole> select(String companyCode, List<String> roles) {
 		return roleRepository.findAllById(roles.stream()
-				   			 				   .map(r -> new JpaRoleId(organizationCode, r))
+				   			 				   .map(r -> new JpaRoleId(companyCode, r))
 				   			 				   .toList());
 	}
 

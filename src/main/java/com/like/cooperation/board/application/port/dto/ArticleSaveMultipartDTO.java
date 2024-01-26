@@ -19,7 +19,7 @@ public record ArticleSaveMultipartDTO(
 		LocalDateTime modifiedDt,
 		String modifiedBy,
 		String clientAppUrl,
-		String organizationCode,
+		String companyCode,
 		Long boardId,
 		Long articleId,
 		Long articleParentId,

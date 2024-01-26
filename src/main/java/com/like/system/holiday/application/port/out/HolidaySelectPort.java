@@ -6,7 +6,7 @@ import java.util.List;
 import com.like.system.holiday.domain.Holiday;
 
 public interface HolidaySelectPort {
-	Holiday select(String organizationCode, LocalDate date);
+	Holiday select(String companyCode, LocalDate date);
 	
-	List<Holiday> selectList(String organizationCode, LocalDate fromDate, LocalDate toDate);
+	List<Holiday> selectList(String companyCode, LocalDate fromDate, LocalDate toDate);
 }

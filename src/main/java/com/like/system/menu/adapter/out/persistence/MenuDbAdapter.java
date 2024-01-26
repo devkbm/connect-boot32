@@ -25,9 +25,9 @@ public class MenuDbAdapter implements MenuSelectDbPort, MenuSaveDbPort, MenuDele
 	}
 
 	@Override
-	public Menu select(String organizationCode, String menuGroupCode, String menuCode) {		
+	public Menu select(String companyCode, String menuGroupCode, String menuCode) {		
 						
-		return this.repository.findById(new MenuId(organizationCode, menuGroupCode, menuCode)).orElse(null);
+		return this.repository.findById(new MenuId(companyCode, menuGroupCode, menuCode)).orElse(null);
 	}
 
 	@Override
@@ -42,8 +42,8 @@ public class MenuDbAdapter implements MenuSelectDbPort, MenuSaveDbPort, MenuDele
 	}
 
 	@Override
-	public void delete(String organizationCode, String menuGroupCode, String menuCode) {
-		this.repository.deleteById(new MenuId(organizationCode, menuGroupCode, menuCode));		
+	public void delete(String companyCode, String menuGroupCode, String menuCode) {
+		this.repository.deleteById(new MenuId(companyCode, menuGroupCode, menuCode));		
 	}
 	
 }

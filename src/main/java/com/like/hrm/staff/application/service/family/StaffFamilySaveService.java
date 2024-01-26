@@ -19,7 +19,7 @@ public class StaffFamilySaveService implements StaffFamilySaveUseCase {
 	
 	@Override
 	public void save(StaffFamilySaveDTO dto) {
-		Staff staff = this.dbPort.select(dto.organizationCode(), dto.staffNo());		
+		Staff staff = this.dbPort.select(dto.companyCode(), dto.staffNo());		
 		StaffFamily entity = staff.getFamilyList().get(staff, dto.seq());
 		
 		if (entity == null) {

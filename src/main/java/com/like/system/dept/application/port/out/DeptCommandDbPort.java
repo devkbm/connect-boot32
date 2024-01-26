@@ -6,9 +6,9 @@ import com.like.system.dept.domain.Dept;
 
 public interface DeptCommandDbPort {
 
-	Optional<Dept> select(String organizationCode, String deptCode);
+	Optional<Dept> select(String companyCode, String deptCode);
 	
 	void save(Dept entity);
 	
-	void delete(String organizationCode, String deptCode);
+	void delete(String companyCode, String deptCode);
 }

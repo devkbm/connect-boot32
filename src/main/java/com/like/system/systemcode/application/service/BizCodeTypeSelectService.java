@@ -16,8 +16,8 @@ public class BizCodeTypeSelectService implements BizCodeTypeSelectUseCase {
 	}
 
 	@Override
-	public BizCodeTypeSaveDTO select(String organizationCode, String typeId) {
-		return this.port.selectDTO(organizationCode, typeId);
+	public BizCodeTypeSaveDTO select(String companyCode, String typeId) {
+		return this.port.selectDTO(companyCode, typeId);
 	}
 	
 }

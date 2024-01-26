@@ -21,9 +21,9 @@ public class StaffFormValidController {
 	}
 	
 	@GetMapping("/api/hrm/staff/{staffNo}/valid")
-	public ResponseEntity<?> isStaff(@RequestParam String organizationCode, @PathVariable String staffNo) {
+	public ResponseEntity<?> isStaff(@RequestParam String companyCode, @PathVariable String staffNo) {
 		
-		boolean exist = repository.existsById(new StaffId(organizationCode, staffNo));
+		boolean exist = repository.existsById(new StaffId(companyCode, staffNo));
 					
 		return toOne(exist, exist == true ? "직원정보가 존재합니다." : "직원정보가 존재하지 않습니다.");
 	}

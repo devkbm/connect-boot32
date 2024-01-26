@@ -21,7 +21,7 @@ public class StaffContractSaveService implements StaffContractSaveUseCase {
 
 	@Override
 	public void save(StaffContactSaveDTO dto) {
-		Staff staff = dbPort.select(dto.organizationCode(), dto.staffNo());
+		Staff staff = dbPort.select(dto.companyCode(), dto.staffNo());
 		
 		staff.changeContact(new StaffContact(new Address(dto.homeAddressType(), dto.homePostNumber(), dto.homeMainAddress(), dto.homeSubAddress())
 						   ,new PhoneNumber(dto.extensionNumber())

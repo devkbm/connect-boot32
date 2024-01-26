@@ -17,8 +17,8 @@ public class StaffSchoolCareerSelectService implements StaffSchoolCareerSelectUs
 	}	
 
 	@Override
-	public StaffSchoolCareerSaveDTO select(String organizationCode, String staffNo, Long seq) {
-		Staff staff = dbPort.select(organizationCode, staffNo);
+	public StaffSchoolCareerSaveDTO select(String companyCode, String staffNo, Long seq) {
+		Staff staff = dbPort.select(companyCode, staffNo);
 		
 		return StaffSchoolCareerSaveDTO.toDTO(staff.getSchoolCareerList().get(staff, seq));
 

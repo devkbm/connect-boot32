@@ -15,8 +15,8 @@ public class MenuGroupDeleteService implements MenuGroupDeleteUseCase {
 	}
 	
 	@Override
-	public void delete(String organizationCode, String menuGroupCode) {
-		this.port.delete(organizationCode, menuGroupCode);
+	public void delete(String companyCode, String menuGroupCode) {
+		this.port.delete(companyCode, menuGroupCode);
 	}
 
 }

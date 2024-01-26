@@ -20,7 +20,7 @@ public class StaffAppointmentSaveService implements StaffAppointmentSaveUseCase 
 	@Override
 	public void save(StaffAppointmentRecordDTO dto) {		
 		
-		Staff staff = dbPort.select(dto.organizationCode(), dto.staffNo());		
+		Staff staff = dbPort.select(dto.companyCode(), dto.staffNo());		
 		AppointmentRecord entity = staff.getAppointmentRecordList().get(staff, dto.seq());
 		
 		if (entity == null) {

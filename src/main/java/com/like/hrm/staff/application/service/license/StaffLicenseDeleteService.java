@@ -16,8 +16,8 @@ public class StaffLicenseDeleteService implements StaffLicenseDeleteUseCase {
 	}
 	
 	@Override
-	public void delete(String organizationCode, String staffNo, Long seq) {
-		Staff staff = this.dbPort.select(organizationCode, staffNo);
+	public void delete(String companyCode, String staffNo, Long seq) {
+		Staff staff = this.dbPort.select(companyCode, staffNo);
 		
 		staff.getLicenseList().remove(staff, seq);
 		

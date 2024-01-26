@@ -28,24 +28,24 @@ public class MenuRoleHierarchyDbAdapter implements MenuRoleHierarchySelectDbPort
 	}
 	
 	@Override
-	public List<MenuRoleMappingHierarchyResponseDTO> select(String organizationCode, String menuGroupCode, String roleCode) {
-		List<MenuRoleMappingHierarchyResponseDTO> rootList = this.getMenuRootList(organizationCode, menuGroupCode, roleCode);
+	public List<MenuRoleMappingHierarchyResponseDTO> select(String companyCode, String menuGroupCode, String roleCode) {
+		List<MenuRoleMappingHierarchyResponseDTO> rootList = this.getMenuRootList(companyCode, menuGroupCode, roleCode);
 		
-		return this.getMenuHierarchyDTO(organizationCode, roleCode, rootList);
+		return this.getMenuHierarchyDTO(companyCode, roleCode, rootList);
 	}
 		
-	private List<MenuRoleMappingHierarchyResponseDTO> getMenuRootList(String organizationCode, String menuGroupCode, String roleCode) {			
+	private List<MenuRoleMappingHierarchyResponseDTO> getMenuRootList(String companyCode, String menuGroupCode, String roleCode) {			
 		
 		JPAQuery<MenuRoleMappingHierarchyResponseDTO> query = queryFactory
 				.select(projections(qMenu, qMenuRoleMapping, roleCode))
 				.from(qMenu)
 				.leftJoin(qMenuRoleMapping)
-					.on(qMenu.id.menuGroupId.organizationCode.eq(qMenuRoleMapping.id.organizationCode)
+					.on(qMenu.id.menuGroupId.companyCode.eq(qMenuRoleMapping.id.companyCode)
 					.and(qMenu.id.menuGroupId.menuGroupCode.eq(qMenuRoleMapping.id.menuGroupCode))
 					.and(qMenu.id.menuCode.eq(qMenuRoleMapping.id.menuCode))
 					.and(qMenuRoleMapping.id.roleCode.eq(roleCode))
 					)
-				.where(qMenu.id.menuGroupId.organizationCode.eq(organizationCode)
+				.where(qMenu.id.menuGroupId.companyCode.eq(companyCode)
 					  ,qMenu.id.menuGroupId.menuGroupCode.eq(menuGroupCode)
 					  ,qMenu.parentMenuCode.isNull()
 					  );													
@@ -54,12 +54,12 @@ public class MenuRoleHierarchyDbAdapter implements MenuRoleHierarchySelectDbPort
 	}
 	
 	// TODO 계층 쿼리 테스트해보아야함 1 루트 노드 검색 : getMenuChildrenList 2. 하위노드 검색 : getMenuHierarchyDTO
-	private List<MenuRoleMappingHierarchyResponseDTO> getMenuHierarchyDTO(String organizationCode, String roleCode, List<MenuRoleMappingHierarchyResponseDTO> list) {
+	private List<MenuRoleMappingHierarchyResponseDTO> getMenuHierarchyDTO(String companyCode, String roleCode, List<MenuRoleMappingHierarchyResponseDTO> list) {
 		List<MenuRoleMappingHierarchyResponseDTO> children = null;
 		
 		for ( MenuRoleMappingHierarchyResponseDTO dto : list ) {			
 			
-			children = getMenuChildrenList(organizationCode, dto.getMenuGroupCode(), dto.getKey(), roleCode);
+			children = getMenuChildrenList(companyCode, dto.getMenuGroupCode(), dto.getKey(), roleCode);
 			
 			if (children.isEmpty()) {
 				dto.setIsLeaf(true);
@@ -69,7 +69,7 @@ public class MenuRoleHierarchyDbAdapter implements MenuRoleHierarchySelectDbPort
 				dto.setIsLeaf(false);
 				
 				// 재귀호출
-				getMenuHierarchyDTO(organizationCode, roleCode, children);
+				getMenuHierarchyDTO(companyCode, roleCode, children);
 			}
 						
 		}
@@ -77,18 +77,18 @@ public class MenuRoleHierarchyDbAdapter implements MenuRoleHierarchySelectDbPort
 		return list;
 	}
 	
-	private List<MenuRoleMappingHierarchyResponseDTO> getMenuChildrenList(String organizationCode, String menuGroupCode, String parentMenuCode, String roleCode) {					
+	private List<MenuRoleMappingHierarchyResponseDTO> getMenuChildrenList(String companyCode, String menuGroupCode, String parentMenuCode, String roleCode) {					
 		
 		JPAQuery<MenuRoleMappingHierarchyResponseDTO> query = queryFactory			
 				.select(projections(qMenu, qMenuRoleMapping, roleCode))
 				.from(qMenu)
 				.leftJoin(qMenuRoleMapping)
-					.on(qMenu.id.menuGroupId.organizationCode.eq(qMenuRoleMapping.id.organizationCode)
+					.on(qMenu.id.menuGroupId.companyCode.eq(qMenuRoleMapping.id.companyCode)
 					.and(qMenu.id.menuGroupId.menuGroupCode.eq(qMenuRoleMapping.id.menuGroupCode))
 					.and(qMenu.id.menuCode.eq(qMenuRoleMapping.id.menuCode))						
 					.and(qMenuRoleMapping.id.roleCode.eq(roleCode))
 					)									
-				.where(qMenu.id.menuGroupId.organizationCode.eq(organizationCode)
+				.where(qMenu.id.menuGroupId.companyCode.eq(companyCode)
 					  ,qMenu.id.menuGroupId.menuGroupCode.eq(menuGroupCode)
 				      ,qMenu.parentMenuCode.eq(parentMenuCode)
 				      );
@@ -134,7 +134,7 @@ public class MenuRoleHierarchyDbAdapter implements MenuRoleHierarchySelectDbPort
 			    ExpressionUtils.as(
 			    		JPAExpressions.select(qMenu2.id.count())
 			    					  .from(qMenu2)
-			    					  .where(qMenu2.id.menuGroupId.organizationCode.eq(qMenu.id.menuGroupId.organizationCode)
+			    					  .where(qMenu2.id.menuGroupId.companyCode.eq(qMenu.id.menuGroupId.companyCode)
 			    							,qMenu2.id.menuGroupId.menuGroupCode.eq(qMenu.id.menuGroupId.menuGroupCode)	 
                                 	        ,qMenu2.parentMenuCode.eq(qMenu.id.menuCode)),			    	
                         "menuChildrenCount"),
@@ -142,11 +142,11 @@ public class MenuRoleHierarchyDbAdapter implements MenuRoleHierarchySelectDbPort
 			    		JPAExpressions.select(qMenuRoleMapping3.id.count())
 			    					  .from(qMenu3)
 			    					  .innerJoin(qMenuRoleMapping3)
-			    					  .on(qMenu3.id.menuGroupId.organizationCode.eq(qMenuRoleMapping3.id.organizationCode)
+			    					  .on(qMenu3.id.menuGroupId.companyCode.eq(qMenuRoleMapping3.id.companyCode)
 			    						.and(qMenu3.id.menuGroupId.menuGroupCode.eq(qMenuRoleMapping3.id.menuGroupCode))
 			    						.and(qMenu3.id.menuCode.eq(qMenuRoleMapping3.id.menuCode))						
 			    						.and(qMenuRoleMapping3.id.roleCode.eq(qMenuRoleMapping3.id.roleCode)))
-			    					  .where(qMenu3.id.menuGroupId.organizationCode.eq(qMenu.id.menuGroupId.organizationCode)
+			    					  .where(qMenu3.id.menuGroupId.companyCode.eq(qMenu.id.menuGroupId.companyCode)
 			    							,qMenu3.id.menuGroupId.menuGroupCode.eq(qMenu.id.menuGroupId.menuGroupCode)	 
                                 	        ,qMenu3.parentMenuCode.eq(qMenu.id.menuCode)),			    	
                         "menuRoleChildrenCount")

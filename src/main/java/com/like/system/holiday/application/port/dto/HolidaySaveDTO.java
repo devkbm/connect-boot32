@@ -9,7 +9,7 @@ import lombok.Builder;
 
 @Builder
 public record HolidaySaveDTO(
-		String organizationCode,
+		String companyCode,
 		String clientAppUrl,
 		LocalDate date,
 		String holidayName,			
@@ -18,7 +18,7 @@ public record HolidaySaveDTO(
 	
 	public Holiday newEntity() {	
 		
-		Holiday entity = new Holiday(new HolidayId(organizationCode, date), holidayName, comment);
+		Holiday entity = new Holiday(new HolidayId(companyCode, date), holidayName, comment);
 		
 		entity.setAppUrl(clientAppUrl);
 		
@@ -34,7 +34,7 @@ public record HolidaySaveDTO(
 		
 		return HolidaySaveDTO
 					.builder()
-					.organizationCode(entity.getId().getOrganizationCode())
+					.companyCode(entity.getId().getCompanyCode())
 					.date(entity.getId().getDate())
 					.holidayName(entity.getHolidayName())
 					.comment(entity.getComment())

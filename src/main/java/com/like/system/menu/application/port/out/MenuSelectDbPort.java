@@ -6,7 +6,7 @@ import com.like.system.menu.application.port.dto.MenuQueryDTO;
 import com.like.system.menu.domain.Menu;
 
 public interface MenuSelectDbPort {
-	Menu select(String organizationCode, String menuGroupCode, String menuCode);
+	Menu select(String companyCode, String menuGroupCode, String menuCode);
 	
 	List<Menu> selectList(MenuQueryDTO dto);
 }

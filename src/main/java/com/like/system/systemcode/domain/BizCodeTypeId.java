@@ -7,15 +7,15 @@ import lombok.Getter;
 @Getter
 public class BizCodeTypeId {
 
-	String organizationCode;
+	String companyCode;
 	
 	String typeId;
 	
-	public BizCodeTypeId(String organizationCode, String typeId) {
-		if (!StringUtils.hasText(organizationCode)) throw new IllegalArgumentException("organizationCode는 필수 입력 값입니다.");
+	public BizCodeTypeId(String companyCode, String typeId) {
+		if (!StringUtils.hasText(companyCode)) throw new IllegalArgumentException("companyCode는 필수 입력 값입니다.");
 		if (!StringUtils.hasText(typeId)) throw new IllegalArgumentException("typeId는 필수 입력 값입니다.");
 		
-		this.organizationCode = organizationCode;
+		this.companyCode = companyCode;
 		this.typeId = typeId;
 	}
 }

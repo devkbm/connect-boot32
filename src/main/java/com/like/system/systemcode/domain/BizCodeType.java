@@ -19,8 +19,8 @@ public class BizCodeType {
 	String comment;
 
 	@Builder
-	public BizCodeType(String organizationCode, String typeId, String name, BizTypeEnum bizTypeEnum, String comment) {		
-		this.id = new BizCodeTypeId(organizationCode, typeId);
+	public BizCodeType(String companyCode, String typeId, String name, BizTypeEnum bizTypeEnum, String comment) {		
+		this.id = new BizCodeTypeId(companyCode, typeId);
 		this.name = name;
 		this.bizType = bizTypeEnum;
 		this.comment = comment;

@@ -8,7 +8,7 @@ import lombok.Builder;
 
 @Builder(access = AccessLevel.PRIVATE)
 public record DataDomainSaveDTO(
-		String organizationCode,
+		String companyCode,
 		String clientAppUrl,
 		String domainId,
 		String database,

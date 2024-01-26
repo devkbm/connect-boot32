@@ -24,9 +24,9 @@ public class StaffDutyResponsibilityQueryController {
 	}
 	
 	@GetMapping("/api/hrm/staff/{staffId}/dutyresponsibility")
-	public ResponseEntity<?> getList(@RequestParam String organizationCode, @PathVariable String staffId) {
+	public ResponseEntity<?> getList(@RequestParam String companyCode, @PathVariable String staffId) {
 				
-		List<ResponseStaffDutyResponsibility> list = this.useCase.select(organizationCode, staffId);
+		List<ResponseStaffDutyResponsibility> list = this.useCase.select(companyCode, staffId);
 		
 		return toList(list, MessageUtil.getQueryMessage(list.size()));
 	}

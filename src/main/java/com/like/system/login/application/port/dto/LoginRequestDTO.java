@@ -9,7 +9,7 @@ import lombok.Builder;
 @Builder
 public record LoginRequestDTO(
 		@Size(min=3, max=3, message="조직을 선택해주세요.")
-		String organizationCode,
+		String companyCode,
 		
 		@NotBlank(message="직원번호를 입력해주세요")
 		@Size(min=1, max=20, message="1자 이상 20자 이하의 아이디만 사용 가능합니다")
@@ -23,6 +23,6 @@ public record LoginRequestDTO(
 		) {
 	
 	public String getUsername() {
-		return this.organizationCode + this.staffNo;
+		return this.companyCode + this.staffNo;
 	}
 }

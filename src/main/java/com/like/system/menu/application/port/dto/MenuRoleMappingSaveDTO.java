@@ -14,14 +14,14 @@ public record MenuRoleMappingSaveDTO(
 		LocalDateTime modifiedDt,
 		String modifiedBy,
 		String clientAppUrl,	
-		String organizationCode,
+		String companyCode,
 		String menuGroupCode,
 		String menuCode,
 		String roleCode
 		) {
 
 	public MenuRoleMapping toEntity() {
-		MenuRoleMapping entity = new MenuRoleMapping(new MenuRoleMappingId(organizationCode, menuGroupCode, menuCode, roleCode));
+		MenuRoleMapping entity = new MenuRoleMapping(new MenuRoleMappingId(companyCode, menuGroupCode, menuCode, roleCode));
 		
 		entity.setAppUrl(clientAppUrl);
 		

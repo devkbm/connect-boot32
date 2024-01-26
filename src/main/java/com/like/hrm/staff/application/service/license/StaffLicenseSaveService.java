@@ -19,7 +19,7 @@ public class StaffLicenseSaveService implements StaffLicenseSaveUseCase {
 	
 	@Override
 	public void save(StaffLicenseSaveDTO dto) {
-		Staff staff = this.dbPort.select(dto.organizationCode(), dto.staffNo());		
+		Staff staff = this.dbPort.select(dto.companyCode(), dto.staffNo());		
 		StaffLicense license = staff.getLicenseList().get(staff, dto.seq());
 		
 		if (license == null) {

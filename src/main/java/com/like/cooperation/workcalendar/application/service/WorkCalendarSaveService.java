@@ -52,7 +52,7 @@ public class WorkCalendarSaveService implements WorkCalendarSaveUseCase {
 			WorkCalendar workCalendar = entity;
 			List<SystemUserId> dtoMemberList = dto.memberList()
 												  .stream()
-												  .map(r -> new SystemUserId(dto.organizationCode(), r))
+												  .map(r -> new SystemUserId(dto.companyCode(), r))
 												  .toList();
 			
 			List<WorkCalendarMember> memberList = userSelectUseCase.findUsers(dtoMemberList)

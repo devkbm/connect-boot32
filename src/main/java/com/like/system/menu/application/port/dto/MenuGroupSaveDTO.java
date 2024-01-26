@@ -14,7 +14,7 @@ public record MenuGroupSaveDTO(
 		LocalDateTime modifiedDt,
 		String modifiedBy,	
 		String clientAppUrl,			
-		String organizationCode,
+		String companyCode,
 		String menuGroupCode,		
 		String menuGroupName,
 		String menuGroupUrl,
@@ -23,7 +23,7 @@ public record MenuGroupSaveDTO(
 	
 	public MenuGroup newMenuGroup() {
 		MenuGroup entity = MenuGroup.builder()
-								    .organizationCode(this.organizationCode)
+								    .companyCode(this.companyCode)
 								    .code(this.menuGroupCode)
 								    .name(this.menuGroupName)
 								    .menuGroupUrl(this.menuGroupUrl)
@@ -49,7 +49,7 @@ public record MenuGroupSaveDTO(
 							.createdBy(entity.getCreatedBy() == null ? null : entity.getCreatedBy().getLoggedUser())
 							.modifiedDt(entity.getModifiedDt())
 							.modifiedBy(entity.getModifiedBy() == null ? null : entity.getModifiedBy().getLoggedUser())								
-							.organizationCode(entity.getId().getOrganizationCode())
+							.companyCode(entity.getId().getCompanyCode())
 							//.menuGroupId(entity.getId())
 							.menuGroupCode(entity.getId().getMenuGroupCode())
 							.menuGroupName(entity.getName())

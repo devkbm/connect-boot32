@@ -18,8 +18,8 @@ public class StaffDutyResponsibilitySelectService implements StaffDutyResponsibi
 	}
 
 	@Override
-	public StaffDutyResponsibilityDTO select(String organizationCode, String staffNo, Long seq) {
-		Staff staff = this.dbPort.select(organizationCode, staffNo);		
+	public StaffDutyResponsibilityDTO select(String companyCode, String staffNo, Long seq) {
+		Staff staff = this.dbPort.select(companyCode, staffNo);		
 		StaffDuty entity = staff.getStaffDutyResponsibilityList().get(staff, seq);
 				
 		return StaffDutyResponsibilityDTO.toDTO(entity);

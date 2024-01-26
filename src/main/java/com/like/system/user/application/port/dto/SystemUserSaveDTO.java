@@ -20,7 +20,7 @@ public record SystemUserSaveDTO(
 		String clientAppUrl,
 		String userId,
 		@NotBlank(message="조직코드를 선택해 주세요.")
-		String organizationCode,
+		String companyCode,
 		@NotBlank(message="직원번호를 입력해 주세요.")
 		String staffNo,
 		String name,
@@ -39,7 +39,7 @@ public record SystemUserSaveDTO(
 	public SystemUser newUser(Dept dept) {
 		SystemUser entity = SystemUser.builder()										  
 									  .name(this.name)		
-									  .organizationCode(this.organizationCode)
+									  .companyCode(this.companyCode)
 									  .staffNo(this.staffNo)
 									  .dept(dept)				
 									  .mobileNum(this.mobileNum)
@@ -56,7 +56,7 @@ public record SystemUserSaveDTO(
 	public void modifyUser(SystemUser user, Dept dept) {
 					
 		user.modifyBuilder()			
-			.organizationCode(organizationCode)
+			.companyCode(companyCode)
 			.staffNo(staffNo)
 			.name(name)
 			.mobileNum(mobileNum)
@@ -74,7 +74,7 @@ public record SystemUserSaveDTO(
 		Optional<Dept> dept = Optional.ofNullable(entity.getDept());			
 		
 		SystemUserSaveDTO dto = SystemUserSaveDTO.builder()								
-										   .organizationCode(entity.getStaffId().getOrganizationCode())
+										   .companyCode(entity.getStaffId().getCompanyCode())
 										   .userId(entity.getId().getUserId())
 										   .staffNo(entity.getStaffId().getStaffNo())
 										   .name(entity.getName())												   

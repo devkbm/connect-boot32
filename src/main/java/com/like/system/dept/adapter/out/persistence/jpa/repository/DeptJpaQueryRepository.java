@@ -20,20 +20,20 @@ public class DeptJpaQueryRepository {
 	}
 	
 	
-	public List<DeptHierarchyResponse> getDeptHierarchy(String organizationCode) {
-		List<DeptHierarchyResponse> rootNodeList = this.getDeptRootNodeList(organizationCode);
+	public List<DeptHierarchyResponse> getDeptHierarchy(String companyCode) {
+		List<DeptHierarchyResponse> rootNodeList = this.getDeptRootNodeList(companyCode);
 		
-		List<DeptHierarchyResponse> result = this.addDeptChildNodeList(organizationCode, rootNodeList);
+		List<DeptHierarchyResponse> result = this.addDeptChildNodeList(companyCode, rootNodeList);
 		
 		return result;
 	}
 	
-	private List<DeptHierarchyResponse> addDeptChildNodeList(String organizationCode, List<DeptHierarchyResponse> list) {
+	private List<DeptHierarchyResponse> addDeptChildNodeList(String companyCode, List<DeptHierarchyResponse> list) {
 		List<DeptHierarchyResponse> children = null;
 		
 		for ( DeptHierarchyResponse node : list) {
 			
-			children = getDeptChildNodeList(organizationCode, node.getDeptCode());
+			children = getDeptChildNodeList(companyCode, node.getDeptCode());
 			
 			if (children.isEmpty()) {
 				node.setLeaf(true);
@@ -43,34 +43,34 @@ public class DeptJpaQueryRepository {
 				node.setLeaf(false);
 				
 				// 재귀 호출
-				this.addDeptChildNodeList(organizationCode, children);
+				this.addDeptChildNodeList(companyCode, children);
 			}			
 		}
 		
 		return list;
 	}
 
-	private List<DeptHierarchyResponse> getDeptRootNodeList(String organizationCode) {
+	private List<DeptHierarchyResponse> getDeptRootNodeList(String companyCode) {
 		return queryFactory
 				.select(this.getDeptHierarchy(qDept))				
 				.from(qDept)
-				.where(qDept.id.organizationCode.eq(organizationCode), qDept.isRootNode())
+				.where(qDept.id.companyCode.eq(companyCode), qDept.isRootNode())
 				.orderBy(qDept.seq.asc())				
 				.fetch();
 	}
 	
-	private List<DeptHierarchyResponse> getDeptChildNodeList(String organizationCode, String parentDeptCode) {
+	private List<DeptHierarchyResponse> getDeptChildNodeList(String companyCode, String parentDeptCode) {
 		return queryFactory
 				.select(this.getDeptHierarchy(qDept))
 				.from(qDept)
-				.where(qDept.id.organizationCode.eq(organizationCode), qDept.parentDept.id.deptCode.eq(parentDeptCode))
+				.where(qDept.id.companyCode.eq(companyCode), qDept.parentDept.id.deptCode.eq(parentDeptCode))
 				.orderBy(qDept.seq.asc())
 				.fetch();
 	}
 	
 	private QDeptHierarchyResponse getDeptHierarchy(QDept qDept) {
 		return new QDeptHierarchyResponse(qDept.parentDept.id.deptCode
-										 ,qDept.id.organizationCode										 
+										 ,qDept.id.companyCode										 
 										 ,qDept.id.deptCode
 										 ,qDept.deptNameKorean
 										 ,qDept.deptAbbreviationKorean

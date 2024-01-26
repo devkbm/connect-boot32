@@ -20,8 +20,8 @@ public class StaffSchoolCareerQueryService implements StaffSchoolCareerQueryUseC
 	}
 
 	@Override
-	public List<StaffSchoolCareerSaveDTO> select(String organizationCode, String staffNo) {
-		return this.dbPort.select(organizationCode, staffNo)
+	public List<StaffSchoolCareerSaveDTO> select(String companyCode, String staffNo) {
+		return this.dbPort.select(companyCode, staffNo)
 						  .getSchoolCareerList()
 						  .getStream()
 						  .map(e -> StaffSchoolCareerSaveDTO.toDTO(e))

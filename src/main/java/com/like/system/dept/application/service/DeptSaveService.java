@@ -18,7 +18,7 @@ public class DeptSaveService implements DeptSaveUseCase {
 	
 	@Override
 	public void save(DeptSaveDTO dto) {
-		Dept parent = port.select(dto.organizationCode(), dto.parentDeptCode()).orElse(null);
+		Dept parent = port.select(dto.companyCode(), dto.parentDeptCode()).orElse(null);
 		
 		this.port.save(dto.toEntity(parent));
 	}

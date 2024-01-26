@@ -21,11 +21,11 @@ public class StaffAppointmentSelectController {
 	}	
 	
 	@GetMapping("/api/hrm/staff/{staffId}/appointmentrecord/{id}")
-	public ResponseEntity<?> getAppointmentRecord(@RequestParam String organizationCode
+	public ResponseEntity<?> getAppointmentRecord(@RequestParam String companyCode
 												 ,@PathVariable String staffId
 									  			 ,@PathVariable Long id) {						  							
 				
-		var dto = useCase.select(organizationCode, staffId, id);
+		var dto = useCase.select(companyCode, staffId, id);
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}

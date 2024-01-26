@@ -18,8 +18,8 @@ public class SystemUserRoleId implements Serializable {
 
 	protected SystemUserRoleId() {}
 	
-	public SystemUserRoleId(String organizationCode, String userId, String roleCode) {		
-		this.userId = new SystemUserId(organizationCode, userId);
+	public SystemUserRoleId(String companyCode, String userId, String roleCode) {		
+		this.userId = new SystemUserId(companyCode, userId);
 		this.roleCode = roleCode;
 	}
 
@@ -33,7 +33,7 @@ public class SystemUserRoleId implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(roleCode, userId.organizationCode, userId.userId);
+		return Objects.hash(roleCode, userId.companyCode, userId.userId);
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class SystemUserRoleId implements Serializable {
 			return false;
 		SystemUserRoleId other = (SystemUserRoleId) obj;
 		return Objects.equals(roleCode, other.roleCode) 
-			&& Objects.equals(userId.organizationCode, other.userId.organizationCode) 
+			&& Objects.equals(userId.companyCode, other.userId.companyCode) 
 			&& Objects.equals(userId.userId, other.userId.userId);
 	}
 	

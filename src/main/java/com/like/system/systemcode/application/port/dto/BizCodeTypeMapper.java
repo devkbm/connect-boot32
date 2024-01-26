@@ -6,7 +6,7 @@ import com.like.system.systemcode.domain.BizTypeEnum;
 public class BizCodeTypeMapper {
 
 	public static BizCodeType toEntity(BizCodeTypeSaveDTO dto) {
-		return new BizCodeType(dto.organizationCode()
+		return new BizCodeType(dto.companyCode()
 							  ,dto.typeId()
 							  ,dto.typeName()
 							  ,BizTypeEnum.valueOf(dto.bizType())

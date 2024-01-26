@@ -20,9 +20,9 @@ public class SystemUserPasswordInitController {
 	}
 			
 	@PostMapping("/api/system/user/{userId}/initpassword")
-	public ResponseEntity<?> initializePassword(@RequestParam String organizationCode, @PathVariable String userId) {			
+	public ResponseEntity<?> initializePassword(@RequestParam String companyCode, @PathVariable String userId) {			
 				
-		useCase.initPassword(organizationCode, userId);
+		useCase.initPassword(companyCode, userId);
 								 					
 		return toList(null, "비밀번호가 초기화되었습니다.");
 	}	

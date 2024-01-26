@@ -17,7 +17,7 @@ public class BizCodeTypeDTO {
 
 	public record Search(
 			@NotBlank(message="조직 코드를 선택해주세요.")
-			String organizationCode,
+			String companyCode,
 			String typeId,
 			String typeName,			
 			String bizType
@@ -29,7 +29,7 @@ public class BizCodeTypeDTO {
 			BooleanBuilder builder = new BooleanBuilder();
 			
 			builder
-				.and(eqOrganizationCode(this.organizationCode))
+				.and(eqOrganizationCode(this.companyCode))
 				.and(eqId(this.typeId))
 				.and(likeName(this.typeName))				
 				.and(eqBizType(this.bizType))
@@ -38,8 +38,8 @@ public class BizCodeTypeDTO {
 			return builder;
 		}
 		
-		private BooleanExpression eqOrganizationCode(String organizationCode) {
-			return qType.id.organizationCode.eq(organizationCode);
+		private BooleanExpression eqOrganizationCode(String companyCode) {
+			return qType.id.companyCode.eq(companyCode);
 		}
 		
 		private BooleanExpression eqId(String id) {
@@ -58,7 +58,7 @@ public class BizCodeTypeDTO {
 	@Builder(access = AccessLevel.PRIVATE)
 	public static record Form(
 			String clientAppUrl,
-			String organizationCode,
+			String companyCode,
 			String typeId,			
 			String typeName,			
 			Integer sequence,
@@ -70,7 +70,7 @@ public class BizCodeTypeDTO {
 			if (entity == null) return null;
 			
 			return Form.builder()
-					   .organizationCode(entity.getId().getOrganizationCode())
+					   .companyCode(entity.getId().getCompanyCode())
 					   .typeId(entity.getId().getTypeId())
 					   .typeName(entity.getName())					   
 					   .sequence(entity.getSequence())
@@ -81,7 +81,7 @@ public class BizCodeTypeDTO {
 		}
 
 		public JpaBizCodeType newEntity() {						
-			JpaBizCodeType entity = new JpaBizCodeType(organizationCode, typeId, typeName, JpaBizTypeEnum.valueOf(bizType), comment);
+			JpaBizCodeType entity = new JpaBizCodeType(companyCode, typeId, typeName, JpaBizTypeEnum.valueOf(bizType), comment);
 			entity.setAppUrl(clientAppUrl);
 			
 			return entity;

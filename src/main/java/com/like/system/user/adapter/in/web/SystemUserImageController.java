@@ -33,18 +33,18 @@ public class SystemUserImageController {
 	
 	@GetMapping("/api/system/user/image")
 	public HttpServletResponse downloadUserImage(HttpServletResponse response
-												,@RequestParam String organizationCode
+												,@RequestParam String companyCode
 											    ,@RequestParam String userId) throws Exception {									
 		
-		return imageSelectUseCase.downloadImageFile(organizationCode, userId, response);
+		return imageSelectUseCase.downloadImageFile(companyCode, userId, response);
 	}
 	
 	@PostMapping("/api/system/user/image")
 	public ResponseEntity<?> changeUserImage(@RequestPart MultipartFile file
-											,@RequestParam String organizationCode	
+											,@RequestParam String companyCode	
 											,String userId) throws Exception {				
 												
-		String fileName = imageChangeUseCase.changeImage(organizationCode, userId, file);			
+		String fileName = imageChangeUseCase.changeImage(companyCode, userId, file);			
 							
 		return new ResponseEntity<Map<String,Object>>(setUploadResponseBody(fileName), setUploadResponseHeader(), HttpStatus.OK);
 	}	

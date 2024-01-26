@@ -6,7 +6,7 @@ import com.like.system.menu.application.port.dto.MenuGroupQueryDTO;
 import com.like.system.menu.application.port.dto.MenuGroupSaveDTO;
 
 public interface MenuGroupSelectUseCase {
-	MenuGroupSaveDTO select(String organizationCode, String menuGroupCode);
+	MenuGroupSaveDTO select(String companyCode, String menuGroupCode);
 	
 	List<MenuGroupSaveDTO> selectList(MenuGroupQueryDTO dto);
 }

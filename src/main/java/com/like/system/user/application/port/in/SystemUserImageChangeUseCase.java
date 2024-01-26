@@ -4,5 +4,5 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface SystemUserImageChangeUseCase {
 	
-	String changeImage(String organizationCode, String userId, MultipartFile file);
+	String changeImage(String companyCode, String userId, MultipartFile file);
 }

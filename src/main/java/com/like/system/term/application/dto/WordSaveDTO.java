@@ -7,7 +7,7 @@ import lombok.Builder;
 
 @Builder(access = AccessLevel.PRIVATE)
 public record WordSaveDTO(
-		String organizationCode,
+		String companyCode,
 		String clientAppUrl,
 		String logicalName,
 		String logicalNameEng,
