@@ -7,6 +7,8 @@ import com.like.hrm.staff.application.port.in.StaffSaveUseCase;
 import com.like.hrm.staff.application.port.out.StaffCommandDbPort;
 import com.like.hrm.staff.domain.model.Staff;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class StaffSaveService implements StaffSaveUseCase {
 
@@ -18,7 +20,8 @@ public class StaffSaveService implements StaffSaveUseCase {
 	
 	@Override
 	public void save(StaffSaveDTO dto) {
-		Staff staff = this.dbPort.select(dto.companyCode(), dto.staffNo());
+		Staff staff = this.dbPort.select(dto.companyCode(), dto.staffNo())				
+								 .orElseThrow(() -> new EntityNotFoundException("직원정보가 존재하지 않습니다."));
 		
 		dto.modifyEntity(staff);
 		

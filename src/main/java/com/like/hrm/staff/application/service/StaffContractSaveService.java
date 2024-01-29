@@ -10,6 +10,8 @@ import com.like.hrm.staff.domain.model.StaffContact;
 import com.like.system.core.jpa.vo.Address;
 import com.like.system.core.jpa.vo.PhoneNumber;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class StaffContractSaveService implements StaffContractSaveUseCase {
 
@@ -21,7 +23,8 @@ public class StaffContractSaveService implements StaffContractSaveUseCase {
 
 	@Override
 	public void save(StaffContactSaveDTO dto) {
-		Staff staff = dbPort.select(dto.companyCode(), dto.staffNo());
+		Staff staff = dbPort.select(dto.companyCode(), dto.staffNo())
+							.orElseThrow(() -> new EntityNotFoundException("직원정보가 존재하지 않습니다."));;
 		
 		staff.changeContact(new StaffContact(new Address(dto.homeAddressType(), dto.homePostNumber(), dto.homeMainAddress(), dto.homeSubAddress())
 						   ,new PhoneNumber(dto.extensionNumber())

@@ -8,6 +8,8 @@ import com.like.hrm.staff.application.port.out.StaffCommandDbPort;
 import com.like.hrm.staff.domain.model.Staff;
 import com.like.system.file.application.port.in.FileServerUploadUseCase;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class StaffImageUploadService implements StaffImageUploadUseCase {
 	
@@ -23,7 +25,8 @@ public class StaffImageUploadService implements StaffImageUploadUseCase {
 	@Override
 	public String upload(String companyCode, String staffNo, MultipartFile file) {
 		
-		Staff entity = this.dbPort.select(companyCode, staffNo);
+		Staff entity = this.dbPort.select(companyCode, staffNo)
+								  .orElseThrow(() -> new EntityNotFoundException("직원정보가 존재하지 않습니다."));;
 		
 		if (entity == null) return null;
 		

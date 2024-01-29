@@ -18,7 +18,7 @@ public class StaffContractSelectService implements StaffContractSelectUseCase {
 
 	@Override
 	public StaffContactSaveDTO select(String companyCode, String staffNo) {
-		Staff staff = dbPort.select(companyCode, staffNo);
+		Staff staff = dbPort.select(companyCode, staffNo).orElse(null);
 		
 		return StaffContactSaveDTO.toDTO(staff);
 	}

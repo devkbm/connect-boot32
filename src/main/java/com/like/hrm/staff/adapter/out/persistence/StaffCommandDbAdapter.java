@@ -1,5 +1,7 @@
 package com.like.hrm.staff.adapter.out.persistence;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Repository;
 
 import com.like.hrm.staff.adapter.out.persistence.jpa.repository.StaffJpaRepository;
@@ -17,8 +19,8 @@ public class StaffCommandDbAdapter implements StaffCommandDbPort {
 	}
 	
 	@Override
-	public Staff select(String companyCode, String staffNo) {
-		return this.repository.findById(new StaffId(companyCode, staffNo)).orElse(null);
+	public Optional<Staff> select(String companyCode, String staffNo) {
+		return this.repository.findById(new StaffId(companyCode, staffNo));
 	}
 
 	@Override
