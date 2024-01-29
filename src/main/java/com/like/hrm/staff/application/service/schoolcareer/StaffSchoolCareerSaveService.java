@@ -8,6 +8,8 @@ import com.like.hrm.staff.application.port.out.StaffCommandDbPort;
 import com.like.hrm.staff.domain.model.Staff;
 import com.like.hrm.staff.domain.model.schoolcareer.StaffSchoolCareer;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class StaffSchoolCareerSaveService implements StaffSchoolCareerSaveUseCase {
 
@@ -19,7 +21,8 @@ public class StaffSchoolCareerSaveService implements StaffSchoolCareerSaveUseCas
 	
 	@Override
 	public void save(StaffSchoolCareerSaveDTO dto) {
-		Staff staff = dbPort.select(dto.companyCode(), dto.staffNo());	
+		Staff staff = dbPort.select(dto.companyCode(), dto.staffNo())
+							.orElseThrow(() -> new EntityNotFoundException(dto.staffNo() + " 직원정보가 존재하지 않습니다."));
 		StaffSchoolCareer education = staff.getSchoolCareerList().get(staff, dto.seq());
 		
 		if (education == null) {

@@ -8,6 +8,8 @@ import com.like.hrm.staff.application.port.out.StaffCommandDbPort;
 import com.like.hrm.staff.domain.model.Staff;
 import com.like.hrm.staff.domain.model.dutyresponsibility.StaffDuty;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class StaffDutyResponsibilitySaveService implements StaffDutyResponsibilitySaveUseCase {
 
@@ -19,7 +21,8 @@ public class StaffDutyResponsibilitySaveService implements StaffDutyResponsibili
 	
 	@Override
 	public void save(StaffDutyResponsibilityDTO dto) {
-		Staff staff = this.dbPort.select(dto.companyCode(), dto.staffNo());		
+		Staff staff = this.dbPort.select(dto.companyCode(), dto.staffNo())
+								 .orElseThrow(() -> new EntityNotFoundException(dto.staffNo() + " 직원정보가 존재하지 않습니다."));
 		StaffDuty entity = staff.getStaffDutyResponsibilityList().get(staff, dto.seq());
 		
 		if (entity == null) {

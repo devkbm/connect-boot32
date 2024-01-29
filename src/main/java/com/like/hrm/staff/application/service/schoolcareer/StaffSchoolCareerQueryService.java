@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.like.hrm.staff.application.port.dto.StaffSchoolCareerSaveDTO;
 import com.like.hrm.staff.application.port.in.schoolcareer.StaffSchoolCareerQueryUseCase;
 import com.like.hrm.staff.application.port.out.StaffCommandDbPort;
+import com.like.hrm.staff.domain.model.Staff;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -23,10 +24,12 @@ public class StaffSchoolCareerQueryService implements StaffSchoolCareerQueryUseC
 
 	@Override
 	public List<StaffSchoolCareerSaveDTO> select(String companyCode, String staffNo) {
-		return this.dbPort.select(companyCode, staffNo)
-						  .getSchoolCareerList().orElseThrow(() -> new EntityNotFoundException("직원정보가 존재하지 않습니다."))
-						  .getStream()
-						  .map(e -> StaffSchoolCareerSaveDTO.toDTO(e))
-						  .toList();
+		Staff staff = this.dbPort.select(companyCode, staffNo)
+								 .orElseThrow(() -> new EntityNotFoundException("직원정보가 존재하지 않습니다."));
+		
+		return staff.getSchoolCareerList()						  
+				    .getStream()
+				    .map(e -> StaffSchoolCareerSaveDTO.toDTO(e))
+				    .toList();
 	}
 }
