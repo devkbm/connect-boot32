@@ -12,22 +12,48 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.like.system.core.message.MessageUtil;
 import com.like.system.core.util.SessionUtil;
-import com.like.system.user.application.port.dto.SystemUserSaveDTO;
-import com.like.system.user.application.port.in.SystemUserSelectUseCase;
+import com.like.system.user.application.port.dto.SystemUserProfileDTO;
+import com.like.system.user.application.port.in.SystemUserProfileSelectUseCase;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 public class SystemUserProfileController {		
 				
-	private SystemUserSelectUseCase useCase;
+	private SystemUserProfileSelectUseCase useCase;
 		
-	public SystemUserProfileController(SystemUserSelectUseCase useCase) {
+	public SystemUserProfileController(SystemUserProfileSelectUseCase useCase) {
 		this.useCase = useCase;
 	}
 
 	@GetMapping("/api/system/user/my-profile")
-	public ResponseEntity<?> getUserProfile(@RequestParam String companyCode) throws FileNotFoundException, IOException {																		
+	public ResponseEntity<?> getUserProfile(HttpServletRequest request,
+											HttpSession session,
+											@RequestParam String companyCode) throws FileNotFoundException, IOException {																		
 		
-		SystemUserSaveDTO dto = useCase.selectDTO(companyCode, SessionUtil.getUserId());					
+		SystemUserProfileDTO dto = useCase.select(companyCode, SessionUtil.getUserId(), request);					
+		
+		/*
+		log.info("sessionId={}", session.getId());
+		log.info("maxInactiveInterval={}", session.getMaxInactiveInterval());
+		log.info("creationTime={}", new Date(session.getCreationTime()));
+		log.info("lastAccessTjme={}",new Date(session.getLastAccessedTime()));
+		log.info("isNew={}", session.isNew());
+		
+		String rtn = """
+				sessionId=%s 
+				maxInactiveInterval=%d
+				creationTime=%s
+				lastAccessTjme=%s
+				isNew=%s
+				""".formatted(session.getId()
+							 ,session.getMaxInactiveInterval()
+							 ,new Date(session.getCreationTime())
+							 ,new Date(session.getLastAccessedTime())
+							 ,session.isNew()); 
+		
+		 */
 		
 		return toOne(dto, MessageUtil.getQueryMessage(1));
 	}			
