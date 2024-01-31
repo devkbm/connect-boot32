@@ -1,13 +1,10 @@
 package com.like.system.user.application.port.dto;
 
-import java.util.Date;
 import java.util.Optional;
 
-import com.like.system.core.web.util.WebRequestUtil;
 import com.like.system.dept.domain.Dept;
 import com.like.system.user.domain.SystemUser;
 
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.Builder;
 
 @Builder
@@ -19,12 +16,11 @@ public record SystemUserProfileDTO(
 		String deptCode,
 		String deptName,
 		String mobileNum,
-		String email,
-		String ipAddress,
-		Date lastAccessedTime
+		String email,		
+		SystemUserProfileSessionDTO session
 		) {
 
-	public static SystemUserProfileDTO toDTO(SystemUser entity, HttpServletRequest request) {
+	public static SystemUserProfileDTO toDTO(SystemUser entity, SystemUserProfileSessionDTO session) {
 		
 		Optional<Dept> dept = Optional.ofNullable(entity.getDept());			
 						
@@ -38,8 +34,11 @@ public record SystemUserProfileDTO(
 			    .deptName(dept.map(Dept::getDeptNameKorean).orElse(""))
 			    .mobileNum(entity.getMobileNum())
  			    .email(entity.getEmail())
+ 			    .session(session)
+ 			    /*
  			    .ipAddress(WebRequestUtil.getIpAddress(request))
  			    .lastAccessedTime(new Date(request.getSession().getLastAccessedTime()))
+ 			    */
 				.build();
 	}
 }

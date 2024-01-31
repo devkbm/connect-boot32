@@ -4,6 +4,7 @@ import static com.like.system.core.web.util.ResponseEntityUtil.toOne;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Date;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,11 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.like.system.core.message.MessageUtil;
 import com.like.system.core.util.SessionUtil;
+import com.like.system.core.web.util.WebRequestUtil;
 import com.like.system.user.application.port.dto.SystemUserProfileDTO;
+import com.like.system.user.application.port.dto.SystemUserProfileSessionDTO;
 import com.like.system.user.application.port.in.SystemUserProfileSelectUseCase;
 
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 
 @RestController
 public class SystemUserProfileController {		
@@ -28,12 +30,12 @@ public class SystemUserProfileController {
 	}
 
 	@GetMapping("/api/system/user/my-profile")
-	public ResponseEntity<?> getUserProfile(HttpServletRequest request,
-											HttpSession session,
-											@RequestParam String companyCode) throws FileNotFoundException, IOException {																		
+	public ResponseEntity<?> getUserProfile(HttpServletRequest request, @RequestParam String companyCode) throws FileNotFoundException, IOException {																		
+				
+		SystemUserProfileSessionDTO sessionDTO = new SystemUserProfileSessionDTO(WebRequestUtil.getIpAddress(request), new Date(request.getSession().getLastAccessedTime()));
 		
-		SystemUserProfileDTO dto = useCase.select(companyCode, SessionUtil.getUserId(), request);					
-		
+		SystemUserProfileDTO dto = useCase.select(companyCode, SessionUtil.getUserId(), sessionDTO);					
+						
 		/*
 		log.info("sessionId={}", session.getId());
 		log.info("maxInactiveInterval={}", session.getMaxInactiveInterval());
