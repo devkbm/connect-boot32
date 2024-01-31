@@ -29,13 +29,10 @@ public class AuthenticationTokenSaveAdapter implements AuthenticationTokenSavePo
 	
 	@Override
 	public AuthenticationToken SaveAuthenticationToken(LoginRequestDTO dto, SystemUser systemUser, List<MenuGroupSaveDTO> menuGroupList, HttpServletRequest request) {		
-		String staffNo = dto.staffNo();
-		String password = dto.password();
-		String ipAddress = WebRequestUtil.getIpAddress(request);
-		String sessionId = request.getSession().getId();
+								
+		AuthenticationToken authToken = createAuthToken(systemUser, menuGroupList, request);
 		
-		AuthenticationToken authToken = AuthenticationToken.of(systemUser, menuGroupList, ipAddress, sessionId);
-		UsernamePasswordAuthenticationToken securityToken = new UsernamePasswordAuthenticationToken(staffNo, password, systemUser.getAuthorities());								
+		UsernamePasswordAuthenticationToken securityToken = new UsernamePasswordAuthenticationToken(dto.staffNo(), dto.password(), systemUser.getAuthorities());				
 		securityToken.setDetails(authToken);
 		
 		Authentication authentication = authenticationManager.authenticate(securityToken); 					
@@ -45,5 +42,8 @@ public class AuthenticationTokenSaveAdapter implements AuthenticationTokenSavePo
 		return authToken;
 	}
 
+	private AuthenticationToken createAuthToken(SystemUser systemUser, List<MenuGroupSaveDTO> menuGroupList, HttpServletRequest request) {
+		return AuthenticationToken.of(systemUser, menuGroupList, WebRequestUtil.getIpAddress(request), request.getSession().getId());
+	}
 	
 }
