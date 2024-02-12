@@ -4,43 +4,31 @@ import static com.like.system.core.web.util.ResponseEntityUtil.toList;
 
 import java.util.List;
 
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.like.cooperation.board.application.port.dto.ArticleQueryDTO;
 import com.like.cooperation.board.application.port.dto.ArticleResponseDTO;
-import com.like.cooperation.board.application.service.article.ArticleQueryService;
+import com.like.cooperation.board.application.port.in.article.ArticleQueryByListUseCase;
 import com.like.system.core.message.MessageUtil;
 
 @Controller
-public class ArticleQueryController {
+public class ArticleQueryByListController {
 
-	private ArticleQueryService service;
+	ArticleQueryByListUseCase useCase;
 	
-	public ArticleQueryController(ArticleQueryService service) {
-		this.service = service;		
+	ArticleQueryByListController(ArticleQueryByListUseCase useCase) {
+		this.useCase = useCase;		
 	}
 	
 	@GetMapping("/api/grw/board/article")
 	public ResponseEntity<?> getArticleList(ArticleQueryDTO dto) {
 																			  						
-		List<ArticleResponseDTO> list = service.getList(dto);		
+		List<ArticleResponseDTO> list = useCase.getList(dto);		
 		
 		return toList(list, MessageUtil.getQueryMessage(list.size()));
-	}
-	
-	
-	@GetMapping("/api/grw/board/article_slice")
-	public ResponseEntity<?> getArticleSlice(ArticleQueryDTO dto, Pageable pageable) {
-																			  											
-		Slice<ArticleResponseDTO> list = service.getAritlceSlice(dto, pageable);		//
-		
-		return new ResponseEntity<Slice<ArticleResponseDTO>>(list, HttpStatus.OK);		
-	}
+	}	
 	
 	/*
 	@GetMapping("/api/grw/board/article")
