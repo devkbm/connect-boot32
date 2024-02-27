@@ -6,7 +6,7 @@ import org.springframework.session.jdbc.config.annotation.web.http.EnableJdbcHtt
 
 // maxInactiveIntervalInSeconds : default 1800sec(30 minute)
 @Configuration
-@EnableJdbcHttpSession(maxInactiveIntervalInSeconds = 60)
+@EnableJdbcHttpSession(maxInactiveIntervalInSeconds = 1800)
 public class HttpSessionConfig {
 
 }
