@@ -5,8 +5,8 @@ import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.like.cooperation.board.application.port.dto.ArticleListDTO;
 import com.like.cooperation.board.application.port.dto.ArticleQueryDTO;
-import com.like.cooperation.board.application.port.dto.ArticleResponseDTO;
 import com.like.cooperation.board.application.port.in.article.ArticleQueryBySliceUseCase;
 import com.like.cooperation.board.application.port.out.ArticleQueryBySliceDbPort;
 
@@ -19,9 +19,9 @@ public class ArticleQueryBySliceService implements ArticleQueryBySliceUseCase {
 	ArticleQueryBySliceService(ArticleQueryBySliceDbPort dbPort) {
 		this.dbPort = dbPort;
 	}
-	
+		
 	@Override
-	public Slice<ArticleResponseDTO> getAritlceSlice(ArticleQueryDTO dto, Pageable pageable) { 
+	public Slice<ArticleListDTO> getAritlceSlice(ArticleQueryDTO dto, Pageable pageable) {
 		return this.dbPort.getAritlceSlice(dto, pageable);
 	}
 

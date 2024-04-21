@@ -7,5 +7,5 @@ import com.like.cooperation.board.application.port.dto.ArticleResponseDTO;
 
 public interface ArticleQueryByListUseCase {
 
-	List<ArticleResponseDTO> getList(ArticleQueryDTO dto);	
+	List<ArticleResponseDTO> getList(ArticleQueryDTO dto);		
 }

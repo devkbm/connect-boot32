@@ -7,5 +7,5 @@ import com.like.cooperation.board.application.port.dto.ArticleResponseDTO;
 
 public interface ArticleQueryByListDbPort {
 
-	List<ArticleResponseDTO> getList(ArticleQueryDTO dto);	
+	List<ArticleResponseDTO> getList(ArticleQueryDTO dto);		
 }

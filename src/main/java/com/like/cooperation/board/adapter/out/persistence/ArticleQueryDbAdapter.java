@@ -25,7 +25,6 @@ public class ArticleQueryDbAdapter implements ArticleQueryByListDbPort {
 	
 	@Override
 	public List<ArticleResponseDTO> getList(ArticleQueryDTO dto) {
-
 		
 		return this.repository.findAll(dto.getBooleanBuilder(), Sort.by(Sort.Direction.DESC, "articleId"))
 							  .stream()

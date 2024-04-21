@@ -7,8 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.like.cooperation.board.application.port.dto.ArticleListDTO;
 import com.like.cooperation.board.application.port.dto.ArticleQueryDTO;
-import com.like.cooperation.board.application.port.dto.ArticleResponseDTO;
 import com.like.cooperation.board.application.port.in.article.ArticleQueryBySliceUseCase;
 
 @Controller
@@ -18,13 +18,13 @@ public class ArticleQueryBySliceController {
 	
 	ArticleQueryBySliceController(ArticleQueryBySliceUseCase useCase) {
 		this.useCase = useCase;
-	}
+	}	
 	
 	@GetMapping("/api/grw/board/article_slice")
 	public ResponseEntity<?> getArticleSlice(ArticleQueryDTO dto, Pageable pageable) {
 																			  											
-		Slice<ArticleResponseDTO> list = useCase.getAritlceSlice(dto, pageable);
+		Slice<ArticleListDTO> list = useCase.getAritlceSlice(dto, pageable);
 		
-		return new ResponseEntity<Slice<ArticleResponseDTO>>(list, HttpStatus.OK);		
+		return new ResponseEntity<Slice<ArticleListDTO>>(list, HttpStatus.OK);		
 	}
 }
