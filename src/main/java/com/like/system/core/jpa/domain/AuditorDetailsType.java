@@ -11,8 +11,8 @@ import org.hibernate.usertype.CompositeUserType;
 public class AuditorDetailsType implements CompositeUserType<AuditorDetails> {
 
 	public static class AuditorDetailsMapper {
-		String loggedUser;
-		String hostIp;		   	    
+		String hostIp;
+		String loggedUser;				   	   
 	}
 	
 	@Override
@@ -27,19 +27,19 @@ public class AuditorDetailsType implements CompositeUserType<AuditorDetails> {
 
 	@Override
 	public AuditorDetails instantiate(ValueAccess values, SessionFactoryImplementor sessionFactory) {
-		final String hostIp = values.getValue( 0, String.class );
 		final String loggedUser = values.getValue( 1, String.class );
-		return new AuditorDetails(hostIp, loggedUser);
+		final String hostIp = values.getValue( 0, String.class );		
+		return new AuditorDetails(loggedUser, hostIp);
 	}
 	
 	@Override
 	public Object getPropertyValue(AuditorDetails component, int property) throws HibernateException {
 		switch ( property ) {
-		case 0:
-			return component.getLoggedUser();
-		case 1:
-			return component.getHostIp();
-	}
+			case 1:
+				return component.getLoggedUser();
+			case 0:
+				return component.getHostIp();
+		}
 		return null;
 	}
 
@@ -50,7 +50,7 @@ public class AuditorDetailsType implements CompositeUserType<AuditorDetails> {
 
 	@Override
 	public int hashCode(AuditorDetails x) {
-		return Objects.hash( x.getHostIp(), x.getLoggedUser() );
+		return Objects.hash( x.getLoggedUser(), x.getHostIp() );
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public class AuditorDetailsType implements CompositeUserType<AuditorDetails> {
 
 	@Override
 	public Serializable disassemble(AuditorDetails value) {
-		return new String[] { value.getHostIp(), value.getLoggedUser() };
+		return new String[] { value.getLoggedUser(), value.getHostIp() };
 
 	}
 

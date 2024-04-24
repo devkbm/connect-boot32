@@ -43,8 +43,8 @@ public abstract class AbstractAuditEntity {
 
     @CreatedBy
     @AttributeOverrides({
-        @AttributeOverride(name = "loggedUser", column = @Column(name = "CREATED_USER_ID")),
-        @AttributeOverride(name = "hostIp", column = @Column(name = "CREATED_HOST_IP"))
+    	@AttributeOverride(name = "loggedUser", column = @Column(name = "CREATED_USER_ID")),
+    	@AttributeOverride(name = "hostIp", column = @Column(name = "CREATED_HOST_IP"))    	       
     })    
     @CompositeType(AuditorDetailsType.class)
     AuditorDetails createdBy;
@@ -57,7 +57,7 @@ public abstract class AbstractAuditEntity {
     LocalDateTime modifiedDt;
 
     @LastModifiedBy    
-    @AttributeOverrides({
+    @AttributeOverrides({                
         @AttributeOverride(name = "loggedUser", column = @Column(name = "MODIFIED_USER_ID")),
         @AttributeOverride(name = "hostIp", column = @Column(name = "MODIFIED_HOST_IP"))
     })       
