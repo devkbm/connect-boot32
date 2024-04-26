@@ -11,23 +11,24 @@
 	<select id="getArticleList" parameterType="map" resultType="com.like.cooperation.board.application.port.dto.ArticleListDTO"><![CDATA[
 		SELECT A.BOARD_ID			boardId
 		     , A.ARTICLE_ID			articleId
-		     , (SELECT X.USER_NAME 
-	              FROM COMUSER X 
-	             WHERE X.USER_ID = A.CREATED_USER_ID) writerName	         	         	        
+		     , C.USER_NAME 			writerName
+		     , C.FK_FILE			writerImage	         	         	        
 	         , A.TITLE				title	         
 	         , A.HIT_CNT			hitCount			 	         
 	         , true					editable
 	         , (CASE WHEN B.CNT > 0 THEN true ELSE false END) isAttachedFile
 	         , B.CNT				fileCount											           
 		  FROM GRWARTICLE A
-		     LEFT OUTER JOIN (
+		  	LEFT OUTER JOIN (
 		     	SELECT X.ARTICLE_ID 
 		     	     , COUNT(*) CNT
                   FROM GRWARTICLEFILE X                 
                  GROUP 
                     BY X.ARTICLE_ID
-		      ) B
-		     ON (A.ARTICLE_ID = B.ARTICLE_ID)  
+		    ) B
+		    ON (A.ARTICLE_ID = B.ARTICLE_ID)
+		  	LEFT OUTER JOIN COMUSER C
+		  	ON (A.CREATED_USER_ID = C.USER_ID) 
 		 WHERE 1=1		
            AND A.BOARD_ID = #{data.boardId}
     	]]>          	

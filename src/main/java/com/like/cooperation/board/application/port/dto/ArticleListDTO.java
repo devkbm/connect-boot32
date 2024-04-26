@@ -4,6 +4,7 @@ public record ArticleListDTO(
 	String boardId,
 	String articleId,
 	String writerName,
+	String writerImage,
 	String title,
 	int hitCount,
 	Boolean editable,
