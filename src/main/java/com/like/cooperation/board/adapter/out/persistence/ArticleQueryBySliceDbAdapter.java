@@ -24,8 +24,9 @@ public class ArticleQueryBySliceDbAdapter implements ArticleQueryBySliceDbPort {
 	}
 		
 	@Override
-	public Slice<ArticleListDTO> getAritlceSlice(ArticleQueryDTO dto, Pageable pageable) {
-		Map<String, Object> params = new HashMap<>();	
+	public Slice<ArticleListDTO> getAritlceSlice(String userId, ArticleQueryDTO dto, Pageable pageable) {
+		Map<String, Object> params = new HashMap<>();
+		params.put("userId", userId);
 		params.put("data", dto);
 		//params.put("pageable", pageable );
 		params.put("pagenumber",  pageable.getPageNumber() );

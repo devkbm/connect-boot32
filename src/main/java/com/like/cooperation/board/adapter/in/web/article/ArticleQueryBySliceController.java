@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.like.cooperation.board.application.port.dto.ArticleListDTO;
 import com.like.cooperation.board.application.port.dto.ArticleQueryDTO;
 import com.like.cooperation.board.application.port.in.article.ArticleQueryBySliceUseCase;
+import com.like.system.core.util.SessionUtil;
 
 @Controller
 public class ArticleQueryBySliceController {
@@ -23,7 +24,7 @@ public class ArticleQueryBySliceController {
 	@GetMapping("/api/grw/board/article_slice")
 	public ResponseEntity<?> getArticleSlice(ArticleQueryDTO dto, Pageable pageable) {
 																			  											
-		Slice<ArticleListDTO> list = useCase.getAritlceSlice(dto, pageable);
+		Slice<ArticleListDTO> list = useCase.getAritlceSlice(SessionUtil.getUserId(), dto, pageable);
 		
 		return new ResponseEntity<Slice<ArticleListDTO>>(list, HttpStatus.OK);		
 	}

@@ -21,8 +21,8 @@ public class ArticleQueryBySliceService implements ArticleQueryBySliceUseCase {
 	}
 		
 	@Override
-	public Slice<ArticleListDTO> getAritlceSlice(ArticleQueryDTO dto, Pageable pageable) {
-		return this.dbPort.getAritlceSlice(dto, pageable);
+	public Slice<ArticleListDTO> getAritlceSlice(String userId, ArticleQueryDTO dto, Pageable pageable) {
+		return this.dbPort.getAritlceSlice(userId, dto, pageable);
 	}
 
 	

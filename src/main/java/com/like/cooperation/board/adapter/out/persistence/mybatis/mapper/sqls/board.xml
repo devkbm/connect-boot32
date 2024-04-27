@@ -11,13 +11,18 @@
 	<select id="getArticleList" parameterType="map" resultType="com.like.cooperation.board.application.port.dto.ArticleListDTO"><![CDATA[
 		SELECT A.BOARD_ID			boardId
 		     , A.ARTICLE_ID			articleId
-		     , C.USER_NAME 			writerName
-		     , C.FK_FILE			writerImage	         	         	        
+		     , D.USER_NAME 			writerName
+		     , D.FK_FILE			writerImage	         	         	        
 	         , A.TITLE				title	         
-	         , A.HIT_CNT			hitCount			 	         
-	         , true					editable
+	         , A.HIT_CNT			hitCount	         			 	        
+	         , CASE WHEN A.CREATED_USER_ID = #{userId} THEN true
+	                ELSE false
+	           END					editable
 	         , (CASE WHEN B.CNT > 0 THEN true ELSE false END) isAttachedFile
-	         , B.CNT				fileCount											           
+	         , B.CNT				fileCount
+	         , CASE WHEN C.HIT_CNT > 0 THEN true
+	                ELSE false
+	           END 					isRead 											           
 		  FROM GRWARTICLE A
 		  	LEFT OUTER JOIN (
 		     	SELECT X.ARTICLE_ID 
@@ -27,8 +32,11 @@
                     BY X.ARTICLE_ID
 		    ) B
 		    ON (A.ARTICLE_ID = B.ARTICLE_ID)
-		  	LEFT OUTER JOIN COMUSER C
-		  	ON (A.CREATED_USER_ID = C.USER_ID) 
+		    LEFT OUTER JOIN GRWARTICLECHECK  C
+		    ON (A.ARTICLE_ID = C.ARTICLE_ID
+		    AND C.USER_ID = #{userId})
+		  	LEFT OUTER JOIN COMUSER D
+		  	ON (A.CREATED_USER_ID = D.USER_ID) 
 		 WHERE 1=1		
            AND A.BOARD_ID = #{data.boardId}
     	]]>          	

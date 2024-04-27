@@ -9,6 +9,7 @@ public record ArticleListDTO(
 	int hitCount,
 	Boolean editable,
 	Boolean isAttachedFile,
-    Integer fileCount) {	
+    Integer fileCount,
+    Boolean isRead) {	
 }
 

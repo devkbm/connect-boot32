@@ -8,5 +8,5 @@ import com.like.cooperation.board.application.port.dto.ArticleQueryDTO;
 
 public interface ArticleQueryBySliceDbPort {
 	
-	Slice<ArticleListDTO> getAritlceSlice(ArticleQueryDTO dto, Pageable pageable);
+	Slice<ArticleListDTO> getAritlceSlice(String userId, ArticleQueryDTO dto, Pageable pageable);
 }
