@@ -43,8 +43,8 @@ public abstract class AbstractAuditEntity {
 
     @CreatedBy
     @AttributeOverrides({
-    	@AttributeOverride(name = "loggedUser", column = @Column(name = "CREATED_USER_ID")),
-    	@AttributeOverride(name = "hostIp", column = @Column(name = "CREATED_HOST_IP"))    	       
+    	@AttributeOverride(name = "loggedUser", column = @Column(name = "CREATED_USER_ID", updatable = false)),
+    	@AttributeOverride(name = "hostIp", column = @Column(name = "CREATED_HOST_IP", updatable = false))    	       
     })    
     @CompositeType(AuditorDetailsType.class)
     AuditorDetails createdBy;
