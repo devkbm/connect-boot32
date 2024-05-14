@@ -31,7 +31,13 @@ public class MenuRoleHierarchyDbAdapter implements MenuRoleHierarchySelectDbPort
 	public List<MenuRoleMappingHierarchyResponseDTO> select(String companyCode, String menuGroupCode, String roleCode) {
 		List<MenuRoleMappingHierarchyResponseDTO> rootList = this.getMenuRootList(companyCode, menuGroupCode, roleCode);
 		
-		return this.getMenuHierarchyDTO(companyCode, roleCode, rootList);
+		List<MenuRoleMappingHierarchyResponseDTO> list = this.getMenuHierarchyDTO(companyCode, roleCode, rootList); 
+		
+		for ( MenuRoleMappingHierarchyResponseDTO dto : list ) {
+			MenuRoleHierarchyHalfChecker.setHalfChecked(dto);
+		}
+				
+		return list;
 	}
 		
 	private List<MenuRoleMappingHierarchyResponseDTO> getMenuRootList(String companyCode, String menuGroupCode, String roleCode) {			
@@ -131,6 +137,7 @@ public class MenuRoleHierarchyDbAdapter implements MenuRoleHierarchySelectDbPort
 				qMenu.id.menuGroupId.menuGroupCode,
 				qMenu.id.menuCode,
 				roleCode,
+				// 하위 메뉴 건수
 			    ExpressionUtils.as(
 			    		JPAExpressions.select(qMenu2.id.count())
 			    					  .from(qMenu2)
@@ -138,6 +145,7 @@ public class MenuRoleHierarchyDbAdapter implements MenuRoleHierarchySelectDbPort
 			    							,qMenu2.id.menuGroupId.menuGroupCode.eq(qMenu.id.menuGroupId.menuGroupCode)	 
                                 	        ,qMenu2.parentMenuCode.eq(qMenu.id.menuCode)),			    	
                         "menuChildrenCount"),
+			    // 선택된 하위 메뉴롤 건수
 			    ExpressionUtils.as(
 			    		JPAExpressions.select(qMenuRoleMapping3.id.count())
 			    					  .from(qMenu3)
@@ -145,7 +153,9 @@ public class MenuRoleHierarchyDbAdapter implements MenuRoleHierarchySelectDbPort
 			    					  .on(qMenu3.id.menuGroupId.companyCode.eq(qMenuRoleMapping3.id.companyCode)
 			    						.and(qMenu3.id.menuGroupId.menuGroupCode.eq(qMenuRoleMapping3.id.menuGroupCode))
 			    						.and(qMenu3.id.menuCode.eq(qMenuRoleMapping3.id.menuCode))						
-			    						.and(qMenuRoleMapping3.id.roleCode.eq(qMenuRoleMapping3.id.roleCode)))
+			    						.and(qMenuRoleMapping3.id.roleCode.eq(qMenuRoleMapping3.id.roleCode))
+			    						.and(qMenuRoleMapping3.id.roleCode.eq(qMenuRoleMapping.id.roleCode))
+			    						)
 			    					  .where(qMenu3.id.menuGroupId.companyCode.eq(qMenu.id.menuGroupId.companyCode)
 			    							,qMenu3.id.menuGroupId.menuGroupCode.eq(qMenu.id.menuGroupId.menuGroupCode)	 
                                 	        ,qMenu3.parentMenuCode.eq(qMenu.id.menuCode)),			    	

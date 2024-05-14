@@ -14,31 +14,33 @@ import lombok.NoArgsConstructor;
 public class MenuRoleMappingHierarchyResponseDTO {
 
 	/* NzTreeNodeOptions */
-	String key;
+	public String key;
 	
-	String title;			
+	public String title;			
 					
-	boolean checked;
+	public boolean checked;
 	
-	boolean expanded;
+	public boolean expanded;
 	
-	boolean selected;
+	public boolean selected;
 	
 	@JsonProperty(value="isLeaf")
-	boolean isLeaf;
+	public boolean isLeaf;
 	
-	List<MenuRoleMappingHierarchyResponseDTO> children;
+	public List<MenuRoleMappingHierarchyResponseDTO> children;
 	/* NzTreeNodeOptions */
 	
-	String menuGroupCode;
+	public String menuGroupCode;
 	
-	String menuCode;
+	public String menuCode;
 	
-	String roleCode;
+	public String roleCode;
 	
-	long menuChildrenCount;
+	public long menuChildrenCount;
 	
-	long menuRoleChildrenCount;
+	public long menuRoleChildrenCount;
+	
+	public boolean halfChecked;
 	
 	@QueryProjection
 	public MenuRoleMappingHierarchyResponseDTO(
@@ -55,6 +57,7 @@ public class MenuRoleMappingHierarchyResponseDTO {
 		this.checked = checked;
 		this.expanded = false;
 		this.selected = false;
+		this.halfChecked = false;
 		
 		this.menuGroupCode = menuGroupCode;
 		this.menuCode = menuCode;
@@ -62,12 +65,7 @@ public class MenuRoleMappingHierarchyResponseDTO {
 			
 		this.menuChildrenCount = menuChildrenCount;
 		this.menuRoleChildrenCount = menuRoleChildrenCount;
-		
-		
-		if (menuChildrenCount != menuRoleChildrenCount) {
-			this.checked = false;
-		}
-		
+						
 	}
 	
 	public void setChildren(List<MenuRoleMappingHierarchyResponseDTO> children) {
@@ -76,5 +74,6 @@ public class MenuRoleMappingHierarchyResponseDTO {
 	
 	public void setIsLeaf(boolean isLeaf) {
 		this.isLeaf = isLeaf;
-	}
+	}	
+	
 }
