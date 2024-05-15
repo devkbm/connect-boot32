@@ -11,9 +11,7 @@ public interface CommonCodeQueryRepository {
 
 	List<Code> getCodeList(String parentCodeId);
 	
-	List<Code> getCodeList(Predicate predicate);
-	
-	List<CodeHierarchy> getCodeHierarchyList(CodeDTO.Search dto);
+	List<Code> getCodeList(Predicate predicate);	
 	
 	List<CodeComboDTO> getCodeListByComboBox(String codeGroup);
 }

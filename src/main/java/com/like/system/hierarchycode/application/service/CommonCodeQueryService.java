@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.like.system.hierarchycode.application.port.in.dto.CodeComboDTO;
 import com.like.system.hierarchycode.application.port.in.dto.CodeDTO;
-import com.like.system.hierarchycode.application.port.in.dto.CodeHierarchy;
 import com.like.system.hierarchycode.domain.Code;
 import com.like.system.hierarchycode.domain.CommonCodeQueryRepository;
 
@@ -27,12 +26,7 @@ public class CommonCodeQueryService {
 	
 	public List<Code> getCodeList(CodeDTO.Search searchCondition) {		
 		return codeRepository.getCodeList(searchCondition.getCondition());
-	}
-	
-	public List<CodeHierarchy> getCodeHierarchyList(CodeDTO.Search searchCondition) {		
-		
-		return codeRepository.getCodeHierarchyList(searchCondition);
-	}
+	}	
 	
 	public List<CodeComboDTO> getCodeListByComboBox(String codeGroup) {
 		return codeRepository.getCodeListByComboBox(codeGroup);

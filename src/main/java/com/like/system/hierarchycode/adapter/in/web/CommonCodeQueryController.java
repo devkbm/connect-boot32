@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.like.core.dto.HtmlSelectOptionRecord;
 import com.like.core.message.MessageUtil;
 import com.like.system.hierarchycode.application.port.in.dto.CodeDTO;
-import com.like.system.hierarchycode.application.port.in.dto.CodeHierarchy;
 import com.like.system.hierarchycode.application.service.CommonCodeQueryService;
 import com.like.system.hierarchycode.domain.Code;
 import com.like.system.hierarchycode.domain.SystemType;
@@ -37,15 +36,7 @@ public class CommonCodeQueryController {
 		}
 		
 		return toList(list, MessageUtil.getQueryMessage(list.size()));
-	}
-	
-	@GetMapping("/api/system/codetree") 
-	public ResponseEntity<?> getCodeHierarchyList(@ModelAttribute CodeDTO.Search searchCondition) {
-							
-		List<CodeHierarchy> list = service.getCodeHierarchyList(searchCondition);  						 						
-		
-		return toList(list, MessageUtil.getQueryMessage(list.size()));
-	}
+	}	
 	
 	@GetMapping("/api/system/code") 
 	public ResponseEntity<?> getCodeList(@ModelAttribute CodeDTO.Search searchCondition) {
