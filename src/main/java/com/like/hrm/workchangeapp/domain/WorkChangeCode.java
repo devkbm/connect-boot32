@@ -3,15 +3,14 @@ package com.like.hrm.workchangeapp.domain;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.like.core.jpa.domain.AbstractAuditEntity;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
-import com.like.system.core.jpa.domain.AbstractAuditEntity;
-
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

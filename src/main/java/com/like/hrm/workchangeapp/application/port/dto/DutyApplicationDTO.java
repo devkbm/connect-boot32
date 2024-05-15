@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.like.core.jpa.vo.LocalDatePeriod;
 import com.like.hrm.workchangeapp.domain.QWorkChangeApplication;
 import com.like.hrm.workchangeapp.domain.WorkChangeApplication;
-import com.like.system.core.jpa.vo.LocalDatePeriod;
 import com.like.system.holiday.application.port.in.DateInfoSelectUseCase;
 import com.like.system.holiday.domain.DateInfo;
 import com.like.system.holiday.domain.DateInfoCollection;

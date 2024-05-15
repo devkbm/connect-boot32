@@ -13,13 +13,12 @@ import jakarta.persistence.Table;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import com.like.system.core.jpa.domain.AbstractAuditEntity;
+import com.like.core.jpa.domain.AbstractAuditEntity;
 
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 /**
  * <p>용어사전 엔티티<p/>
@@ -29,7 +28,6 @@ import lombok.ToString;
  *   - 복합단어일 경우 _(under-bar)로 결합 <br>
  */
 @Getter
-@ToString(callSuper=true, includeFieldNames=true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "COMTERM")

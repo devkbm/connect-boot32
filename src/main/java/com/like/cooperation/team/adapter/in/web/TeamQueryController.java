@@ -1,6 +1,6 @@
 package com.like.cooperation.team.adapter.in.web;
 
-import static com.like.system.core.web.util.ResponseEntityUtil.toList;
+import static com.like.core.web.util.ResponseEntityUtil.toList;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import com.like.cooperation.team.application.port.dto.TeamQueryDTO;
 import com.like.cooperation.team.application.port.in.TeamQueryUseCase;
 import com.like.cooperation.team.domain.Team;
 import com.like.cooperation.team.domain.TeamMember;
-import com.like.system.core.message.MessageUtil;
+import com.like.core.message.MessageUtil;
 import com.like.system.user.application.port.dto.SystemUserQueryDTO;
 import com.like.system.user.application.port.dto.SystemUserSaveDTO;
 

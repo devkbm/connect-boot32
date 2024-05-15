@@ -20,17 +20,15 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.like.system.core.jpa.domain.AbstractAuditEntity;
+import com.like.core.jpa.domain.AbstractAuditEntity;
 
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.ToString;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@ToString(callSuper=true, includeFieldNames=true, exclude = {"menuGroup"})
 @JsonIgnoreProperties(value = { "menuGroup" })
 @Entity
 @Getter

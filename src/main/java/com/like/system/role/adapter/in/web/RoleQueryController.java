@@ -1,6 +1,6 @@
 package com.like.system.role.adapter.in.web;
 
-import static com.like.system.core.web.util.ResponseEntityUtil.toList;
+import static com.like.core.web.util.ResponseEntityUtil.toList;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.system.core.message.MessageUtil;
+import com.like.core.message.MessageUtil;
 import com.like.system.role.adapter.out.persistence.jpa.entity.JpaRole;
 import com.like.system.role.application.port.dto.RoleQueryDTO;
 import com.like.system.role.application.port.in.RoleQueryUseCase;

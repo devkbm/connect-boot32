@@ -1,6 +1,6 @@
 package com.like.cooperation.workcalendar.adapter.in.web;
 
-import static com.like.system.core.web.util.ResponseEntityUtil.toList;
+import static com.like.core.web.util.ResponseEntityUtil.toList;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.like.cooperation.workcalendar.application.port.dto.WorkCalendarQueryDTO;
 import com.like.cooperation.workcalendar.application.port.in.WorkCalendarQueryUseCase;
 import com.like.cooperation.workcalendar.domain.WorkCalendar;
-import com.like.system.core.message.MessageUtil;
-import com.like.system.core.util.SessionUtil;
+import com.like.core.message.MessageUtil;
+import com.like.core.util.SessionUtil;
 
 @RestController
 public class WorkCalendarQueryController {

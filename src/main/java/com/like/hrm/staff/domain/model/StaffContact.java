@@ -1,14 +1,13 @@
 package com.like.hrm.staff.domain.model;
 
+import com.like.core.jpa.vo.Address;
+import com.like.core.jpa.vo.PhoneNumber;
+
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
-
-import com.like.system.core.jpa.vo.Address;
-import com.like.system.core.jpa.vo.PhoneNumber;
-
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

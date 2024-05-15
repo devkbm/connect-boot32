@@ -17,17 +17,15 @@ import java.io.Serializable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.util.Assert;
 
-import com.like.system.core.jpa.domain.AbstractAuditEntity;
-import com.like.system.core.jpa.vo.LocalDatePeriod;
+import com.like.core.jpa.domain.AbstractAuditEntity;
+import com.like.core.jpa.vo.LocalDatePeriod;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
-@ToString(callSuper = true, includeFieldNames = true)
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder(builderMethodName = "internalBuilder")

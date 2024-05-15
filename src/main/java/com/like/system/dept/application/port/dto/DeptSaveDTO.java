@@ -8,7 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.lang.Nullable;
 
-import com.like.system.core.jpa.vo.LocalDatePeriod;
+import com.like.core.jpa.vo.LocalDatePeriod;
 import com.like.system.dept.domain.Dept;
 
 import jakarta.validation.constraints.NotEmpty;

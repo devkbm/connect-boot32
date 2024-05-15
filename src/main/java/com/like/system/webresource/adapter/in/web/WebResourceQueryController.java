@@ -1,6 +1,6 @@
 package com.like.system.webresource.adapter.in.web;
 
-import static com.like.system.core.web.util.ResponseEntityUtil.toList;
+import static com.like.core.web.util.ResponseEntityUtil.toList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.system.core.dto.HtmlSelectOptionRecord;
+import com.like.core.dto.HtmlSelectOptionRecord;
 import com.like.system.webresource.application.port.dto.WebResourceQueryDTO;
 import com.like.system.webresource.application.port.dto.WebResourceSaveDTO;
 import com.like.system.webresource.application.port.in.WebResourceQueryUseCase;

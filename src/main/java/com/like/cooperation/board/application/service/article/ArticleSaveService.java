@@ -15,7 +15,7 @@ import com.like.cooperation.board.domain.Article;
 import com.like.cooperation.board.domain.ArticleAttachedFile;
 import com.like.cooperation.board.domain.AttachedFileConverter;
 import com.like.cooperation.board.domain.Board;
-import com.like.system.core.util.SessionUtil;
+import com.like.core.util.SessionUtil;
 import com.like.system.file.application.port.in.FileServerSelectUseCase;
 import com.like.system.file.application.port.in.FileServerUploadUseCase;
 import com.like.system.file.domain.FileInfo;

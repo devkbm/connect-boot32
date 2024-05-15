@@ -1,6 +1,6 @@
 package com.like.hrm.workchangeapp.adapter.in.web;
 
-import static com.like.system.core.web.util.ResponseEntityUtil.toList;
+import static com.like.core.web.util.ResponseEntityUtil.toList;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,9 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.like.core.message.MessageUtil;
 import com.like.hrm.workchangeapp.application.port.dto.WorkChangeCodeDTO;
 import com.like.hrm.workchangeapp.application.service.DutyCodeQueryService;
-import com.like.system.core.message.MessageUtil;
 
 @RestController
 public class DutyCodeQueryController {

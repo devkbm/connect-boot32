@@ -1,6 +1,6 @@
 package com.like.cooperation.board.adapter.in.web.article;
 
-import static com.like.system.core.web.util.ResponseEntityUtil.toList;
+import static com.like.core.web.util.ResponseEntityUtil.toList;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.like.cooperation.board.application.port.dto.ArticleQueryDTO;
 import com.like.cooperation.board.application.port.dto.ArticleResponseDTO;
 import com.like.cooperation.board.application.port.in.article.ArticleQueryByListUseCase;
-import com.like.system.core.message.MessageUtil;
+import com.like.core.message.MessageUtil;
 
 @Controller
 public class ArticleQueryByListController {

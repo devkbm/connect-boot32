@@ -9,13 +9,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import org.hibernate.annotations.Comment;
 import org.hibernate.annotations.Formula;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import com.like.system.core.jpa.domain.AbstractAuditEntity;
+import com.like.core.jpa.domain.AbstractAuditEntity;
 import com.like.system.file.domain.FileInfo;
 
 /**
@@ -26,7 +25,6 @@ import com.like.system.file.domain.FileInfo;
  * [제약조건] <br>
  *   1. <br>
  */
-@ToString
 @Getter
 @Builder
 @AllArgsConstructor

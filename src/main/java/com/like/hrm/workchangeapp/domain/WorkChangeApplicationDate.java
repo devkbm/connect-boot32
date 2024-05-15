@@ -3,13 +3,12 @@ package com.like.hrm.workchangeapp.domain;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import com.like.core.jpa.domain.AbstractAuditEntity;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-
-import com.like.system.core.jpa.domain.AbstractAuditEntity;
-
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

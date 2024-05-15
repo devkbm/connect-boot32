@@ -8,7 +8,7 @@ import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.like.system.core.jpa.domain.AbstractAuditEntity;
+import com.like.core.jpa.domain.AbstractAuditEntity;
 import com.like.system.user.domain.SystemUser;
 
 import lombok.AccessLevel;

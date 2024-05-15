@@ -13,9 +13,7 @@ import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
-@ToString(onlyExplicitlyIncluded = true)
 @Getter
 @EqualsAndHashCode(of = {"companyCode","staffNo","seq"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

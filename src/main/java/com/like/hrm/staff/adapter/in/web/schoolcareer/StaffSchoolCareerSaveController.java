@@ -1,17 +1,17 @@
 package com.like.hrm.staff.adapter.in.web.schoolcareer;
 
-import static com.like.system.core.web.util.ResponseEntityUtil.toOne;
-
 import jakarta.validation.Valid;
+
+import static com.like.core.web.util.ResponseEntityUtil.toOne;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.like.core.message.MessageUtil;
 import com.like.hrm.staff.application.port.dto.StaffSchoolCareerSaveDTO;
 import com.like.hrm.staff.application.port.in.schoolcareer.StaffSchoolCareerSaveUseCase;
-import com.like.system.core.message.MessageUtil;
 
 @RestController
 public class StaffSchoolCareerSaveController {

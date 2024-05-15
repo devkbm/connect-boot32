@@ -1,6 +1,6 @@
 package com.like.hrm.staff.adapter.in.web.schoolcareer;
 
-import static com.like.system.core.web.util.ResponseEntityUtil.toList;
+import static com.like.core.web.util.ResponseEntityUtil.toList;
 
 import java.util.List;
 
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.like.core.message.MessageUtil;
 import com.like.hrm.staff.application.port.dto.StaffSchoolCareerSaveDTO;
 import com.like.hrm.staff.application.port.in.schoolcareer.StaffSchoolCareerQueryUseCase;
-import com.like.system.core.message.MessageUtil;
 
 @RestController
 public class StaffSchoolCareerQueryController {

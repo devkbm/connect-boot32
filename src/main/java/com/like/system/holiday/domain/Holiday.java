@@ -2,13 +2,12 @@ package com.like.system.holiday.domain;
 
 import java.io.Serializable;
 
+import com.like.core.jpa.domain.AbstractAuditEntity;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-
-import com.like.system.core.jpa.domain.AbstractAuditEntity;
-
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

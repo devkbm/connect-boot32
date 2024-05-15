@@ -1,7 +1,7 @@
 package com.like.system.term.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.like.system.core.dto.HtmlSelectOptionable;
+import com.like.core.dto.HtmlSelectOptionable;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum SystemType implements HtmlSelectOptionable {

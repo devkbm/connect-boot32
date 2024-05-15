@@ -1,6 +1,6 @@
 package com.like.system.user.adapter.in.web;
 
-import static com.like.system.core.web.util.ResponseEntityUtil.toOne;
+import static com.like.core.web.util.ResponseEntityUtil.toOne;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.system.core.message.MessageUtil;
-import com.like.system.core.util.SessionUtil;
-import com.like.system.core.web.util.WebRequestUtil;
+import com.like.core.message.MessageUtil;
+import com.like.core.util.SessionUtil;
+import com.like.core.web.util.WebRequestUtil;
 import com.like.system.user.application.port.dto.SystemUserProfileDTO;
 import com.like.system.user.application.port.dto.SystemUserProfileSessionDTO;
 import com.like.system.user.application.port.in.SystemUserProfileSelectUseCase;

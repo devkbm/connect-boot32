@@ -1,7 +1,7 @@
 package com.like.system.hierarchycode.adapter.in.web;
 
-import static com.like.system.core.web.util.ResponseEntityUtil.toList;
-import static com.like.system.core.web.util.ResponseEntityUtil.toOne;
+import static com.like.core.web.util.ResponseEntityUtil.toList;
+import static com.like.core.web.util.ResponseEntityUtil.toOne;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.system.core.message.MessageUtil;
+import com.like.core.message.MessageUtil;
 import com.like.system.hierarchycode.application.port.in.dto.CodeDTO;
 import com.like.system.hierarchycode.application.service.CommonCodeCommandService;
 import com.like.system.hierarchycode.domain.Code;

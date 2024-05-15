@@ -1,6 +1,6 @@
 package com.like.system.term.adapter.in.web;
 
-import static com.like.system.core.web.util.ResponseEntityUtil.toList;
+import static com.like.core.web.util.ResponseEntityUtil.toList;
 
 import java.util.List;
 
@@ -8,9 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.system.core.dto.HtmlSelectOptionRecord;
-import com.like.system.core.dto.HtmlSelectOptionable;
-import com.like.system.core.message.MessageUtil;
+import com.like.core.dto.HtmlSelectOptionRecord;
+import com.like.core.dto.HtmlSelectOptionable;
+import com.like.core.message.MessageUtil;
 import com.like.system.term.application.dto.TermQueryDTO;
 import com.like.system.term.application.dto.TermSaveDTO;
 import com.like.system.term.application.port.in.TermQueryUseCase;

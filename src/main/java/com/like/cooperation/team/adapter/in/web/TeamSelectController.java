@@ -1,6 +1,6 @@
 package com.like.cooperation.team.adapter.in.web;
 
-import static com.like.system.core.web.util.ResponseEntityUtil.toOne;
+import static com.like.core.web.util.ResponseEntityUtil.toOne;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.like.cooperation.team.application.port.dto.TeamSaveDTO;
 import com.like.cooperation.team.application.port.in.TeamSelectUseCase;
-import com.like.system.core.message.MessageUtil;
+import com.like.core.message.MessageUtil;
 
 @RestController
 public class TeamSelectController {

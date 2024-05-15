@@ -1,6 +1,6 @@
 package com.like.hrm.staff.adapter.in.web.appointment;
 
-import static com.like.system.core.web.util.ResponseEntityUtil.toList;
+import static com.like.core.web.util.ResponseEntityUtil.toList;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.like.core.message.MessageUtil;
 import com.like.hrm.staff.application.port.dto.StaffAppointmentRecordDTO;
 import com.like.hrm.staff.application.port.in.appointment.StaffAppointmentQueryUseCase;
-import com.like.system.core.message.MessageUtil;
 
 public class StaffAppointmentQueryController {
 

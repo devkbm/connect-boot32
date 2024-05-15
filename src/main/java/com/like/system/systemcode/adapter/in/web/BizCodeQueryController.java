@@ -1,6 +1,6 @@
 package com.like.system.systemcode.adapter.in.web;
 
-import static com.like.system.core.web.util.ResponseEntityUtil.toList;
+import static com.like.core.web.util.ResponseEntityUtil.toList;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.system.core.message.MessageUtil;
+import com.like.core.message.MessageUtil;
 import com.like.system.systemcode.application.port.dto.BizCodeDTO;
 import com.like.system.systemcode.application.service.BizCodeQueryService;
 

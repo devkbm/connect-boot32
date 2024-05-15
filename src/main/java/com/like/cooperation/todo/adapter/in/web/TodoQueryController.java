@@ -1,6 +1,6 @@
 package com.like.cooperation.todo.adapter.in.web;
 
-import static com.like.system.core.web.util.ResponseEntityUtil.toList;
+import static com.like.core.web.util.ResponseEntityUtil.toList;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.like.cooperation.todo.application.port.dto.TodoSaveDTO;
 import com.like.cooperation.todo.application.port.in.TodoQueryUseCase;
-import com.like.system.core.message.MessageUtil;
+import com.like.core.message.MessageUtil;
 
 @RestController
 public class TodoQueryController {

@@ -13,13 +13,13 @@ import jakarta.persistence.Table;
 import org.hibernate.annotations.Comment;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.like.core.jpa.domain.AbstractAuditEntity;
 import com.like.hrm.staff.domain.model.appointment.AppointmentRecord;
 import com.like.hrm.staff.domain.model.appointment.AppointmentRecordList;
 import com.like.hrm.staff.domain.model.dutyresponsibility.StaffDutyList;
 import com.like.hrm.staff.domain.model.family.StaffFamilyList;
 import com.like.hrm.staff.domain.model.license.StaffLicenseList;
 import com.like.hrm.staff.domain.model.schoolcareer.StaffSchoolCareerList;
-import com.like.system.core.jpa.domain.AbstractAuditEntity;
 
 import lombok.AccessLevel;
 import lombok.Getter;

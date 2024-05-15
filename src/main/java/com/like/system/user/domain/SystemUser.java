@@ -20,7 +20,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.like.system.core.jpa.domain.AbstractAuditEntity;
+import com.like.core.jpa.domain.AbstractAuditEntity;
 import com.like.system.dept.domain.Dept;
 import com.like.system.role.adapter.out.persistence.jpa.entity.JpaRole;
 import com.like.system.user.domain.vo.AccountSpec;
@@ -31,9 +31,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
-@ToString(callSuper=true, includeFieldNames=true)
 @NoArgsConstructor(access=AccessLevel.PROTECTED)
 @Getter
 @Entity

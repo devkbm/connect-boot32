@@ -2,7 +2,7 @@ package com.like.system.role.adapter.out.persistence.jpa.entity;
 
 import java.io.Serializable;
 
-import com.like.system.core.jpa.domain.AbstractAuditEntity;
+import com.like.core.jpa.domain.AbstractAuditEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
@@ -10,9 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
-@ToString(callSuper=true, includeFieldNames=true)
 @NoArgsConstructor(access=AccessLevel.PROTECTED)
 @Entity
 @Table(name = "comrole")

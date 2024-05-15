@@ -1,7 +1,7 @@
 package com.like.hrm.hrmcode.adapter.in.web.hrmcodetype;
 
-import static com.like.system.core.web.util.ResponseEntityUtil.toList;
-import static com.like.system.core.web.util.ResponseEntityUtil.toMap;
+import static com.like.core.web.util.ResponseEntityUtil.toList;
+import static com.like.core.web.util.ResponseEntityUtil.toMap;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.like.hrm.hrmcode.application.port.dto.HrmCodeTypeSaveDTO;
 import com.like.hrm.hrmcode.application.port.in.hrmcodetype.HrmCodeTypeQueryUseCase;
+import com.like.core.message.MessageUtil;
 import com.like.hrm.hrmcode.application.port.dto.HrmCodeTypeQueryDTO;
-import com.like.system.core.message.MessageUtil;
 
 @RestController
 public class HrmCodeTypeQueryContoller {

@@ -12,7 +12,7 @@ import jakarta.persistence.Transient;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import com.like.system.core.jpa.domain.AbstractAuditEntity;
+import com.like.core.jpa.domain.AbstractAuditEntity;
 
 import lombok.AccessLevel;
 import lombok.Getter;

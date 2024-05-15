@@ -18,8 +18,8 @@ import org.hibernate.annotations.Comment;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.like.core.jpa.domain.AbstractAuditEntity;
 import com.like.hrm.staff.domain.model.Staff;
-import com.like.system.core.jpa.domain.AbstractAuditEntity;
 
 import lombok.AccessLevel;
 import lombok.Builder;

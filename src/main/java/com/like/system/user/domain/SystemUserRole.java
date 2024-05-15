@@ -2,7 +2,7 @@ package com.like.system.user.domain;
 
 import org.springframework.security.core.GrantedAuthority;
 
-import com.like.system.core.jpa.domain.AbstractAuditEntity;
+import com.like.core.jpa.domain.AbstractAuditEntity;
 import com.like.system.role.adapter.out.persistence.jpa.entity.JpaRole;
 
 import jakarta.persistence.EmbeddedId;
@@ -15,9 +15,7 @@ import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
-@ToString(callSuper=true, includeFieldNames=true)
 @NoArgsConstructor(access=AccessLevel.PROTECTED)
 @Entity
 @Table(name = "COMUSERROLE")

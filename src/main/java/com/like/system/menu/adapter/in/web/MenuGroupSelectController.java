@@ -1,7 +1,7 @@
 package com.like.system.menu.adapter.in.web;
 
-import static com.like.system.core.web.util.ResponseEntityUtil.toList;
-import static com.like.system.core.web.util.ResponseEntityUtil.toOne;
+import static com.like.core.web.util.ResponseEntityUtil.toList;
+import static com.like.core.web.util.ResponseEntityUtil.toOne;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.system.core.message.MessageUtil;
+import com.like.core.message.MessageUtil;
 import com.like.system.menu.application.port.dto.MenuGroupQueryDTO;
 import com.like.system.menu.application.port.dto.MenuGroupSaveDTO;
 import com.like.system.menu.application.port.in.MenuGroupSelectUseCase;

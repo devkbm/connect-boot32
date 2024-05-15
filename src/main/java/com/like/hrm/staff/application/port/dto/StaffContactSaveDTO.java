@@ -2,10 +2,10 @@ package com.like.hrm.staff.application.port.dto;
 
 import java.util.Optional;
 
+import com.like.core.jpa.vo.Address;
+import com.like.core.jpa.vo.PhoneNumber;
 import com.like.hrm.staff.domain.model.Staff;
 import com.like.hrm.staff.domain.model.StaffContact;
-import com.like.system.core.jpa.vo.Address;
-import com.like.system.core.jpa.vo.PhoneNumber;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AccessLevel;

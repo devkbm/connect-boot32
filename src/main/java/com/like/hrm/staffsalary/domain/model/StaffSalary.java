@@ -13,7 +13,7 @@ import jakarta.persistence.Transient;
 
 import org.hibernate.annotations.Comment;
 
-import com.like.system.core.jpa.domain.AbstractAuditEntity;
+import com.like.core.jpa.domain.AbstractAuditEntity;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

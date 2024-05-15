@@ -1,7 +1,7 @@
 package com.like.hrm.workchangeapp.adapter.in.web;
 
-import static com.like.system.core.web.util.ResponseEntityUtil.toList;
-import static com.like.system.core.web.util.ResponseEntityUtil.toOne;
+import static com.like.core.web.util.ResponseEntityUtil.toList;
+import static com.like.core.web.util.ResponseEntityUtil.toOne;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.like.core.message.MessageUtil;
 import com.like.hrm.workchangeapp.application.port.dto.DutyApplicationDTO;
 import com.like.hrm.workchangeapp.application.service.DutyApplicationCommandService;
 import com.like.hrm.workchangeapp.application.service.DutyApplicationQueryService;
 import com.like.hrm.workchangeapp.domain.WorkChangeApplication;
-import com.like.system.core.message.MessageUtil;
 import com.like.system.holiday.application.port.in.DateInfoSelectUseCase;
 
 @RestController

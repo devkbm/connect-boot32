@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.like.system.core.jpa.vo.LocalDatePeriod;
+import com.like.core.jpa.vo.LocalDatePeriod;
 import com.querydsl.core.annotations.QueryProjection;
 
 import lombok.AllArgsConstructor;

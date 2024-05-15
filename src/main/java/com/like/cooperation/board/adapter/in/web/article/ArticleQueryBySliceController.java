@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.like.cooperation.board.application.port.dto.ArticleListDTO;
 import com.like.cooperation.board.application.port.dto.ArticleQueryDTO;
 import com.like.cooperation.board.application.port.in.article.ArticleQueryBySliceUseCase;
-import com.like.system.core.util.SessionUtil;
+import com.like.core.util.SessionUtil;
 
 @Controller
 public class ArticleQueryBySliceController {

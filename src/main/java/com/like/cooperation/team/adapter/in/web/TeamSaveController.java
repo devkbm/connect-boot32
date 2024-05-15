@@ -1,6 +1,6 @@
 package com.like.cooperation.team.adapter.in.web;
 
-import static com.like.system.core.web.util.ResponseEntityUtil.toList;
+import static com.like.core.web.util.ResponseEntityUtil.toList;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.like.cooperation.team.application.port.dto.TeamSaveDTO;
 import com.like.cooperation.team.application.port.in.TeamSaveUseCase;
-import com.like.system.core.message.MessageUtil;
+import com.like.core.message.MessageUtil;
 
 import jakarta.validation.Valid;
 

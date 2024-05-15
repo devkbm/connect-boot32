@@ -1,13 +1,12 @@
 package com.like.hrm.hrmcode.domain;
 
+import com.like.core.jpa.domain.AbstractAuditEntity;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-
-import com.like.system.core.jpa.domain.AbstractAuditEntity;
-
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

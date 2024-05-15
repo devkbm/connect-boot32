@@ -1,7 +1,7 @@
 package com.like.cooperation.survey.surveyform.web;
 
-import static com.like.system.core.web.util.ResponseEntityUtil.toList;
-import static com.like.system.core.web.util.ResponseEntityUtil.toOne;
+import static com.like.core.web.util.ResponseEntityUtil.toList;
+import static com.like.core.web.util.ResponseEntityUtil.toOne;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ import com.like.cooperation.survey.surveyform.domain.SurveyForm;
 import com.like.cooperation.survey.surveyform.domain.SurveyItem;
 import com.like.cooperation.survey.surveyform.service.SurveyQueryService;
 import com.like.cooperation.survey.surveyform.service.SurveyService;
-import com.like.system.core.message.MessageUtil;
+import com.like.core.message.MessageUtil;
 
 @RestController
 public class SurveyController {

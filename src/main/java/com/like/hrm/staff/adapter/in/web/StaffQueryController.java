@@ -1,7 +1,7 @@
 package com.like.hrm.staff.adapter.in.web;
 
-import static com.like.system.core.web.util.ResponseEntityUtil.toList;
-import static com.like.system.core.web.util.ResponseEntityUtil.toOne;
+import static com.like.core.web.util.ResponseEntityUtil.toList;
+import static com.like.core.web.util.ResponseEntityUtil.toOne;
 
 import java.util.List;
 
@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.like.core.message.MessageUtil;
 import com.like.hrm.staff.application.port.dto.ResponseStaff;
 import com.like.hrm.staff.application.port.dto.ResponseStaffCurrentAppointment;
 import com.like.hrm.staff.application.port.dto.StaffQueryConditionDTO;
 import com.like.hrm.staff.application.service.StaffQueryService;
-import com.like.system.core.message.MessageUtil;
 
 @RestController
 public class StaffQueryController {
