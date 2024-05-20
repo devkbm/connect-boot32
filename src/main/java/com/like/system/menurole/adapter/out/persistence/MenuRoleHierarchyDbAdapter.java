@@ -5,9 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.like.system.menu.domain.QMenu;
-import com.like.system.menurole.application.port.dto.QMenuRoleMappingHierarchyResponseDTO;
+
 import com.like.system.menurole.domain.QMenuRoleMapping;
-import com.like.system.menurole.application.port.dto.MenuRoleMappingHierarchyResponseDTO;
+import com.like.system.menurole.dto.MenuRoleMappingHierarchyResponseDTO;
+import com.like.system.menurole.dto.QMenuRoleMappingHierarchyResponseDTO;
 import com.like.system.menurole.application.port.out.MenuRoleHierarchySelectDbPort;
 import com.querydsl.core.types.Expression;
 import com.querydsl.core.types.ExpressionUtils;

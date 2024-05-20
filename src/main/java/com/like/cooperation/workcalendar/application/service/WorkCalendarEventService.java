@@ -5,9 +5,9 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.like.cooperation.workcalendar.domain.WorkCalendarEvent;
+import com.like.cooperation.workcalendar.dto.WorkCalendarEventSaveDTO;
 import com.like.cooperation.workcalendar.adapter.out.persistence.jparepository.WorkCalendarEventJpaRepository;
 import com.like.cooperation.workcalendar.adapter.out.persistence.jparepository.WorkCalendarJpaRepository;
-import com.like.cooperation.workcalendar.application.port.dto.WorkCalendarEventSaveDTO;
 import com.like.cooperation.workcalendar.domain.WorkCalendar;
 
 @Service

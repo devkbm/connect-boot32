@@ -2,11 +2,11 @@ package com.like.hrm.staff.application.service.family;
 
 import org.springframework.stereotype.Service;
 
-import com.like.hrm.staff.application.port.dto.StaffFamilySaveDTO;
 import com.like.hrm.staff.application.port.in.family.StaffFamilySaveUseCase;
 import com.like.hrm.staff.application.port.out.StaffCommandDbPort;
 import com.like.hrm.staff.domain.model.Staff;
 import com.like.hrm.staff.domain.model.family.StaffFamily;
+import com.like.hrm.staff.dto.StaffFamilySaveDTO;
 
 import jakarta.persistence.EntityNotFoundException;
 

@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.like.system.menu.application.port.dto.MenuHierarchyResponseDTO;
-import com.like.system.menu.application.port.dto.QMenuHierarchyResponseDTO;
 import com.like.system.menu.domain.QMenu;
+import com.like.system.menu.dto.MenuHierarchyResponseDTO;
+import com.like.system.menu.dto.QMenuHierarchyResponseDTO;
 import com.like.system.menurole.application.port.out.SystemUserMenuHierarchySelectDbPort;
 import com.like.system.menurole.domain.QMenuRoleMapping;
 import com.querydsl.jpa.impl.JPAQuery;

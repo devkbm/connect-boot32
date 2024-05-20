@@ -2,8 +2,8 @@ package com.like.system.login.application.port.out;
 
 import java.util.List;
 
-import com.like.system.login.application.port.dto.LoginRequestDTO;
-import com.like.system.menu.application.port.dto.MenuGroupSaveDTO;
+import com.like.system.login.dto.LoginRequestDTO;
+import com.like.system.menu.dto.MenuGroupSaveDTO;
 import com.like.system.permission.domain.AuthenticationToken;
 import com.like.system.user.domain.SystemUser;
 

@@ -1,6 +1,6 @@
 package com.like.hrm.staff.application.port.in;
 
-import com.like.hrm.staff.application.port.dto.StaffContactSaveDTO;
+import com.like.hrm.staff.dto.StaffContactSaveDTO;
 
 public interface StaffContractSaveUseCase {
 

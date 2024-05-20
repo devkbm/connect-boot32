@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.system.menu.application.port.dto.MenuGroupSaveDTO;
+import com.like.system.menu.dto.MenuGroupSaveDTO;
 import com.like.system.menurole.application.port.in.SystemUserMenuGroupSelectUseCase;
 import com.like.system.permission.application.port.in.AuthenticationTokenSelectUseCase;
 import com.like.system.permission.domain.AuthenticationToken;

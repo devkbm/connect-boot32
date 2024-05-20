@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.hrm.staff.application.port.dto.StaffLicenseSaveDTO;
 import com.like.hrm.staff.application.port.in.license.StaffLicenseQueryUseCase;
 import com.like.hrm.staff.application.port.out.StaffCommandDbPort;
 import com.like.hrm.staff.domain.model.Staff;
+import com.like.hrm.staff.dto.StaffLicenseSaveDTO;
 
 import jakarta.persistence.EntityNotFoundException;
 

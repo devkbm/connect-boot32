@@ -2,9 +2,9 @@ package com.like.system.systemcode.application.service;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.systemcode.application.port.dto.BizCodeTypeSaveDTO;
 import com.like.system.systemcode.application.port.in.BizCodeTypeSelectUseCase;
 import com.like.system.systemcode.application.port.out.BizCodeTypeSelectPort;
+import com.like.system.systemcode.dto.BizCodeTypeSaveDTO;
 
 @Service
 public class BizCodeTypeSelectService implements BizCodeTypeSelectUseCase {

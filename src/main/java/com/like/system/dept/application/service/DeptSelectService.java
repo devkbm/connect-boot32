@@ -2,10 +2,10 @@ package com.like.system.dept.application.service;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.dept.application.port.dto.DeptSaveDTO;
 import com.like.system.dept.application.port.in.DeptSelectUseCase;
 import com.like.system.dept.application.port.out.DeptCommandDbPort;
 import com.like.system.dept.domain.Dept;
+import com.like.system.dept.dto.DeptSaveDTO;
 
 @Service
 public class DeptSelectService implements DeptSelectUseCase {

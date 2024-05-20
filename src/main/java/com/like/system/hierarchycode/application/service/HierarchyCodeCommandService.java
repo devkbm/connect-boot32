@@ -3,10 +3,10 @@ package com.like.system.hierarchycode.application.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.system.hierarchycode.application.dto.HierarchySaveDTO;
 import com.like.system.hierarchycode.domain.Code;
 import com.like.system.hierarchycode.domain.CodeId;
 import com.like.system.hierarchycode.domain.CommonCodeRepository;
+import com.like.system.hierarchycode.dto.HierarchySaveDTO;
 
 @Service
 @Transactional

@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.like.system.role.adapter.out.persistence.jpa.entity.JpaRole;
-import com.like.system.role.application.port.dto.RoleQueryDTO;
 import com.like.system.role.application.port.in.RoleQueryUseCase;
 import com.like.system.role.application.port.out.RoleQueryDbPort;
+import com.like.system.role.dto.RoleQueryDTO;
 
 @Transactional(readOnly = true)
 @Service

@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.hrm.workchangeapp.application.port.dto.WorkChangeCodeDTO;
 import com.like.hrm.workchangeapp.application.service.DutyCodeCommandService;
 import com.like.hrm.workchangeapp.domain.WorkChangeCode;
+import com.like.hrm.workchangeapp.dto.WorkChangeCodeDTO;
 
 @RestController
 public class DutyCodeController {

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
 import com.like.system.role.adapter.out.persistence.jpa.entity.JpaRole;
-import com.like.system.role.application.port.dto.RoleQueryDTO;
 import com.like.system.role.application.port.in.RoleQueryUseCase;
+import com.like.system.role.dto.RoleQueryDTO;
 
 @RestController
 public class RoleQueryController {

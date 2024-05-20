@@ -2,11 +2,11 @@ package com.like.cooperation.board.application.service.article;
 
 import org.springframework.stereotype.Service;
 
-import com.like.cooperation.board.application.port.dto.ArticleResponseDTO;
 import com.like.cooperation.board.application.port.in.article.ArticleSelectUseCase;
 import com.like.cooperation.board.application.port.out.ArticleCommandDbPort;
 import com.like.cooperation.board.application.port.out.ArticleUserHitCountDbPort;
 import com.like.cooperation.board.domain.Article;
+import com.like.cooperation.board.dto.ArticleResponseDTO;
 
 @Service
 public class ArticleSelectService implements ArticleSelectUseCase {

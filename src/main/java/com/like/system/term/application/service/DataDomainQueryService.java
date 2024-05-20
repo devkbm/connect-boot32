@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.term.application.dto.DataDomainSaveDTO;
 import com.like.system.term.application.port.in.DataDomainQueryUseCase;
 import com.like.system.term.application.port.out.DataDomainQueryDbPort;
+import com.like.system.term.dto.DataDomainSaveDTO;
 
 @Service
 public class DataDomainQueryService implements DataDomainQueryUseCase {

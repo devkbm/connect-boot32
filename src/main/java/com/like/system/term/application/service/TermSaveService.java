@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.system.term.application.dto.TermSaveDTO;
 import com.like.system.term.application.port.in.TermSaveUseCase;
 import com.like.system.term.application.port.out.DataDomainCommandDbPort;
 import com.like.system.term.application.port.out.TermCommandDbPort;
@@ -14,6 +13,7 @@ import com.like.system.term.application.port.out.WordCommandDbPort;
 import com.like.system.term.domain.DataDomainDictionary;
 import com.like.system.term.domain.TermDictionary;
 import com.like.system.term.domain.WordDictionary;
+import com.like.system.term.dto.TermSaveDTO;
 
 @Transactional
 @Service

@@ -3,9 +3,9 @@ package com.like.system.term.application.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.system.term.application.dto.WordSaveDTO;
 import com.like.system.term.application.port.in.WordSaveUseCase;
 import com.like.system.term.application.port.out.WordCommandDbPort;
+import com.like.system.term.dto.WordSaveDTO;
 
 @Transactional
 @Service

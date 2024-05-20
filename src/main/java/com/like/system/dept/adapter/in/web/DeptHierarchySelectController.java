@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.system.dept.application.port.dto.DeptHierarchyResponse;
-import com.like.system.dept.application.port.dto.DeptQueryDTO;
 import com.like.system.dept.application.port.in.DeptHierarchySelectUseCase;
+import com.like.system.dept.dto.DeptHierarchyResponse;
+import com.like.system.dept.dto.DeptQueryDTO;
 
 
 @RestController

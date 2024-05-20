@@ -6,8 +6,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.cooperation.board.application.port.dto.ArticleSaveDTO;
-import com.like.cooperation.board.application.port.dto.ArticleSaveMultipartDTO;
 import com.like.cooperation.board.application.port.in.article.ArticleSaveUseCase;
 import com.like.cooperation.board.application.port.out.ArticleCommandDbPort;
 import com.like.cooperation.board.application.port.out.BoardCommandDbPort;
@@ -15,6 +13,8 @@ import com.like.cooperation.board.domain.Article;
 import com.like.cooperation.board.domain.ArticleAttachedFile;
 import com.like.cooperation.board.domain.AttachedFileConverter;
 import com.like.cooperation.board.domain.Board;
+import com.like.cooperation.board.dto.ArticleSaveDTO;
+import com.like.cooperation.board.dto.ArticleSaveMultipartDTO;
 import com.like.core.util.SessionUtil;
 import com.like.system.file.application.port.in.FileServerSelectUseCase;
 import com.like.system.file.application.port.in.FileServerUploadUseCase;

@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import com.like.system.hierarchycode.application.dto.CodeHierarchy;
-import com.like.system.hierarchycode.application.dto.HierarchyCodeQueryDTO;
 import com.like.system.hierarchycode.domain.HierarchyCodeSelectRepository;
+import com.like.system.hierarchycode.dto.CodeHierarchy;
+import com.like.system.hierarchycode.dto.HierarchyCodeQueryDTO;
 
 
 @Transactional(readOnly=true)

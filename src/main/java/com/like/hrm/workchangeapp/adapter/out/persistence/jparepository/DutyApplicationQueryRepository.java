@@ -3,9 +3,9 @@ package com.like.hrm.workchangeapp.adapter.out.persistence.jparepository;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.like.hrm.workchangeapp.application.port.dto.DutyApplicationDTO;
 import com.like.hrm.workchangeapp.domain.WorkChangeApplication;
 import com.like.hrm.workchangeapp.domain.WorkChangeCode;
+import com.like.hrm.workchangeapp.dto.DutyApplicationDTO;
 
 public interface DutyApplicationQueryRepository {
 

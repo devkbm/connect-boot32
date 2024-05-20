@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.like.hrm.workchangeapp.adapter.out.persistence.jparepository.DutyApplicationRepository;
-import com.like.hrm.workchangeapp.application.port.dto.DutyApplicationDTO;
 import com.like.hrm.workchangeapp.domain.WorkChangeApplication;
+import com.like.hrm.workchangeapp.dto.DutyApplicationDTO;
 import com.like.system.holiday.domain.DateInfo;
 
 @Service

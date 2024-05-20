@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.cooperation.board.application.port.dto.ArticleQueryDTO;
-import com.like.cooperation.board.application.port.dto.ArticleResponseDTO;
 import com.like.cooperation.board.application.port.in.article.ArticleQueryByListUseCase;
 import com.like.cooperation.board.application.port.out.ArticleQueryByListDbPort;
+import com.like.cooperation.board.dto.ArticleQueryDTO;
+import com.like.cooperation.board.dto.ArticleResponseDTO;
 
 @Transactional(readOnly = true)
 @Service

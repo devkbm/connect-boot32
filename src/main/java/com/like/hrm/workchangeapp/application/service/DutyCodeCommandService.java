@@ -4,8 +4,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.like.hrm.workchangeapp.adapter.out.persistence.jparepository.WorkChangeCodeRepository;
-import com.like.hrm.workchangeapp.application.port.dto.WorkChangeCodeDTO;
 import com.like.hrm.workchangeapp.domain.WorkChangeCode;
+import com.like.hrm.workchangeapp.dto.WorkChangeCodeDTO;
 
 @Service
 @Transactional

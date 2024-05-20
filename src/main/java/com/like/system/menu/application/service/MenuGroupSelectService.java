@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.menu.application.port.dto.MenuGroupQueryDTO;
-import com.like.system.menu.application.port.dto.MenuGroupSaveDTO;
 import com.like.system.menu.application.port.in.MenuGroupSelectUseCase;
 import com.like.system.menu.application.port.out.MenuGroupSelectDbPort;
+import com.like.system.menu.dto.MenuGroupQueryDTO;
+import com.like.system.menu.dto.MenuGroupSaveDTO;
 
 @Service
 public class MenuGroupSelectService implements MenuGroupSelectUseCase {

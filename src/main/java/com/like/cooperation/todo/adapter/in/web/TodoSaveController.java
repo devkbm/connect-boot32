@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.cooperation.todo.application.port.dto.TodoSaveDTO;
 import com.like.cooperation.todo.application.port.in.TodoSaveUseCase;
+import com.like.cooperation.todo.dto.TodoSaveDTO;
 import com.like.core.message.MessageUtil;
 
 import jakarta.validation.Valid;

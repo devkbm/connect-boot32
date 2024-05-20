@@ -3,10 +3,10 @@ package com.like.system.role.application.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.system.role.application.port.dto.RoleSaveDTO;
 import com.like.system.role.application.port.in.RoleSaveUseCase;
 import com.like.system.role.application.port.out.RoleCommandDbPort;
 import com.like.system.role.domain.Role;
+import com.like.system.role.dto.RoleSaveDTO;
 
 @Transactional
 @Service

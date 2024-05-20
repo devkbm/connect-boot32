@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.system.dept.application.port.dto.DeptQueryDTO;
-import com.like.system.dept.application.port.dto.DeptSaveDTO;
 import com.like.system.dept.application.port.in.DeptQueryUseCase;
 import com.like.system.dept.application.port.out.DeptQueryDbPort;
+import com.like.system.dept.dto.DeptQueryDTO;
+import com.like.system.dept.dto.DeptSaveDTO;
 
 @Transactional(readOnly = true)
 @Service

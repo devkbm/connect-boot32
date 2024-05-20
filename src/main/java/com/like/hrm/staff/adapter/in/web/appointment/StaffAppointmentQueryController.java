@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.like.core.message.MessageUtil;
-import com.like.hrm.staff.application.port.dto.StaffAppointmentRecordDTO;
 import com.like.hrm.staff.application.port.in.appointment.StaffAppointmentQueryUseCase;
+import com.like.hrm.staff.dto.StaffAppointmentRecordDTO;
 
 public class StaffAppointmentQueryController {
 

@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.like.hrm.workchangeapp.application.port.dto.DutyApplicationDTO;
 import com.like.hrm.workchangeapp.domain.WorkChangeApplication;
 import com.like.hrm.workchangeapp.domain.WorkChangeCode;
+import com.like.hrm.workchangeapp.dto.DutyApplicationDTO;
 import com.like.hrm.workchangeapp.domain.QWorkChangeApplication;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 

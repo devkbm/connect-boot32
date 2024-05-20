@@ -6,13 +6,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.like.cooperation.team.adapter.out.persistence.TeamQueryRepository;
-import com.like.cooperation.team.application.port.dto.TeamQueryDTO;
 import com.like.cooperation.team.application.port.in.TeamQueryUseCase;
 import com.like.cooperation.team.domain.Team;
 import com.like.cooperation.team.domain.TeamMember;
-import com.like.system.user.application.port.dto.SystemUserQueryDTO;
-import com.like.system.user.application.port.dto.SystemUserSaveDTO;
+import com.like.cooperation.team.dto.TeamQueryDTO;
 import com.like.system.user.application.port.in.SystemUserQueryUseCase;
+import com.like.system.user.dto.SystemUserQueryDTO;
+import com.like.system.user.dto.SystemUserSaveDTO;
 
 @Transactional(readOnly=true)
 @Service

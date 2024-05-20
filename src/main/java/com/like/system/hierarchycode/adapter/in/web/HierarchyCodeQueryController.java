@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.dto.HtmlSelectOptionRecord;
 import com.like.core.message.MessageUtil;
-import com.like.system.hierarchycode.application.dto.HierarchyCodeQueryDTO;
-import com.like.system.hierarchycode.application.dto.HierarchySaveDTO;
 import com.like.system.hierarchycode.application.service.HierarchyCodeQueryService;
 import com.like.system.hierarchycode.domain.Code;
 import com.like.system.hierarchycode.domain.SystemType;
+import com.like.system.hierarchycode.dto.HierarchyCodeQueryDTO;
+import com.like.system.hierarchycode.dto.HierarchySaveDTO;
 
 @RestController
 public class HierarchyCodeQueryController {

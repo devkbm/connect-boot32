@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import com.like.cooperation.board.adapter.out.persistence.jpa.repository.ArticleJpaRepository;
 import com.like.cooperation.board.adapter.out.persistence.mybatis.BoardMapper;
-import com.like.cooperation.board.application.port.dto.ArticleQueryDTO;
-import com.like.cooperation.board.application.port.dto.ArticleResponseDTO;
 import com.like.cooperation.board.application.port.out.ArticleQueryByListDbPort;
+import com.like.cooperation.board.dto.ArticleQueryDTO;
+import com.like.cooperation.board.dto.ArticleResponseDTO;
 
 @Repository
 public class ArticleQueryDbAdapter implements ArticleQueryByListDbPort {

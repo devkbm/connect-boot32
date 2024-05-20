@@ -2,11 +2,11 @@ package com.like.hrm.staff.application.service.schoolcareer;
 
 import org.springframework.stereotype.Service;
 
-import com.like.hrm.staff.application.port.dto.StaffSchoolCareerSaveDTO;
 import com.like.hrm.staff.application.port.in.schoolcareer.StaffSchoolCareerSaveUseCase;
 import com.like.hrm.staff.application.port.out.StaffCommandDbPort;
 import com.like.hrm.staff.domain.model.Staff;
 import com.like.hrm.staff.domain.model.schoolcareer.StaffSchoolCareer;
+import com.like.hrm.staff.dto.StaffSchoolCareerSaveDTO;
 
 import jakarta.persistence.EntityNotFoundException;
 

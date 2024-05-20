@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.hrm.staff.application.port.dto.StaffAppointmentRecordDTO;
 import com.like.hrm.staff.application.port.in.appointment.StaffAppointmentSaveUseCase;
+import com.like.hrm.staff.dto.StaffAppointmentRecordDTO;
 
 @RestController
 public class StaffAppointmentSaveController {

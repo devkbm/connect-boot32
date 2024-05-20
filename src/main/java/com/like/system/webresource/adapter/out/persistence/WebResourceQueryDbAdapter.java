@@ -6,9 +6,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.like.system.webresource.adapter.out.persistence.jpa.repository.WebResourceJpaRepository;
-import com.like.system.webresource.application.port.dto.WebResourceQueryDTO;
 import com.like.system.webresource.application.port.out.WebResourceQueryDbPort;
 import com.like.system.webresource.domain.WebResource;
+import com.like.system.webresource.dto.WebResourceQueryDTO;
 
 @Repository
 @Transactional(readOnly = true)

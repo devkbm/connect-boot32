@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.menu.application.port.dto.MenuHierarchyResponseDTO;
+import com.like.system.menu.dto.MenuHierarchyResponseDTO;
 import com.like.system.menurole.application.port.in.SystemUserMenuHierarchySelectUseCase;
 import com.like.system.menurole.application.port.out.SystemUserMenuHierarchySelectDbPort;
-import com.like.system.user.application.port.dto.SystemUserSaveDTO;
 import com.like.system.user.application.port.in.SystemUserSelectUseCase;
+import com.like.system.user.dto.SystemUserSaveDTO;
 
 @Service
 public class SystemUserMenuHierarchySelectService implements SystemUserMenuHierarchySelectUseCase {

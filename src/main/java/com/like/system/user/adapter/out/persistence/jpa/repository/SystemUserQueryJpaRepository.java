@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.like.system.user.application.port.dto.SystemUserQueryDTO;
 import com.like.system.user.application.port.in.SystemUserQueryRepository;
 import com.like.system.user.domain.QSystemUser;
 import com.like.system.user.domain.SystemUser;
+import com.like.system.user.dto.SystemUserQueryDTO;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 @Repository

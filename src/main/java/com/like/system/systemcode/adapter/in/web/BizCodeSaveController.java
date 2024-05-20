@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.systemcode.application.port.dto.BizCodeSaveDTO;
 import com.like.system.systemcode.application.port.in.BizCodeSaveUseCase;
+import com.like.system.systemcode.dto.BizCodeSaveDTO;
 
 @RestController
 public class BizCodeSaveController {

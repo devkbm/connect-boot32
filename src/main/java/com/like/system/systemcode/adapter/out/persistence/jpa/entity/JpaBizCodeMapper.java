@@ -1,8 +1,8 @@
 package com.like.system.systemcode.adapter.out.persistence.jpa.entity;
 
-import com.like.system.systemcode.application.port.dto.BizCodeSaveDTO;
 import com.like.system.systemcode.domain.BizCode;
 import com.like.system.systemcode.domain.BizCodeType;
+import com.like.system.systemcode.dto.BizCodeSaveDTO;
 
 public class JpaBizCodeMapper {
 

@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.hrm.staff.application.port.dto.StaffSchoolCareerSaveDTO;
 import com.like.hrm.staff.application.port.in.schoolcareer.StaffSchoolCareerQueryUseCase;
 import com.like.hrm.staff.application.port.out.StaffCommandDbPort;
 import com.like.hrm.staff.domain.model.Staff;
+import com.like.hrm.staff.dto.StaffSchoolCareerSaveDTO;
 
 import jakarta.persistence.EntityNotFoundException;
 

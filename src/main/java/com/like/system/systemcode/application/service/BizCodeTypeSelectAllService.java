@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.systemcode.application.port.dto.BizCodeTypeSaveDTO;
 import com.like.system.systemcode.application.port.in.BizCodeTypeSelectAllUseCase;
 import com.like.system.systemcode.application.port.out.BizCodeTypeSelectAllPort;
+import com.like.system.systemcode.dto.BizCodeTypeSaveDTO;
 
 @Service
 public class BizCodeTypeSelectAllService implements BizCodeTypeSelectAllUseCase {

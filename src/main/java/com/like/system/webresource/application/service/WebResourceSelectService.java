@@ -2,9 +2,9 @@ package com.like.system.webresource.application.service;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.webresource.application.port.dto.WebResourceSaveDTO;
 import com.like.system.webresource.application.port.in.WebResourceSelectUseCase;
 import com.like.system.webresource.application.port.out.WebResourceCommandDbPort;
+import com.like.system.webresource.dto.WebResourceSaveDTO;
 
 @Service
 public class WebResourceSelectService implements WebResourceSelectUseCase {

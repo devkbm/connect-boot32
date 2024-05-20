@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.term.application.dto.WordSaveDTO;
 import com.like.system.term.application.port.in.WordQueryUseCase;
+import com.like.system.term.dto.WordSaveDTO;
 
 @RestController
 public class WordQueryController {

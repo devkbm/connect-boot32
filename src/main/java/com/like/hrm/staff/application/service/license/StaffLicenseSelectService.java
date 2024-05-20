@@ -2,10 +2,10 @@ package com.like.hrm.staff.application.service.license;
 
 import org.springframework.stereotype.Service;
 
-import com.like.hrm.staff.application.port.dto.StaffLicenseSaveDTO;
 import com.like.hrm.staff.application.port.in.license.StaffLicenseSelectUseCase;
 import com.like.hrm.staff.application.port.out.StaffCommandDbPort;
 import com.like.hrm.staff.domain.model.Staff;
+import com.like.hrm.staff.dto.StaffLicenseSaveDTO;
 
 import jakarta.persistence.EntityNotFoundException;
 

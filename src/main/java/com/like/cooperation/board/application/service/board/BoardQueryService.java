@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.cooperation.board.application.port.dto.BoardHierarchy;
-import com.like.cooperation.board.application.port.dto.BoardQueryDTO;
-import com.like.cooperation.board.application.port.dto.BoardSaveDTO;
 import com.like.cooperation.board.application.port.in.board.BoardQueryUseCase;
 import com.like.cooperation.board.application.port.out.BoardQueryDbPort;
+import com.like.cooperation.board.dto.BoardHierarchy;
+import com.like.cooperation.board.dto.BoardQueryDTO;
+import com.like.cooperation.board.dto.BoardSaveDTO;
 
 @Transactional(readOnly=true)
 @Service

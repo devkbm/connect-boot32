@@ -12,8 +12,8 @@ import com.like.core.dto.HtmlSelectOptionRecord;
 import com.like.core.dto.HtmlSelectOptionable;
 import com.like.core.message.MessageUtil;
 import com.like.system.systemcode.adapter.out.persistence.jpa.entity.JpaBizTypeEnum;
-import com.like.system.systemcode.application.port.dto.BizCodeTypeSaveDTO;
 import com.like.system.systemcode.application.port.in.BizCodeTypeSelectAllUseCase;
+import com.like.system.systemcode.dto.BizCodeTypeSaveDTO;
 
 @RestController
 public class BizCodeTypeQueryController {

@@ -2,9 +2,9 @@ package com.like.hrm.staff.application.service.appointment;
 
 import org.springframework.stereotype.Service;
 
-import com.like.hrm.staff.application.port.dto.StaffAppointmentRecordDTO;
 import com.like.hrm.staff.application.port.in.appointment.StaffAppointmentSelectUseCase;
 import com.like.hrm.staff.application.port.out.StaffAppointmentSelectDbPort;
+import com.like.hrm.staff.dto.StaffAppointmentRecordDTO;
 
 @Service
 public class StaffAppointmentSelectService implements StaffAppointmentSelectUseCase {

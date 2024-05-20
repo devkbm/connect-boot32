@@ -2,8 +2,8 @@ package com.like.system.role.adapter.out.persistence.jpa.entity;
 
 import static org.springframework.util.StringUtils.hasText;
 
-import com.like.system.role.application.port.dto.RoleQueryDTO;
 import com.like.system.role.domain.Role;
+import com.like.system.role.dto.RoleQueryDTO;
 import com.querydsl.core.BooleanBuilder;
 
 public class RoleMapper {

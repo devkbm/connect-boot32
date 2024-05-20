@@ -2,7 +2,7 @@ package com.like.system.hierarchycode.domain;
 
 import java.util.List;
 
-import com.like.system.hierarchycode.application.dto.CodeComboDTO;
+import com.like.system.hierarchycode.dto.CodeComboDTO;
 import com.querydsl.core.types.Predicate;
 
 public interface CommonCodeQueryRepository {

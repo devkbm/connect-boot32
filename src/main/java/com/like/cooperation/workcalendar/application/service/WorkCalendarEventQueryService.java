@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.cooperation.workcalendar.application.port.dto.WorkCalendarEventQueryDTO;
-import com.like.cooperation.workcalendar.application.port.dto.WorkCalendarEventResponseDTO;
 import com.like.cooperation.workcalendar.application.port.in.WorkCalendarEventQueryUseCase;
 import com.like.cooperation.workcalendar.application.port.out.WorkCalendarEventQueryDbPort;
+import com.like.cooperation.workcalendar.dto.WorkCalendarEventQueryDTO;
+import com.like.cooperation.workcalendar.dto.WorkCalendarEventResponseDTO;
 
 @Transactional(readOnly=true)
 @Service

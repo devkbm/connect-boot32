@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.like.system.hierarchycode.application.dto.CodeComboDTO;
 import com.like.system.hierarchycode.domain.Code;
 import com.like.system.hierarchycode.domain.CommonCodeQueryRepository;
 import com.like.system.hierarchycode.domain.QCode;
+import com.like.system.hierarchycode.dto.CodeComboDTO;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 

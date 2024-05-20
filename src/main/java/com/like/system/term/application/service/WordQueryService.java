@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.system.term.application.dto.WordSaveDTO;
 import com.like.system.term.application.port.in.WordQueryUseCase;
 import com.like.system.term.application.port.out.WordQueryDbPort;
+import com.like.system.term.dto.WordSaveDTO;
 
 @Transactional(readOnly = true)
 @Service

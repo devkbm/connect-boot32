@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.hrm.staff.application.port.dto.StaffAppointmentRecordDTO;
 import com.like.hrm.staff.application.port.in.appointment.StaffAppointmentQueryUseCase;
 import com.like.hrm.staff.application.port.out.StaffAppointmentQueryDbPort;
+import com.like.hrm.staff.dto.StaffAppointmentRecordDTO;
 
 @Transactional(readOnly = true)
 @Service

@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.hrm.staff.application.port.dto.StaffCreateDTO;
 import com.like.hrm.staff.application.port.in.StaffCreateUseCase;
+import com.like.hrm.staff.dto.StaffCreateDTO;
 
 @RestController
 public class StaffCreateController {

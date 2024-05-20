@@ -2,11 +2,11 @@ package com.like.hrm.staff.application.service.appointment;
 
 import org.springframework.stereotype.Service;
 
-import com.like.hrm.staff.application.port.dto.StaffAppointmentRecordDTO;
 import com.like.hrm.staff.application.port.in.appointment.StaffAppointmentSaveUseCase;
 import com.like.hrm.staff.application.port.out.StaffCommandDbPort;
 import com.like.hrm.staff.domain.model.Staff;
 import com.like.hrm.staff.domain.model.appointment.AppointmentRecord;
+import com.like.hrm.staff.dto.StaffAppointmentRecordDTO;
 
 import jakarta.persistence.EntityNotFoundException;
 

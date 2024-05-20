@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.like.cooperation.board.application.port.dto.ArticleResponseDTO;
 import com.like.cooperation.board.application.port.in.article.ArticleSelectUseCase;
+import com.like.cooperation.board.dto.ArticleResponseDTO;
 import com.like.core.message.MessageUtil;
 
 @Controller

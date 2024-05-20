@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.webresource.application.port.dto.WebResourceQueryDTO;
-import com.like.system.webresource.application.port.dto.WebResourceSaveDTO;
 import com.like.system.webresource.application.port.in.WebResourceQueryUseCase;
 import com.like.system.webresource.application.port.out.WebResourceQueryDbPort;
+import com.like.system.webresource.dto.WebResourceQueryDTO;
+import com.like.system.webresource.dto.WebResourceSaveDTO;
 
 @Service
 public class WebResourceQueryService implements WebResourceQueryUseCase {

@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.like.system.user.adapter.out.persistence.jpa.repository.SystemUserRepository;
-import com.like.system.user.application.port.dto.SystemUserQueryDTO;
 import com.like.system.user.application.port.out.SystemUserQueryDbPort;
 import com.like.system.user.domain.SystemUser;
+import com.like.system.user.dto.SystemUserQueryDTO;
 
 @Repository
 public class SystemUserQueryDbAdapter implements SystemUserQueryDbPort {

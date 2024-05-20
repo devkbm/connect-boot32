@@ -1,6 +1,6 @@
 package com.like.system.dept.application.port.in;
 
-import com.like.system.dept.application.port.dto.DeptSaveDTO;
+import com.like.system.dept.dto.DeptSaveDTO;
 
 public interface DeptSelectUseCase {
 

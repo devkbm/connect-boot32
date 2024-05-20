@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.like.core.dto.HtmlSelectOptionRecord;
 import com.like.core.dto.HtmlSelectOptionable;
 import com.like.core.message.MessageUtil;
-import com.like.system.term.application.dto.TermQueryDTO;
-import com.like.system.term.application.dto.TermSaveDTO;
 import com.like.system.term.application.port.in.TermQueryUseCase;
 import com.like.system.term.domain.SystemType;
+import com.like.system.term.dto.TermQueryDTO;
+import com.like.system.term.dto.TermSaveDTO;
 
 @RestController
 public class TermQueryController {

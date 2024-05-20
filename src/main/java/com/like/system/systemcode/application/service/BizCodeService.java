@@ -9,7 +9,7 @@ import com.like.system.systemcode.adapter.out.persistence.jpa.entity.JpaBizCodeT
 import com.like.system.systemcode.adapter.out.persistence.jpa.entity.JpaBizCodeTypeId;
 import com.like.system.systemcode.adapter.out.persistence.jpa.repository.BizCodeRepository;
 import com.like.system.systemcode.adapter.out.persistence.jpa.repository.BizCodeTypeJpaRepository;
-import com.like.system.systemcode.application.port.dto.BizCodeDTO;
+import com.like.system.systemcode.dto.BizCodeDTO;
 
 @Service
 @Transactional

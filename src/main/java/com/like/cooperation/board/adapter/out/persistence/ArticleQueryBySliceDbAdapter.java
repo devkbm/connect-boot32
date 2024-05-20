@@ -10,9 +10,9 @@ import org.springframework.data.domain.SliceImpl;
 import org.springframework.stereotype.Repository;
 
 import com.like.cooperation.board.adapter.out.persistence.mybatis.BoardMapper;
-import com.like.cooperation.board.application.port.dto.ArticleListDTO;
-import com.like.cooperation.board.application.port.dto.ArticleQueryDTO;
 import com.like.cooperation.board.application.port.out.ArticleQueryBySliceDbPort;
+import com.like.cooperation.board.dto.ArticleListDTO;
+import com.like.cooperation.board.dto.ArticleQueryDTO;
 
 @Repository
 public class ArticleQueryBySliceDbAdapter implements ArticleQueryBySliceDbPort {

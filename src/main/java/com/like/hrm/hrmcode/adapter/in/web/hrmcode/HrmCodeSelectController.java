@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.hrm.hrmcode.application.port.dto.HrmCodeSaveDTO;
 import com.like.hrm.hrmcode.application.port.in.hrmcode.HrmCodeSelectUseCase;
+import com.like.hrm.hrmcode.dto.HrmCodeSaveDTO;
 
 @RestController
 public class HrmCodeSelectController {

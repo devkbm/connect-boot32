@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.system.term.application.dto.TermQueryDTO;
-import com.like.system.term.application.dto.TermSaveDTO;
 import com.like.system.term.application.port.in.TermQueryUseCase;
 import com.like.system.term.application.port.out.TermQueryDbPort;
+import com.like.system.term.dto.TermQueryDTO;
+import com.like.system.term.dto.TermSaveDTO;
 
 
 @Transactional(readOnly = true)

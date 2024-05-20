@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.like.hrm.hrmcode.application.port.dto.HrmCodeTypeQueryDTO;
-import com.like.hrm.hrmcode.application.port.dto.HrmCodeTypeSaveDTO;
 import com.like.hrm.hrmcode.application.port.in.hrmcodetype.HrmCodeTypeQueryUseCase;
 import com.like.hrm.hrmcode.application.port.out.HrmCodeTypeQueryDbPort;
+import com.like.hrm.hrmcode.dto.HrmCodeTypeQueryDTO;
+import com.like.hrm.hrmcode.dto.HrmCodeTypeSaveDTO;
 
 @Service
 public class HrmCodeTypeQueryService implements HrmCodeTypeQueryUseCase {

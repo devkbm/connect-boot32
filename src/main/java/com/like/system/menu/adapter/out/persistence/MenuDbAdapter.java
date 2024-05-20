@@ -6,12 +6,12 @@ import org.springframework.stereotype.Repository;
 
 import com.like.system.menu.adapter.out.persistence.jpa.repository.MenuGroupJpaRepository;
 import com.like.system.menu.adapter.out.persistence.jpa.repository.MenuJpaRepository;
-import com.like.system.menu.application.port.dto.MenuQueryDTO;
 import com.like.system.menu.application.port.out.MenuDeleteDbPort;
 import com.like.system.menu.application.port.out.MenuSaveDbPort;
 import com.like.system.menu.application.port.out.MenuSelectDbPort;
 import com.like.system.menu.domain.Menu;
 import com.like.system.menu.domain.MenuId;
+import com.like.system.menu.dto.MenuQueryDTO;
 
 @Repository
 public class MenuDbAdapter implements MenuSelectDbPort, MenuSaveDbPort, MenuDeleteDbPort {

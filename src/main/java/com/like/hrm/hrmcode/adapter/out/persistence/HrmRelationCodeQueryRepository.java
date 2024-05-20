@@ -2,7 +2,7 @@ package com.like.hrm.hrmcode.adapter.out.persistence;
 
 import java.util.List;
 
-import com.like.hrm.hrmcode.application.port.dto.HrmRelationCodeDTO;
+import com.like.hrm.hrmcode.dto.HrmRelationCodeDTO;
 
 public interface HrmRelationCodeQueryRepository {
 

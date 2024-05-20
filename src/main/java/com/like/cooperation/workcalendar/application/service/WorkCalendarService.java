@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.like.cooperation.workcalendar.adapter.out.persistence.jparepository.WorkCalendarJpaRepository;
 import com.like.cooperation.workcalendar.adapter.out.persistence.jparepository.WorkCalendarMemberJpaRepository;
-import com.like.cooperation.workcalendar.application.port.dto.WorkCalendarSaveDTO;
 import com.like.cooperation.workcalendar.domain.WorkCalendar;
 import com.like.cooperation.workcalendar.domain.WorkCalendarMember;
 import com.like.cooperation.workcalendar.domain.WorkCalendarMemberId;
+import com.like.cooperation.workcalendar.dto.WorkCalendarSaveDTO;
 import com.like.system.user.adapter.out.persistence.jpa.repository.SystemUserRepository;
 import com.like.system.user.domain.SystemUser;
 import com.like.system.user.domain.SystemUserId;

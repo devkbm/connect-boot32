@@ -11,10 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.hrm.hrmcode.application.port.dto.HrmCodeTypeSaveDTO;
 import com.like.hrm.hrmcode.application.port.in.hrmcodetype.HrmCodeTypeQueryUseCase;
+import com.like.hrm.hrmcode.dto.HrmCodeTypeQueryDTO;
+import com.like.hrm.hrmcode.dto.HrmCodeTypeSaveDTO;
 import com.like.core.message.MessageUtil;
-import com.like.hrm.hrmcode.application.port.dto.HrmCodeTypeQueryDTO;
 
 @RestController
 public class HrmCodeTypeQueryContoller {

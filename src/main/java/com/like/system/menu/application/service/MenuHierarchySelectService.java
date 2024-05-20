@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.menu.application.port.dto.MenuHierarchyResponseDTO;
 import com.like.system.menu.application.port.in.MenuHierarchySelectUseCase;
 import com.like.system.menu.application.port.out.MenuHierarchySelectDbPort;
+import com.like.system.menu.dto.MenuHierarchyResponseDTO;
 
 @Service
 public class MenuHierarchySelectService implements MenuHierarchySelectUseCase {

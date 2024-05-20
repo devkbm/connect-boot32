@@ -2,7 +2,7 @@ package com.like.hrm.staff.application.port.in.dutyresponsibility;
 
 import java.util.List;
 
-import com.like.hrm.staff.application.port.dto.ResponseStaffDutyResponsibility;
+import com.like.hrm.staff.dto.ResponseStaffDutyResponsibility;
 
 public interface StaffDutyResponsibilityQueryUseCase {
 

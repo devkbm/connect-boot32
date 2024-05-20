@@ -5,18 +5,18 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.like.hrm.hrmcode.domain.QHrmCode;
-import com.like.hrm.staff.application.port.dto.QResponseStaffAppointmentRecord;
-import com.like.hrm.staff.application.port.dto.QResponseStaffCurrentAppointment;
-import com.like.hrm.staff.application.port.dto.QResponseStaffDutyResponsibility;
-import com.like.hrm.staff.application.port.dto.ResponseStaffAppointmentRecord;
-import com.like.hrm.staff.application.port.dto.ResponseStaffCurrentAppointment;
-import com.like.hrm.staff.application.port.dto.ResponseStaffDutyResponsibility;
-import com.like.hrm.staff.application.port.dto.StaffQueryConditionDTO;
+import com.like.hrm.staff.dto.QResponseStaffAppointmentRecord;
+import com.like.hrm.staff.dto.QResponseStaffCurrentAppointment;
+import com.like.hrm.staff.dto.QResponseStaffDutyResponsibility;
 import com.like.hrm.staff.domain.model.QStaff;
 import com.like.hrm.staff.domain.model.Staff;
 import com.like.hrm.staff.domain.model.StaffQueryRepository;
 import com.like.hrm.staff.domain.model.appointment.QAppointmentRecord;
 import com.like.hrm.staff.domain.model.dutyresponsibility.QStaffDuty;
+import com.like.hrm.staff.dto.ResponseStaffAppointmentRecord;
+import com.like.hrm.staff.dto.ResponseStaffCurrentAppointment;
+import com.like.hrm.staff.dto.ResponseStaffDutyResponsibility;
+import com.like.hrm.staff.dto.StaffQueryConditionDTO;
 import com.like.system.dept.domain.QDept;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 

@@ -2,11 +2,11 @@ package com.like.hrm.staff.application.service.dutyresponsibility;
 
 import org.springframework.stereotype.Service;
 
-import com.like.hrm.staff.application.port.dto.StaffDutyResponsibilityDTO;
 import com.like.hrm.staff.application.port.in.dutyresponsibility.StaffDutyResponsibilitySaveUseCase;
 import com.like.hrm.staff.application.port.out.StaffCommandDbPort;
 import com.like.hrm.staff.domain.model.Staff;
 import com.like.hrm.staff.domain.model.dutyresponsibility.StaffDuty;
+import com.like.hrm.staff.dto.StaffDutyResponsibilityDTO;
 
 import jakarta.persistence.EntityNotFoundException;
 

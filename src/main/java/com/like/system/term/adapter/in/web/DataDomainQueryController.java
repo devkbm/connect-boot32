@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.like.core.dto.HtmlSelectOptionRecord;
 import com.like.core.dto.HtmlSelectOptionable;
 import com.like.core.message.MessageUtil;
-import com.like.system.term.application.dto.DataDomainSaveDTO;
 import com.like.system.term.application.port.in.DataDomainQueryUseCase;
 import com.like.system.term.domain.Database;
+import com.like.system.term.dto.DataDomainSaveDTO;
 
 @RestController
 public class DataDomainQueryController {

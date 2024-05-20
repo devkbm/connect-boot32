@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.like.system.dept.application.port.dto.DeptHierarchyResponse;
-import com.like.system.dept.application.port.dto.DeptQueryDTO;
 import com.like.system.dept.application.port.in.DeptHierarchySelectUseCase;
 import com.like.system.dept.application.port.out.DeptHierarchySelectPort;
+import com.like.system.dept.dto.DeptHierarchyResponse;
+import com.like.system.dept.dto.DeptQueryDTO;
 
 @Service
 public class DeptHierarchySelectService implements DeptHierarchySelectUseCase {

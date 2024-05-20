@@ -4,13 +4,13 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.like.cooperation.board.application.port.dto.QBoardHierarchy;
-import com.like.cooperation.board.application.port.dto.BoardHierarchy;
-import com.like.cooperation.board.application.port.dto.BoardQueryDTO;
-import com.like.cooperation.board.application.port.dto.BoardSaveDTO;
 import com.like.cooperation.board.application.port.out.BoardQueryDbPort;
 import com.like.cooperation.board.domain.Board;
 import com.like.cooperation.board.domain.QBoard;
+import com.like.cooperation.board.dto.BoardHierarchy;
+import com.like.cooperation.board.dto.BoardQueryDTO;
+import com.like.cooperation.board.dto.BoardSaveDTO;
+import com.like.cooperation.board.dto.QBoardHierarchy;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 

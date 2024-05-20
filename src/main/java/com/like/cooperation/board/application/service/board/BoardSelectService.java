@@ -2,9 +2,9 @@ package com.like.cooperation.board.application.service.board;
 
 import org.springframework.stereotype.Service;
 
-import com.like.cooperation.board.application.port.dto.BoardSaveDTO;
 import com.like.cooperation.board.application.port.in.board.BoardSelectUseCase;
 import com.like.cooperation.board.application.port.out.BoardCommandDbPort;
+import com.like.cooperation.board.dto.BoardSaveDTO;
 
 @Service
 public class BoardSelectService implements BoardSelectUseCase {

@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.menurole.application.port.dto.MenuRoleMappingHierarchyResponseDTO;
 import com.like.system.menurole.application.port.in.MenuRoleHierarchySelectUseCase;
+import com.like.system.menurole.dto.MenuRoleMappingHierarchyResponseDTO;
 
 import lombok.extern.slf4j.Slf4j;
 

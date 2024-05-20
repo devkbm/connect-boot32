@@ -1,6 +1,6 @@
 package com.like.system.menurole.adapter.out.persistence;
 
-import com.like.system.menurole.application.port.dto.MenuRoleMappingHierarchyResponseDTO;
+import com.like.system.menurole.dto.MenuRoleMappingHierarchyResponseDTO;
 
 import lombok.extern.slf4j.Slf4j;
 

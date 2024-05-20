@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.like.hrm.hrmcode.application.port.dto.HrmCodeQueryDTO;
-import com.like.hrm.hrmcode.application.port.dto.HrmCodeSaveDTO;
 import com.like.hrm.hrmcode.application.port.in.hrmcode.HrmCodeQueryUseCase;
 import com.like.hrm.hrmcode.application.port.out.HrmCodeQueryDbPort;
+import com.like.hrm.hrmcode.dto.HrmCodeQueryDTO;
+import com.like.hrm.hrmcode.dto.HrmCodeSaveDTO;
 
 @Service
 public class HrmCodeQueryService implements HrmCodeQueryUseCase {

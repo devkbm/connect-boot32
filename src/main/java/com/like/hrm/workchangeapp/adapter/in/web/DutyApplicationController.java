@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.hrm.workchangeapp.application.port.dto.DutyApplicationDTO;
 import com.like.hrm.workchangeapp.application.service.DutyApplicationCommandService;
 import com.like.hrm.workchangeapp.application.service.DutyApplicationQueryService;
 import com.like.hrm.workchangeapp.domain.WorkChangeApplication;
+import com.like.hrm.workchangeapp.dto.DutyApplicationDTO;
 import com.like.system.holiday.application.port.in.DateInfoSelectUseCase;
 
 @RestController

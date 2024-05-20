@@ -1,6 +1,6 @@
 package com.like.hrm.staff.application.port.in;
 
-import com.like.hrm.staff.application.port.dto.StaffSaveDTO;
+import com.like.hrm.staff.dto.StaffSaveDTO;
 
 public interface StaffSaveUseCase {
 	void save(StaffSaveDTO dto);

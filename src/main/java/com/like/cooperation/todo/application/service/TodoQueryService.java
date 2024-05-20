@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.like.cooperation.todo.adapter.out.persistence.TodoJpaRepository;
-import com.like.cooperation.todo.application.port.dto.TodoSaveDTO;
 import com.like.cooperation.todo.application.port.in.TodoQueryUseCase;
 import com.like.cooperation.todo.domain.QTodo;
+import com.like.cooperation.todo.dto.TodoSaveDTO;
 
 @Transactional(readOnly=true)
 @Service
