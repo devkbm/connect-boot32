@@ -1,4 +1,4 @@
-package com.like.system.hierarchycode.application.port.in.dto;
+package com.like.system.hierarchycode.application.dto;
 
 import java.io.Serializable;
 

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.hierarchycode.application.port.in.dto.CodeDTO;
-import com.like.system.hierarchycode.application.port.in.dto.CodeHierarchy;
+import com.like.system.hierarchycode.application.dto.CodeHierarchy;
+import com.like.system.hierarchycode.application.dto.HierarchyCodeQueryDTO;
 import com.like.system.hierarchycode.application.service.HierarchyCodeSelectService;
 
 @RestController
@@ -24,7 +24,7 @@ public class HierarchyCodeSelectController {
 	}
 	
 	@GetMapping("/api/system/codetree") 
-	public ResponseEntity<?> getCodeHierarchyList(@ModelAttribute CodeDTO.Search searchCondition) {
+	public ResponseEntity<?> getCodeHierarchyList(@ModelAttribute HierarchyCodeQueryDTO searchCondition) {
 							
 		List<CodeHierarchy> list = service.getCodeHierarchyList(searchCondition);  						 						
 		

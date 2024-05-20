@@ -12,17 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.dto.HtmlSelectOptionRecord;
 import com.like.core.message.MessageUtil;
-import com.like.system.hierarchycode.application.port.in.dto.CodeDTO;
-import com.like.system.hierarchycode.application.service.CommonCodeQueryService;
+import com.like.system.hierarchycode.application.dto.HierarchyCodeQueryDTO;
+import com.like.system.hierarchycode.application.dto.HierarchySaveDTO;
+import com.like.system.hierarchycode.application.service.HierarchyCodeQueryService;
 import com.like.system.hierarchycode.domain.Code;
 import com.like.system.hierarchycode.domain.SystemType;
 
 @RestController
-public class CommonCodeQueryController {
+public class HierarchyCodeQueryController {
 
-	private CommonCodeQueryService service;
+	private HierarchyCodeQueryService service;
 	
-	public CommonCodeQueryController(CommonCodeQueryService service) {
+	public HierarchyCodeQueryController(HierarchyCodeQueryService service) {
 		this.service = service;
 	}
 	
@@ -39,12 +40,12 @@ public class CommonCodeQueryController {
 	}	
 	
 	@GetMapping("/api/system/code") 
-	public ResponseEntity<?> getCodeList(@ModelAttribute CodeDTO.Search searchCondition) {
+	public ResponseEntity<?> getCodeList(@ModelAttribute HierarchyCodeQueryDTO searchCondition) {
 							
 		List<Code> list = service.getCodeList(searchCondition);  						 						
 		
-		List<CodeDTO.Form> dtoList = list.stream()
-										 .map(e -> CodeDTO.Form.convertDTO(e))
+		List<HierarchySaveDTO> dtoList = list.stream()
+										 .map(e -> HierarchySaveDTO.convertDTO(e))
 										 .toList();
 		
 		return toList(dtoList, MessageUtil.getQueryMessage(dtoList.size()));

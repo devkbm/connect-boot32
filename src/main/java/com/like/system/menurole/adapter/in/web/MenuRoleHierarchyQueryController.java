@@ -27,7 +27,7 @@ public class MenuRoleHierarchyQueryController {
 	}
 	
 	@GetMapping("/api/system/menurolehierarchy/{menuGroupCode}/{roleCode}")
-	public ResponseEntity<?> getMenuGroupHierachy(@RequestParam String companyCode, @PathVariable String menuGroupCode, @PathVariable String roleCode) {				
+	public ResponseEntity<?> getMenuGroupHierarchy(@RequestParam String companyCode, @PathVariable String menuGroupCode, @PathVariable String roleCode) {				
 		
 		log.info("companyCode : "+ companyCode);
 		log.info("menuGroupCode : "+ menuGroupCode);

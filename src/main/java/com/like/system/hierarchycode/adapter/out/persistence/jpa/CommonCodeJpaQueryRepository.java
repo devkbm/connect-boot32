@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.like.system.hierarchycode.application.port.in.dto.CodeComboDTO;
+import com.like.system.hierarchycode.application.dto.CodeComboDTO;
 import com.like.system.hierarchycode.domain.Code;
 import com.like.system.hierarchycode.domain.CommonCodeQueryRepository;
 import com.like.system.hierarchycode.domain.QCode;

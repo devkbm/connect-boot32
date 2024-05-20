@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.hierarchycode.application.port.in.dto.CodeDTO;
-import com.like.system.hierarchycode.application.service.CommonCodeCommandService;
+import com.like.system.hierarchycode.application.dto.HierarchySaveDTO;
+import com.like.system.hierarchycode.application.service.HierarchyCodeCommandService;
 import com.like.system.hierarchycode.domain.Code;
 
 @RestController
-public class CommonCodeController {
+public class HierarchyCodeController {
 	
-	private CommonCodeCommandService service;			
+	private HierarchyCodeCommandService service;			
 		
-	public CommonCodeController(CommonCodeCommandService service) {
+	public HierarchyCodeController(HierarchyCodeCommandService service) {
 		this.service = service;		
 	}	
 	
@@ -31,13 +31,13 @@ public class CommonCodeController {
 								  						 					
 		Code entity = service.getCode(systemtype, codeId);
 		
-		CodeDTO.Form dto = CodeDTO.Form.convertDTO(entity);
+		HierarchySaveDTO dto = HierarchySaveDTO.convertDTO(entity);
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}
 			
 	@PostMapping("/api/system/code")
-	public ResponseEntity<?> saveCode(@RequestBody CodeDTO.Form dto) {					
+	public ResponseEntity<?> saveCode(@RequestBody HierarchySaveDTO dto) {					
 		
 		service.saveCode(dto);		
 											 				

@@ -3,18 +3,18 @@ package com.like.system.hierarchycode.application.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.system.hierarchycode.application.port.in.dto.CodeDTO;
+import com.like.system.hierarchycode.application.dto.HierarchySaveDTO;
 import com.like.system.hierarchycode.domain.Code;
 import com.like.system.hierarchycode.domain.CodeId;
 import com.like.system.hierarchycode.domain.CommonCodeRepository;
 
 @Service
 @Transactional
-public class CommonCodeCommandService {
+public class HierarchyCodeCommandService {
 
 	private CommonCodeRepository codeRepository;
 					
-	public CommonCodeCommandService(CommonCodeRepository codeRepository) {
+	public HierarchyCodeCommandService(CommonCodeRepository codeRepository) {
 		this.codeRepository = codeRepository;
 	}
 	
@@ -26,7 +26,7 @@ public class CommonCodeCommandService {
 		codeRepository.save(code);		
 	}
 	
-	public void saveCode(CodeDTO.Form dto) {
+	public void saveCode(HierarchySaveDTO dto) {
 		Code parentCode = findParentCode(dto); 
 		Code code = findCode(dto);								
 		
@@ -43,13 +43,13 @@ public class CommonCodeCommandService {
 		codeRepository.deleteById(new CodeId(systemTypeCode, code));		
 	}
 	
-	private Code findCode(CodeDTO.Form dto) {
+	private Code findCode(HierarchySaveDTO dto) {
 		if (dto.codeId() == null) return null;
 		
 		return codeRepository.findById(new CodeId(dto.systemTypeCode(), dto.codeId())).orElse(null);
 	}
 	
-	private Code findParentCode(CodeDTO.Form dto) {
+	private Code findParentCode(HierarchySaveDTO dto) {
 		if (dto.parentId() == null) return null;
 		
 		return codeRepository.findById(new CodeId(dto.systemTypeCode(), dto.parentId())).orElse(null);

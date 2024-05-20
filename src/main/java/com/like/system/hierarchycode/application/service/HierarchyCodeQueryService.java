@@ -5,18 +5,18 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.system.hierarchycode.application.port.in.dto.CodeComboDTO;
-import com.like.system.hierarchycode.application.port.in.dto.CodeDTO;
+import com.like.system.hierarchycode.application.dto.CodeComboDTO;
+import com.like.system.hierarchycode.application.dto.HierarchyCodeQueryDTO;
 import com.like.system.hierarchycode.domain.Code;
 import com.like.system.hierarchycode.domain.CommonCodeQueryRepository;
 
 @Service
 @Transactional(readOnly=true)
-public class CommonCodeQueryService {
+public class HierarchyCodeQueryService {
 
 	private CommonCodeQueryRepository codeRepository;
 			
-	public CommonCodeQueryService(CommonCodeQueryRepository codeRepository) {
+	public HierarchyCodeQueryService(CommonCodeQueryRepository codeRepository) {
 		this.codeRepository = codeRepository;
 	}
 		
@@ -24,7 +24,7 @@ public class CommonCodeQueryService {
 		return codeRepository.getCodeList(parentCodeId);
 	}
 	
-	public List<Code> getCodeList(CodeDTO.Search searchCondition) {		
+	public List<Code> getCodeList(HierarchyCodeQueryDTO searchCondition) {		
 		return codeRepository.getCodeList(searchCondition.getCondition());
 	}	
 	
