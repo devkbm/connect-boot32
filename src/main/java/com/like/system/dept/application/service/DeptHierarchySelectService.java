@@ -7,7 +7,7 @@ import org.springframework.util.StringUtils;
 
 import com.like.system.dept.application.port.in.DeptHierarchySelectUseCase;
 import com.like.system.dept.application.port.out.DeptHierarchySelectPort;
-import com.like.system.dept.dto.DeptHierarchyResponse;
+import com.like.system.dept.dto.DeptHierarchyNgZorro;
 import com.like.system.dept.dto.DeptQueryDTO;
 
 @Service
@@ -15,27 +15,27 @@ public class DeptHierarchySelectService implements DeptHierarchySelectUseCase {
 
 	DeptHierarchySelectPort port;
 	
-	private List<DeptHierarchyResponse> nodeList;
+	private List<DeptHierarchyNgZorro> nodeList;
 		
 	DeptHierarchySelectService(DeptHierarchySelectPort port) {
 		this.port = port;
 	}	
 	
 	@Override
-	public List<DeptHierarchyResponse> select(DeptQueryDTO dto) {		
+	public List<DeptHierarchyNgZorro> select(DeptQueryDTO dto) {		
 		this.nodeList = port.select(dto);
 		
-		List<DeptHierarchyResponse> rootNodeList = nodeList.stream().filter(e -> !StringUtils.hasText(e.getParentDeptCode())).toList();
+		List<DeptHierarchyNgZorro> rootNodeList = nodeList.stream().filter(e -> !StringUtils.hasText(e.getParentDeptCode())).toList();
 		
-		List<DeptHierarchyResponse> result = this.addDeptChildNodeList(dto.companyCode(), rootNodeList);
+		List<DeptHierarchyNgZorro> result = this.addDeptChildNodeList(dto.companyCode(), rootNodeList);
 		
 		return result;
 	}
 	
-	private List<DeptHierarchyResponse> addDeptChildNodeList(String companyCode, List<DeptHierarchyResponse> list) {
-		List<DeptHierarchyResponse> children = null;
+	private List<DeptHierarchyNgZorro> addDeptChildNodeList(String companyCode, List<DeptHierarchyNgZorro> list) {
+		List<DeptHierarchyNgZorro> children = null;
 		
-		for ( DeptHierarchyResponse node : list) {
+		for ( DeptHierarchyNgZorro node : list) {
 			
 			children = getChildren(companyCode, node.getDeptCode());
 			
@@ -54,7 +54,7 @@ public class DeptHierarchySelectService implements DeptHierarchySelectUseCase {
 		return list;
 	}	
   	
-  	private List<DeptHierarchyResponse> getChildren(String companyCode, String parentDeptCode) {
+  	private List<DeptHierarchyNgZorro> getChildren(String companyCode, String parentDeptCode) {
   		return this.nodeList.stream().filter(e -> companyCode.equals(e.getCompanyCode()) && parentDeptCode.equals(e.getParentDeptCode())).toList();
   	}
 	

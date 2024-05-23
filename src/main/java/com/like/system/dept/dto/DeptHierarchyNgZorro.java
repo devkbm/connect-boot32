@@ -17,13 +17,11 @@ import lombok.Singular;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DeptHierarchyResponse {
+public class DeptHierarchyNgZorro {
 	
 	String parentDeptCode;
 	
-	String companyCode;
-	
-	//String deptId;
+	String companyCode;	
 	
 	String deptCode;		
 			
@@ -44,7 +42,7 @@ public class DeptHierarchyResponse {
 	String comment;
 	
 	@Singular
-	List<DeptHierarchyResponse> children;
+	List<DeptHierarchyNgZorro> children;
 	
 	/**
 	 * NzTreeNode property 
@@ -57,7 +55,7 @@ public class DeptHierarchyResponse {
 	boolean isLeaf;
 
 	@QueryProjection
-	public DeptHierarchyResponse(String parentDeptCode, String companyCode, String deptCode, String deptNameKorean, String deptAbbreviationKorean,
+	public DeptHierarchyNgZorro(String parentDeptCode, String companyCode, String deptCode, String deptNameKorean, String deptAbbreviationKorean,
 			String deptNameEnglish, String deptAbbreviationEnglish, LocalDatePeriod period,
 			Integer seq, String comment) {				
 		this.parentDeptCode = parentDeptCode;
@@ -76,7 +74,7 @@ public class DeptHierarchyResponse {
 		this.key 	= this.deptCode;			
 	}
 
-	public void setChildren(List<DeptHierarchyResponse> children) {
+	public void setChildren(List<DeptHierarchyNgZorro> children) {
 		this.children = children;
 	}
 

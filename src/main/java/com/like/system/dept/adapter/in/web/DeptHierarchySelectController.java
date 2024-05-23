@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.system.dept.application.port.in.DeptHierarchySelectUseCase;
-import com.like.system.dept.dto.DeptHierarchyResponse;
+import com.like.system.dept.dto.DeptHierarchyNgZorro;
 import com.like.system.dept.dto.DeptQueryDTO;
 
 
@@ -28,7 +28,7 @@ public class DeptHierarchySelectController {
 	@GetMapping("/api/system/depttree")
 	public ResponseEntity<?> getDeptHierarchyList(@ModelAttribute @Valid DeptQueryDTO dto) {
 							
-		List<DeptHierarchyResponse> list = useCase.select(dto);  						 						
+		List<DeptHierarchyNgZorro> list = useCase.select(dto);  						 						
 		
 		return toList(list, String.format("%d 건 조회되었습니다.", list.size()));
 	}
