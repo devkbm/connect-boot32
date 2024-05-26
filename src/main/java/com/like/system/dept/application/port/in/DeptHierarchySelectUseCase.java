@@ -7,5 +7,5 @@ import com.like.system.dept.dto.DeptQueryDTO;
 
 public interface DeptHierarchySelectUseCase {
 
-	List<DeptHierarchyNgZorro> select(DeptQueryDTO dto);
+	List<DeptHierarchyNgZorro> select(DeptQueryDTO dto);	
 }

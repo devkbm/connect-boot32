@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.like.core.jpa.vo.LocalDatePeriod;
+import com.like.system.dept.domain.DeptHierarchy;
 import com.querydsl.core.annotations.QueryProjection;
 
 import lombok.AllArgsConstructor;
@@ -72,6 +73,23 @@ public class DeptHierarchyNgZorro {
 		
 		this.title 	= this.deptNameKorean;
 		this.key 	= this.deptCode;			
+	}
+	
+	public DeptHierarchyNgZorro(DeptHierarchy dto) {
+		this.companyCode = dto.getCompanyCode();
+		this.parentDeptCode = dto.getParentDeptCode();
+		this.deptCode = dto.getCompanyCode();
+		this.deptNameKorean = dto.getDeptAbbreviationKorean();
+		this.deptAbbreviationKorean = dto.getDeptAbbreviationKorean();
+		this.deptNameEnglish = dto.getDeptAbbreviationEnglish();
+		this.deptAbbreviationEnglish = dto.getDeptAbbreviationEnglish();
+		this.fromDate = dto.getPeriod().getFrom();
+		this.toDate = dto.getPeriod().getTo();
+		this.seq = dto.getSeq();
+		this.comment = dto.getComment();
+		
+		this.title = dto.getDeptNameKorean();
+		this.key = dto.getDeptCode();
 	}
 
 	public void setChildren(List<DeptHierarchyNgZorro> children) {

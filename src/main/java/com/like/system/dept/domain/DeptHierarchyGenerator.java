@@ -6,14 +6,13 @@ import org.springframework.util.StringUtils;
 
 public class DeptHierarchyGenerator {
 
-	DeptHierarchySelectRepository repository;
-	
-	DeptHierarchyGenerator(DeptHierarchySelectRepository repository) {
-		this.repository = repository;
-	}
-	
+	private final DeptHierarchyRepository repository;
 	private List<DeptHierarchy> allNodes;
 	
+	public DeptHierarchyGenerator(DeptHierarchyRepository repository) {
+		this.repository = repository;
+	}
+		
 	public List<DeptHierarchy> getTreeNodes(String companyCode) {
 		this.allNodes = this.repository.getAllNodes(companyCode);
 		
@@ -26,7 +25,7 @@ public class DeptHierarchyGenerator {
 		List<DeptHierarchy> children = null;
 		
 		for ( DeptHierarchy node : nodes ) {
-			children = getChildren(node.parentDeptCode());
+			children = getChildren(node.getDeptCode());
 			
 			if (!children.isEmpty()) {
 				node.setChildren(children);
@@ -43,10 +42,14 @@ public class DeptHierarchyGenerator {
 	}
 	
 	private List<DeptHierarchy> getRootList() {
-		return this.allNodes.stream().filter(e -> !StringUtils.hasText(e.parentDeptCode())).toList();
+		return this.allNodes.stream()
+							.filter(e -> !StringUtils.hasText(e.parentDeptCode()))
+							.toList();
 	}	
 	
-	private List<DeptHierarchy> getChildren(String parentDeptCode) {
-		return this.allNodes.stream().filter(e -> parentDeptCode.equals(e.parentDeptCode())).toList();
+	private List<DeptHierarchy> getChildren(String deptCode) {
+		return this.allNodes.stream()
+							.filter(e -> deptCode != null && deptCode.equals(e.parentDeptCode()))
+							.toList();
 	}
 }

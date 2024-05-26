@@ -4,31 +4,38 @@ import java.util.List;
 
 import com.like.core.jpa.vo.LocalDatePeriod;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class DeptHierarchy {
 
-	String companyCode;	
+	public String companyCode;	
 	
-	String deptCode;
+	public String deptCode;
 		
-	String deptNameKorean;
+	public String deptNameKorean;
 	
-	String deptAbbreviationKorean;
+	public String deptAbbreviationKorean;
 	
-	String deptNameEnglish;
+	public String deptNameEnglish;
 	
-	String deptAbbreviationEnglish;
+	public String deptAbbreviationEnglish;
 	
-	LocalDatePeriod period;
+	public LocalDatePeriod period;
 	
-	Integer seq;
+	public Integer seq;
 	
-	String comment;
+	public String comment;
 	
-	String parentDeptCode;
+	public String parentDeptCode;
 	
-	List<DeptHierarchy> children;
+	public List<DeptHierarchy> children;
 	
-	boolean isLeaf;
+	public boolean isLeaf;
+		
+	public DeptHierarchy() {}
 	
 	/**
 	 * @param companyCode

@@ -2,7 +2,7 @@ package com.like.system.dept.domain;
 
 import java.util.List;
 
-public interface DeptHierarchySelectRepository {
+public interface DeptHierarchyRepository {
 
 	List<DeptHierarchy> getAllNodes(String companyCode);
 }

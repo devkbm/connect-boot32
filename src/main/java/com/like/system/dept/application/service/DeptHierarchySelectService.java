@@ -19,7 +19,7 @@ public class DeptHierarchySelectService implements DeptHierarchySelectUseCase {
 		
 	DeptHierarchySelectService(DeptHierarchySelectPort port) {
 		this.port = port;
-	}	
+	}		
 	
 	@Override
 	public List<DeptHierarchyNgZorro> select(DeptQueryDTO dto) {		
@@ -57,5 +57,7 @@ public class DeptHierarchySelectService implements DeptHierarchySelectUseCase {
   	private List<DeptHierarchyNgZorro> getChildren(String companyCode, String parentDeptCode) {
   		return this.nodeList.stream().filter(e -> companyCode.equals(e.getCompanyCode()) && parentDeptCode.equals(e.getParentDeptCode())).toList();
   	}
+
+
 	
 }
