@@ -75,21 +75,25 @@ public class DeptHierarchyNgZorro {
 		this.key 	= this.deptCode;			
 	}
 	
-	public DeptHierarchyNgZorro(DeptHierarchy dto) {
-		this.companyCode = dto.getCompanyCode();
-		this.parentDeptCode = dto.getParentDeptCode();
-		this.deptCode = dto.getCompanyCode();
-		this.deptNameKorean = dto.getDeptAbbreviationKorean();
-		this.deptAbbreviationKorean = dto.getDeptAbbreviationKorean();
-		this.deptNameEnglish = dto.getDeptAbbreviationEnglish();
-		this.deptAbbreviationEnglish = dto.getDeptAbbreviationEnglish();
-		this.fromDate = dto.getPeriod().getFrom();
-		this.toDate = dto.getPeriod().getTo();
-		this.seq = dto.getSeq();
-		this.comment = dto.getComment();
+	public static DeptHierarchyNgZorro build(DeptHierarchy dto) {
+		DeptHierarchyNgZorro rec = new DeptHierarchyNgZorro();
 		
-		this.title = dto.getDeptNameKorean();
-		this.key = dto.getDeptCode();
+		rec.companyCode = dto.getCompanyCode();
+		rec.parentDeptCode = dto.getParentDeptCode();
+		rec.deptCode = dto.getCompanyCode();
+		rec.deptNameKorean = dto.getDeptAbbreviationKorean();
+		rec.deptAbbreviationKorean = dto.getDeptAbbreviationKorean();
+		rec.deptNameEnglish = dto.getDeptAbbreviationEnglish();
+		rec.deptAbbreviationEnglish = dto.getDeptAbbreviationEnglish();
+		rec.fromDate = dto.getPeriod().getFrom();
+		rec.toDate = dto.getPeriod().getTo();
+		rec.seq = dto.getSeq();
+		rec.comment = dto.getComment();
+		
+		rec.title = dto.getDeptNameKorean();
+		rec.key = dto.getDeptCode();
+		
+		return rec;
 	}
 
 	public void setChildren(List<DeptHierarchyNgZorro> children) {

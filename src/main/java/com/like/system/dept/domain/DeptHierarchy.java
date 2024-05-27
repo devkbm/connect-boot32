@@ -78,6 +78,10 @@ public class DeptHierarchy {
 	public String parentDeptCode() {
 		return this.parentDeptCode;
 	}
+	
+	public List<DeptHierarchy> getChildren() {
+		return this.children;
+	}
 
 	public void setChildren(List<DeptHierarchy> children) {
 		this.children = children;
