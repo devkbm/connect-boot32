@@ -41,6 +41,8 @@ public record DeptSaveDTO(
 
 	public static DeptSaveDTO toDTO(Dept entity) {							
 		
+		if (entity == null) return null;
+		
 		Optional<Dept> parent = Optional.ofNullable(entity.getParentDept());
 		Optional<LocalDatePeriod> period= Optional.ofNullable(entity.getPeriod());
 		

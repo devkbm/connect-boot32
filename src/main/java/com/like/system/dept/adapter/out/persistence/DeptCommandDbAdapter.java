@@ -4,17 +4,17 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
-import com.like.system.dept.adapter.out.persistence.jpa.repository.DeptJpaRepository;
+import com.like.system.dept.adapter.out.persistence.jpa.DeptJpaRepository;
 import com.like.system.dept.application.port.out.DeptCommandDbPort;
 import com.like.system.dept.domain.Dept;
 import com.like.system.dept.domain.DeptId;
 
 @Repository
-public class DeptDbAdapter implements DeptCommandDbPort {
+public class DeptCommandDbAdapter implements DeptCommandDbPort {
 
 	DeptJpaRepository repository;
 	
-	public DeptDbAdapter(DeptJpaRepository repository) {
+	public DeptCommandDbAdapter(DeptJpaRepository repository) {
 		this.repository = repository;
 	}
 

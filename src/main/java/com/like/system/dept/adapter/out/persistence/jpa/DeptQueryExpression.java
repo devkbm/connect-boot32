@@ -1,4 +1,4 @@
-package com.like.system.dept.adapter.out.persistence.jpa.repository;
+package com.like.system.dept.adapter.out.persistence.jpa;
 
 import com.like.system.dept.domain.Dept;
 import com.like.system.dept.domain.QDept;

@@ -1,63 +1,68 @@
 package com.like.system.dept.application.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.like.system.dept.application.port.in.DeptHierarchySelectUseCase;
-import com.like.system.dept.application.port.out.DeptHierarchySelectPort;
+import com.like.system.dept.application.port.out.DeptHierarchySelectDbPort;
+import com.like.system.dept.domain.DeptHierarchy;
+import com.like.system.dept.domain.DeptHierarchyGenerator;
 import com.like.system.dept.dto.DeptHierarchyNgZorro;
 import com.like.system.dept.dto.DeptQueryDTO;
 
+@Transactional(readOnly = true)
 @Service
 public class DeptHierarchySelectService implements DeptHierarchySelectUseCase {
 
-	DeptHierarchySelectPort port;
-	
-	private List<DeptHierarchyNgZorro> nodeList;
-		
-	DeptHierarchySelectService(DeptHierarchySelectPort port) {
-		this.port = port;
+	DeptHierarchySelectDbPort repository;
+			
+	public DeptHierarchySelectService(DeptHierarchySelectDbPort repository) {
+		this.repository = repository;
 	}		
-	
+
 	@Override
-	public List<DeptHierarchyNgZorro> select(DeptQueryDTO dto) {		
-		this.nodeList = port.select(dto);
+	public List<?> select(DeptQueryDTO dto) {
+
+		DeptHierarchyGenerator generator = new DeptHierarchyGenerator(this.repository.getAllNodes(dto.companyCode()));
 		
-		List<DeptHierarchyNgZorro> rootNodeList = nodeList.stream().filter(e -> !StringUtils.hasText(e.getParentDeptCode())).toList();
+		List<DeptHierarchy> list = generator.getTreeNodes();		
 		
-		List<DeptHierarchyNgZorro> result = this.addDeptChildNodeList(dto.companyCode(), rootNodeList);
+		List<DeptHierarchyNgZorro> after_list = new ArrayList<>();
 		
-		return result;
+		copyTreeNodes(list, after_list);
+		
+		return after_list;		
 	}
 	
-	private List<DeptHierarchyNgZorro> addDeptChildNodeList(String companyCode, List<DeptHierarchyNgZorro> list) {
-		List<DeptHierarchyNgZorro> children = null;
+	private void copyTreeNodes(List<DeptHierarchy> original_list, List<DeptHierarchyNgZorro> copy_list) {
+		DeptHierarchyNgZorro newNode = null;
 		
-		for ( DeptHierarchyNgZorro node : list) {
-			
-			children = getChildren(companyCode, node.getDeptCode());
-			
-			if (children.isEmpty()) {
-				node.setLeaf(true);
-				continue;
-			} else {
-				node.setChildren(children);
-				node.setLeaf(false);
-				
-				// 재귀 호출
-				this.addDeptChildNodeList(companyCode, children);
-			}			
+		for (DeptHierarchy node: original_list) {
+			newNode = convert(node);
+			copyChildren(newNode, node);			
+			copy_list.add(newNode);		
 		}
+	}
+	
+	private void copyChildren(DeptHierarchyNgZorro parent, DeptHierarchy orignal) {			
+		DeptHierarchyNgZorro newNode = null;
 		
-		return list;
+		if (orignal.getChildren() == null) return;
+		
+		for (DeptHierarchy node: orignal.getChildren()) {
+			newNode = convert(node);
+			if (parent.getChildren() == null) parent.setChildren(new ArrayList<>());
+			
+			parent.getChildren().add(newNode);
+			copyChildren(newNode, node);
+		}
+	}
+	
+	private DeptHierarchyNgZorro convert(DeptHierarchy dto) {
+		return DeptHierarchyNgZorro.build(dto);
 	}	
-  	
-  	private List<DeptHierarchyNgZorro> getChildren(String companyCode, String parentDeptCode) {
-  		return this.nodeList.stream().filter(e -> companyCode.equals(e.getCompanyCode()) && parentDeptCode.equals(e.getParentDeptCode())).toList();
-  	}
-
-
 	
 }

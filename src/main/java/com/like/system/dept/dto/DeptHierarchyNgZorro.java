@@ -2,24 +2,26 @@ package com.like.system.dept.dto;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.like.core.jpa.vo.LocalDatePeriod;
 import com.like.system.dept.domain.DeptHierarchy;
-import com.querydsl.core.annotations.QueryProjection;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Singular;
+import lombok.ToString;
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class DeptHierarchyNgZorro {
 	
+	/* DeptHierarchy Property */
 	String parentDeptCode;
 	
 	String companyCode;	
@@ -41,8 +43,9 @@ public class DeptHierarchyNgZorro {
 	Integer seq;
 	
 	String comment;
+	/* DeptHierarchy Property */
 	
-	@Singular
+		
 	List<DeptHierarchyNgZorro> children;
 	
 	/**
@@ -54,44 +57,27 @@ public class DeptHierarchyNgZorro {
 			
 	@JsonProperty(value="isLeaf") 
 	boolean isLeaf;
-
-	@QueryProjection
-	public DeptHierarchyNgZorro(String parentDeptCode, String companyCode, String deptCode, String deptNameKorean, String deptAbbreviationKorean,
-			String deptNameEnglish, String deptAbbreviationEnglish, LocalDatePeriod period,
-			Integer seq, String comment) {				
-		this.parentDeptCode = parentDeptCode;
-		this.companyCode = companyCode;		
-		this.deptCode = deptCode;
-		this.deptNameKorean = deptNameKorean;
-		this.deptAbbreviationKorean = deptAbbreviationKorean;
-		this.deptNameEnglish = deptNameEnglish;
-		this.deptAbbreviationEnglish = deptAbbreviationEnglish;
-		this.fromDate = period.getFrom();
-		this.toDate = period.getTo();
-		this.seq = seq;
-		this.comment = comment;
-		
-		this.title 	= this.deptNameKorean;
-		this.key 	= this.deptCode;			
-	}
 	
 	public static DeptHierarchyNgZorro build(DeptHierarchy dto) {
 		DeptHierarchyNgZorro rec = new DeptHierarchyNgZorro();
 		
+		Optional<LocalDatePeriod> period = Optional.ofNullable(dto.getPeriod());
+		
 		rec.companyCode = dto.getCompanyCode();
 		rec.parentDeptCode = dto.getParentDeptCode();
-		rec.deptCode = dto.getCompanyCode();
+		rec.deptCode = dto.getDeptCode();
 		rec.deptNameKorean = dto.getDeptAbbreviationKorean();
 		rec.deptAbbreviationKorean = dto.getDeptAbbreviationKorean();
 		rec.deptNameEnglish = dto.getDeptAbbreviationEnglish();
 		rec.deptAbbreviationEnglish = dto.getDeptAbbreviationEnglish();
-		rec.fromDate = dto.getPeriod().getFrom();
-		rec.toDate = dto.getPeriod().getTo();
+		rec.fromDate = period.map(LocalDatePeriod::getFrom).orElse(null);
+		rec.toDate = period.map(LocalDatePeriod::getTo).orElse(null);
 		rec.seq = dto.getSeq();
 		rec.comment = dto.getComment();
 		
 		rec.title = dto.getDeptNameKorean();
 		rec.key = dto.getDeptCode();
+		rec.isLeaf = dto.isLeaf();
 		
 		return rec;
 	}

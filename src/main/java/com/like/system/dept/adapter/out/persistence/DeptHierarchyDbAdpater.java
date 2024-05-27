@@ -4,28 +4,26 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.like.system.dept.application.port.out.DeptHierarchySelectDbPort;
 import com.like.system.dept.domain.DeptHierarchy;
-import com.like.system.dept.domain.DeptHierarchyRepository;
 import com.like.system.dept.domain.QDept;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 @Repository
-public class DeptHierarchyDbAdpater2 implements DeptHierarchyRepository {
+public class DeptHierarchyDbAdpater implements DeptHierarchySelectDbPort {
 
 	JPAQueryFactory queryFactory;
 	private static final QDept qDept = QDept.dept;
 	
-	DeptHierarchyDbAdpater2(JPAQueryFactory queryFactory) {
+	DeptHierarchyDbAdpater(JPAQueryFactory queryFactory) {
 		this.queryFactory = queryFactory;
 	}
 	
 	@Override
 	public List<DeptHierarchy> getAllNodes(String companyCode) {
-		//return null;
-		
 		return queryFactory
-				.select(Projections.bean(DeptHierarchy.class,
+				.select(Projections.fields(DeptHierarchy.class,
 						qDept.id.companyCode,
 						qDept.id.deptCode,
 						qDept.deptNameKorean,
