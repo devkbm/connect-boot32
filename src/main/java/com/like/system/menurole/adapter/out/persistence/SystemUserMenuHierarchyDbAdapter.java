@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.like.system.menu.domain.QMenu;
-import com.like.system.menu.dto.MenuHierarchyResponseDTO;
-import com.like.system.menu.dto.QMenuHierarchyResponseDTO;
+import com.like.system.menu.dto.MenuHierarchyNgZorro;
+import com.like.system.menu.dto.QMenuHierarchyNgZorro;
 import com.like.system.menurole.application.port.out.SystemUserMenuHierarchySelectDbPort;
 import com.like.system.menurole.domain.QMenuRoleMapping;
 import com.querydsl.jpa.impl.JPAQuery;
@@ -24,15 +24,15 @@ public class SystemUserMenuHierarchyDbAdapter implements SystemUserMenuHierarchy
 	}
 	
 	@Override
-	public List<MenuHierarchyResponseDTO> select(String companyCode, String menuGroupCode, List<String> roleCodes) {
-		List<MenuHierarchyResponseDTO> rootList = this.getMenuRootList(companyCode, menuGroupCode, roleCodes);
+	public List<MenuHierarchyNgZorro> select(String companyCode, String menuGroupCode, List<String> roleCodes) {
+		List<MenuHierarchyNgZorro> rootList = this.getMenuRootList(companyCode, menuGroupCode, roleCodes);
 		
 		return this.getMenuHierarchyDTO(companyCode, roleCodes, rootList);
 	}
 	
-	private List<MenuHierarchyResponseDTO> getMenuRootList(String companyCode, String menuGroupCode, List<String> roleCodes) {			
+	private List<MenuHierarchyNgZorro> getMenuRootList(String companyCode, String menuGroupCode, List<String> roleCodes) {			
 		
-		JPAQuery<MenuHierarchyResponseDTO> query = queryFactory
+		JPAQuery<MenuHierarchyNgZorro> query = queryFactory
 				.select(projections(qMenu))
 				.from(qMenu)
 				.innerJoin(qMenuRoleMapping)
@@ -50,10 +50,10 @@ public class SystemUserMenuHierarchyDbAdapter implements SystemUserMenuHierarchy
 	}
 	
 	// TODO 계층 쿼리 테스트해보아야함 1 루트 노드 검색 : getMenuChildrenList 2. 하위노드 검색 : getMenuHierarchyDTO
-	private List<MenuHierarchyResponseDTO> getMenuHierarchyDTO(String companyCode, List<String> roleCodes, List<MenuHierarchyResponseDTO> list) {
-		List<MenuHierarchyResponseDTO> children = null;
+	private List<MenuHierarchyNgZorro> getMenuHierarchyDTO(String companyCode, List<String> roleCodes, List<MenuHierarchyNgZorro> list) {
+		List<MenuHierarchyNgZorro> children = null;
 		
-		for ( MenuHierarchyResponseDTO dto : list ) {			
+		for ( MenuHierarchyNgZorro dto : list ) {			
 			
 			children = getMenuChildrenList(companyCode, dto.getMenuGroupCode(), roleCodes, dto.getKey());
 			
@@ -73,9 +73,9 @@ public class SystemUserMenuHierarchyDbAdapter implements SystemUserMenuHierarchy
 		return list;
 	}
 	
-	private List<MenuHierarchyResponseDTO> getMenuChildrenList(String companyCode, String menuGroupCode, List<String> roleCodes, String parentMenuCode) {					
+	private List<MenuHierarchyNgZorro> getMenuChildrenList(String companyCode, String menuGroupCode, List<String> roleCodes, String parentMenuCode) {					
 		
-		JPAQuery<MenuHierarchyResponseDTO> query = queryFactory			
+		JPAQuery<MenuHierarchyNgZorro> query = queryFactory			
 				.select(projections(qMenu)).distinct()
 				.from(qMenu)
 				.innerJoin(qMenuRoleMapping)
@@ -92,9 +92,9 @@ public class SystemUserMenuHierarchyDbAdapter implements SystemUserMenuHierarchy
 		return query.fetch();
 	}
 	
-	private QMenuHierarchyResponseDTO projections(QMenu qMenu) {		
+	private QMenuHierarchyNgZorro projections(QMenu qMenu) {		
 				
-		return new QMenuHierarchyResponseDTO(							
+		return new QMenuHierarchyNgZorro(							
 				qMenu.id.menuCode,
 				qMenu.name,
 				qMenu.menuGroup.id.menuGroupCode,

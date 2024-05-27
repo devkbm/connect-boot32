@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
 import com.like.system.menu.application.port.in.MenuHierarchySelectUseCase;
-import com.like.system.menu.dto.MenuHierarchyResponseDTO;
+import com.like.system.menu.dto.MenuHierarchyNgZorro;
 
 
 @Slf4j
@@ -32,7 +32,7 @@ public class MenuHierarchyQueryController {
 		
 		log.info("companyCode : "+ companyCode);
 		log.info("menuGroupCode : "+ menuGroupCode);
-		List<MenuHierarchyResponseDTO> menuGroup = useCase.select(companyCode, menuGroupCode); 										
+		List<MenuHierarchyNgZorro> menuGroup = useCase.select(companyCode, menuGroupCode); 										
 		
 		return toList(menuGroup, MessageUtil.getQueryMessage(menuGroup.size()));
 	}

@@ -2,8 +2,8 @@ package com.like.system.menurole.application.port.in;
 
 import java.util.List;
 
-import com.like.system.menu.dto.MenuHierarchyResponseDTO;
+import com.like.system.menu.dto.MenuHierarchyNgZorro;
 
 public interface SystemUserMenuHierarchySelectUseCase {
-	List<MenuHierarchyResponseDTO> select(String companyCode, String userId, String menuGroupCode);
+	List<MenuHierarchyNgZorro> select(String companyCode, String userId, String menuGroupCode);
 }

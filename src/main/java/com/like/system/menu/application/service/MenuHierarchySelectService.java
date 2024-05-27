@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.like.system.menu.application.port.in.MenuHierarchySelectUseCase;
 import com.like.system.menu.application.port.out.MenuHierarchySelectDbPort;
-import com.like.system.menu.dto.MenuHierarchyResponseDTO;
+import com.like.system.menu.dto.MenuHierarchyNgZorro;
 
 @Service
 public class MenuHierarchySelectService implements MenuHierarchySelectUseCase {
@@ -17,7 +17,7 @@ public class MenuHierarchySelectService implements MenuHierarchySelectUseCase {
 		this.port = port;
 	}
 	@Override
-	public List<MenuHierarchyResponseDTO> select(String companyCode, String menuGroupCode) {
+	public List<MenuHierarchyNgZorro> select(String companyCode, String menuGroupCode) {
 		return this.port.select(companyCode, menuGroupCode);
 	}
 	

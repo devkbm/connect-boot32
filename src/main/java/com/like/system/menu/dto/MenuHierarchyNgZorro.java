@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class MenuHierarchyResponseDTO {
+public class MenuHierarchyNgZorro {
 	
 	/* NzTreeNodeOptions */
 	String key;
@@ -24,7 +24,7 @@ public class MenuHierarchyResponseDTO {
 	
 	boolean isLeaf;
 	
-	List<MenuHierarchyResponseDTO> children;
+	List<MenuHierarchyNgZorro> children;
 	/* NzTreeNodeOptions */
 	
 	String menuGroupCode;
@@ -40,7 +40,7 @@ public class MenuHierarchyResponseDTO {
 	String url;
 
 	@QueryProjection
-	public MenuHierarchyResponseDTO(String key, String title, String menuGroupCode, String parentMenuCode,
+	public MenuHierarchyNgZorro(String key, String title, String menuGroupCode, String parentMenuCode,
 			MenuType menuType, Long sequence, Long level, String url) {				
 		this.key = key;
 		this.title = title;
@@ -55,7 +55,7 @@ public class MenuHierarchyResponseDTO {
 		
 	}
 
-	public void setChildren(List<MenuHierarchyResponseDTO> children) {
+	public void setChildren(List<MenuHierarchyNgZorro> children) {
 		this.children = children;
 	}
 	

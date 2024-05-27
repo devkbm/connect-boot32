@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import com.like.system.menu.application.port.out.MenuHierarchySelectDbPort;
 import com.like.system.menu.domain.QMenu;
-import com.like.system.menu.dto.MenuHierarchyResponseDTO;
-import com.like.system.menu.dto.QMenuHierarchyResponseDTO;
+import com.like.system.menu.dto.MenuHierarchyNgZorro;
+import com.like.system.menu.dto.QMenuHierarchyNgZorro;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
@@ -22,17 +22,17 @@ public class MenuHierarchyDbAdapter implements MenuHierarchySelectDbPort {
 	}
 	
 	@Override
-	public List<MenuHierarchyResponseDTO> select(String companyCode, String menuGroupCode) {
+	public List<MenuHierarchyNgZorro> select(String companyCode, String menuGroupCode) {
 				
-		List<MenuHierarchyResponseDTO> rootList = this.getMenuRootList(companyCode, menuGroupCode);
+		List<MenuHierarchyNgZorro> rootList = this.getMenuRootList(companyCode, menuGroupCode);
 		
 		return this.getMenuHierarchyDTO(companyCode, rootList);
 	}
 	
-	private List<MenuHierarchyResponseDTO> getMenuRootList(String companyCode, String menuGroupCode) {			
+	private List<MenuHierarchyNgZorro> getMenuRootList(String companyCode, String menuGroupCode) {			
 		
 		// menuGroupCode, companyCode 반대로 동작 확인 필요
-		JPAQuery<MenuHierarchyResponseDTO> query = queryFactory
+		JPAQuery<MenuHierarchyNgZorro> query = queryFactory
 				.select(projections(qMenu))
 				.from(qMenu)								
 				.where(qMenu.id.menuGroupId.companyCode.eq(companyCode)
@@ -44,10 +44,10 @@ public class MenuHierarchyDbAdapter implements MenuHierarchySelectDbPort {
 	}
 	
 	// TODO 계층 쿼리 테스트해보아야함 1 루트 노드 검색 : getMenuChildrenList 2. 하위노드 검색 : getMenuHierarchyDTO
-	private List<MenuHierarchyResponseDTO> getMenuHierarchyDTO(String companyCode, List<MenuHierarchyResponseDTO> list) {
-		List<MenuHierarchyResponseDTO> children = null;
+	private List<MenuHierarchyNgZorro> getMenuHierarchyDTO(String companyCode, List<MenuHierarchyNgZorro> list) {
+		List<MenuHierarchyNgZorro> children = null;
 		
-		for ( MenuHierarchyResponseDTO dto : list ) {			
+		for ( MenuHierarchyNgZorro dto : list ) {			
 			
 			children = getMenuChildrenList(companyCode, dto.getMenuGroupCode(), dto.getKey());
 			
@@ -67,14 +67,14 @@ public class MenuHierarchyDbAdapter implements MenuHierarchySelectDbPort {
 		return list;
 	}
 	
-	private List<MenuHierarchyResponseDTO> getMenuChildrenList(String companyCode, String menuGroupCode, String parentMenuCode) {					
+	private List<MenuHierarchyNgZorro> getMenuChildrenList(String companyCode, String menuGroupCode, String parentMenuCode) {					
 		/*
 		Expression<Boolean> isLeaf = new CaseBuilder()										
 											.when(qMenu.parent.menuCode.isNotNull()).then(true)
 											.otherwise(false).as("isLeaf");
 		*/
 		// menuGroupCode, companyCode 반대로 동작 확인 필요
-		JPAQuery<MenuHierarchyResponseDTO> query = queryFactory			
+		JPAQuery<MenuHierarchyNgZorro> query = queryFactory			
 				.select(projections(qMenu))
 				.from(qMenu)									
 				.where(qMenu.id.menuGroupId.companyCode.eq(companyCode)
@@ -85,14 +85,14 @@ public class MenuHierarchyDbAdapter implements MenuHierarchySelectDbPort {
 		return query.fetch();
 	}
 	
-	private QMenuHierarchyResponseDTO projections(QMenu qMenu) {		
+	private QMenuHierarchyNgZorro projections(QMenu qMenu) {		
 		
 		/*
 		 *  
 		  	public MenuHierarchyResponseDTO(String key, String title, String menuGroupCode, String parentMenuCode,
 			MenuType menuType, Long sequence, Long level, String url) {			
 		 */
-		return new QMenuHierarchyResponseDTO(							
+		return new QMenuHierarchyNgZorro(							
 				qMenu.id.menuCode,
 				qMenu.name,
 				qMenu.menuGroup.id.menuGroupCode,
