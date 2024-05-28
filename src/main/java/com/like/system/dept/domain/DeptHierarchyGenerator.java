@@ -6,10 +6,10 @@ import org.springframework.util.StringUtils;
 
 public class DeptHierarchyGenerator {
 	
-	private List<DeptHierarchy> allNodes;
+	private List<DeptHierarchy> allFlattenNodes;
 	
-	public DeptHierarchyGenerator(List<DeptHierarchy> allNodes) {
-		this.allNodes = allNodes;
+	public DeptHierarchyGenerator(List<DeptHierarchy> allFlattenNodes) {
+		this.allFlattenNodes = allFlattenNodes;
 	}
 		
 	public List<DeptHierarchy> getTreeNodes() {			
@@ -39,13 +39,15 @@ public class DeptHierarchyGenerator {
 	}
 	
 	private List<DeptHierarchy> getRootList() {
-		return this.allNodes.stream()
+		return this.allFlattenNodes
+							.stream()
 							.filter(e -> !StringUtils.hasText(e.parentDeptCode()))
 							.toList();
 	}	
 	
 	private List<DeptHierarchy> getChildren(String deptCode) {
-		return this.allNodes.stream()
+		return this.allFlattenNodes
+							.stream()
 							.filter(e -> deptCode != null && deptCode.equals(e.parentDeptCode()))
 							.toList();
 	}

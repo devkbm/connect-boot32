@@ -2,8 +2,9 @@ package com.like.system.menu.application.port.out;
 
 import java.util.List;
 
-import com.like.system.menu.dto.MenuHierarchyNgZorro;
+import com.like.system.menu.domain.MenuHierarchy;
 
 public interface MenuHierarchySelectDbPort {
-	List<MenuHierarchyNgZorro> select(String companyCode, String menuGroupCode);
+
+	List<MenuHierarchy> getAllFlattenNodes(String companyCode, String menuGroupCode);
 }
