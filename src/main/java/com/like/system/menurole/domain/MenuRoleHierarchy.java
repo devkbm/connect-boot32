@@ -22,6 +22,8 @@ public class MenuRoleHierarchy {
 	boolean checked;
 	
 	boolean isLeaf;
+		
+	public long menuRoleChildrenCount;
 	
 	public MenuRoleHierarchy() {}
 	
