@@ -12,11 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
 import com.like.system.menurole.application.port.in.MenuRoleHierarchySelectUseCase;
-import com.like.system.menurole.dto.MenuRoleMappingHierarchyResponseDTO;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @RestController
 public class MenuRoleHierarchyQueryController {
 
@@ -28,10 +24,8 @@ public class MenuRoleHierarchyQueryController {
 	
 	@GetMapping("/api/system/menurolehierarchy/{menuGroupCode}/{roleCode}")
 	public ResponseEntity<?> getMenuGroupHierarchy(@RequestParam String companyCode, @PathVariable String menuGroupCode, @PathVariable String roleCode) {				
-		
-		log.info("companyCode : "+ companyCode);
-		log.info("menuGroupCode : "+ menuGroupCode);
-		List<MenuRoleMappingHierarchyResponseDTO> menuGroup = useCase.select(companyCode, menuGroupCode, roleCode); 										
+				
+		List<?> menuGroup = useCase.select(companyCode, menuGroupCode, roleCode); 										
 		
 		return toList(menuGroup, MessageUtil.getQueryMessage(menuGroup.size()));
 	}	

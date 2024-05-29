@@ -13,6 +13,8 @@ public class MenuRoleHierarchy {
 	
 	String menuCode;
 	
+	String menuName;
+	
 	String roleCode;
 	
 	String parentMenuCode;
