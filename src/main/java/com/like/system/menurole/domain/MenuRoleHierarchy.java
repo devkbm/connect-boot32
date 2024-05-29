@@ -2,6 +2,9 @@ package com.like.system.menurole.domain;
 
 import java.util.List;
 
+import lombok.Getter;
+
+@Getter
 public class MenuRoleHierarchy {
 
 	String companyCode;

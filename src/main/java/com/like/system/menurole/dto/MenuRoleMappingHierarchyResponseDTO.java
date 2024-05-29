@@ -3,6 +3,7 @@ package com.like.system.menurole.dto;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.like.system.menurole.domain.MenuRoleHierarchy;
 import com.querydsl.core.annotations.QueryProjection;
 
 import lombok.AccessLevel;
@@ -66,6 +67,17 @@ public class MenuRoleMappingHierarchyResponseDTO {
 		this.menuChildrenCount = menuChildrenCount;
 		this.menuRoleChildrenCount = menuRoleChildrenCount;
 						
+	}
+	
+	public static MenuRoleMappingHierarchyResponseDTO build(MenuRoleHierarchy dto) {
+		MenuRoleMappingHierarchyResponseDTO rec = new MenuRoleMappingHierarchyResponseDTO();
+		
+		rec.menuGroupCode = dto.getMenuGroupCode();
+		rec.menuCode = dto.getMenuCode();
+		rec.roleCode = dto.getRoleCode();
+				
+		
+		return rec;
 	}
 	
 	public void setChildren(List<MenuRoleMappingHierarchyResponseDTO> children) {
