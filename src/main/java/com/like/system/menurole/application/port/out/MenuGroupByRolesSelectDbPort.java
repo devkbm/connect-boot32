@@ -4,6 +4,6 @@ import java.util.List;
 
 import com.like.system.menu.domain.MenuGroup;
 
-public interface SystemUserMenuGroupSelectDbPort {
+public interface MenuGroupByRolesSelectDbPort {
 	List<MenuGroup> select(String companyCode, List<String> roleCodes);
 }

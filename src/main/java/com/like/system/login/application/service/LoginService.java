@@ -12,7 +12,7 @@ import com.like.system.login.application.port.out.SystemUserSelectDbPort;
 import com.like.system.login.domain.event.LoginSuccessEvent;
 import com.like.system.login.dto.LoginRequestDTO;
 import com.like.system.menu.dto.MenuGroupSaveDTO;
-import com.like.system.menurole.application.port.in.external.SystemUserMenuGroupSelectUseCase;
+import com.like.system.menurole.application.port.in.external.MenuGroupByUserSelectUseCase;
 import com.like.system.permission.domain.AuthenticationToken;
 import com.like.system.user.domain.SystemUser;
 
@@ -22,13 +22,13 @@ import jakarta.servlet.http.HttpServletRequest;
 public class LoginService implements LoginUseCase {
 
 	SystemUserSelectDbPort userPort;
-	SystemUserMenuGroupSelectUseCase menuGroupSelectUseCase;
+	MenuGroupByUserSelectUseCase menuGroupSelectUseCase;
 	AuthenticationTokenSavePort	tokenPort;
 	
 	ApplicationEventPublisher publisher;
 	
 	public LoginService(SystemUserSelectDbPort userPort
-						,SystemUserMenuGroupSelectUseCase menuGroupSelectUseCase
+						,MenuGroupByUserSelectUseCase menuGroupSelectUseCase
 						,AuthenticationTokenSavePort tokenPort
 						,ApplicationEventPublisher publisher) {
 		this.userPort = userPort;

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.like.system.menu.dto.MenuGroupSaveDTO;
 
-public interface SystemUserMenuGroupSelectUseCase {
+public interface MenuGroupByUserSelectUseCase {
 
 	List<MenuGroupSaveDTO> select(String companyCode, String userId);
 }

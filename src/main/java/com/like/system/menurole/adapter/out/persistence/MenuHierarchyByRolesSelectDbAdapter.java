@@ -6,19 +6,19 @@ import org.springframework.stereotype.Repository;
 
 import com.like.system.menu.domain.MenuHierarchy;
 import com.like.system.menu.domain.QMenu;
-import com.like.system.menurole.application.port.out.SystemUserMenuHierarchySelectDbPort;
+import com.like.system.menurole.application.port.out.MenuHierarchyByRolesSelectDbPort;
 import com.like.system.menurole.domain.QMenuRoleMapping;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 @Repository
-public class SystemUserMenuHierarchySelectDbAdapter implements SystemUserMenuHierarchySelectDbPort {
+public class MenuHierarchyByRolesSelectDbAdapter implements MenuHierarchyByRolesSelectDbPort {
 
 	JPAQueryFactory queryFactory;
 	private final QMenu qMenu = QMenu.menu;
 	private final QMenuRoleMapping qMenuRoleMapping = QMenuRoleMapping.menuRoleMapping;
 	
-	SystemUserMenuHierarchySelectDbAdapter(JPAQueryFactory queryFactory) {
+	MenuHierarchyByRolesSelectDbAdapter(JPAQueryFactory queryFactory) {
 		this.queryFactory = queryFactory;
 	}
 	

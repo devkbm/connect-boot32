@@ -6,18 +6,18 @@ import org.springframework.stereotype.Repository;
 
 import com.like.system.menu.domain.MenuGroup;
 import com.like.system.menu.domain.QMenuGroup;
-import com.like.system.menurole.application.port.out.SystemUserMenuGroupSelectDbPort;
+import com.like.system.menurole.application.port.out.MenuGroupByRolesSelectDbPort;
 import com.like.system.menurole.domain.QMenuRoleMapping;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 @Repository
-public class SystemUserMenuGroupDbAdapter implements SystemUserMenuGroupSelectDbPort {
+public class MenuGroupByRolesSelectDbAdapter implements MenuGroupByRolesSelectDbPort {
 
 	JPAQueryFactory queryFactory;	
 	private final QMenuGroup qMenuGroup = QMenuGroup.menuGroup;
 	private final QMenuRoleMapping qMenuRoleMapping = QMenuRoleMapping.menuRoleMapping;
 	
-	SystemUserMenuGroupDbAdapter(JPAQueryFactory queryFactory) {
+	MenuGroupByRolesSelectDbAdapter(JPAQueryFactory queryFactory) {
 		this.queryFactory = queryFactory;
 	}
 	

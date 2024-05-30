@@ -8,15 +8,15 @@ import org.springframework.stereotype.Service;
 import com.like.system.menu.domain.MenuHierarchy;
 import com.like.system.menu.domain.MenuHierarchyGenerator;
 import com.like.system.menu.dto.MenuHierarchyNgZorro;
-import com.like.system.menurole.application.port.in.external.SystemUserMenuHierarchySelectUseCase;
-import com.like.system.menurole.application.port.out.SystemUserMenuHierarchySelectDbPort;
+import com.like.system.menurole.application.port.in.external.MenuHierarchyByRolesSelectUseCase;
+import com.like.system.menurole.application.port.out.MenuHierarchyByRolesSelectDbPort;
 
 @Service
-public class SystemUserMenuHierarchySelectService implements SystemUserMenuHierarchySelectUseCase {
+public class MenuHierarchyByRolesSelectService implements MenuHierarchyByRolesSelectUseCase {
 
-	SystemUserMenuHierarchySelectDbPort dbPort;
+	MenuHierarchyByRolesSelectDbPort dbPort;
 	
-	SystemUserMenuHierarchySelectService(SystemUserMenuHierarchySelectDbPort dbPort) {
+	MenuHierarchyByRolesSelectService(MenuHierarchyByRolesSelectDbPort dbPort) {
 		this.dbPort = dbPort;
 	}
 	

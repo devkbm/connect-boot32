@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.like.system.menu.domain.MenuHierarchy;
 
-public interface SystemUserMenuHierarchySelectDbPort {
+public interface MenuHierarchyByRolesSelectDbPort {
 
 	List<MenuHierarchy> select(String companyCode, String menuGroupCode, List<String> roleCodes);
 }

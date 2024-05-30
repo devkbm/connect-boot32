@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.like.system.menu.dto.MenuGroupSaveDTO;
-import com.like.system.menurole.application.port.in.external.SystemUserMenuGroupSelectUseCase;
+import com.like.system.menurole.application.port.in.external.MenuGroupByUserSelectUseCase;
 import com.like.system.permission.application.port.in.AuthenticationTokenSelectUseCase;
 import com.like.system.permission.domain.AuthenticationToken;
 import com.like.system.user.application.port.in.external.SystemUserCommonSelectUseCase;
@@ -17,10 +17,10 @@ import com.like.system.user.domain.SystemUser;
 public class AuthenticationTokenSelectService implements AuthenticationTokenSelectUseCase {
 
 	SystemUserCommonSelectUseCase userSelectUseCase;
-	SystemUserMenuGroupSelectUseCase menuGroupSelectUseCase;
+	MenuGroupByUserSelectUseCase menuGroupSelectUseCase;
 	
 	AuthenticationTokenSelectService(SystemUserCommonSelectUseCase userSelectUseCase, 
-									 SystemUserMenuGroupSelectUseCase menuGroupSelectUseCase) {
+									 MenuGroupByUserSelectUseCase menuGroupSelectUseCase) {
 		this.userSelectUseCase = userSelectUseCase;
 		this.menuGroupSelectUseCase = menuGroupSelectUseCase;
 	}
