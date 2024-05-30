@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.like.system.menu.domain.MenuHierarchy;
 import com.like.system.menu.domain.QMenu;
 import com.like.system.menurole.application.port.out.SystemUserMenuHierarchySelect2DbPort;
 import com.like.system.menurole.domain.MenuRoleHierarchy;

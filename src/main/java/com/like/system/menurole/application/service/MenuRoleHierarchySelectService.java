@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.like.system.menurole.application.port.in.MenuRoleHierarchySelectUseCase;
-import com.like.system.menurole.application.port.out.MenuRoleHierarchySelect2DbPort;
+import com.like.system.menurole.application.port.out.MenuRoleHierarchySelectDbPort;
 import com.like.system.menurole.domain.MenuRoleHierarchy;
 import com.like.system.menurole.domain.MenuRoleHierarchyGenerator;
 import com.like.system.menurole.dto.MenuRoleHierarchyNgZorro;
@@ -14,9 +14,9 @@ import com.like.system.menurole.dto.MenuRoleHierarchyNgZorro;
 @Service
 public class MenuRoleHierarchySelectService implements MenuRoleHierarchySelectUseCase {
 
-	MenuRoleHierarchySelect2DbPort dbPort;
+	MenuRoleHierarchySelectDbPort dbPort;
 	
-	MenuRoleHierarchySelectService(MenuRoleHierarchySelect2DbPort dbPort) {
+	MenuRoleHierarchySelectService(MenuRoleHierarchySelectDbPort dbPort) {
 		this.dbPort = dbPort;
 	}
 	
@@ -31,7 +31,7 @@ public class MenuRoleHierarchySelectService implements MenuRoleHierarchySelectUs
 		copyTreeNode(list, copy_list);
 		
 		for ( MenuRoleHierarchyNgZorro dto : copy_list ) {
-			MenuRoleHierarchyHalfChecker.setHalfChecked(dto);
+			MenuRoleHierarchyNgZorroHalfChecker.setHalfChecked(dto);
 		}
 		
 		return copy_list;

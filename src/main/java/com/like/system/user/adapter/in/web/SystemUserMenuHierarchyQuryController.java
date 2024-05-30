@@ -1,4 +1,4 @@
-package com.like.system.menurole.adapter.in.web;
+package com.like.system.user.adapter.in.web;
 
 import static com.like.core.web.util.ResponseEntityUtil.toList;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
 import com.like.system.menu.dto.MenuHierarchyNgZorro;
-import com.like.system.menurole.application.port.in.SystemUserMenuHierarchySelectUseCase;
+import com.like.system.user.application.port.in.SystemUserMenuHierarchySelectUseCase;
 
 import lombok.extern.slf4j.Slf4j;
 

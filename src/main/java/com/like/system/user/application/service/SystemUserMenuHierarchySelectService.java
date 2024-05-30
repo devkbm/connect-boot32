@@ -1,12 +1,12 @@
-package com.like.system.menurole.application.service;
+package com.like.system.user.application.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.like.system.menu.dto.MenuHierarchyNgZorro;
-import com.like.system.menurole.application.port.in.SystemUserMenuHierarchySelectUseCase;
 import com.like.system.menurole.application.port.out.SystemUserMenuHierarchySelectDbPort;
+import com.like.system.user.application.port.in.SystemUserMenuHierarchySelectUseCase;
 import com.like.system.user.application.port.in.SystemUserSelectUseCase;
 import com.like.system.user.dto.SystemUserSaveDTO;
 

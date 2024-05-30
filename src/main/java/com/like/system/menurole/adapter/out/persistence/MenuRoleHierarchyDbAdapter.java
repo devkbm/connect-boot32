@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.like.system.menu.domain.QMenu;
-import com.like.system.menurole.application.port.out.MenuRoleHierarchySelect2DbPort;
+import com.like.system.menurole.application.port.out.MenuRoleHierarchySelectDbPort;
 import com.like.system.menurole.domain.MenuRoleHierarchy;
 import com.like.system.menurole.domain.QMenuRoleMapping;
 import com.querydsl.core.types.Expression;
@@ -14,7 +14,7 @@ import com.querydsl.core.types.dsl.CaseBuilder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 @Repository
-public class MenuRoleHierarchyDbAdapter implements MenuRoleHierarchySelect2DbPort {
+public class MenuRoleHierarchyDbAdapter implements MenuRoleHierarchySelectDbPort {
 
 	JPAQueryFactory queryFactory;
 	private final QMenu qMenu = QMenu.menu;
