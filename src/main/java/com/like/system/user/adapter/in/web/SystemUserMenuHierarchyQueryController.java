@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
 import com.like.system.menu.dto.MenuHierarchyNgZorro;
-import com.like.system.user.application.port.in.SystemUserMenuHierarchySelectUseCase;
+import com.like.system.user.application.port.in.SystemUserMenuHierarchyQueryUseCase;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-public class SystemUserMenuHierarchyQuryController {
+public class SystemUserMenuHierarchyQueryController {
 
-	SystemUserMenuHierarchySelectUseCase useCase;
+	SystemUserMenuHierarchyQueryUseCase useCase;
 	
-	SystemUserMenuHierarchyQuryController(SystemUserMenuHierarchySelectUseCase useCase) {
+	SystemUserMenuHierarchyQueryController(SystemUserMenuHierarchyQueryUseCase useCase) {
 		this.useCase = useCase;
 	}
 	

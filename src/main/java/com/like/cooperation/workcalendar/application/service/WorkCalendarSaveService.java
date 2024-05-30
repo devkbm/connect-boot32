@@ -11,7 +11,7 @@ import com.like.cooperation.workcalendar.application.port.out.WorkCalendarMember
 import com.like.cooperation.workcalendar.domain.WorkCalendar;
 import com.like.cooperation.workcalendar.domain.WorkCalendarMember;
 import com.like.cooperation.workcalendar.dto.WorkCalendarSaveDTO;
-import com.like.system.user.application.port.in.share.SystemUserCommonSelectUseCase;
+import com.like.system.user.application.port.in.external.SystemUserCommonSelectUseCase;
 import com.like.system.user.domain.SystemUserId;
 
 @Transactional

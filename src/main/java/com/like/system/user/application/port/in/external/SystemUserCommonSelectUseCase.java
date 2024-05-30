@@ -1,4 +1,4 @@
-package com.like.system.user.application.port.in.share;
+package com.like.system.user.application.port.in.external;
 
 import java.util.List;
 

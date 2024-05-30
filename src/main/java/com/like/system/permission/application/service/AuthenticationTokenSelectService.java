@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.like.system.menu.dto.MenuGroupSaveDTO;
-import com.like.system.menurole.application.port.in.SystemUserMenuGroupSelectUseCase;
+import com.like.system.menurole.application.port.in.external.SystemUserMenuGroupSelectUseCase;
 import com.like.system.permission.application.port.in.AuthenticationTokenSelectUseCase;
 import com.like.system.permission.domain.AuthenticationToken;
-import com.like.system.user.application.port.in.share.SystemUserCommonSelectUseCase;
+import com.like.system.user.application.port.in.external.SystemUserCommonSelectUseCase;
 import com.like.system.user.domain.SystemUser;
 
 @Transactional

@@ -2,6 +2,7 @@ package com.like.system.menu.dto;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.like.system.menu.domain.MenuHierarchy;
 import com.like.system.menu.domain.MenuType;
 import com.querydsl.core.annotations.QueryProjection;
@@ -23,6 +24,7 @@ public class MenuHierarchyNgZorro {
 	
 	boolean selected;
 	
+	@JsonProperty(value="isLeaf")
 	boolean isLeaf;
 	
 	List<MenuHierarchyNgZorro> children;
@@ -69,6 +71,8 @@ public class MenuHierarchyNgZorro {
 		rec.title = dto.getMenuName();
 		rec.expanded = false;
 		rec.selected = false;
+		
+		rec.isLeaf = dto.isLeaf();
 		
 		return rec;
 	}

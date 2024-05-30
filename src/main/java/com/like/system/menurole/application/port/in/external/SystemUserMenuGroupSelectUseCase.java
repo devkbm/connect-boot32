@@ -1,4 +1,4 @@
-package com.like.system.menurole.application.port.in;
+package com.like.system.menurole.application.port.in.external;
 
 import java.util.List;
 

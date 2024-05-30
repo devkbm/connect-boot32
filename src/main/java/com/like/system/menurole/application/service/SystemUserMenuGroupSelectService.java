@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.like.system.menu.dto.MenuGroupSaveDTO;
-import com.like.system.menurole.application.port.in.SystemUserMenuGroupSelectUseCase;
+import com.like.system.menurole.application.port.in.external.SystemUserMenuGroupSelectUseCase;
 import com.like.system.menurole.application.port.out.SystemUserMenuGroupSelectDbPort;
 import com.like.system.user.application.port.in.SystemUserSelectUseCase;
 import com.like.system.user.dto.SystemUserSaveDTO;
