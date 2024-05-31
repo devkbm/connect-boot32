@@ -15,6 +15,7 @@ import com.like.system.login.dto.LoginRequestDTO;
 import com.like.system.menu.dto.MenuGroupSaveDTO;
 import com.like.system.permission.domain.AuthenticationToken;
 import com.like.system.user.domain.SystemUser;
+import com.like.system.user.external.SystemUserDTO;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -30,7 +31,7 @@ public class AuthenticationTokenSaveAdapter implements AuthenticationTokenSavePo
 	@Override
 	public AuthenticationToken SaveAuthenticationToken(LoginRequestDTO dto, SystemUser systemUser, List<MenuGroupSaveDTO> menuGroupList, HttpServletRequest request) {		
 								
-		AuthenticationToken authToken = createAuthToken(systemUser, menuGroupList, request);
+		AuthenticationToken authToken = createAuthToken(SystemUserDTO.toDTO(systemUser), menuGroupList, request);
 		
 		UsernamePasswordAuthenticationToken securityToken = new UsernamePasswordAuthenticationToken(dto.staffNo(), dto.password(), systemUser.getAuthorities());				
 		securityToken.setDetails(authToken);
@@ -42,7 +43,7 @@ public class AuthenticationTokenSaveAdapter implements AuthenticationTokenSavePo
 		return authToken;
 	}
 
-	private AuthenticationToken createAuthToken(SystemUser systemUser, List<MenuGroupSaveDTO> menuGroupList, HttpServletRequest request) {
+	private AuthenticationToken createAuthToken(SystemUserDTO systemUser, List<MenuGroupSaveDTO> menuGroupList, HttpServletRequest request) {
 		return AuthenticationToken.of(systemUser, menuGroupList, WebRequestUtil.getIpAddress(request), request.getSession().getId());
 	}
 	

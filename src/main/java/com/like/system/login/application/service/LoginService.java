@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 
 import com.like.system.login.application.port.in.LoginUseCase;
 import com.like.system.login.application.port.out.AuthenticationTokenSavePort;
-import com.like.system.login.application.port.out.SystemUserSelectDbPort;
 import com.like.system.login.domain.event.LoginSuccessEvent;
 import com.like.system.login.dto.LoginRequestDTO;
 import com.like.system.menu.dto.MenuGroupSaveDTO;
 import com.like.system.menurole.application.port.in.external.MenuGroupByUserSelectUseCase;
 import com.like.system.permission.domain.AuthenticationToken;
+import com.like.system.user.application.port.in.external.SystemUserCommonSelectUseCase;
 import com.like.system.user.domain.SystemUser;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,13 +21,13 @@ import jakarta.servlet.http.HttpServletRequest;
 @Service
 public class LoginService implements LoginUseCase {
 
-	SystemUserSelectDbPort userPort;
+	SystemUserCommonSelectUseCase userPort;
 	MenuGroupByUserSelectUseCase menuGroupSelectUseCase;
 	AuthenticationTokenSavePort	tokenPort;
 	
 	ApplicationEventPublisher publisher;
 	
-	public LoginService(SystemUserSelectDbPort userPort
+	public LoginService(SystemUserCommonSelectUseCase userPort
 						,MenuGroupByUserSelectUseCase menuGroupSelectUseCase
 						,AuthenticationTokenSavePort tokenPort
 						,ApplicationEventPublisher publisher) {
@@ -46,7 +46,7 @@ public class LoginService implements LoginUseCase {
 		// 로그인 요청정보 SpringSecurityUserService에서 사용하기 위해 THREAD_LOCAL에 저장
 		LoginRequestContext.set(new LoginRequestDTO(companyCode, staffNo, password));
 		
-		SystemUser systemUser = userPort.select(companyCode, staffNo);
+		SystemUser systemUser = userPort.findUser(companyCode, staffNo);
 		List<MenuGroupSaveDTO> menuGroupList = menuGroupSelectUseCase.select(companyCode, staffNo);
 		AuthenticationToken token = tokenPort.SaveAuthenticationToken(dto, systemUser, menuGroupList, request);
 					

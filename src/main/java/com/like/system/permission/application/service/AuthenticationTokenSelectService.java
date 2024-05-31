@@ -9,17 +9,17 @@ import com.like.system.menu.dto.MenuGroupSaveDTO;
 import com.like.system.menurole.application.port.in.external.MenuGroupByUserSelectUseCase;
 import com.like.system.permission.application.port.in.AuthenticationTokenSelectUseCase;
 import com.like.system.permission.domain.AuthenticationToken;
-import com.like.system.user.application.port.in.external.SystemUserCommonSelectUseCase;
-import com.like.system.user.domain.SystemUser;
+import com.like.system.user.external.SystemUserDTO;
+import com.like.system.user.external.SystemUserDTOSelectUseCase;
 
 @Transactional
 @Service
 public class AuthenticationTokenSelectService implements AuthenticationTokenSelectUseCase {
 
-	SystemUserCommonSelectUseCase userSelectUseCase;
+	SystemUserDTOSelectUseCase userSelectUseCase;
 	MenuGroupByUserSelectUseCase menuGroupSelectUseCase;
 	
-	AuthenticationTokenSelectService(SystemUserCommonSelectUseCase userSelectUseCase, 
+	AuthenticationTokenSelectService(SystemUserDTOSelectUseCase userSelectUseCase, 
 									 MenuGroupByUserSelectUseCase menuGroupSelectUseCase) {
 		this.userSelectUseCase = userSelectUseCase;
 		this.menuGroupSelectUseCase = menuGroupSelectUseCase;
@@ -27,9 +27,9 @@ public class AuthenticationTokenSelectService implements AuthenticationTokenSele
 	
 	@Override
 	public AuthenticationToken select(String companyCode, String userId, String sessionId, String ipAddress) {
-		SystemUser user = userSelectUseCase.findUser(companyCode, userId);
+		SystemUserDTO user = userSelectUseCase.findUser(companyCode, userId);
 		
-		List<MenuGroupSaveDTO> menuGroupList = menuGroupSelectUseCase.select(companyCode, user.getStaffId().getStaffNo());
+		List<MenuGroupSaveDTO> menuGroupList = menuGroupSelectUseCase.select(companyCode, user.staffNo());
 		
 		return AuthenticationToken.of(user, menuGroupList, ipAddress, sessionId);
 	}
