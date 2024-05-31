@@ -1,10 +1,12 @@
 package com.like.system.login.adapter.out.web;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Component;
@@ -46,5 +48,15 @@ public class AuthenticationTokenSaveAdapter implements AuthenticationTokenSavePo
 	private AuthenticationToken createAuthToken(SystemUserDTO systemUser, List<MenuGroupSaveDTO> menuGroupList, HttpServletRequest request) {
 		return AuthenticationToken.of(systemUser, menuGroupList, WebRequestUtil.getIpAddress(request), request.getSession().getId());
 	}
+	
+	public void process(LoginRequestDTO dto, Collection<? extends GrantedAuthority> getAuthorities, AuthenticationToken authToken, HttpServletRequest request) {
+		UsernamePasswordAuthenticationToken securityToken = new UsernamePasswordAuthenticationToken(dto.staffNo(), dto.password(), getAuthorities);				
+		securityToken.setDetails(authToken);
+		
+		Authentication authentication = authenticationManager.authenticate(securityToken); 					
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		request.getSession().setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, SecurityContextHolder.getContext());
+	}
+	
 	
 }
