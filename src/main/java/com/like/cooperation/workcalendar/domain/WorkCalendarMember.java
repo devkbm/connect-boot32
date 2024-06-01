@@ -32,8 +32,8 @@ public class WorkCalendarMember extends AbstractAuditEntity {
 	@JoinColumn(name="ID", referencedColumnName = "ID")
 	WorkCalendar workCalendar;
 	
-	public WorkCalendarMember(WorkCalendar workCalendar, SystemUser user) {
-		this.id = new WorkCalendarMemberId(workCalendar.getId(), user.getId().getUserId()) ;
+	public WorkCalendarMember(WorkCalendar workCalendar, String user) {
+		this.id = new WorkCalendarMemberId(workCalendar.getId(), user) ;
 		this.workCalendar = workCalendar;
 	}
 	

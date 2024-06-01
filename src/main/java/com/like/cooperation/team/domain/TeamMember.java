@@ -41,8 +41,8 @@ public class TeamMember extends AbstractAuditEntity {
 	//@Comment("권한")
 	String authority;	
 	
-	public TeamMember(Team team, SystemUser user) {
-		this.id = new TeamMemberId(team.getTeamId(), user.getId().getUserId());
+	public TeamMember(Team team, String userId) {
+		this.id = new TeamMemberId(team.getTeamId(), userId);
 		this.team = team;
 		//this.user = user;
 	}

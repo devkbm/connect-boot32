@@ -7,17 +7,17 @@ import com.like.cooperation.team.application.port.in.TeamSaveUseCase;
 import com.like.cooperation.team.application.port.out.TeamCommandDbPort;
 import com.like.cooperation.team.domain.Team;
 import com.like.cooperation.team.dto.TeamSaveDTO;
-import com.like.system.user.application.port.in.external.SystemUserCommonSelectUseCase;
+import com.like.system.user.external.SystemUserDTOSelectUseCase;
 
 @Transactional
 @Service
 public class TeamSaveService implements TeamSaveUseCase {
 
 	TeamCommandDbPort dbPort;
-	SystemUserCommonSelectUseCase userSelectUseCase;
+	SystemUserDTOSelectUseCase userSelectUseCase;
 	
 	TeamSaveService(TeamCommandDbPort dbPort,
-					SystemUserCommonSelectUseCase userSelectUseCase) {
+			SystemUserDTOSelectUseCase userSelectUseCase) {
 		this.dbPort = dbPort;
 		this.userSelectUseCase = userSelectUseCase;
 	}

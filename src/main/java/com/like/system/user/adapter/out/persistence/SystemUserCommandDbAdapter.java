@@ -1,5 +1,7 @@
 package com.like.system.user.adapter.out.persistence;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.like.system.user.adapter.out.persistence.jpa.repository.SystemUserRepository;
@@ -18,7 +20,7 @@ public class SystemUserCommandDbAdapter implements SystemUserCommandDbPort {
 	}
 	
 	@Override
-	public SystemUser select(String companyCode, String userId) { 
+	public SystemUser select(String companyCode, String userId) {		
 		return this.repository.findById(new SystemUserId(companyCode, userId)).orElse(null);
 	}
 	
@@ -30,6 +32,12 @@ public class SystemUserCommandDbAdapter implements SystemUserCommandDbPort {
 	@Override
 	public void delete(String companyCode, String userId) {
 		this.repository.deleteById(new SystemUserId(companyCode, userId));		
+	}
+
+	@Override
+	public List<SystemUser> select(String companyCode, List<String> userIds) {
+		
+		return this.repository.findAllById(userIds.stream().map(e -> new SystemUserId(companyCode, e)).toList());
 	}
 				
 }

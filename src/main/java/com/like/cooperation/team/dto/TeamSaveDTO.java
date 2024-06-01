@@ -4,8 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.like.cooperation.team.domain.Team;
-import com.like.system.user.application.port.in.external.SystemUserCommonSelectUseCase;
-import com.like.system.user.domain.SystemUserId;
+import com.like.system.user.external.SystemUserDTOSelectUseCase;
 
 import lombok.Builder;
 
@@ -22,14 +21,13 @@ public record TeamSaveDTO(
 		List<String> memberList
 		) {
 	
-	public Team newEntity(SystemUserCommonSelectUseCase service) {						
+	public Team newEntity(SystemUserDTOSelectUseCase service) {						
 		Team entity = null;
 					
 		if (memberList == null || memberList.isEmpty()) {
 			entity = new Team(teamName);
-		} else {
-			List<SystemUserId> list = this.memberList.stream().map(r -> new SystemUserId(companyCode, r)).toList();
-			entity = new Team(teamName, service.findUsers(list));
+		} else {			
+			entity = new Team(teamName, this.memberList);
 		}										
 		
 		entity.setAppUrl(clientAppUrl);
@@ -37,11 +35,10 @@ public record TeamSaveDTO(
 		return entity;
 	}
 	
-	public Team modify(Team entity, SystemUserCommonSelectUseCase service) {
+	public Team modify(Team entity, SystemUserDTOSelectUseCase service) {
 		entity.modify(teamName);
-							
-		List<SystemUserId> list = this.memberList.stream().map(r -> new SystemUserId(companyCode, r)).toList();
-		entity.updateMembers(service.findUsers(list));
+									
+		entity.updateMembers(this.memberList);
 		
 		entity.setAppUrl(clientAppUrl);
 		

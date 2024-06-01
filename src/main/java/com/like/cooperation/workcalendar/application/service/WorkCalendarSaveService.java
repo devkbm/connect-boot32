@@ -11,8 +11,7 @@ import com.like.cooperation.workcalendar.application.port.out.WorkCalendarMember
 import com.like.cooperation.workcalendar.domain.WorkCalendar;
 import com.like.cooperation.workcalendar.domain.WorkCalendarMember;
 import com.like.cooperation.workcalendar.dto.WorkCalendarSaveDTO;
-import com.like.system.user.application.port.in.external.SystemUserCommonSelectUseCase;
-import com.like.system.user.domain.SystemUserId;
+import com.like.system.user.external.SystemUserDTOSelectUseCase;
 
 @Transactional
 @Service
@@ -20,11 +19,11 @@ public class WorkCalendarSaveService implements WorkCalendarSaveUseCase {
 
 	WorkCalendarCommandDbPort dbPort;
 	WorkCalendarMemberCommandDbPort memberDbPort;
-	SystemUserCommonSelectUseCase userSelectUseCase;
+	SystemUserDTOSelectUseCase userSelectUseCase;
 	
 	WorkCalendarSaveService(WorkCalendarCommandDbPort dbPort,
 							WorkCalendarMemberCommandDbPort memberDbPort,
-							SystemUserCommonSelectUseCase userSelectUseCase) {
+							SystemUserDTOSelectUseCase userSelectUseCase) {
 		this.dbPort = dbPort;
 		this.memberDbPort = memberDbPort;
 		this.userSelectUseCase = userSelectUseCase;
@@ -49,15 +48,11 @@ public class WorkCalendarSaveService implements WorkCalendarSaveUseCase {
 		memberDbPort.delete(entity.getMemberList().stream().toList());
 										
 		if (dto.memberList() != null) {
-			WorkCalendar workCalendar = entity;
-			List<SystemUserId> dtoMemberList = dto.memberList()
-												  .stream()
-												  .map(r -> new SystemUserId(dto.companyCode(), r))
-												  .toList();
+			WorkCalendar workCalendar = entity;			
 			
-			List<WorkCalendarMember> memberList = userSelectUseCase.findUsers(dtoMemberList)
+			List<WorkCalendarMember> memberList = userSelectUseCase.findUsers(dto.companyCode(), dto.memberList())
 																   .stream()
-																   .map(e -> new WorkCalendarMember(workCalendar, e))
+																   .map(e -> new WorkCalendarMember(workCalendar, e.userId()))
 																   .toList();
 			
 			memberDbPort.save(memberList);									

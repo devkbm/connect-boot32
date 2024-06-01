@@ -16,7 +16,6 @@ import jakarta.persistence.Table;
 import org.hibernate.annotations.Comment;
 
 import com.like.core.jpa.domain.AbstractAuditEntity;
-import com.like.system.user.domain.SystemUser;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -50,7 +49,7 @@ public class Team extends AbstractAuditEntity {
 		this.teamName = teamName;		
 	}	
 	
-	public Team(String teamName, List<SystemUser> userList) {
+	public Team(String teamName, List<String> userList) {
 		this.teamName = teamName;
 		this.addMembers(userList);
 	}
@@ -59,39 +58,38 @@ public class Team extends AbstractAuditEntity {
 		this.teamName = teamName;
 	}					
 	
-	public void addMember(SystemUser user) {
-		this.members.add(new TeamMember(this, user));
+	public void addMember(String userId) {
+		this.members.add(new TeamMember(this, userId));
 	}
 	
 	public void addMemberList(List<TeamMember> memberList) {
 		this.members.addAll(memberList);
 	}
 	
-	public void addMembers(List<SystemUser> userList) {		
-		for (SystemUser user : userList) {
+	public void addMembers(List<String> userList) {		
+		for (String user : userList) {
 			if (!isMember(user)) {				
 				this.addMember(user);
 			}
 		}
 	}
 	
-	public void updateMembers(List<SystemUser> userList) {
+	public void updateMembers(List<String> userList) {
 		if (userList == null || userList.isEmpty()) {
 			this.members.clear();
 		} else {
 			// userList에 없는 맴버는 삭제
-			this.members.removeIf(e -> userList.stream()
-											   .map(r -> r.getId())
+			this.members.removeIf(e -> userList.stream()											   
 											   .anyMatch(r -> !r.equals(e.getUserId())));
 					
 			this.addMembers(userList);
 		}				
 	}
 	
-	private boolean isMember(SystemUser user) {					
+	private boolean isMember(String userId) {					
 		return this.members.stream()
 						   .map(r -> r.getId().getUserId())					
-						   .anyMatch(e -> e.equals(user.getId()));
+						   .anyMatch(e -> e.equals(userId));
 	}
 		
 }

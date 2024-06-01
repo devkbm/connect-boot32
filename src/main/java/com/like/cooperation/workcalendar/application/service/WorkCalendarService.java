@@ -1,35 +1,25 @@
 package com.like.cooperation.workcalendar.application.service;
 
-import java.util.List;
-
-import jakarta.transaction.Transactional;
-
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.like.cooperation.workcalendar.adapter.out.persistence.jparepository.WorkCalendarJpaRepository;
 import com.like.cooperation.workcalendar.adapter.out.persistence.jparepository.WorkCalendarMemberJpaRepository;
 import com.like.cooperation.workcalendar.domain.WorkCalendar;
 import com.like.cooperation.workcalendar.domain.WorkCalendarMember;
 import com.like.cooperation.workcalendar.domain.WorkCalendarMemberId;
-import com.like.cooperation.workcalendar.dto.WorkCalendarSaveDTO;
-import com.like.system.user.adapter.out.persistence.jpa.repository.SystemUserRepository;
-import com.like.system.user.domain.SystemUser;
-import com.like.system.user.domain.SystemUserId;
 
-@Service
 @Transactional
+@Service
 public class WorkCalendarService {
 
 	private WorkCalendarJpaRepository repository;
-	private WorkCalendarMemberJpaRepository workGroupMemberRepository;
-	private SystemUserRepository userRepository;
+	private WorkCalendarMemberJpaRepository workGroupMemberRepository;	
 	
 	public WorkCalendarService(WorkCalendarJpaRepository repository
-						   ,WorkCalendarMemberJpaRepository workGroupMemberRepository	
-						   ,SystemUserRepository userRepository) {		
+						   	  ,WorkCalendarMemberJpaRepository workGroupMemberRepository) {		
 		this.repository = repository;
-		this.workGroupMemberRepository = workGroupMemberRepository;
-		this.userRepository = userRepository;
+		this.workGroupMemberRepository = workGroupMemberRepository;		
 	}						
 	
 	/**
