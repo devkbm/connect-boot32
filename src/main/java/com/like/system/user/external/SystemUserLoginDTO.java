@@ -1,11 +1,9 @@
 package com.like.system.user.external;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 
-import com.like.system.menu.dto.MenuGroupSaveDTO;
 import com.like.system.user.domain.SystemUser;
 
 import lombok.Builder;
@@ -13,8 +11,7 @@ import lombok.Builder;
 @Builder
 public record SystemUserLoginDTO(
 		String companyCode,	
-		String staffNo,
-		List<MenuGroupSaveDTO> menuGroupList,
+		String staffNo,		
 		Collection<? extends GrantedAuthority> authorities
 		) {
 

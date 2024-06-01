@@ -1,4 +1,4 @@
-package com.like.system.login.application.service;
+package com.like.system.login.adapter.in.web;
 
 import com.like.system.login.dto.LoginRequestDTO;
 /**
