@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.menu.dto.MenuGroupSaveDTO;
-import com.like.system.menurole.application.port.in.external.MenuGroupByUserSelectUseCase;
+import com.like.system.menurole.external.MenuGroupDTO;
 import com.like.system.menurole.application.port.out.MenuGroupByRolesSelectDbPort;
+import com.like.system.menurole.external.MenuGroupByUserSelectUseCase;
 import com.like.system.user.application.port.in.SystemUserSelectUseCase;
 import com.like.system.user.dto.SystemUserSaveDTO;
 
@@ -23,12 +23,12 @@ public class MenuGroupByUserSelectService implements MenuGroupByUserSelectUseCas
 	}
 		
 	@Override
-	public List<MenuGroupSaveDTO> select(String companyCode, String userId) {
+	public List<MenuGroupDTO> select(String companyCode, String userId) {
 		SystemUserSaveDTO userDTO = userSelectUseCase.selectDTO(companyCode, userId);
 		
 		return this.dbPort.select(companyCode, userDTO.roleList())
 						  .stream()
-						  .map(e -> MenuGroupSaveDTO.toDTO(e))
+						  .map(e -> MenuGroupDTO.toDTO(e))
 						  .toList();
 	}
 

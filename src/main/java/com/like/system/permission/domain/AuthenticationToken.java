@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.like.system.menu.dto.MenuGroupSaveDTO;
+import com.like.system.menurole.external.MenuGroupDTO;
 import com.like.system.user.external.SystemUserDTO;
 
 import lombok.Builder;
@@ -26,7 +26,7 @@ public class AuthenticationToken implements Serializable {
 	private String sessionId;
 	private String oAuthAccessToken;
 	private List<String> roleList;
-    private List<MenuGroupSaveDTO> menuGroupList;
+    private List<MenuGroupDTO> menuGroupList;
     
        
     @Builder
@@ -40,7 +40,7 @@ public class AuthenticationToken implements Serializable {
     						  ,String sessionId
     						  ,String oAuthAccessToken
     						  ,List<String> roleList
-    						  ,List<MenuGroupSaveDTO> menuGroupList) {
+    						  ,List<MenuGroupDTO> menuGroupList) {
     	
     	this.companyCode = companyCode;
     	this.userId = userId;
@@ -55,7 +55,7 @@ public class AuthenticationToken implements Serializable {
         this.menuGroupList = menuGroupList;        
     }     
     
-    public static AuthenticationToken of(SystemUserDTO user, List<MenuGroupSaveDTO> menuGroupList, String ipAddress, String sessionId) {    	
+    public static AuthenticationToken of(SystemUserDTO user, List<MenuGroupDTO> menuGroupList, String ipAddress, String sessionId) {    	
     	    	
     	return AuthenticationToken
 				.builder()
