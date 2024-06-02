@@ -4,6 +4,8 @@ import jakarta.servlet.http.HttpSession;
 
 import static com.like.core.web.util.ResponseEntityUtil.toOne;
 
+import java.util.Base64;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,9 +26,10 @@ public class ArticleSelectController {
 	}		
 	
 	@GetMapping("/api/grw/board/article/{id}")
-	public ResponseEntity<?> getArticle(@PathVariable Long id, HttpSession session) {						
+	public ResponseEntity<?> getArticle(@PathVariable String id, HttpSession session) {						
 					
-		ArticleResponseDTO response =  useCase.select(id);				
+		Long articleId = Long.parseLong(new String(Base64.getDecoder().decode(id))); 
+		ArticleResponseDTO response =  useCase.select(articleId);				
 		
 		return toOne(response, MessageUtil.getQueryMessage(response == null ? 0 : 1));
 	}

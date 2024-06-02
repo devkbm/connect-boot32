@@ -1,7 +1,10 @@
 package com.like.cooperation.board.dto;
 
 import java.time.LocalDateTime;
+import java.util.Base64;
 import java.util.List;
+
+import org.springframework.util.StringUtils;
 
 import com.like.cooperation.board.domain.Article;
 import com.like.cooperation.board.domain.ArticleContents;
@@ -17,9 +20,9 @@ public record ArticleSaveDTO(
 		String modifiedBy,
 		String clientAppUrl,
 		String companyCode,
-		Long boardId,
-		Long articleId,
-		Long articleParentId,
+		String boardId,
+		String articleId,
+		String articleParentId,
 		@NotEmpty(message="제목은 필수 입력 사항입니다.")
 		String title,
 		String contents,
@@ -30,10 +33,11 @@ public record ArticleSaveDTO(
 		boolean isFiexedTop,
 		List<String> attachFile
 		) {
-	public Article newArticle(Board board) {				    				    	
+	public Article newArticle(Board board) {	
+						
 		Article entity = Article.builder()	
 							    .board(board)
-							    .articleId(articleId)
+							    .articleId(base64ToLong(articleId))
 							    .content(new ArticleContents(title, contents))						  						  
 							    .password(new ArticlePassword(this.pwd))
 							    .isFixedTop(isFiexedTop)
@@ -49,4 +53,8 @@ public record ArticleSaveDTO(
     	
     	entity.setAppUrl(clientAppUrl);
 	}
+    
+    private Long base64ToLong(String str) {
+    	return StringUtils.hasText(str) ? Long.parseLong(new String(Base64.getDecoder().decode(str))) : null;
+    }
 }

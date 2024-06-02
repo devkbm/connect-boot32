@@ -1,5 +1,6 @@
 package com.like.cooperation.board.application.service.article;
 
+import java.util.Base64;
 import java.util.Collections;
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class ArticleSaveService implements ArticleSaveUseCase {
 	
 	@Override
 	public void save(ArticleSaveDTO dto) {
-		Board board = boardDbPort.select(dto.boardId())
+		Board board = boardDbPort.select(base64ToLong(dto.boardId()))
 								 .orElseThrow(() -> new IllegalArgumentException("존재 하지 않은 게시판입니다."));		
 		
 		List<FileInfo> fileInfoList = Collections.emptyList();
@@ -83,6 +84,10 @@ public class ArticleSaveService implements ArticleSaveUseCase {
 		article.setFiles(attachedFileList);
 		
 		this.dbPort.save(article);		
+	}
+	
+	private Long base64ToLong(String str) {
+		return Long.parseLong(new String(Base64.getDecoder().decode(str)));
 	}
 
 }
