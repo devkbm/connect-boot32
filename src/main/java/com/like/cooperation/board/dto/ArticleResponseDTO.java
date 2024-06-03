@@ -2,7 +2,10 @@ package com.like.cooperation.board.dto;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
+
+import org.springframework.util.StringUtils;
 
 import com.like.cooperation.board.adapter.out.persistence.jpa.repository.ArticleJpaRepository;
 import com.like.cooperation.board.domain.Article;
@@ -26,8 +29,8 @@ public class ArticleResponseDTO {
 	LocalDateTime modifiedDt;
 	String modifiedBy;
 	String userName;
-	Long boardId;
-	Long articleId;
+	String boardId;
+	String articleId;
 	Long articleParentId;
 	String title;
 	String contents;
@@ -54,10 +57,10 @@ public class ArticleResponseDTO {
 				 .createdBy(entity.getCreatedBy() == null ? null : entity.getCreatedBy().getLoggedUser())
 				 .modifiedDt(entity.getModifiedDt())
 				 .modifiedBy(entity.getModifiedBy() == null ? null : entity.getModifiedBy().getLoggedUser())
-				 .articleId(entity.getArticleId())
+				 .articleId(toBase64Encode(entity.getArticleId()))
 				 .articleParentId(entity.getArticleParentId())							 
 				 .userName(entity.getUserName())
-				 .boardId(entity.getBoard().getBoardId())				
+				 .boardId(toBase64Encode(entity.getBoard().getBoardId()))				
 				 .title(entity.getContent().getTitle())
 				 .contents(entity.getContent().getContents())
 				 .fileList(responseList)			
@@ -67,7 +70,7 @@ public class ArticleResponseDTO {
 	
 	public void addFileResponseDTO(ArticleJpaRepository repository) {
 		
-		Article entity = repository.findById(this.articleId).orElse(null);
+		Article entity = repository.findById(fromBase64ToDecode(this.articleId)).orElse(null);
 		
 		if (entity == null) return;
 		
@@ -85,4 +88,13 @@ public class ArticleResponseDTO {
     	
     	return responseList;
     }
+	
+	private static String toBase64Encode(Long id) {
+		return Base64.getEncoder().encodeToString(id.toString().getBytes());
+	}
+	
+    private Long fromBase64ToDecode(String str) {
+    	return StringUtils.hasText(str) ? Long.parseLong(new String(Base64.getDecoder().decode(str))) : null;
+    }
+	
 }

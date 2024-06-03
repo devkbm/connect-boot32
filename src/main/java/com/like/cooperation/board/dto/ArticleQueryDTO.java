@@ -2,12 +2,16 @@ package com.like.cooperation.board.dto;
 
 import static org.springframework.util.StringUtils.hasText;
 
+import java.util.Base64;
+
+import org.springframework.util.StringUtils;
+
 import com.like.cooperation.board.domain.QArticle;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 
 public record ArticleQueryDTO(
-		Long boardId,
+		String boardId,
 		String title,
 		String contents
 		) {
@@ -17,7 +21,7 @@ public record ArticleQueryDTO(
 		BooleanBuilder builder = new BooleanBuilder();
 		
 		builder
-			.and(qArticle.board.boardId.eq(this.boardId))
+			.and(qArticle.board.boardId.eq(base64ToLong(this.boardId)))
 			.and(likeTitle(this.title))
 			.and(likeContents(this.contents));											
 		
@@ -31,4 +35,8 @@ public record ArticleQueryDTO(
 	private BooleanExpression likeContents(String contents) {
 		return hasText(contents) ? qArticle.content.contents.like("%"+contents+"%") : null;			
 	}
+	
+	private Long base64ToLong(String str) {
+    	return StringUtils.hasText(str) ? Long.parseLong(new String(Base64.getDecoder().decode(str))) : null;
+    }
 }

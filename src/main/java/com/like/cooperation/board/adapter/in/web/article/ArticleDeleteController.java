@@ -2,6 +2,8 @@ package com.like.cooperation.board.adapter.in.web.article;
 
 import static com.like.core.web.util.ResponseEntityUtil.toList;
 
+import java.util.Base64;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,31 +20,15 @@ public class ArticleDeleteController {
 	public ArticleDeleteController(ArticleDeleteUseCase useCase) {		
 		this.useCase = useCase;
 	}	
-	/*
+		
 	@DeleteMapping("/api/grw/board/article/{id}")
-	public ResponseEntity<?> deleteArticle(@PathVariable Long id) {				
+	public ResponseEntity<?> deleteArticle(@PathVariable String id) {				
 				
-		service.deleteArticle(id);							
+		Long articleId = Long.parseLong(new String(Base64.getDecoder().decode(id)));
+		
+		useCase.delete(articleId);							
 		
 		return toList(null, MessageUtil.getDeleteMessage(1));
-	}
-	*/
-	
-	@DeleteMapping("/api/grw/board/article/{id}")
-	public ResponseEntity<?> deleteArticle(@PathVariable Long id) {				
-				
-		useCase.delete(id);							
-		
-		return toList(null, MessageUtil.getDeleteMessage(1));
-	}
-	/*
-	@DeleteMapping("/api/grw/board/article")
-	public ResponseEntity<?> deleteArticle(@RequestBody List<Article> articleList) {						
-		
-		service.deleteArticle(articleList);									
-		
-		return toList(null, MessageUtil.getDeleteMessage(articleList.size()));
-	}
-	*/			
+	}			
 	
 }

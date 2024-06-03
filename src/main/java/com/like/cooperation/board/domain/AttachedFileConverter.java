@@ -15,7 +15,7 @@ public class AttachedFileConverter {
 		List<ArticleAttachedFile> list = new ArrayList<>();
 		
 		for (FileInfo file : fileInfoList) {
-			list.add(new ArticleAttachedFile(article, file));
+			list.add(new ArticleAttachedFile(article, file)); 						
 		}
 		
 		return list;				

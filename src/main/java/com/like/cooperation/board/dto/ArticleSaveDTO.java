@@ -37,7 +37,7 @@ public record ArticleSaveDTO(
 						
 		Article entity = Article.builder()	
 							    .board(board)
-							    .articleId(base64ToLong(articleId))
+							    .articleId(fromBase64Decode(articleId))
 							    .content(new ArticleContents(title, contents))						  						  
 							    .password(new ArticlePassword(this.pwd))
 							    .isFixedTop(isFiexedTop)
@@ -54,7 +54,7 @@ public record ArticleSaveDTO(
     	entity.setAppUrl(clientAppUrl);
 	}
     
-    private Long base64ToLong(String str) {
+    private Long fromBase64Decode(String str) {
     	return StringUtils.hasText(str) ? Long.parseLong(new String(Base64.getDecoder().decode(str))) : null;
     }
 }
