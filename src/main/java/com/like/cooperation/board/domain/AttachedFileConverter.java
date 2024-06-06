@@ -14,8 +14,12 @@ public class AttachedFileConverter {
 		
 		List<ArticleAttachedFile> list = new ArrayList<>();
 		
-		for (FileInfo file : fileInfoList) {
-			list.add(new ArticleAttachedFile(article, file)); 						
+		List<FileInfo> existList = article.getAttachedFileInfoList();
+		
+		for (FileInfo file : fileInfoList) {			
+			if (!existList.contains(file)) {
+				list.add(new ArticleAttachedFile(article, file));
+			}
 		}
 		
 		return list;				

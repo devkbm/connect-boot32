@@ -1,5 +1,6 @@
 package com.like.cooperation.board.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -124,6 +125,8 @@ public class Article extends AbstractAuditEntity {
 	}	
 		
 	public List<FileInfo> getAttachedFileInfoList() {
+		if (this.files == null) this.files = new ArrayList<>();
+		
 		return this.files.stream()						 
 				  		 .map(v -> v.fileInfo)
 				  		 .toList();				  		 					 

@@ -1,13 +1,13 @@
 package com.like.cooperation.board.application.service.article;
 
-import java.util.Base64;
 import java.util.Collections;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
-import com.like.cooperation.board.application.port.in.article.ArticleSaveUseCase;
+import com.like.cooperation.board.application.port.in.article.ArticleSaveByJsonUseCase;
 import com.like.cooperation.board.application.port.out.ArticleCommandDbPort;
 import com.like.cooperation.board.application.port.out.BoardCommandDbPort;
 import com.like.cooperation.board.domain.Article;
@@ -15,22 +15,21 @@ import com.like.cooperation.board.domain.ArticleAttachedFile;
 import com.like.cooperation.board.domain.AttachedFileConverter;
 import com.like.cooperation.board.domain.Board;
 import com.like.cooperation.board.dto.ArticleSaveDTO;
-import com.like.cooperation.board.dto.ArticleSaveMultipartDTO;
-import com.like.core.util.SessionUtil;
+import com.like.cooperation.board.util.Base64Util;
 import com.like.system.file.application.port.in.FileServerSelectUseCase;
 import com.like.system.file.application.port.in.FileServerUploadUseCase;
 import com.like.system.file.domain.FileInfo;
 
 @Transactional
 @Service
-public class ArticleSaveService implements ArticleSaveUseCase {
+public class ArticleSaveByJsonService implements ArticleSaveByJsonUseCase {
 
 	ArticleCommandDbPort dbPort;
 	BoardCommandDbPort boardDbPort;
 	FileServerUploadUseCase uploadUseCase;
 	FileServerSelectUseCase fileSelectUseCase;
 	
-	ArticleSaveService(ArticleCommandDbPort dbPort,
+	ArticleSaveByJsonService(ArticleCommandDbPort dbPort,
 					   BoardCommandDbPort boardDbPort,
 					   FileServerUploadUseCase uploadUseCase,
 				       FileServerSelectUseCase fileSelectUseCase) {
@@ -42,52 +41,34 @@ public class ArticleSaveService implements ArticleSaveUseCase {
 	
 	@Override
 	public void save(ArticleSaveDTO dto) {
-		Board board = boardDbPort.select(base64ToLong(dto.boardId()))
+		Board board = boardDbPort.select(Base64Util.fromBase64Decode(dto.boardId()))
 								 .orElseThrow(() -> new IllegalArgumentException("존재 하지 않은 게시판입니다."));		
+						
+		Article entity = null;
 		
-		List<FileInfo> fileInfoList = Collections.emptyList();
-		List<ArticleAttachedFile> attachedFileList = Collections.emptyList();
+		if (StringUtils.hasText(dto.articleId())) {
+			entity = this.dbPort.select(Base64Util.fromBase64Decode(dto.articleId())).orElse(null); 
+		}			
 		
-		Article entity = dto.newArticle(board); 
+		if (entity == null) {
+			entity = dto.newArticle(board); 
+		} else {
+			dto.modifyArticle(entity);
+		}
 		
-		// 2. 저장된 파일 리스트를 조회한다.
-		// 3. FileInfo를 AttachedFile로 변환한다.
 		if (dto.attachFile() != null) {
-			fileInfoList = fileSelectUseCase.select(dto.attachFile());
+			List<FileInfo> fileInfoList = Collections.emptyList();
+			List<ArticleAttachedFile> attachedFileList = Collections.emptyList();
 			
+			// 저장된 파일 리스트를 조회한다.
+			fileInfoList = fileSelectUseCase.select(dto.attachFile());
+		
+			// FileInfo를 AttachedFile로 변환한다.
 			attachedFileList = AttachedFileConverter.convert(entity, fileInfoList);				
 			if (!attachedFileList.isEmpty()) entity.setFiles(attachedFileList);
 		}
 		
 		this.dbPort.save(entity);		
-	}
-
-	@Override
-	public void save(ArticleSaveMultipartDTO dto) {
-		Board board = boardDbPort.select(dto.boardId())
-								 .orElseThrow(() -> new IllegalArgumentException("존재 하지 않은 게시판입니다."));
-		
-		List<FileInfo> fileInfoList = null;
-		List<ArticleAttachedFile> attachedFileList = null;					
-		
-		Article article = dto.newArticle(board);
-		
-		// 첨부파일 저장
-		if (!dto.file().isEmpty()) {		
-			String userId = SessionUtil.getUserId();
-			
-			fileInfoList = uploadUseCase.uploadFile(dto.file(), userId, "board");
-			
-			attachedFileList = AttachedFileConverter.convert(article, fileInfoList);
-		}
-		
-		article.setFiles(attachedFileList);
-		
-		this.dbPort.save(article);		
-	}
-	
-	private Long base64ToLong(String str) {
-		return Long.parseLong(new String(Base64.getDecoder().decode(str)));
 	}
 
 }

@@ -1,8 +1,8 @@
 package com.like.cooperation.board.dto;
 
 public record ArticleListDTO(
-	String boardId,
-	String articleId,
+	Long boardId,
+	Long articleId,
 	String writerName,
 	String writerImage,
 	String title,

@@ -10,29 +10,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.like.cooperation.board.application.port.in.article.ArticleSaveUseCase;
+import com.like.cooperation.board.application.port.in.article.ArticleSaveByJsonUseCase;
 import com.like.cooperation.board.dto.ArticleSaveDTO;
-import com.like.cooperation.board.dto.ArticleSaveMultipartDTO;
 import com.like.core.message.MessageUtil;
 
 @Controller
 public class ArticleSaveController {	
 					
-	ArticleSaveUseCase useCase;	
+	ArticleSaveByJsonUseCase useCase;	
 	
-	public ArticleSaveController(ArticleSaveUseCase useCase) {				
+	public ArticleSaveController(ArticleSaveByJsonUseCase useCase) {				
 		this.useCase = useCase;
 	}	
-			
-	@PostMapping("/api/grw/board/article_multipart")
-	@ResponseBody
-	public ResponseEntity<?> saveArticleWithMultiPartFile(ArticleSaveMultipartDTO dto) throws Exception {													
-											
-		useCase.save(dto);											
-		
-		return toList(null, MessageUtil.getSaveMessage(1));
-	}	
-	
+					
 	@PostMapping("/api/grw/board/article")
 	@ResponseBody
 	public ResponseEntity<?> saveArticleJson(@RequestBody @Valid ArticleSaveDTO dto) throws Exception {															

@@ -1,15 +1,13 @@
 package com.like.cooperation.board.dto;
 
 import java.time.LocalDateTime;
-import java.util.Base64;
 import java.util.List;
-
-import org.springframework.util.StringUtils;
 
 import com.like.cooperation.board.domain.Article;
 import com.like.cooperation.board.domain.ArticleContents;
 import com.like.cooperation.board.domain.ArticlePassword;
 import com.like.cooperation.board.domain.Board;
+import com.like.cooperation.board.util.Base64Util;
 
 import jakarta.validation.constraints.NotEmpty;
 
@@ -37,7 +35,7 @@ public record ArticleSaveDTO(
 						
 		Article entity = Article.builder()	
 							    .board(board)
-							    .articleId(fromBase64Decode(articleId))
+							    .articleId(Base64Util.fromBase64Decode(articleId))
 							    .content(new ArticleContents(title, contents))						  						  
 							    .password(new ArticlePassword(this.pwd))
 							    .isFixedTop(isFiexedTop)
@@ -53,8 +51,5 @@ public record ArticleSaveDTO(
     	
     	entity.setAppUrl(clientAppUrl);
 	}
-    
-    private Long fromBase64Decode(String str) {
-    	return StringUtils.hasText(str) ? Long.parseLong(new String(Base64.getDecoder().decode(str))) : null;
-    }
+        
 }

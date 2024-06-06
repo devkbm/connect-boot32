@@ -2,14 +2,13 @@ package com.like.cooperation.board.adapter.in.web.article;
 
 import static com.like.core.web.util.ResponseEntityUtil.toList;
 
-import java.util.Base64;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.like.cooperation.board.application.port.in.article.ArticleDeleteUseCase;
+import com.like.cooperation.board.util.Base64Util;
 import com.like.core.message.MessageUtil;
 
 @Controller
@@ -24,7 +23,7 @@ public class ArticleDeleteController {
 	@DeleteMapping("/api/grw/board/article/{id}")
 	public ResponseEntity<?> deleteArticle(@PathVariable String id) {				
 				
-		Long articleId = Long.parseLong(new String(Base64.getDecoder().decode(id)));
+		Long articleId = Base64Util.fromBase64Decode(id);
 		
 		useCase.delete(articleId);							
 		
