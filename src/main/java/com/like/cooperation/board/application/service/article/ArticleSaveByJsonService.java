@@ -16,9 +16,9 @@ import com.like.cooperation.board.domain.AttachedFileConverter;
 import com.like.cooperation.board.domain.Board;
 import com.like.cooperation.board.dto.ArticleSaveDTO;
 import com.like.cooperation.board.util.Base64Util;
-import com.like.system.file.application.port.in.FileServerSelectUseCase;
-import com.like.system.file.application.port.in.FileServerUploadUseCase;
-import com.like.system.file.domain.FileInfo;
+import com.like.system.file.external.FileInfoDTO;
+import com.like.system.file.external.FileInfoDTOSelectUseCase;
+import com.like.system.file.external.FileUploadUseCase;
 
 @Transactional
 @Service
@@ -26,16 +26,16 @@ public class ArticleSaveByJsonService implements ArticleSaveByJsonUseCase {
 
 	ArticleCommandDbPort dbPort;
 	BoardCommandDbPort boardDbPort;
-	FileServerUploadUseCase uploadUseCase;
-	FileServerSelectUseCase fileSelectUseCase;
+	FileUploadUseCase uploadUseCase;	
+	FileInfoDTOSelectUseCase fileSelectUseCase;
 	
 	ArticleSaveByJsonService(ArticleCommandDbPort dbPort,
 					   BoardCommandDbPort boardDbPort,
-					   FileServerUploadUseCase uploadUseCase,
-				       FileServerSelectUseCase fileSelectUseCase) {
+					   FileUploadUseCase uploadUseCase,
+					   FileInfoDTOSelectUseCase fileSelectUseCase) {
 		this.dbPort = dbPort;
 		this.boardDbPort = boardDbPort;
-		this.uploadUseCase = uploadUseCase;
+		this.uploadUseCase = uploadUseCase;		
 		this.fileSelectUseCase = fileSelectUseCase;
 	}
 	
@@ -57,7 +57,7 @@ public class ArticleSaveByJsonService implements ArticleSaveByJsonUseCase {
 		}
 		
 		if (dto.attachFile() != null) {
-			List<FileInfo> fileInfoList = Collections.emptyList();
+			List<FileInfoDTO> fileInfoList = Collections.emptyList();
 			List<ArticleAttachedFile> attachedFileList = Collections.emptyList();
 			
 			// 저장된 파일 리스트를 조회한다.

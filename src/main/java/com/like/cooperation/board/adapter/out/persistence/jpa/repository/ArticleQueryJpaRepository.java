@@ -8,7 +8,6 @@ import com.like.cooperation.board.domain.Article;
 import com.like.cooperation.board.domain.ArticleQueryRepository;
 import com.like.cooperation.board.domain.QArticle;
 import com.like.cooperation.board.domain.QArticleAttachedFile;
-import com.like.system.file.domain.QFileInfo;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
@@ -17,8 +16,7 @@ public class ArticleQueryJpaRepository implements ArticleQueryRepository {
 
 	private JPAQueryFactory queryFactory;
 	
-	private final QArticle qArticle = QArticle.article;
-	private final QFileInfo qFileInfo = QFileInfo.fileInfo;
+	private final QArticle qArticle = QArticle.article;	
 	private final QArticleAttachedFile qAttachedFile = QArticleAttachedFile.articleAttachedFile;
 	// private final QArticleCheck qArticleCheck = QArticleCheck.articleCheck;	
 	
@@ -41,9 +39,7 @@ public class ArticleQueryJpaRepository implements ArticleQueryRepository {
 		return queryFactory.select(qArticle).distinct()
 				   .from(qArticle)		  				   
 				   .leftJoin(qArticle.files, qAttachedFile)
-				   .fetchJoin()		  				   
-				   .leftJoin(qAttachedFile.fileInfo, qFileInfo)
-				   .fetchJoin()
+				   .fetchJoin()		  				   				   
 				   .where(condition)
 				   .orderBy(qArticle.articleId.desc())
 				   .fetch();

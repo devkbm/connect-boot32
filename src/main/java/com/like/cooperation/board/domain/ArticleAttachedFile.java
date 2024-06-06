@@ -1,6 +1,7 @@
 package com.like.cooperation.board.domain;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,13 +11,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.like.core.jpa.domain.AbstractAuditEntity;
-import com.like.system.file.domain.FileInfo;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -31,9 +30,9 @@ import lombok.ToString;
  * [제약조건] <br>
  *   1. <br>
  */
-@ToString(exclude= {"article","fileInfo"})
+@ToString(exclude= {"article"})
 @JsonAutoDetect
-@JsonIgnoreProperties(ignoreUnknown = true, value = {"article","fileInfo"})
+@JsonIgnoreProperties(ignoreUnknown = true, value = {"article"})
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -52,13 +51,12 @@ public class ArticleAttachedFile extends AbstractAuditEntity implements Serializ
 	@JoinColumn(name = "ARTICLE_ID", nullable = false)
 	Article article; 	
 		
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="FILE_ID", nullable = false)
-	FileInfo fileInfo;
+	@Column(name="FILE_ID", columnDefinition = "BINARY(16)")
+	UUID fileInfo;
 
-	public ArticleAttachedFile(Article article, FileInfo fileInfo) {		
+	public ArticleAttachedFile(Article article, String fileInfo) {		
 		this.article = article;
-		this.fileInfo = fileInfo;
+		this.fileInfo = UUID.fromString(fileInfo);
 	}
 		
 }

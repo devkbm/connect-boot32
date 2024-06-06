@@ -51,7 +51,7 @@ public class ExternalFileUploadService implements FileUploadUseCase {
 						  .map(e -> FileInfoDTO.toDTO(e))
 						  .toList();
 	}
-
+	
 	private void toFileServer(MultipartFile sourceFile, String serverFileName) {
 		try {			
 			fileServerRepository.fileTransfer(sourceFile, serverFileName);

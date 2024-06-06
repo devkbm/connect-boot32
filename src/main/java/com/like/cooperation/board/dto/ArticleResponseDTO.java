@@ -4,12 +4,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.like.cooperation.board.adapter.out.persistence.jpa.repository.ArticleJpaRepository;
 import com.like.cooperation.board.domain.Article;
 import com.like.cooperation.board.util.Base64Util;
 import com.like.core.util.SessionUtil;
-import com.like.system.file.domain.FileInfo;
-import com.like.system.file.dto.FileResponseDTO;
+import com.like.system.file.external.FileInfoDTO;
+import com.like.system.file.external.FileResponseDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -42,12 +41,12 @@ public class ArticleResponseDTO {
 	List<FileResponseDTO> fileList;
 	
 	
-	public static ArticleResponseDTO toDTO(Article entity) {
+	public static ArticleResponseDTO toDTO(Article entity, List<FileInfoDTO> list) {
 		
     	if (entity == null) return null;
     	
-		List<FileInfo> fileInfoList = entity.getAttachedFileInfoList();
-		List<FileResponseDTO> responseList = convertFileResponseDTO(fileInfoList);
+		//List<ArticleAttachedFile> fileInfoList = entity.getAttachedFileInfoList();
+		List<FileResponseDTO> responseList = convertFileResponseDTO(list);
 							
 		return ArticleResponseDTO
 				 .builder()
@@ -64,23 +63,12 @@ public class ArticleResponseDTO {
 				 .fileList(responseList)			
 				 .editable(entity.getEditable(SessionUtil.getUserId()))
 				 .build();
-	}
+	}	
 	
-	public void addFileResponseDTO(ArticleJpaRepository repository) {
-		
-		Article entity = repository.findById(Base64Util.fromBase64Decode(this.articleId)).orElse(null);
-		
-		if (entity == null) return;
-		
-		List<FileInfo> fileInfoList = entity.getAttachedFileInfoList();
-		
-		this.fileList = convertFileResponseDTO(fileInfoList);
-	}
-	
-	private static List<FileResponseDTO> convertFileResponseDTO(List<FileInfo> fileInfoList) {
+	private static List<FileResponseDTO> convertFileResponseDTO(List<FileInfoDTO> fileInfoList) {
     	List<FileResponseDTO> responseList = new ArrayList<>();	
     	
-    	for (FileInfo fileInfo : fileInfoList) {							
+    	for (FileInfoDTO fileInfo : fileInfoList) {							
 			responseList.add(FileResponseDTO.convert(fileInfo));				
 		}
     	

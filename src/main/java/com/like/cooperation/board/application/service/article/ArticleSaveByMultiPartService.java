@@ -53,7 +53,7 @@ public class ArticleSaveByMultiPartService implements ArticleSaveByMultiPartUseC
 			
 			fileInfoList = uploadUseCase.uploadFile(dto.file(), userId, "board");
 			
-			attachedFileList = AttachedFileConverter.convert(article, fileInfoList);
+			//attachedFileList = AttachedFileConverter.convert(article, fileInfoList);
 		}
 		
 		article.setFiles(attachedFileList);

@@ -1,6 +1,7 @@
 package com.like.cooperation.board.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -16,7 +17,6 @@ import org.hibernate.annotations.Formula;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.like.core.jpa.domain.AbstractAuditEntity;
-import com.like.system.file.domain.FileInfo;
 
 /**
  * <p>게시글 클래스</p>
@@ -124,12 +124,16 @@ public class Article extends AbstractAuditEntity {
 		this.hitCount = this.hitCount + 1;	
 	}	
 		
-	public List<FileInfo> getAttachedFileInfoList() {
+	public List<ArticleAttachedFile> getAttachedFileInfoList() {
 		if (this.files == null) this.files = new ArrayList<>();
 		
-		return this.files.stream()						 
-				  		 .map(v -> v.fileInfo)
-				  		 .toList();				  		 					 
+		return this.files;				  		 					 
+	}
+	
+	public List<String> getFileIds() {
+		if (this.files == null) return Collections.emptyList();
+		
+		return this.files.stream().map(e -> e.getFileInfo().toString()).toList();
 	}
 	
 	public void setFiles(List<ArticleAttachedFile> files) {

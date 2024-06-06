@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.like.system.file.adapter.out.file.FileServerRepository;
 import com.like.system.file.application.port.in.FileServerUploadUseCase;
 import com.like.system.file.domain.FileInfo;
-import com.like.system.file.dto.FileResponseDTO;
+import com.like.system.file.external.FileResponseDTO;
 
 @Controller
 public class FileServerUploadController {
