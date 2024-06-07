@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.like.hrm.staff.application.port.in.StaffImageDownloadUseCase;
 import com.like.hrm.staff.application.port.out.StaffCommandDbPort;
 import com.like.hrm.staff.domain.model.Staff;
-import com.like.system.file.application.port.in.FileServerDownloadUseCase;
+import com.like.system.file.external.FileDownloadUseCase;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,10 +14,10 @@ import jakarta.servlet.http.HttpServletResponse;
 public class StaffImageDownloadService implements StaffImageDownloadUseCase {
 
 	StaffCommandDbPort dbPort;
-	FileServerDownloadUseCase downloadUseCase;
+	FileDownloadUseCase downloadUseCase;
 	
 	StaffImageDownloadService(StaffCommandDbPort dbPort
-							 ,FileServerDownloadUseCase downloadUseCase) {
+							 ,FileDownloadUseCase downloadUseCase) {
 		this.dbPort = dbPort;
 		this.downloadUseCase = downloadUseCase;
 	}

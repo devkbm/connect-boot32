@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface MenuHierarchyByRolesSelectUseCase {
 
-	List<MenuHierarchyNgZorro> select(String companyCode, String menuGroupCode, List<String> roleCodes);
+	List<MenuHierarchyNgZorroDTO> select(String companyCode, String menuGroupCode, List<String> roleCodes);
 }

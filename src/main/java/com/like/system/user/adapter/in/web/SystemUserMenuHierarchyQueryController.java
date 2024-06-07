@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.menurole.external.MenuHierarchyNgZorro;
+import com.like.system.menurole.external.MenuHierarchyNgZorroDTO;
 import com.like.system.user.application.port.in.SystemUserMenuHierarchyQueryUseCase;
 
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +31,7 @@ public class SystemUserMenuHierarchyQueryController {
 		
 		log.info("companyCode : "+ companyCode);
 		log.info("menuGroupCode : "+ menuGroupCode);
-		List<MenuHierarchyNgZorro> menuGroup = useCase.select(companyCode, userId, menuGroupCode); 										
+		List<MenuHierarchyNgZorroDTO> menuGroup = useCase.select(companyCode, userId, menuGroupCode); 										
 		
 		return toList(menuGroup, MessageUtil.getQueryMessage(menuGroup.size()));
 	}

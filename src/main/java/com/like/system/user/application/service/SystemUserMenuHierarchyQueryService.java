@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.menurole.external.MenuHierarchyNgZorro;
+import com.like.system.menurole.external.MenuHierarchyNgZorroDTO;
 import com.like.system.menurole.external.MenuHierarchyByRolesSelectUseCase;
 import com.like.system.user.application.port.in.SystemUserMenuHierarchyQueryUseCase;
 import com.like.system.user.application.port.out.SystemUserCommandDbPort;
@@ -23,7 +23,7 @@ public class SystemUserMenuHierarchyQueryService implements SystemUserMenuHierar
 	}
 		
 	@Override
-	public List<MenuHierarchyNgZorro> select(String companyCode, String userId, String menuGroupCode) {
+	public List<MenuHierarchyNgZorroDTO> select(String companyCode, String userId, String menuGroupCode) {
 		SystemUser userDTO = dbPort.select(companyCode, userId);
 
 		List<String> roleList = userDTO.getRoleList().stream().map(e -> e.getRoleCode()).toList();

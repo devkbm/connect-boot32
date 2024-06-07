@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.like.system.file.application.port.in.FileServerDownloadUseCase;
+import com.like.system.file.external.FileDownloadUseCase;
 import com.like.system.user.application.port.in.SystemUserImageChangeUseCase;
 import com.like.system.user.application.port.in.SystemUserImageFileUseCase;
 import com.like.system.user.application.port.out.SystemUserCommandDbPort;
@@ -19,11 +19,11 @@ public class SystemUserImageService implements SystemUserImageFileUseCase, Syste
 
 	SystemUserCommandDbPort port;	
 	ProfilePictureRepository profilePictureRepository;
-	FileServerDownloadUseCase fileDownLoadUseCase;
+	FileDownloadUseCase fileDownLoadUseCase;
 		
 	SystemUserImageService(SystemUserCommandDbPort port						  
 						  ,ProfilePictureRepository profilePictureRepository
-						  ,FileServerDownloadUseCase fileDownLoadUseCase) {
+						  ,FileDownloadUseCase fileDownLoadUseCase) {
 		this.port = port;	
 		this.profilePictureRepository = profilePictureRepository;
 		this.fileDownLoadUseCase = fileDownLoadUseCase;

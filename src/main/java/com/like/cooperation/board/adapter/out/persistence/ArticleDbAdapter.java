@@ -8,24 +8,16 @@ import com.like.cooperation.board.adapter.out.persistence.jpa.repository.Article
 import com.like.cooperation.board.adapter.out.persistence.jpa.repository.BoardJpaRepository;
 import com.like.cooperation.board.application.port.out.ArticleCommandDbPort;
 import com.like.cooperation.board.domain.Article;
-import com.like.system.file.application.port.in.FileServerSelectUseCase;
-import com.like.system.file.application.port.in.FileServerUploadUseCase;
 
 @Repository
 public class ArticleDbAdapter implements ArticleCommandDbPort {
 	ArticleJpaRepository repository;
-	BoardJpaRepository boardRepository;
-	FileServerUploadUseCase uploadUseCase;
-	FileServerSelectUseCase fileSelectUseCase;
+	BoardJpaRepository boardRepository;	
 	
 	ArticleDbAdapter(ArticleJpaRepository repository
-			        ,BoardJpaRepository boardRepository
-			        ,FileServerUploadUseCase uploadUseCase
-			        ,FileServerSelectUseCase fileSelectUseCase) {
+			        ,BoardJpaRepository boardRepository) {
 		this.repository = repository;
-		this.boardRepository = boardRepository;
-		this.uploadUseCase = uploadUseCase;
-		this.fileSelectUseCase = fileSelectUseCase;
+		this.boardRepository = boardRepository;		
 	}
 
 	@Override

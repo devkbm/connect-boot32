@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class MenuHierarchyNgZorro {
+public class MenuHierarchyNgZorroDTO {
 	
 	/* NzTreeNodeOptions */
 	String key;
@@ -25,7 +25,7 @@ public class MenuHierarchyNgZorro {
 	@JsonProperty(value="isLeaf")
 	boolean isLeaf;
 	
-	List<MenuHierarchyNgZorro> children;
+	List<MenuHierarchyNgZorroDTO> children;
 	/* NzTreeNodeOptions */
 	
 	String menuGroupCode;
@@ -40,8 +40,8 @@ public class MenuHierarchyNgZorro {
 	
 	String url;
 	
-	public static MenuHierarchyNgZorro build(MenuHierarchy dto) {
-		MenuHierarchyNgZorro rec = new MenuHierarchyNgZorro();
+	public static MenuHierarchyNgZorroDTO build(MenuHierarchy dto) {
+		MenuHierarchyNgZorroDTO rec = new MenuHierarchyNgZorroDTO();
 		
 		rec.menuGroupCode = dto.getMenuGroupCode();
 		rec.parentMenuCode = dto.getParentMenuCode();
@@ -60,7 +60,7 @@ public class MenuHierarchyNgZorro {
 		return rec;
 	}
 
-	public void setChildren(List<MenuHierarchyNgZorro> children) {
+	public void setChildren(List<MenuHierarchyNgZorroDTO> children) {
 		this.children = children;
 	}
 	

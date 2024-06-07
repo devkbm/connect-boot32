@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.like.system.menu.domain.MenuHierarchy;
 import com.like.system.menu.domain.MenuHierarchyGenerator;
 import com.like.system.menurole.application.port.out.MenuHierarchyByRolesSelectDbPort;
-import com.like.system.menurole.external.MenuHierarchyNgZorro;
+import com.like.system.menurole.external.MenuHierarchyNgZorroDTO;
 import com.like.system.menurole.external.MenuHierarchyByRolesSelectUseCase;
 
 @Service
@@ -21,20 +21,20 @@ public class MenuHierarchyByRolesSelectService implements MenuHierarchyByRolesSe
 	}
 	
 	@Override
-	public List<MenuHierarchyNgZorro> select(String companyCode, String menuGroupCode, List<String> roleCodes) {
+	public List<MenuHierarchyNgZorroDTO> select(String companyCode, String menuGroupCode, List<String> roleCodes) {
 		MenuHierarchyGenerator generator = new MenuHierarchyGenerator(dbPort.select(companyCode, menuGroupCode, roleCodes));
 		
 		List<MenuHierarchy> list = generator.convertTreeNodes();
 
-		List<MenuHierarchyNgZorro> copy_list = new ArrayList<>();
+		List<MenuHierarchyNgZorroDTO> copy_list = new ArrayList<>();
 		
 		copyTreeNode(list, copy_list);
 		
 		return copy_list;
 	}
 	
-	private void copyTreeNode(List<MenuHierarchy> original_list, List<MenuHierarchyNgZorro> copy_list) {
-		MenuHierarchyNgZorro newNode = null;
+	private void copyTreeNode(List<MenuHierarchy> original_list, List<MenuHierarchyNgZorroDTO> copy_list) {
+		MenuHierarchyNgZorroDTO newNode = null;
 		
 		for (MenuHierarchy node: original_list) {
 			newNode = convert(node);
@@ -43,8 +43,8 @@ public class MenuHierarchyByRolesSelectService implements MenuHierarchyByRolesSe
 		}
 	}	
 	
-	private void copyChildren(MenuHierarchyNgZorro parent, MenuHierarchy original) {
-		MenuHierarchyNgZorro newNode = null;
+	private void copyChildren(MenuHierarchyNgZorroDTO parent, MenuHierarchy original) {
+		MenuHierarchyNgZorroDTO newNode = null;
 		
 		if (original.getChildren() == null) return;
 		
@@ -57,8 +57,8 @@ public class MenuHierarchyByRolesSelectService implements MenuHierarchyByRolesSe
 		}
 	}
 	
-	private MenuHierarchyNgZorro convert(MenuHierarchy dto) {
-		return MenuHierarchyNgZorro.build(dto); 
+	private MenuHierarchyNgZorroDTO convert(MenuHierarchy dto) {
+		return MenuHierarchyNgZorroDTO.build(dto); 
 	}
 
 }

@@ -6,7 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.like.hrm.staff.application.port.in.StaffImageUploadUseCase;
 import com.like.hrm.staff.application.port.out.StaffCommandDbPort;
 import com.like.hrm.staff.domain.model.Staff;
-import com.like.system.file.application.port.in.FileServerUploadUseCase;
+import com.like.system.file.external.FileUploadUseCase;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -14,10 +14,10 @@ import jakarta.persistence.EntityNotFoundException;
 public class StaffImageUploadService implements StaffImageUploadUseCase {
 	
 	StaffCommandDbPort dbPort;
-	FileServerUploadUseCase uploadUseCase;
+	FileUploadUseCase uploadUseCase;
 	
 	StaffImageUploadService(StaffCommandDbPort dbPort
-						   ,FileServerUploadUseCase uploadUseCase) {
+						   ,FileUploadUseCase uploadUseCase) {
 		this.dbPort = dbPort;
 		this.uploadUseCase = uploadUseCase;
 	}
@@ -30,7 +30,7 @@ public class StaffImageUploadService implements StaffImageUploadUseCase {
 		
 		if (entity == null) return null;
 		
-		String path = uploadUseCase.uploadFile(file, "kbm", "SystemUser").getId().toString();
+		String path = uploadUseCase.uploadFile(file, "kbm", "SystemUser").fildId().toString();
 		
 		entity.changeImagePath(path);			
 		
