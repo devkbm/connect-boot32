@@ -21,11 +21,9 @@ public class ArticleDeleteController {
 	}	
 		
 	@DeleteMapping("/api/grw/board/article/{id}")
-	public ResponseEntity<?> deleteArticle(@PathVariable String id) {				
-				
-		Long articleId = Base64Util.fromBase64Decode(id);
+	public ResponseEntity<?> deleteArticle(@PathVariable String id) {									
 		
-		useCase.delete(articleId);							
+		useCase.delete(Base64Util.fromBase64Decode(id));							
 		
 		return toList(null, MessageUtil.getDeleteMessage(1));
 	}			

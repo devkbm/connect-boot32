@@ -1,10 +1,8 @@
 package com.like.system.file.application.port.in;
 
-import jakarta.servlet.http.HttpServletResponse;
+import com.like.system.file.dto.FileDTO;
 
 public interface FileServerDownloadUseCase {
-	
-	void download(String fileInfoId, HttpServletResponse response);	
-	
-	void viewImage(String fileInfoId, HttpServletResponse response);
+
+	FileDTO getDownloadFile(String fileInfoId);		
 }

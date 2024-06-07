@@ -13,9 +13,6 @@ import com.like.cooperation.todo.domain.TodoGroup;
 import com.like.core.message.MessageUtil;
 import com.like.core.util.SessionUtil;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @RestController
 public class TodoGroupQueryController {
 
@@ -26,9 +23,7 @@ public class TodoGroupQueryController {
 	}
 	
 	@GetMapping("/api/todo/group/mylist")
-	public ResponseEntity<?> getMyTodoGroupList() {
-		
-		//log.info(SessionUtil.getAuthentication().toString());
+	public ResponseEntity<?> getMyTodoGroupList() {		
 		
 		List<TodoGroup> list = useCase.select(SessionUtil.getUserId());			 					
 		
