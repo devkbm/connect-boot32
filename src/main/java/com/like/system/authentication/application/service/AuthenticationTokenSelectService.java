@@ -1,4 +1,4 @@
-package com.like.system.permission.application.service;
+package com.like.system.authentication.application.service;
 
 import java.util.List;
 
@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.like.system.menurole.external.MenuGroupDTO;
+import com.like.system.authentication.application.port.in.AuthenticationTokenSelectUseCase;
+import com.like.system.authentication.domain.AuthenticationToken;
 import com.like.system.menurole.external.MenuGroupByUserSelectUseCase;
-import com.like.system.permission.application.port.in.AuthenticationTokenSelectUseCase;
-import com.like.system.permission.domain.AuthenticationToken;
 import com.like.system.user.external.SystemUserDTO;
 import com.like.system.user.external.SystemUserDTOSelectUseCase;
 

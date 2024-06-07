@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.web.util.WebRequestUtil;
+import com.like.system.authentication.application.port.in.AuthenticationTokenSelectUseCase;
+import com.like.system.authentication.domain.AuthenticationToken;
 import com.like.system.login.domain.event.LoginSuccessEvent;
 import com.like.system.login.dto.LoginRequestDTO;
-import com.like.system.permission.application.port.in.AuthenticationTokenSelectUseCase;
-import com.like.system.permission.domain.AuthenticationToken;
 import com.like.system.user.external.SystemUserLoginDTO;
 import com.like.system.user.external.SystemUserLoginDTOSelectUseCase;
 

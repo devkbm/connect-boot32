@@ -1,4 +1,4 @@
-package com.like.system.permission.adapter.in.web;
+package com.like.system.authentication.adapter.in.web;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
