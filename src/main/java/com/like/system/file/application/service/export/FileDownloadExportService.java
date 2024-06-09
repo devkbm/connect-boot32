@@ -1,4 +1,4 @@
-package com.like.system.file.application.service.external;
+package com.like.system.file.application.service.export;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,18 +11,18 @@ import com.like.system.file.adapter.out.file.FileConverterUtil;
 import com.like.system.file.application.port.out.FileDownloadWebPort;
 import com.like.system.file.application.port.out.FileInfoCommandDbPort;
 import com.like.system.file.domain.FileInfo;
-import com.like.system.file.external.FileDownloadUseCase;
+import com.like.system.file.export.FileDownloadUseCase;
 
 import jakarta.servlet.http.HttpServletResponse;
 
 @Transactional
 @Service
-public class ExternalFileDownloadService implements FileDownloadUseCase {
+public class FileDownloadExportService implements FileDownloadUseCase {
 
 	FileInfoCommandDbPort dbPort;	
 	FileDownloadWebPort webPort;
 	
-	ExternalFileDownloadService(FileInfoCommandDbPort dbPort
+	FileDownloadExportService(FileInfoCommandDbPort dbPort
 			 				   ,FileDownloadWebPort webPort) {
 		this.dbPort = dbPort;			
 		this.webPort = webPort;		

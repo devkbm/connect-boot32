@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.like.hrm.staff.application.port.in.StaffImageDownloadUseCase;
 import com.like.hrm.staff.application.port.out.StaffCommandDbPort;
 import com.like.hrm.staff.domain.model.Staff;
-import com.like.system.file.external.FileDownloadUseCase;
+import com.like.system.file.export.FileDownloadUseCase;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.http.HttpServletResponse;

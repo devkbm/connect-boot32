@@ -10,8 +10,8 @@ import com.like.cooperation.board.application.port.out.ArticleCommandDbPort;
 import com.like.cooperation.board.application.port.out.ArticleUserHitCountDbPort;
 import com.like.cooperation.board.domain.Article;
 import com.like.cooperation.board.dto.ArticleResponseDTO;
-import com.like.system.file.external.FileInfoDTOSelectUseCase;
-import com.like.system.file.external.FileInfoDTO;
+import com.like.system.file.export.FileInfoDTO;
+import com.like.system.file.export.FileInfoDTOSelectUseCase;
 
 @Service
 public class ArticleSelectService implements ArticleSelectUseCase {

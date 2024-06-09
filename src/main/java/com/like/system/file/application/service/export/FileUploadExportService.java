@@ -1,4 +1,4 @@
-package com.like.system.file.application.service.external;
+package com.like.system.file.application.service.export;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,18 +11,19 @@ import org.springframework.web.multipart.MultipartFile;
 import com.like.system.file.adapter.out.file.FileServerRepository;
 import com.like.system.file.application.port.out.FileInfoCommandDbPort;
 import com.like.system.file.domain.FileInfo;
-import com.like.system.file.external.FileInfoDTO;
-import com.like.system.file.external.FileUploadUseCase;
+import com.like.system.file.export.FileInfoDTO;
+import com.like.system.file.export.FileUploadUseCase;
 
 @Service
-public class ExternalFileUploadService implements FileUploadUseCase {
+public class FileUploadExportService implements FileUploadUseCase {
 
 	FileInfoCommandDbPort dbPort;
 	FileServerRepository fileServerRepository;
 	
-	ExternalFileUploadService(FileInfoCommandDbPort dbPort
+	FileUploadExportService(FileInfoCommandDbPort dbPort
 		 	   				 ,FileServerRepository fileServerRepository) {
-		
+		this.dbPort = dbPort;
+		this.fileServerRepository = fileServerRepository;
 	}
 	
 	@Override

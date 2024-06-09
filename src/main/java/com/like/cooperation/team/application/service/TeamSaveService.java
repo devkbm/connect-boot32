@@ -7,7 +7,7 @@ import com.like.cooperation.team.application.port.in.TeamSaveUseCase;
 import com.like.cooperation.team.application.port.out.TeamCommandDbPort;
 import com.like.cooperation.team.domain.Team;
 import com.like.cooperation.team.dto.TeamSaveDTO;
-import com.like.system.user.external.SystemUserDTOSelectUseCase;
+import com.like.system.user.export.SystemUserDTOSelectUseCase;
 
 @Transactional
 @Service

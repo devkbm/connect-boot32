@@ -1,4 +1,4 @@
-package com.like.system.file.application.service.external;
+package com.like.system.file.application.service.export;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,15 +8,15 @@ import org.springframework.stereotype.Service;
 import com.like.system.file.adapter.out.file.FileServerRepository;
 import com.like.system.file.application.port.out.FileInfoCommandDbPort;
 import com.like.system.file.domain.FileInfo;
-import com.like.system.file.external.FileDeleteUseCase;
+import com.like.system.file.export.FileDeleteUseCase;
 
 @Service
-public class ExternalFileDeleteService implements FileDeleteUseCase {
+public class FileDeleteExportService implements FileDeleteUseCase {
 
 	FileInfoCommandDbPort dbPort;
 	FileServerRepository fileServerRepository;
 	
-	ExternalFileDeleteService(FileInfoCommandDbPort dbPort) {
+	FileDeleteExportService(FileInfoCommandDbPort dbPort) {
 		this.dbPort = dbPort;
 	}
 	

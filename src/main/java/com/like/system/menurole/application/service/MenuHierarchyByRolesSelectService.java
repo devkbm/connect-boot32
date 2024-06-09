@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import com.like.system.menu.domain.MenuHierarchy;
 import com.like.system.menu.domain.MenuHierarchyGenerator;
 import com.like.system.menurole.application.port.out.MenuHierarchyByRolesSelectDbPort;
-import com.like.system.menurole.external.MenuHierarchyNgZorroDTO;
-import com.like.system.menurole.external.MenuHierarchyByRolesSelectUseCase;
+import com.like.system.menurole.export.MenuHierarchyByRolesSelectUseCase;
+import com.like.system.menurole.export.MenuHierarchyNgZorroDTO;
 
 @Service
 public class MenuHierarchyByRolesSelectService implements MenuHierarchyByRolesSelectUseCase {

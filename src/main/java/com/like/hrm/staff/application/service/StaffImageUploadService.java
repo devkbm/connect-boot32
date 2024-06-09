@@ -6,7 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.like.hrm.staff.application.port.in.StaffImageUploadUseCase;
 import com.like.hrm.staff.application.port.out.StaffCommandDbPort;
 import com.like.hrm.staff.domain.model.Staff;
-import com.like.system.file.external.FileUploadUseCase;
+import com.like.system.file.export.FileUploadUseCase;
 
 import jakarta.persistence.EntityNotFoundException;
 

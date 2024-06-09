@@ -21,8 +21,8 @@ import com.like.system.authentication.application.port.in.AuthenticationTokenSel
 import com.like.system.authentication.domain.AuthenticationToken;
 import com.like.system.login.domain.event.LoginSuccessEvent;
 import com.like.system.login.dto.LoginRequestDTO;
-import com.like.system.user.external.SystemUserLoginDTO;
-import com.like.system.user.external.SystemUserLoginDTOSelectUseCase;
+import com.like.system.user.export.SystemUserLoginDTO;
+import com.like.system.user.export.SystemUserLoginDTOSelectUseCase;
 
 @RestController
 public class LoginController {		

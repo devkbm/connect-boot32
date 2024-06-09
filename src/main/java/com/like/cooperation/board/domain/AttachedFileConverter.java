@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.like.system.file.external.FileInfoDTO;
+import com.like.system.file.export.FileInfoDTO;
 
 public class AttachedFileConverter {
 

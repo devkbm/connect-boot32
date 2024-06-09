@@ -1,4 +1,4 @@
-package com.like.system.menurole.external;
+package com.like.system.menurole.export;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

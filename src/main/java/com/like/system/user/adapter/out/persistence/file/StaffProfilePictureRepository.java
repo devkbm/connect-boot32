@@ -4,9 +4,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.like.core.util.SessionUtil;
-import com.like.system.file.external.FileDeleteUseCase;
-import com.like.system.file.external.FileInfoDTO;
-import com.like.system.file.external.FileUploadUseCase;
+import com.like.system.file.export.FileDeleteUseCase;
+import com.like.system.file.export.FileInfoDTO;
+import com.like.system.file.export.FileUploadUseCase;
 import com.like.system.user.domain.ProfilePictureRepository;
 
 @Repository

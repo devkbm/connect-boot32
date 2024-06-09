@@ -1,4 +1,4 @@
-package com.like.system.file.application.service.external;
+package com.like.system.file.application.service.export;
 
 import java.util.List;
 
@@ -6,16 +6,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.like.system.file.application.port.out.FileInfoCommandDbPort;
-import com.like.system.file.external.FileInfoDTO;
-import com.like.system.file.external.FileInfoDTOSelectUseCase;
+import com.like.system.file.export.FileInfoDTO;
+import com.like.system.file.export.FileInfoDTOSelectUseCase;
 
 @Transactional(readOnly = true)
 @Service
-public class FileInfoDTOSelectService implements FileInfoDTOSelectUseCase {
+public class FileInfoDTOSelectExportService implements FileInfoDTOSelectUseCase {
 
 	FileInfoCommandDbPort dbPort;
 	
-	FileInfoDTOSelectService(FileInfoCommandDbPort dbPort) {
+	FileInfoDTOSelectExportService(FileInfoCommandDbPort dbPort) {
 		this.dbPort = dbPort;
 	}
 	

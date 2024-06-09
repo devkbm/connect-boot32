@@ -1,4 +1,4 @@
-package com.like.system.file.external;
+package com.like.system.file.export;
 
 import com.like.system.file.adapter.out.file.FileServerRepository;
 import com.like.system.file.domain.FileInfo;

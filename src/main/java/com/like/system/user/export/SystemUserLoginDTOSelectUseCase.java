@@ -1,4 +1,4 @@
-package com.like.system.user.external;
+package com.like.system.user.export;
 
 public interface SystemUserLoginDTOSelectUseCase {
 

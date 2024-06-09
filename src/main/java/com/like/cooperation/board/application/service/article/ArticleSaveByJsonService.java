@@ -16,9 +16,9 @@ import com.like.cooperation.board.domain.AttachedFileConverter;
 import com.like.cooperation.board.domain.Board;
 import com.like.cooperation.board.dto.ArticleSaveDTO;
 import com.like.cooperation.board.util.Base64Util;
-import com.like.system.file.external.FileInfoDTO;
-import com.like.system.file.external.FileInfoDTOSelectUseCase;
-import com.like.system.file.external.FileUploadUseCase;
+import com.like.system.file.export.FileInfoDTO;
+import com.like.system.file.export.FileInfoDTOSelectUseCase;
+import com.like.system.file.export.FileUploadUseCase;
 
 @Transactional
 @Service

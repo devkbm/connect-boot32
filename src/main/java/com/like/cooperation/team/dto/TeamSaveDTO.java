@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.like.cooperation.team.domain.Team;
-import com.like.system.user.external.SystemUserDTOSelectUseCase;
+import com.like.system.user.export.SystemUserDTOSelectUseCase;
 
 import lombok.Builder;
 

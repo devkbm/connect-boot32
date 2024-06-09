@@ -7,8 +7,8 @@ import java.util.List;
 import com.like.cooperation.board.domain.Article;
 import com.like.cooperation.board.util.Base64Util;
 import com.like.core.util.SessionUtil;
-import com.like.system.file.external.FileInfoDTO;
-import com.like.system.file.external.FileResponseDTO;
+import com.like.system.file.export.FileInfoDTO;
+import com.like.system.file.export.FileResponseDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
