@@ -11,7 +11,9 @@ public class RoleMapper {
 	public static JpaRole toJpaEntity(Role entity) {
 		return new JpaRole(entity.getCompanyCode()
 						  ,entity.getRoleCode()
-						  ,entity.getDescription());
+						  ,entity.getRoleName()
+						  ,entity.getDescription()
+						  ,entity.getMenuGroupCode());
 	}
 	
 	public static Role toEntity(JpaRole jpaEntity) {
@@ -19,8 +21,9 @@ public class RoleMapper {
 		
 		return new Role(jpaEntity.getCompanyCode()
 					   ,jpaEntity.getRoleCode()
-					   ,""
-					   ,jpaEntity.getDescription());			
+					   ,jpaEntity.getRoleName()
+					   ,jpaEntity.getDescription()
+					   ,jpaEntity.getMenuGroupCode());			
 	}
 	
 	public static BooleanBuilder toPredicate(RoleQueryDTO dto) {

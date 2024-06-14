@@ -21,12 +21,20 @@ public class JpaRole extends AbstractAuditEntity implements Serializable {
 	@EmbeddedId
 	JpaRoleId id;
 	
+	@Column(name="ROLE_NM")
+	String roleName;
+	
 	@Column(name="description")
 	String description;	
 	
-	public JpaRole(String companyCode, String roleCode, String description) {		
+	@Column(name="MENU_GROUP_CD")
+	String menuGroupCode;
+	
+	public JpaRole(String companyCode, String roleCode, String roleName, String description, String menuGroupCode) {		
 		this.id = new JpaRoleId(companyCode, roleCode);
+		this.roleName = roleName;
 		this.description = description;
+		this.menuGroupCode = menuGroupCode;
 	}	
 	
 	public void modifyEntity(String description) {
@@ -41,7 +49,15 @@ public class JpaRole extends AbstractAuditEntity implements Serializable {
 		return this.id.getRoleCode();
 	}
 	
+	public String getRoleName() {
+		return this.roleName;
+	}
+	
 	public String getDescription() {
 		return description;
+	}
+	
+	public String getMenuGroupCode() {
+		return menuGroupCode;
 	}
 }

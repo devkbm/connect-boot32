@@ -8,11 +8,12 @@ public record RoleSaveDTO(
 		String companyCode,
 		String roleCode,
 		String roleName,
-		String description
+		String description,
+		String menuGroupCode
 		) {
 	
 	public Role newEntity() {
-		Role entity = new Role(this.companyCode, this.roleCode, this.roleName, this.description);
+		Role entity = new Role(this.companyCode, this.roleCode, this.roleName, this.description, this.menuGroupCode);
 		
 		//entity.setAppUrl(clientAppUrl);			
 		

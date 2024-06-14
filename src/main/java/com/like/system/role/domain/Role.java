@@ -8,10 +8,13 @@ public class Role {
 		
 	String description;		
 	
-	public Role(String companyCode, String roleCode, String roleName, String description) {		
+	String menuGroupCode;
+	
+	public Role(String companyCode, String roleCode, String roleName, String description, String menuGroupCode) {		
 		this.id = new RoleId(companyCode, roleCode);		
 		this.roleName = roleName;
 		this.description = description;		
+		this.menuGroupCode = menuGroupCode;
 	}	
 	
 	public void modifyEntity(String description) {
@@ -34,4 +37,7 @@ public class Role {
 		return description;
 	}
 	
+	public String getMenuGroupCode() {
+		return menuGroupCode;
+	}
 }
