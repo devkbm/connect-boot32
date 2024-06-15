@@ -7,6 +7,7 @@ public record RoleQueryDTO(
 		String companyCode,
 		String roleId,
 		String roleCode,		
-		String description
+		String description,
+		String menuGroupCode
 		) {	
 }

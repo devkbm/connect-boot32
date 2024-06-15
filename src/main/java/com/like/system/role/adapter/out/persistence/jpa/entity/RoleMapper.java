@@ -38,7 +38,11 @@ public class RoleMapper {
 		
 		if (hasText(dto.description())) {
 			builder.and(qType.description.like("%"+dto.description()+"%"));
-		}			   	
+		}
+		
+		if (hasText(dto.menuGroupCode())) {
+			builder.and(qType.menuGroupCode.eq(dto.menuGroupCode()));
+		}
 		
 		return builder;
 	}

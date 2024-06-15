@@ -17,8 +17,10 @@ public class Role {
 		this.menuGroupCode = menuGroupCode;
 	}	
 	
-	public void modifyEntity(String description) {
+	public void modifyEntity(String roleName, String description, String menuGroupCode) {
+		this.roleName = roleName;
 		this.description = description;
+		this.menuGroupCode = menuGroupCode;
 	}	
 		
 	public String getCompanyCode() {

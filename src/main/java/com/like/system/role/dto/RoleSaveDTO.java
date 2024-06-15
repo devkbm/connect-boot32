@@ -20,8 +20,9 @@ public record RoleSaveDTO(
 		return entity;
 	}
 	
-	public void modifyEntity(Role authority) {			
-		authority.modifyEntity(description);
+	public void modifyEntity(Role authority) {		
+		authority.modifyEntity(roleName, description, menuGroupCode);
+		
 		//authority.setAppUrl(clientAppUrl);
 	}
 }
