@@ -35,7 +35,7 @@ public class WebSecurityConfigLocalTest<S extends Session> {
     }
 	
 	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf(csrf -> csrf.disable())
 			.cors(cors -> cors.configurationSource(corsConfigurationSource()))
 			.headers(headers -> headers.frameOptions(frame -> frame.disable()))	// h2-console 테스트를 위한 설정
@@ -57,15 +57,17 @@ public class WebSecurityConfigLocalTest<S extends Session> {
 	}
 	
 	@Bean
-	public CorsConfigurationSource corsConfigurationSource() {
+	CorsConfigurationSource corsConfigurationSource() {
        CorsConfiguration configuration = new CorsConfiguration();       
 
-       configuration.addAllowedOrigin("http://localhost:4200");
-       //configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));       
-              
-       configuration.addAllowedMethod("*");
+       configuration.setAllowedOriginPatterns(Arrays.asList("*"));
+       //configuration.addAllowedOrigin("http://localhost:4200");
+       //configuration.addAllowedOrigin("http://175.114.176.195:4200");
+       //configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200","http://175.114.176.195:4200"));       
+                           
        //configuration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE","OPTIONS"));       
                     
+       configuration.addAllowedMethod("*");
        // Request Header에 Http default 이외에 정해진 것만 허용한다.
        /*
        configuration.setAllowedHeaders(Arrays.asList("Origin", "Accept", "X-Requested-With", "Content-Type", 
@@ -87,17 +89,17 @@ public class WebSecurityConfigLocalTest<S extends Session> {
 	}
 	
 	@Bean
-	public PasswordEncoder bCryptPasswordEncoder() {
+	PasswordEncoder bCryptPasswordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 	
 	@Bean
-	public SpringSessionBackedSessionRegistry<S> sessionRegistry() {
+	SpringSessionBackedSessionRegistry<S> sessionRegistry() {
 		return new SpringSessionBackedSessionRegistry<>(this.sessionRepository);
 	}
 	
 	@Bean                                                        
-	public WebSecurityCustomizer webSecurityCustomizer() {
+	WebSecurityCustomizer webSecurityCustomizer() {
 		return (web) -> web.ignoring().requestMatchers(new AntPathRequestMatcher("/static/**"));
 	}
 }
